@@ -3,7 +3,7 @@ name: Automated Tests and Linting
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
