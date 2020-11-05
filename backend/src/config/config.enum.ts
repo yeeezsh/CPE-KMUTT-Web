@@ -7,4 +7,5 @@ export enum ConfigEnum {
   JWT_EXPIRES = 'JWT_EXPIRES',
   OPS_KEY = 'OPS_KEY',
   ORIGIN = 'ORIGIN',
+  PORT = 'PORT',
 }

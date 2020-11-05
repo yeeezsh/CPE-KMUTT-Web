@@ -1,25 +1,26 @@
-version: '3.4'
+version: "3.4"
 
 services:
   backend:
     container_name: backend
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
       target: dev
     environment:
-      DATABASE_CONNECTION: 'mongodb://mongodb-sharded:27017/cpe-kmutt-web'
+      DATABASE_CONNECTION: "mongodb://mongodb-sharded:27017/cpe-kmutt-web"
       DATABASE_USERAME: root
       DATABASE_PASSWORD: CPE-KMUTT-DB
       DATABASE_AUTH_SOURCE: admin
       JWT_SECRET_KEY: very-secret-key.jwt
       JWT_EXPIRES: 3600s
-      OPS_KEY: 'CPE-KMUTT.opskey'
-      NODE_ENV: 'development'
+      OPS_KEY: "CPE-KMUTT.opskey"
+      NODE_ENV: "development"
+      PORT: 3000
     ports:
       - 3000:3000
     volumes:
-      - './src:/app/backend/src'
+      - "./backend/src:/backend/src"
     command: yarn start:dev
     links:
       - db

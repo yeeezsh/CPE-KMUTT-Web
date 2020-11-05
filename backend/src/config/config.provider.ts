@@ -15,6 +15,7 @@ export const configProviders: Provider[] = [
         JWT_EXPIRES,
         OPS_KEY,
         ORIGIN,
+        PORT,
       } = process.env as ConfigType;
       return {
         database: {
@@ -34,6 +35,7 @@ export const configProviders: Provider[] = [
           (process.env.NODE_ENV as ConfigurationInterface['node_env']) ||
           'development',
         origin: new RegExp(ORIGIN),
+        port: PORT || '3000',
       };
     })(),
   },

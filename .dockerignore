@@ -3,7 +3,6 @@
 .vscode
 build
 coverage
-docker-compose.yml
 README.md
 
 # Node Files #
@@ -11,3 +10,13 @@ node_modules
 npm-debug.log
 npm-debug.log.*
 npm-debug
+
+# backend
+/backend/.git
+/backend/.github
+/backend/.vscode
+/backend/coverage
+/backend/README.md
+/backend/node_modules
+/backend/dist
+
