@@ -25,6 +25,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('docs', app, document);
 
-  await app.listen(3000);
+  await app.listen(config.port);
+  // tslint:disable-next-line: no-console
+  console.log('Server started on port',config.port);
 }
 bootstrap();
