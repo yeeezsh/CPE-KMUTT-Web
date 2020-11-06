@@ -1,0 +1,15 @@
+tsconfig.json
+next-env.d.ts
+.gitkeep
+babel.config.js
+.eslintrc.js
+.prettierrc.js
+jest.config.js
+next.config.js
+__mock__/
+build/
+out/
+.next/
+node_modules/
+.vscode
+server/
