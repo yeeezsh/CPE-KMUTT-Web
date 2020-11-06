@@ -3,7 +3,7 @@ name: Automate Build and Testing Front-end
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 defaults:
     run:
