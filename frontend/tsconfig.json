@@ -13,8 +13,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "Assets/*": ["src/assets/*"],
+      "Components/*": ["src/components/*"],
+      "Hooks/*": ["src/hooks/*"],
+      "Models/*": ["src/models/*"],
+      "Pages/*": ["src/pages/*"],
+      "Services/*": ["src/services/*"],
+      "Stores/*": ["src/stores/*"],
+      "Utils/*": ["src/utils/*"],
+      "Styles/*": ["src/styles/*"],
+      "Tests/*": ["src/__test__/*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"]
 }
