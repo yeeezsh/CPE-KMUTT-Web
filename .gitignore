@@ -1,5 +1,8 @@
 # compiled output
+/backend/dist
 /backend/node_modules
+
+# Logs
 /backend/logs
 /backend/*.log
 /backend/npm-debug.log*

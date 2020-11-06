@@ -35,7 +35,7 @@ export const configProviders: Provider[] = [
           (process.env.NODE_ENV as ConfigurationInterface['node_env']) ||
           'development',
         origin: new RegExp(ORIGIN),
-        port: PORT || '3000',
+        port: Number(PORT) || 3000,
       };
     })(),
   },
