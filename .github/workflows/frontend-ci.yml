@@ -27,4 +27,4 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn test:ci
-      - run: yarn build
+      - run: yarn export
