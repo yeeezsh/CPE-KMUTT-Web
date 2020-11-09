@@ -17,14 +17,15 @@
     "noImplicitAny": true,
     "baseUrl": ".",
     "paths": {
-      "Assets/*": ["src/assets/*"],
-      "Components/*": ["src/components/*"],
-      "Hooks/*": ["src/hooks/*"],
-      "Models/*": ["src/models/*"],
+      "Assets/*": ["src/common/assets/*"],
+      "Components/*": ["src/common/components/*"],
+      "Hooks/*": ["src/common/hooks/*"],
+      "Models/*": ["src/common/models/*"],
+      "Modules/*": ["src/modules/*"],
       "Pages/*": ["src/pages/*"],
-      "Services/*": ["src/services/*"],
-      "Stores/*": ["src/stores/*"],
-      "Utils/*": ["src/utils/*"],
+      "Services/*": ["src/common/services/*"],
+      "Stores/*": ["src/common/stores/*"],
+      "Utils/*": ["src/common/utils/*"],
       "Styles/*": ["src/styles/*"],
       "Tests/*": ["src/__test__/*"]
     }

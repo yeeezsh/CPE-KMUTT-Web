@@ -1,13 +1,13 @@
 // module mapper hotfix
-const tsconfig = require("./tsconfig.json");
+const tsconfig = require('./tsconfig.json');
 const aliasModule = Object.keys(tsconfig.compilerOptions.paths)
   .map((alias) => {
     const value = tsconfig.compilerOptions.paths[alias];
     return {
       // alias
-      ["^" + alias.replace("*", "(.*)")]:
+      ['^' + alias.replace('*', '(.*)')]:
         // absolute path
-        "<rootDir>/" + String(value).replace("*", "") + "$1",
+        '<rootDir>/' + String(value).replace('*', '') + '$1',
     };
   })
   .reduce((acc, cur) => {
@@ -16,22 +16,22 @@ const aliasModule = Object.keys(tsconfig.compilerOptions.paths)
 
 module.exports = {
   // roots: ["src"],
-  moduleDirectories: ["./src", "node_modules"],
-  testPathIgnorePatterns: ["<rootDir>/.next/"],
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  moduleDirectories: ['./src', 'node_modules'],
+  testPathIgnorePatterns: ['<rootDir>/.next/'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    '^.+\\.tsx?$': 'ts-jest',
   },
   moduleNameMapper: {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/__test__/__mocks__/fileMock.js",
-    "\\.(css|less)$": "identity-obj-proxy",
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/common/__mocks__/fileMock.js',
+    '\\.(css|less)$': 'identity-obj-proxy',
     ...aliasModule,
   },
 
   globals: {
-    "ts-jest": {
-      tsconfig: "tsconfig.jest.json",
+    'ts-jest': {
+      tsconfig: 'tsconfig.jest.json',
       babelConfig: true,
     },
   },

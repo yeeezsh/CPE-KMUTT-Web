@@ -1,8 +1,3 @@
-import 'antd/dist/antd.css';
-import type { AppProps } from 'next/app';
+import App from 'Modules/root/page/App';
 
-const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
-  return <Component {...pageProps} />;
-};
-
-export default MyApp;
+export default App;
