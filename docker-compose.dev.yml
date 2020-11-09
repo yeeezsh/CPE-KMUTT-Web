@@ -23,12 +23,48 @@ services:
       - "./backend:/backend/src"
     command: yarn start:dev
     links:
-      - db
+      - mongos
+      - shard-0
+      - mongodb-cfg
     restart: always
 
-  db:
-    container_name: mongoDB
-    image: mongo
+  mongos:
+    image: "bitnami/mongodb-sharded:4.2"
+    environment:
+      MONGODB_ADVERTISED_HOSTNAME: mongodb-sharded
+      MONGODB_SHARDING_MODE: mongos
+      MONGODB_CFG_PRIMARY_HOST: mongodb-cfg
+      MONGODB_CFG_REPLICA_SET_NAME: cfgreplicaset
+      MONGODB_REPLICA_SET_KEY: CPE-KMUTT-DB-CLUSTER
+      MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
+      TZ: Asia/Bangkok
     ports:
-      - 27017:27017
-    restart: always
+      - "27017:27017"
+    volumes:
+      - "./mongo/mongos:/bitnami"
+  shard-0:
+    image: "bitnami/mongodb-sharded:4.2"
+    environment:
+      MONGODB_ADVERTISED_HOSTNAME: mongodb-shard0
+      MONGODB_SHARDING_MODE: shardsvr
+      MONGODB_MONGOS_HOST: mongodb-sharded
+      MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_REPLICA_SET_KEY: CPE-KMUTT-DB-CLUSTER
+      MONGODB_REPLICA_SET_NAME: shard0
+      TZ: Asia/Bangkok
+    volumes:
+      - "./mongo/shard0_data:/bitnami"
+  mongodb-cfg:
+    image: "bitnami/mongodb-sharded:4.2"
+    environment:
+      MONGODB_ADVERTISED_HOSTNAME: mongodb-cfg
+      MONGODB_SHARDING_MODE: configsvr
+      MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_REPLICA_SET_KEY: CPE-KMUTT-DB-CLUSTER
+      MONGODB_REPLICA_SET_NAME: cfgreplicaset
+      TZ: Asia/Bangkok
+    volumes:
+      - "./mongo/mongodb-cfg:/bitnami"
+
