@@ -26,8 +26,6 @@
       "Services/*": ["src/common/services/*"],
       "Stores/*": ["src/common/stores/*"],
       "Utils/*": ["src/common/utils/*"],
-      "Styles/*": ["src/styles/*"],
-      "Tests/*": ["src/__test__/*"]
     }
   },
   "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],
