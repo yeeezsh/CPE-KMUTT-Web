@@ -1,7 +1,7 @@
 {
   "plugins": [
     ["styled-components", { "ssr": true }],
-    // ["import", { "libraryName": "antd", "libraryDirectory": "lib" }, "antd"]
+    ["import", { "libraryName": "antd", "libraryDirectory": "lib" }, "antd"]
   ],
   "presets": ["next/babel"]
 }
