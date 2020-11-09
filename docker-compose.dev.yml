@@ -20,7 +20,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - "./backend:/backend/src"
+      - "./backend:/backend"
     command: yarn start:dev
     links:
       - db
