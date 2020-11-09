@@ -16,6 +16,7 @@
     "format": "prettier --write ./src/**/*.ts{,x} --config ./.prettierrc.js"
   },
   "dependencies": {
+    "antd": "^4.8.2",
     "next": "10.0.1",
     "react": "^16.14",
     "react-dom": "^16.14",
