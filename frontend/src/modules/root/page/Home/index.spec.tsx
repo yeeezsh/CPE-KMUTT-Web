@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
-import Home from 'Pages/index';
 import * as React from 'react';
+import Home from '.';
 
 describe('Index page', () => {
   it('Index page should be defined', () => {

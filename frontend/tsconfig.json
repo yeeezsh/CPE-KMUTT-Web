@@ -25,7 +25,7 @@
       "pages/*": ["src/pages/*"],
       "services/*": ["src/common/services/*"],
       "stores/*": ["src/common/stores/*"],
-      "utils/*": ["src/common/utils/*"],
+      "utils/*": ["src/common/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],
