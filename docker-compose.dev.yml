@@ -23,12 +23,12 @@ services:
       - "./backend:/backend"
     command: yarn start:dev
     links:
-      - mongos
-      - shard-0
+      - mongodb-sharded
+      - mongodb-shard0
       - mongodb-cfg
     restart: always
 
-  mongos:
+  mongodb-sharded:
     image: "bitnami/mongodb-sharded:4.2"
     environment:
       MONGODB_ADVERTISED_HOSTNAME: mongodb-sharded
@@ -40,9 +40,8 @@ services:
       TZ: Asia/Bangkok
     ports:
       - "27017:27017"
-    volumes:
-      - "./mongo/mongos:/bitnami"
-  shard-0:
+
+  mongodb-shard0:
     image: "bitnami/mongodb-sharded:4.2"
     environment:
       MONGODB_ADVERTISED_HOSTNAME: mongodb-shard0
@@ -54,7 +53,8 @@ services:
       MONGODB_REPLICA_SET_NAME: shard0
       TZ: Asia/Bangkok
     volumes:
-      - "./mongo/shard0_data:/bitnami"
+      - "shard0_data:/bitnami"
+
   mongodb-cfg:
     image: "bitnami/mongodb-sharded:4.2"
     environment:
@@ -66,5 +66,10 @@ services:
       MONGODB_REPLICA_SET_NAME: cfgreplicaset
       TZ: Asia/Bangkok
     volumes:
-      - "./mongo/mongodb-cfg:/bitnami"
+      - "cfg_data:/bitnami"
 
+volumes:
+  shard0_data:
+    driver: local
+  cfg_data:
+    driver: local
