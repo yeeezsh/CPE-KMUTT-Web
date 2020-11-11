@@ -1,20 +1,16 @@
 FROM node:14-slim AS dev
-RUN mkdir -p /backend
-WORKDIR /backend
-COPY package.json /backend
-COPY yarn.lock /backend
+COPY package.json package.json 
+COPY yarn.lock yarn.lock 
 RUN yarn install
-COPY . /backend
+COPY . .
 CMD ["yarn", "start"]
 EXPOSE 3000
 
 
 
 FROM node:14-slim AS build
-RUN mkdir -p /backend
-WORKDIR /backend
-COPY package.json /backend
-COPY yarn.lock /backend
+COPY package.json package.json 
+COPY yarn.lock yarn.lock 
 RUN yarn install
-COPY . /backend
+COPY . .
 CMD ["yarn", build]
