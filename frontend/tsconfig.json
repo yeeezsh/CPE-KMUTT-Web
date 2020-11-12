@@ -17,6 +17,7 @@
     "noImplicitAny": true,
     "baseUrl": ".",
     "paths": {
+      "common/*": ["src/common/*"],
       "assets/*": ["src/common/assets/*"],
       "components/*": ["src/common/components/*"],
       "hooks/*": ["src/common/hooks/*"],
