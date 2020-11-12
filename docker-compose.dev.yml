@@ -34,8 +34,8 @@ services:
       MONGODB_ADVERTISED_HOSTNAME: mongodb-sharded
       MONGODB_SHARDING_MODE: mongos
       MONGODB_CFG_PRIMARY_HOST: mongodb-cfg
-      MONGODB_CFG_REPLICA_SET_NAME: cfgreplicaset
-      MONGODB_REPLICA_SET_KEY: CPE-KMUTT-DB-CLUSTER
+      MONGODB_CFG_REPLICA_SET_NAME: cfgReplicaSet
+      MONGODB_REPLICA_SET_KEY: CPEKMUTTDBCLUSTER
       MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
       TZ: Asia/Bangkok
     ports:
@@ -49,11 +49,13 @@ services:
       MONGODB_MONGOS_HOST: mongodb-sharded
       MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
       MONGODB_REPLICA_SET_MODE: primary
-      MONGODB_REPLICA_SET_KEY: CPE-KMUTT-DB-CLUSTER
+      MONGODB_REPLICA_SET_KEY: CPEKMUTTDBCLUSTER
       MONGODB_REPLICA_SET_NAME: shard0
       TZ: Asia/Bangkok
     volumes:
       - "shard0_data:/bitnami"
+    ports:
+      - "27017:27017"
 
   mongodb-cfg:
     image: "bitnami/mongodb-sharded:4.2"
@@ -62,11 +64,13 @@ services:
       MONGODB_SHARDING_MODE: configsvr
       MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
       MONGODB_REPLICA_SET_MODE: primary
-      MONGODB_REPLICA_SET_KEY: CPE-KMUTT-DB-CLUSTER
-      MONGODB_REPLICA_SET_NAME: cfgreplicaset
+      MONGODB_REPLICA_SET_KEY: CPEKMUTTDBCLUSTER
+      MONGODB_REPLICA_SET_NAME: cfgReplicaSet
       TZ: Asia/Bangkok
     volumes:
       - "cfg_data:/bitnami"
+    ports:
+      - "27017:27017"
 
 volumes:
   shard0_data:
