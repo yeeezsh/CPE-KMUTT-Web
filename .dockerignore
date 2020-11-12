@@ -4,6 +4,9 @@
 build
 coverage
 README.md
+docker-compose.yml
+docker-compose.dev.yml
+
 
 # Node Files #
 node_modules
