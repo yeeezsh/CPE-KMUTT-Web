@@ -1,5 +1,6 @@
 import Btn from 'common/components/Button';
 import Footer from 'modules/root/components/Footer';
+import Navbar from 'modules/root/components/Navbar/index';
 import StaticSection from 'modules/root/components/StaticSection';
 import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
 import WhatNewSection from 'modules/root/components/WhatNewSection';
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
+        <Navbar />
         <WhatNewSection />
         <StaticSection
           id="1"
