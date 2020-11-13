@@ -2,17 +2,11 @@ import { Meta } from '@storybook/react/types-6-0';
 import React from 'react';
 import Container from '.';
 
-export default {
+const meta: Meta = {
   title: 'Commmon/Container',
   component: Container,
-  argTypes: {
-    variants: {
-      control: {
-        type: 'select',
-        options: ['Default', 'Primary'],
-      },
-    },
-  },
-} as Meta;
+};
+
+export default meta;
 
 export const Default: React.FC = () => <Container>Container</Container>;
