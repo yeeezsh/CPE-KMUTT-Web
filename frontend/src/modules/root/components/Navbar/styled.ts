@@ -15,7 +15,7 @@ export const Nav = styled.nav`
   padding: 0 208px 0 208px;
 `;
 
-export const Li = styled.ul`
+export const UL = styled.ul`
   display: flex;
 `;
 
