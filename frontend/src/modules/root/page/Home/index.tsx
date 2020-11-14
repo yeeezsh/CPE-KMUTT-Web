@@ -14,9 +14,9 @@ const Home: React.FC = () => {
         </Head>
 
         <Main>
-          <Title>
+          {/* <Title>
             Welcome to <a href="https://nextjs.org">Next.js!</a>
-          </Title>
+          </Title> */}
         </Main>
       </Container>
     </>
