@@ -43,6 +43,7 @@ const Home: React.FC = () => {
           </ButtonStyled>
         </StaticSection>
 
+<<<<<<< HEAD
         <StaticSection
           id="2"
           background="/images/static_bg_gallery.png"
@@ -62,6 +63,15 @@ const Home: React.FC = () => {
         <Footer key="1"></Footer>
       </Main>
     </div>
+=======
+        <Main>
+          {/* <Title>
+            Welcome to <a href="https://nextjs.org">Next.js!</a>
+          </Title> */}
+        </Main>
+      </Container>
+    </>
+>>>>>>> Fix navbar
   );
 };
 export default Home;

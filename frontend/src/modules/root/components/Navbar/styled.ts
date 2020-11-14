@@ -6,19 +6,23 @@ export const Nav = styled.nav`
   background-filter: blur(70px);
   width: 100%;
   height: 100px;
-  display: flex;
   justify-content: center;
   font-family: Sukhumvit Set;
   font-style: normal;
   top: 0;
   left: 0;
   margin: auto;
+  padding: 0 208px 0 208px;
 `;
 
-export const Logo = styled.div`
+export const Li = styled.ul`
   display: flex;
+`;
+
+export const NavbarBand = styled.div`
+  display: flex;
+  flex: 1;
   justify-content: flex-start;
-  padding-right: 543px;
 `;
 
 export const LogoKMUTT = styled.img`
