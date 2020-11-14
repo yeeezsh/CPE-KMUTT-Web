@@ -7,10 +7,9 @@ export const Nav = styled.nav`
   width: 100%;
   height: 100px;
   display: flex;
-  justify-content: flex-between;
+  justify-content: center;
   font-family: Sukhumvit Set;
   font-style: normal;
-  position: fixed;
   top: 0;
   left: 0;
   margin: auto;
@@ -19,12 +18,13 @@ export const Nav = styled.nav`
 export const Logo = styled.div`
   display: flex;
   justify-content: flex-start;
+  padding-right: 543px;
 `;
 
 export const LogoKMUTT = styled.img`
   width: 51px;
   height: 60px;
-  margin: 15px 25px 25px 100px;
+  margin: 15px 25px 25px 0px;
 `;
 
 export const StyledDivider = styled(Divider)`
@@ -57,34 +57,42 @@ export const Department = styled.div`
   margin-top: 24.55px;
 `;
 
-export const Menu = styled.ul`
-  display: flex;
-  justify-content: flex-end;
-  flex-flow: row nowrap;
-  list-style: none;
-  margin-top: 15px;
-  margin-left: 243px;
-`;
-
-export const Item = styled.li`
-  padding-right: 40px;
-  padding-top: 24px;
-  list-style: none;
-`;
-
-export const ItemLink = styled.a`
-  font-weight: 500;
-  font-size: 14px;
-  color: #373736;
-  &:hover {
-    color: #80a8d9;
-  }
-`;
-
 export const MenuButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  margin-right: 30px;
+  &:hover {
+    color: #80a8d9;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+export const Menu = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const Group = styled.ul`
+  list-style: none;
+  padding-top: 40px;
+`;
+
+export const Item = styled.li`
+  list-style: none;
+  font-family: Helvetica Neue;
+  font-weight: bold;
+  font-size: 16px;
+  color: #666666;
+`;
+
+export const ItemLink = styled.a`
+  font-family: Helvetica Neue;
+  font-weight: normal;
+  font-size: 14px;
+  color: #666666;
   &:hover {
     color: #80a8d9;
   }
