@@ -5,13 +5,13 @@ import NavbarMenu from './NavbarMenu';
 import {
   Department,
   Faculty,
-  Li,
   LogoCPE,
   LogoKMUTT,
   MenuButton,
   Nav,
   NavbarBand,
   StyledDivider,
+  UL,
 } from './styled';
 
 const Navbar: React.FC = () => {
@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <Nav>
-        <Li>
+        <UL>
           <NavbarBand>
             <LogoKMUTT src="/LOGO-KMUTT.svg" />
             <StyledDivider type="vertical" />
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
             overlayStyle={{ width: '100%', borderTop: '1px solid #eaeaea' }}>
             <MenuButton>{visible ? <CloseOutlined /> : <MenuOutlined />}</MenuButton>
           </Dropdown>
-        </Li>
+        </UL>
       </Nav>
     </>
   );
