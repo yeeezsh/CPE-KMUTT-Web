@@ -1,43 +1,49 @@
-import { MenuOutlined } from '@ant-design/icons';
-import NAVBAR_CONSTANT from 'models/Navbar/NavbarConstant';
-import React from 'react';
+import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
+import { Dropdown } from 'antd';
+import React, { useCallback, useState } from 'react';
+import NavbarMenu from './NavbarMenu';
 import {
   Department,
   Faculty,
-  Item,
-  ItemLink,
   Logo,
   LogoCPE,
   LogoKMUTT,
-  Menu,
   MenuButton,
   Nav,
   StyledDivider,
 } from './styled';
 
 const Navbar: React.FC = () => {
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = useCallback(() => setVisible(!visible), [visible, setVisible]);
+
   return (
-    <Nav>
-      <Logo>
-        <LogoKMUTT src="/LOGO-KMUTT.svg" />
-        <StyledDivider type="vertical" />
-        <LogoCPE src="/LOGO-CPE.svg" />
-        <Faculty>
-          ภาควิชาวิศวกรรมคอมพิวเตอร์
-          <Department>คณะวิศวกรรมศาสตร์มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</Department>
-        </Faculty>
-      </Logo>
-      <Menu>
-        {NAVBAR_CONSTANT.map(({ key, label, link }) => {
-          return (
-            <Item key={key}>
-              <ItemLink href={link}>{label}</ItemLink>
-            </Item>
-          );
-        })}
-        <MenuButton>{<MenuOutlined />}</MenuButton>
-      </Menu>
-    </Nav>
+    <>
+      <Nav>
+        <Logo>
+          <LogoKMUTT src="/LOGO-KMUTT.svg" />
+          <StyledDivider type="vertical" />
+          <LogoCPE src="/LOGO-CPE.svg" />
+          <Faculty>
+            ภาควิชาวิศวกรรมคอมพิวเตอร์
+            <Department>
+              คณะวิศวกรรมศาสตร์มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+            </Department>
+          </Faculty>
+        </Logo>
+        <MenuButton> {visible ? '​​  ' : 'EN'}</MenuButton>
+        <Dropdown
+          overlay={NavbarMenu}
+          placement="bottomCenter"
+          trigger={['click']}
+          overlayStyle={{ width: '100%' }}>
+          <MenuButton onClick={showDrawer}>
+            {visible ? <CloseOutlined /> : <MenuOutlined />}
+          </MenuButton>
+        </Dropdown>
+      </Nav>
+    </>
   );
 };
 
