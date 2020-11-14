@@ -1,5 +1,4 @@
 version: "3.4"
-
 services:
   backend:
     container_name: backend
@@ -8,9 +7,11 @@ services:
       dockerfile: Dockerfile
       target: dev
     environment:
+      WAIT_HOSTS: mongo:27017
+      TZ: Asia/Bangkok
       DATABASE_CONNECTION: "mongodb://mongodb-sharded:27017/cpe-kmutt-web"
       DATABASE_USERAME: root
-      DATABASE_PASSWORD: CPE-KMUTT-DB
+      DATABASE_PASSWORD: kmuttCPE123
       DATABASE_AUTH_SOURCE: admin
       JWT_SECRET_KEY: very-secret-key.jwt
       JWT_EXPIRES: 3600s
@@ -22,10 +23,8 @@ services:
     volumes:
       - "./backend:/backend"
     command: yarn start:dev
-    links:
-      - mongodb-sharded
+    depends_on:
       - mongodb-shard0
-      - mongodb-cfg
     restart: always
 
   mongodb-sharded:
@@ -34,43 +33,37 @@ services:
       MONGODB_ADVERTISED_HOSTNAME: mongodb-sharded
       MONGODB_SHARDING_MODE: mongos
       MONGODB_CFG_PRIMARY_HOST: mongodb-cfg
-      MONGODB_CFG_REPLICA_SET_NAME: cfgReplicaSet
-      MONGODB_REPLICA_SET_KEY: CPEKMUTTDBCLUSTER
-      MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
+      MONGODB_CFG_REPLICA_SET_NAME: cfgreplicaset
+      MONGODB_REPLICA_SET_KEY: kmuttCPEwebs
+      MONGODB_ROOT_PASSWORD: kmuttCPE123
       TZ: Asia/Bangkok
     ports:
       - "27017:27017"
-
   mongodb-shard0:
     image: "bitnami/mongodb-sharded:4.2"
     environment:
       MONGODB_ADVERTISED_HOSTNAME: mongodb-shard0
       MONGODB_SHARDING_MODE: shardsvr
       MONGODB_MONGOS_HOST: mongodb-sharded
-      MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
+      MONGODB_ROOT_PASSWORD: kmuttCPE123
       MONGODB_REPLICA_SET_MODE: primary
-      MONGODB_REPLICA_SET_KEY: CPEKMUTTDBCLUSTER
+      MONGODB_REPLICA_SET_KEY: kmuttCPEwebs
       MONGODB_REPLICA_SET_NAME: shard0
       TZ: Asia/Bangkok
     volumes:
       - "shard0_data:/bitnami"
-    ports:
-      - "27017:27017"
-
   mongodb-cfg:
     image: "bitnami/mongodb-sharded:4.2"
     environment:
       MONGODB_ADVERTISED_HOSTNAME: mongodb-cfg
       MONGODB_SHARDING_MODE: configsvr
-      MONGODB_ROOT_PASSWORD: CPE-KMUTT-DB
+      MONGODB_ROOT_PASSWORD: kmuttCPE123
       MONGODB_REPLICA_SET_MODE: primary
-      MONGODB_REPLICA_SET_KEY: CPEKMUTTDBCLUSTER
-      MONGODB_REPLICA_SET_NAME: cfgReplicaSet
+      MONGODB_REPLICA_SET_KEY: kmuttCPEwebs
+      MONGODB_REPLICA_SET_NAME: cfgreplicaset
       TZ: Asia/Bangkok
     volumes:
       - "cfg_data:/bitnami"
-    ports:
-      - "27017:27017"
 
 volumes:
   shard0_data:
