@@ -6,8 +6,12 @@ import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
 import WhatNewSection from 'modules/root/components/WhatNewSection';
 import Head from 'next/head';
 import React from 'react';
+<<<<<<< HEAD
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { Main } from './styled';
+=======
+import { Container, Main } from './styled';
+>>>>>>> Fixed navbar
 
 const Home: React.FC = () => {
   return (
@@ -44,6 +48,7 @@ const Home: React.FC = () => {
         </StaticSection>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <StaticSection
           id="2"
           background="/images/static_bg_gallery.png"
@@ -69,6 +74,9 @@ const Home: React.FC = () => {
             Welcome to <a href="https://nextjs.org">Next.js!</a>
           </Title> */}
         </Main>
+=======
+        <Main></Main>
+>>>>>>> Fixed navbar
       </Container>
     </>
 >>>>>>> Fix navbar

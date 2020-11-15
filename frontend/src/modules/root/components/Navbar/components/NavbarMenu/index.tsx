@@ -1,4 +1,4 @@
-import NAVBAR_CONSTANT from 'models/Navbar/NavbarConstant';
+import NAVBAR_CONSTANT from 'modules/root/components/Navbar/constants';
 import React from 'react';
 import { Group, Item, ItemLink, Menu } from './styled';
 
