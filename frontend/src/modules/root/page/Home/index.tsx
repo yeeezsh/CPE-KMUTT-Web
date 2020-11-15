@@ -1,7 +1,7 @@
 import Container from 'common/components/Container';
 import Head from 'next/head';
 import React from 'react';
-import { Main, Title } from './styled';
+import { Main } from './styled';
 
 const Home: React.FC = () => {
   return (
@@ -15,13 +15,18 @@ const Home: React.FC = () => {
           <Header></Header>
 
           <Announcement></Announcement>
+
+          <HomeCarousel></HomeCarousel>
+
+          <Programme></Programme>
+
+          <Contact></Contact>
+
+          <Footer></Footer>
+
       */}
       <Container>
-        <Main>
-          <Title>
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
-          </Title>
-        </Main>
+        <Main></Main>
       </Container>
     </div>
   );
