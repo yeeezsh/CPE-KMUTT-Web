@@ -1,5 +1,4 @@
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
-import { Dropdown } from 'antd';
 import React, { useState } from 'react';
 import NavbarMenu from './components/NavbarMenu';
 import {
@@ -11,6 +10,7 @@ import {
   Nav,
   NavbarBand,
   StyledDivider,
+  StyledDropdown,
   UL,
 } from './styled';
 
@@ -36,14 +36,14 @@ const Navbar: React.FC = () => {
           </NavbarBand>
 
           <MenuButton> {visible ? '​​' : 'EN'}</MenuButton>
-          <Dropdown
+          <StyledDropdown
             overlay={NavbarMenu}
-            placement="bottomCenter"
+            placement="bottomLeft"
             onVisibleChange={showDropdown}
             trigger={['click']}
             overlayStyle={{ width: '100%', borderTop: '1px solid #eaeaea' }}>
             <MenuButton>{visible ? <CloseOutlined /> : <MenuOutlined />}</MenuButton>
-          </Dropdown>
+          </StyledDropdown>
         </UL>
       </Nav>
     </>
