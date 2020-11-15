@@ -11,6 +11,7 @@ export const Menu = styled.div`
 export const Group = styled.ul`
   list-style: none;
   padding-top: 40px;
+  padding-bottom: 40px;
 `;
 
 export const Item = styled.li`

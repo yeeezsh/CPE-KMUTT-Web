@@ -1,4 +1,4 @@
-import { Divider } from 'antd';
+import { Divider, Dropdown } from 'antd';
 import styled from 'styled-components';
 import fontFamily from 'styles/typography/fontFamily';
 
@@ -34,7 +34,7 @@ export const LogoKMUTT = styled.img`
 
 export const StyledDivider = styled(Divider)`
   height: 50px;
-  border: 1px solid #eaeaea;
+  border-color: #eaeaea;
   margin-top: 25px;
 `;
 
@@ -73,4 +73,8 @@ export const MenuButton = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+export const StyledDropdown = styled(Dropdown)`
+  border-top: 1px solid #eaeaea;
 `;
