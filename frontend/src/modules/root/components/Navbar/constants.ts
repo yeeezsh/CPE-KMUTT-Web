@@ -1,4 +1,4 @@
-import NavbarType from './NavbarType';
+import NavbarType from './types';
 
 const NAVBAR_CONSTANT: NavbarType[] = [
   {

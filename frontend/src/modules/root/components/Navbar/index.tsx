@@ -1,7 +1,7 @@
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
 import React, { useState } from 'react';
-import NavbarMenu from './NavbarMenu';
+import NavbarMenu from './components/NavbarMenu';
 import {
   Department,
   Faculty,
