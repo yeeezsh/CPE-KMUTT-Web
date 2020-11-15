@@ -5,18 +5,25 @@ import { Main, Title } from './styled';
 
 const Home: React.FC = () => {
   return (
-    <Container>
+    <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Computer Engineering | KMUTT</title>
+        <link rel="icon" href="/Logo.svg" />
       </Head>
+      {/* <Navbar></Navbar> 
 
-      <Main>
-        <Title>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </Title>
-      </Main>
-    </Container>
+          <Header></Header>
+
+          <Announcement></Announcement>
+      */}
+      <Container>
+        <Main>
+          <Title>
+            Welcome to <a href="https://nextjs.org">Next.js!</a>
+          </Title>
+        </Main>
+      </Container>
+    </div>
   );
 };
 
