@@ -1,7 +1,7 @@
 import Navbar from 'modules/root/components/Navbar/index';
 import Head from 'next/head';
 import React from 'react';
-import { Container, Main, Title } from './styled';
+import { Container, Main } from './styled';
 
 const Home: React.FC = () => {
   return (
@@ -13,11 +13,7 @@ const Home: React.FC = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Main>
-          {/* <Title>
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
-          </Title> */}
-        </Main>
+        <Main></Main>
       </Container>
     </>
   );

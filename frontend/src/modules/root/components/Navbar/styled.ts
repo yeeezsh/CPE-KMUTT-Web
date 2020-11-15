@@ -1,5 +1,6 @@
 import { Divider } from 'antd';
 import styled from 'styled-components';
+import fontFamily from 'styles/typography/fontFamily';
 
 export const Nav = styled.nav`
   background: white;
@@ -7,7 +8,7 @@ export const Nav = styled.nav`
   width: 100%;
   height: 100px;
   justify-content: center;
-  font-family: Sukhumvit Set;
+  font-family: ${fontFamily.Default};
   font-style: normal;
   top: 0;
   left: 0;
@@ -19,7 +20,7 @@ export const UL = styled.ul`
   display: flex;
 `;
 
-export const NavbarBand = styled.div`
+export const NavbarBand = styled.li`
   display: flex;
   flex: 1;
   justify-content: flex-start;
@@ -71,33 +72,5 @@ export const MenuButton = styled.button`
   }
   &:focus {
     outline: none;
-  }
-`;
-export const Menu = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-export const Group = styled.ul`
-  list-style: none;
-  padding-top: 40px;
-`;
-
-export const Item = styled.li`
-  list-style: none;
-  font-family: Helvetica Neue;
-  font-weight: bold;
-  font-size: 16px;
-  color: #666666;
-`;
-
-export const ItemLink = styled.a`
-  font-family: Helvetica Neue;
-  font-weight: normal;
-  font-size: 14px;
-  color: #666666;
-  &:hover {
-    color: #80a8d9;
   }
 `;
