@@ -1,0 +1,24 @@
+.git
+.github
+.vscode
+build
+coverage
+README.md
+docker-compose.yml
+docker-compose.dev.yml
+
+
+# Node Files #
+node_modules
+npm-debug.log
+npm-debug.log.*
+npm-debug
+
+# backend
+/backend/.git
+/backend/.github
+/backend/.vscode
+/backend/coverage
+/backend/README.md
+/backend/node_modules
+/backend/dist
