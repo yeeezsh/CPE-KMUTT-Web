@@ -9,6 +9,7 @@ services:
     environment:
       WAIT_HOSTS: mongo:27017
       TZ: Asia/Bangkok
+      ORIGIN: http(|s):\/\/localhost:5000
       DATABASE_CONNECTION: "mongodb://mongodb-sharded:27017/cpe-kmutt-web"
       DATABASE_USERAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
