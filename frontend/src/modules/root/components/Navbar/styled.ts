@@ -5,8 +5,8 @@ import fontFamily from 'styles/typography/fontFamily';
 export const Nav = styled.div`
   width: 100%;
   height: 100px;
-  position: fixed;
   z-index: 1;
+  position:fixed
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(70px);
   width: 100%;
@@ -15,34 +15,41 @@ export const Nav = styled.div`
   font-style: normal;
 `;
 
-export const NavElements = styled.div`
+//export const NavElements = styled.div`
+//  display: flex;
+//  flex-direction: row;
+//  flex-wrap: nowrap;
+//  justify-content: center;
+//  margin: 0 14vw 0 14vw;
+//`;
+
+export const UL = styled.ul`
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  margin: 0 14vw 0 14vw;
 `;
 
-export const NavbarBrand = styled.div`
+export const NavbarBrand = styled.li`
   display: flex;
-  flex: 52%;
+  flex: 1;
   justify-content: flex-start;
 `;
 
-export const Space = styled.div`
-  display: flex;
-  flex: 29%;
-`;
-export const NavbarButtons = styled.div`
-  display: flex;
-  flex: 19%;
-  justify-content: flex-end;
-`;
+//export const Space = styled.div`
+//  display: flex;
+//  flex: 29%;
+//`;
+
+//export const NavbarButtons = styled.div`
+//  display: flex;
+//  justify-content: flex-end;
+//`;
 
 export const LogoKMUTT = styled.img`
   width: 51px;
   height: 60px;
-  margin: 15px 25px 25px 0px;
+  margin: 15px 25px 25px 0;
+  @media (max-width: 750px) {
+    margin: 15px 5px 25px 0;
+  }
 `;
 
 export const StyledDivider = styled(Divider)`
@@ -55,6 +62,9 @@ export const LogoCPE = styled.img`
   width: 80px;
   height: 40px;
   margin: 30px 20px 30px 20px;
+  @media (max-width: 750px) {
+    margin: 30px 4px 25px 4px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -77,14 +87,18 @@ export const Department = styled.div`
 `;
 
 export const MenuButton = styled.button`
+  margin-right: 30px;
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: 30px;
+
   &:hover {
     color: #80a8d9;
   }
   &:focus {
     outline: none;
+  }
+  @media (max-width: 750px) {
+    margin-right: 6px;
   }
 `;
