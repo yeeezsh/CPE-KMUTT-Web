@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  padding: 5rem 0;
+  min-height:100vh
+  width:100%
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const Title = styled.h1`
   margin: 0;
