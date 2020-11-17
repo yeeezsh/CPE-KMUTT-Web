@@ -23,7 +23,7 @@ export const configProviders: Provider[] = [
             DATABASE_CONNECTION ||
             'mongodb://mongodb-sharded:27017/cpe-kmutt-web',
           username: DATABASE_USERAME || 'root',
-          password: DATABASE_PASSWORD || 'CPE-KMUTT-DB',
+          password: DATABASE_PASSWORD || 'cpeKMUTT@WebSite',
           authSource: DATABASE_AUTH_SOURCE || 'admin',
         },
         jwt: {
