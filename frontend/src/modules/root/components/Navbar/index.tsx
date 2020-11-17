@@ -1,4 +1,5 @@
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
+import { Dropdown } from 'antd';
 import React, { useState } from 'react';
 import NavbarMenu from './components/NavbarMenu';
 import {
@@ -8,10 +9,12 @@ import {
   LogoKMUTT,
   MenuButton,
   Nav,
-  NavbarBand,
+  NavbarBrand,
+  NavbarButtons,
+  NavElements,
+  Space,
   StyledDivider,
-  StyledDropdown,
-  UL,
+  Wrapper,
 } from './styled';
 
 const Navbar: React.FC = () => {
@@ -20,33 +23,37 @@ const Navbar: React.FC = () => {
   const showDropdown = () => setVisible((value) => !value);
 
   return (
-    <>
-      <Nav>
-        <UL>
-          <NavbarBand>
-            <LogoKMUTT src="/LOGO-KMUTT.svg" />
-            <StyledDivider type="vertical" />
-            <LogoCPE src="/LOGO-CPE.svg" />
-            <Faculty>
-              ภาควิชาวิศวกรรมคอมพิวเตอร์
-              <Department>
-                คณะวิศวกรรมศาสตร์มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
-              </Department>
-            </Faculty>
-          </NavbarBand>
-
+    <Nav>
+      <NavElements>
+        <NavbarBrand>
+          <LogoKMUTT src="/LOGO-KMUTT.svg" />
+          <StyledDivider type="vertical" />
+          <LogoCPE src="/LOGO-CPE.svg" />
+          <Wrapper>
+            <Faculty>ภาควิชาวิศวกรรมคอมพิวเตอร์</Faculty>
+            <Department>
+              คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+            </Department>
+          </Wrapper>
+        </NavbarBrand>
+        <Space />
+        <NavbarButtons>
           <MenuButton> {visible ? '​​' : 'EN'}</MenuButton>
-          <StyledDropdown
+          <Dropdown
             overlay={NavbarMenu}
-            placement="bottomLeft"
+            placement="bottomCenter"
             onVisibleChange={showDropdown}
             trigger={['click']}
-            overlayStyle={{ width: '100%', borderTop: '1px solid #eaeaea' }}>
+            overlayStyle={{
+              width: '100%',
+              position: 'fixed',
+              padding: '0 14vw 0 14vw',
+            }}>
             <MenuButton>{visible ? <CloseOutlined /> : <MenuOutlined />}</MenuButton>
-          </StyledDropdown>
-        </UL>
-      </Nav>
-    </>
+          </Dropdown>
+        </NavbarButtons>
+      </NavElements>
+    </Nav>
   );
 };
 

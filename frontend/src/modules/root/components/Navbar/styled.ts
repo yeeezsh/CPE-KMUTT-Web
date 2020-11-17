@@ -1,29 +1,42 @@
-import { Divider, Dropdown } from 'antd';
+import { Divider } from 'antd';
 import styled from 'styled-components';
 import fontFamily from 'styles/typography/fontFamily';
 
-export const Nav = styled.nav`
-  background: white;
-  background-filter: blur(70px);
+export const Nav = styled.div`
   width: 100%;
   height: 100px;
-  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(70px);
+  width: 100%;
+  height: 100px;
   font-family: ${fontFamily.Default};
   font-style: normal;
-  top: 0;
-  left: 0;
-  margin: auto;
-  padding: 0 208px 0 208px;
 `;
 
-export const UL = styled.ul`
+export const NavElements = styled.div`
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin: 0 14vw 0 14vw;
 `;
 
-export const NavbarBand = styled.li`
+export const NavbarBrand = styled.div`
   display: flex;
-  flex: 1;
+  flex: 52%;
   justify-content: flex-start;
+`;
+
+export const Space = styled.div`
+  display: flex;
+  flex: 29%;
+`;
+export const NavbarButtons = styled.div`
+  display: flex;
+  flex: 19%;
+  justify-content: flex-end;
 `;
 
 export const LogoKMUTT = styled.img`
@@ -44,37 +57,34 @@ export const LogoCPE = styled.img`
   margin: 30px 20px 30px 20px;
 `;
 
-export const Faculty = styled.div`
+export const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 350px;
+`;
+
+export const Faculty = styled.div`
   font-weight: bold;
   font-size: 18px;
-  line-height: 29px;
   color: #4a60ac;
   margin-top: 26px;
-  positon: relative;
 `;
 
 export const Department = styled.div`
   font-weight: 500;
   font-size: 14px;
   color: #373736;
-  position: absolute;
-  margin-top: 24.55px;
 `;
 
 export const MenuButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  margin-right: 30px;
+  margin-left: 30px;
   &:hover {
     color: #80a8d9;
   }
   &:focus {
     outline: none;
   }
-`;
-
-export const StyledDropdown = styled(Dropdown)`
-  border-top: 1px solid #eaeaea;
 `;
