@@ -3,7 +3,7 @@ module.exports = {
   overrides: [
     {
       parserOptions: {
-        project: ['./tsconfig.json'],
+        project: ['tsconfig.json'],
         sourceType: 'module',
       },
     },
