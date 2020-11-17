@@ -1,5 +1,6 @@
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
+import Container from 'common/components/Container';
 import React, { useState } from 'react';
 import NavbarMenu from './components/NavbarMenu';
 import {
@@ -10,10 +11,8 @@ import {
   MenuButton,
   Nav,
   NavbarBrand,
-  NavbarButtons,
-  NavElements,
-  Space,
   StyledDivider,
+  UL,
   Wrapper,
 } from './styled';
 
@@ -23,21 +22,21 @@ const Navbar: React.FC = () => {
   const showDropdown = () => setVisible((value) => !value);
 
   return (
-    <Nav>
-      <NavElements>
-        <NavbarBrand>
-          <LogoKMUTT src="/LOGO-KMUTT.svg" />
-          <StyledDivider type="vertical" />
-          <LogoCPE src="/LOGO-CPE.svg" />
-          <Wrapper>
-            <Faculty>ภาควิชาวิศวกรรมคอมพิวเตอร์</Faculty>
-            <Department>
-              คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
-            </Department>
-          </Wrapper>
-        </NavbarBrand>
-        <Space />
-        <NavbarButtons>
+    <Container>
+      <Nav>
+        <UL>
+          <NavbarBrand>
+            <LogoKMUTT src="/assets/LOGO-KMUTT.svg" />
+            <StyledDivider type="vertical" />
+            <LogoCPE src="/assets/LOGO-CPE.svg" />
+            <Wrapper>
+              <Faculty>ภาควิชาวิศวกรรมคอมพิวเตอร์</Faculty>
+              <Department>
+                คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+              </Department>
+            </Wrapper>
+          </NavbarBrand>
+
           <MenuButton> {visible ? '​​' : 'EN'}</MenuButton>
           <Dropdown
             overlay={NavbarMenu}
@@ -47,13 +46,13 @@ const Navbar: React.FC = () => {
             overlayStyle={{
               width: '100%',
               position: 'fixed',
-              padding: '0 14vw 0 14vw',
+              marginTop: '40px',
             }}>
             <MenuButton>{visible ? <CloseOutlined /> : <MenuOutlined />}</MenuButton>
           </Dropdown>
-        </NavbarButtons>
-      </NavElements>
-    </Nav>
+        </UL>
+      </Nav>
+    </Container>
   );
 };
 
