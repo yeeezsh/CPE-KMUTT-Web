@@ -1,7 +1,8 @@
-import Navbar from 'modules/root/components/Navbar/index';
+import Container from 'common/components/Container';
+import Navbar from 'modules/root/components/Navbar';
 import Head from 'next/head';
 import React from 'react';
-import { Container, Main } from './styled';
+import { Main } from './styled';
 
 const Home: React.FC = () => {
   return (
