@@ -6,22 +6,12 @@ export const Nav = styled.div`
   width: 100%;
   height: 100px;
   z-index: 1;
-  position:fixed
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(70px);
-  width: 100%;
   height: 100px;
   font-family: ${fontFamily.Default};
   font-style: normal;
 `;
-
-//export const NavElements = styled.div`
-//  display: flex;
-//  flex-direction: row;
-//  flex-wrap: nowrap;
-//  justify-content: center;
-//  margin: 0 14vw 0 14vw;
-//`;
 
 export const UL = styled.ul`
   display: flex;
@@ -32,16 +22,6 @@ export const NavbarBrand = styled.li`
   flex: 1;
   justify-content: flex-start;
 `;
-
-//export const Space = styled.div`
-//  display: flex;
-//  flex: 29%;
-//`;
-
-//export const NavbarButtons = styled.div`
-//  display: flex;
-//  justify-content: flex-end;
-//`;
 
 export const LogoKMUTT = styled.img`
   width: 51px;
