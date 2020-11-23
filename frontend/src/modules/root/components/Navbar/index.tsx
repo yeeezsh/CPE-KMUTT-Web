@@ -16,8 +16,12 @@ import {
   Wrapper,
 } from './styled';
 
-const Navbar: React.FC = () => {
-  const [visible, setVisible] = useState(false);
+export interface NavBarProps {
+  visible?: boolean;
+}
+
+const Navbar: React.FC<NavBarProps> = (props) => {
+  const [visible, setVisible] = useState(props.visible || false);
 
   const showDropdown = () => setVisible((value) => !value);
 
@@ -39,6 +43,7 @@ const Navbar: React.FC = () => {
 
           <MenuButton> {visible ? '​​' : 'EN'}</MenuButton>
           <Dropdown
+            visible={visible}
             overlay={NavbarMenu}
             placement="bottomCenter"
             onVisibleChange={showDropdown}
