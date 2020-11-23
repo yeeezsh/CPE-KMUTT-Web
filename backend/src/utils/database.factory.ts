@@ -12,7 +12,7 @@ export const mockDatabaseFactory = async (): Promise<typeof mongoose> => {
   const onJest = process.env.JEST_WORKER_ID !== undefined;
   Logger.log(`Running on Jest: ${onJest}`);
   Logger.log(`Mock replica URI: ${uri}`);
-  return await mongoose.connect(uri, {
+  return mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
