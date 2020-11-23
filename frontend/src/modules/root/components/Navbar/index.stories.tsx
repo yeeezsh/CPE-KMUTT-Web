@@ -1,12 +1,18 @@
-import { Meta } from '@storybook/react/types-6-0';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import Navbar from 'modules/root/components/Navbar';
 import React from 'react';
+import { NavBarProps } from '.';
 
-const meta: Meta = {
+export default {
   title: 'modules/root/components/Navbar',
   component: Navbar,
-};
+} as Meta;
 
-export default meta;
+const Template: Story = (args) => <Navbar {...args} />;
 
-export const Default: React.FC = () => <Navbar />;
+export const Default = Template.bind({});
+
+export const Visible = Template.bind({});
+Visible.args = {
+  visible: true,
+} as NavBarProps;
