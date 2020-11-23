@@ -2,9 +2,9 @@ import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import * as request from 'supertest';
+import { AppModule } from '../src/app.module';
 import { DATABASE_CONNECTION } from '../src/database/constants/database.constant';
 import { mockDatabaseFactory, replSet } from '../src/utils/database.factory';
-import { AppModule } from './../src/app.module';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
