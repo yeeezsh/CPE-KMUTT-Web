@@ -17,4 +17,3 @@ export const mockDatabaseFactory = async (): Promise<typeof mongoose> => {
     useUnifiedTopology: true,
   });
 };
-
