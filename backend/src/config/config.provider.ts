@@ -1,10 +1,11 @@
 import { Provider } from '@nestjs/common';
-import { ConfigurationInterface } from './config.interface';
-import { ConfigType } from './config.type';
+import { ConfigurationInterface } from './@types/config.interface';
+import { ConfigType } from './@types/config.type';
+import { APP_CONFIG } from './config.constant';
 
 export const configProviders: Provider[] = [
   {
-    provide: 'APP_CONFIG',
+    provide: APP_CONFIG,
     useValue: ((): ConfigurationInterface => {
       const {
         DATABASE_CONNECTION,
@@ -23,7 +24,7 @@ export const configProviders: Provider[] = [
             DATABASE_CONNECTION ||
             'mongodb://mongodb-sharded:27017/cpe-kmutt-web',
           username: DATABASE_USERAME || 'root',
-          password: DATABASE_PASSWORD || 'CPE-KMUTT-DB',
+          password: DATABASE_PASSWORD || 'cpeKMUTT@WebSite',
           authSource: DATABASE_AUTH_SOURCE || 'admin',
         },
         jwt: {
