@@ -1,9 +1,9 @@
-import { NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger/dist/swagger-module';
 import { AppModule } from './app.module';
-import { ConfigurationInterface } from './config/config.interface';
+import { ConfigurationInterface } from './config/@types/config.interface';
 import { ConfigModule } from './config/config.module';
 
 async function bootstrap() {

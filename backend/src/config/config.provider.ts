@@ -1,6 +1,6 @@
 import { Provider } from '@nestjs/common';
-import { ConfigurationInterface } from './config.interface';
-import { ConfigType } from './config.type';
+import { ConfigurationInterface } from './@types/config.interface';
+import { ConfigType } from './@types/config.type';
 
 export const configProviders: Provider[] = [
   {
