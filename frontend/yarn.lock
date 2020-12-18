@@ -8745,6 +8745,11 @@ jsprim@^1.2.2:
     array-includes "^3.1.1"
     object.assign "^4.1.1"
 
+keen-slider@^5.3.5:
+  version "5.3.5"
+  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-5.3.5.tgz#29ac24fd7dbf1f1435bd448e0e583cded36b4b91"
+  integrity sha512-3QYvrFK7HbtkiC98/G+RM44y9WBe9cpHDHtP9bI1J/Vrc54IHLuTjOjyX4E81ukRc5GwiGfijOwStxEhisFnPg==
+
 kind-of@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-2.0.1.tgz#018ec7a4ce7e3a86cb9141be519d24c8faa981b5"
