@@ -1,10 +1,9 @@
 import Container from 'common/components/Container';
 import Carousel from 'components/Carousel';
 import { CarouselProps } from 'components/Carousel/types'; // For the example below
-import Navbar from 'modules/root/components/Navbar';
 import Head from 'next/head';
 import React from 'react';
-import { Main } from './styled';
+import { Main, Title } from './styled';
 
 //Example props for Carousel
 const ARRAY: CarouselProps[] = [
@@ -31,7 +30,6 @@ const ARRAY: CarouselProps[] = [
 const Home: React.FC = () => {
   return (
     <>
-      <Navbar />
       <Carousel item={ARRAY} />
 
       <Container>
@@ -40,7 +38,11 @@ const Home: React.FC = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Main></Main>
+        <Main>
+          <Title>
+            Welcome to <a href="https://nextjs.org">Next.js!</a>
+          </Title>
+        </Main>
       </Container>
     </>
   );
