@@ -23,8 +23,6 @@ services:
       - 3000:3000
     volumes:
       - "./backend:/backend"
-    links:
-      - mongodb-shard0
     command: yarn start:dev
     restart: always
   mongodb-sharded:

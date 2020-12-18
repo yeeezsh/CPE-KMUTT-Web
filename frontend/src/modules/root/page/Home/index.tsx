@@ -9,6 +9,7 @@ import WhatNewSection from 'modules/root/components/WhatNewSection';
 import Container from 'common/components/Container';
 import Carousel from 'components/Carousel';
 import { CarouselProps } from 'components/Carousel/types'; // For the example below
+<<<<<<< HEAD
 >>>>>>> Add carousel to home page
 import Head from 'next/head';
 import React from 'react';
@@ -18,6 +19,11 @@ import { Main } from './styled';
 =======
 import { Container, Main } from './styled';
 >>>>>>> Fixed navbar
+=======
+import Head from 'next/head';
+import React from 'react';
+import { Main, Title } from './styled';
+>>>>>>> Revert "Merge branch 'CKW-6' of https://github.com/yee2542/CPE-KMUTT-Web into CKW-9"
 
 //Example props for Carousel
 const ARRAY: CarouselProps[] = [

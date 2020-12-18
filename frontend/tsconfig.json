@@ -27,7 +27,6 @@
       "pages/*": ["src/pages/*"],
       "services/*": ["src/common/services/*"],
       "stores/*": ["src/common/stores/*"],
-      "styles/*": ["src/common/styles/*"],
       "utils/*": ["src/common/utils/*"]
     }
   },
