@@ -1,135 +1,52 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
-export const CarouselStyle = createGlobalStyle`
-  .keen-slider {
-    height: auto;
-    width: auto;
-  }
-
-  [class^="number-slide"],
-  [class*=" number-slide"] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .dashes {
-    display: flex;
-    padding: 40px 0;
-  }
-  
-  .dash {
-    border: none;
-    width: 20px;
-    height: 2px;
-    background: #4A60AC;
-    opacity: 0.2;
-    margin: 0 2px;
-    cursor: pointer;
-  }
-  
-  .dash:focus {
-    outline: none;
-  }
-  
-  .dash.active {
-    opacity: 1;
-  }
-`;
+interface WrapperProps {
+  defaultMargin: boolean;
+}
 
 export const NavigationWrapper = styled.div`
   position: relative;
-  background: #f4f5f6;
+  margin: ${(props: WrapperProps) => (props.defaultMargin ? '0 auto' : '100px auto')};
 `;
 
-export const LeftButton = styled.button`
-  background: #4a60ac;
-  color: #fafafa;
-  width: 50px;
-  height: 50px;
-  padding: 15px;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  cursor: pointer;
-  left: 0;
-  border: none;
-  &:focus {
-    outline: none;
-  }
+export const Section = styled.div`
+  padding-right: 450px;
 `;
 
-export const RightButton = styled.button`
-  background: #4a60ac;
-  color: #fafafa;
-  width: 50px;
-  height: 50px;
-  padding: 15px;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  cursor: pointer;
-  left: auto;
-  right: 0;
-  border: none;
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const Dash = styled.button`
-  border: none;
-  width: 20px;
-  height: 2px;
-  background: #4a60ac;
-  opacity: 0.2;
-  margin: 0 2px;
-  cursor: pointer;
-`;
-
-export const SlideContent = styled.div`
+export const Title = styled.div`
   display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  margin: auto 50px auto 0;
-  color: black;
-`;
-
-export const Tag = styled.p`
-  font-size: 16px;
-  font-weight: bold;
-  color: #4a60ac;
+  align-items: center;
+  flex-direction: row;
+  padding-bottom: 40px;
 `;
 
 export const Heading = styled.p`
-  font-size: 34px;
+  font-family: Kanit;
   font-weight: bold;
-  color: #373736;
+  font-size: 28px;
+  color: #4a60ac;
+  margin: 0;
 `;
 
-export const Caption = styled.p`
+export const Description = styled.p`
   font-family: Kanit;
   font-size: 14px;
-  color: #373736;
+  color: #666666;
+  margin: 0;
 `;
 
-export const Image = styled.img`
-  width: 514px;
-  height: 528px;
-  alignitems: flex-end;
-`;
 export const StyledButton = styled.button`
   color: #4a60ac;
   width: fit-content;
   height: 40px;
-  border: 1px solid #4a60ac;
+  border: none;
   margin: 30px 0;
   padding: 0 20px;
   background: white;
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
+  &: focus {
+    outline: none;
+  }
 `;
