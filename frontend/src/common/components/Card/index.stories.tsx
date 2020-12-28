@@ -9,4 +9,11 @@ const meta: Meta = {
 
 export default meta;
 
-export const Default: React.FC = () => <Card id="1" />;
+export const Default: React.FC = () => (
+  <Card
+    title="การรับเข้าศึกษา"
+    description="ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563"
+    id="1"
+    primary={false}
+  />
+);

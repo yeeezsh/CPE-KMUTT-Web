@@ -3,9 +3,10 @@ import { Card } from './styled';
 import { CardProps } from './types';
 
 // Example components
-const Cards: React.FC<CardProps> = (props) => {
+const Cards: React.FC<CardProps> = ({ ...props }) => {
+  const mode = props.primary ? 'card-primary' : 'card-normal';
   return (
-    <Card>
+    <Card className={['card-body', mode].join(' ')}>
       <div className="card-title">{props.title}</div>
       <div className="card-discription">{props.description}</div>
       <div className="card-date">{props.date}</div>

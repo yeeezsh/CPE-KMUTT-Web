@@ -5,4 +5,5 @@ export interface CardProps {
   description?: string;
   date?: string;
   links?: string[];
+  primary?: false;
 }
