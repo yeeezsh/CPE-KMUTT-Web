@@ -1,6 +1,8 @@
 import { ArrowRightOutlined } from '@ant-design/icons';
+import { Modal } from 'antd';
 import Container from 'common/components/Container';
-import { ChildrenProps, SlideProps } from 'components/Carousel/types';
+import Carousel from 'components/Carousel';
+import { CarouselProps, ChildrenProps } from 'components/Carousel/types';
 import { useKeenSlider } from 'keen-slider/react';
 import React, { useEffect, useRef, useState } from 'react';
 import {
@@ -17,7 +19,7 @@ import {
   Tag,
 } from './styled';
 
-const CarouselSlide: React.FC<SlideProps> = (props) => {
+const CarouselSlide: React.FC<CarouselProps> = (props) => {
   const isDefault = props.variant === 'Default' ? true : false;
   const [pause, setPause] = useState(false);
   const timer = useRef<number>();
@@ -59,6 +61,14 @@ const CarouselSlide: React.FC<SlideProps> = (props) => {
     };
   }, [pause, slider]);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <>
       <CarouselStyle />
@@ -73,7 +83,7 @@ const CarouselSlide: React.FC<SlideProps> = (props) => {
                   <>
                     <div className="keen-slider__slide" key={id}>
                       <Container>
-                        <Slides defaultStyle={isDefault}>
+                        <Slides defaultStyle={isDefault} customStyle={props.variant}>
                           <SlideContent>
                             {slider && (
                               <div className="dashes">
@@ -98,22 +108,46 @@ const CarouselSlide: React.FC<SlideProps> = (props) => {
                             {tag ? <Tag>#{tag}</Tag> : null}
                             {heading ? <Heading>{heading}</Heading> : null}
                             {caption ? (
-                              caption.length > 100 ? (
+                              props.fullText ? (
+                                <Caption>{caption}</Caption>
+                              ) : caption.length > 100 ? (
                                 <Caption>{caption.slice(0, 100)}...</Caption>
                               ) : (
                                 <Caption>{caption.slice(0, 100)}</Caption>
                               )
                             ) : null}
-                            {link ? (
-                              <StyledButton as="a" href={link}>
-                                อ่านต่อเพิ่มเติม
-                                <ArrowRightOutlined style={{ marginLeft: '15px' }} />
-                              </StyledButton>
+                            {link && !props.fullText ? (
+                              isDefault ? (
+                                <StyledButton as="a" href={link}>
+                                  อ่านต่อเพิ่มเติม
+                                  <ArrowRightOutlined style={{ marginLeft: '15px' }} />
+                                </StyledButton>
+                              ) : (
+                                <StyledButton onClick={showModal}>
+                                  อ่านต่อเพิ่มเติม
+                                  <ArrowRightOutlined style={{ marginLeft: '15px' }} />
+                                </StyledButton>
+                              )
                             ) : null}
                           </SlideContent>
                           <Space />
                           {picture ? <Image src={picture} alt="" /> : null}
                         </Slides>
+                        <Modal
+                          centered
+                          keyboard
+                          visible={isModalVisible}
+                          onCancel={handleCancel}
+                          footer={null}
+                          width={1250}
+                          bodyStyle={{ padding: '0' }}>
+                          <Carousel
+                            item={props.item}
+                            variant="PopUp"
+                            fullText={true}
+                            arrows={true}
+                          />
+                        </Modal>
                       </Container>
                     </div>
                   </>
@@ -122,7 +156,7 @@ const CarouselSlide: React.FC<SlideProps> = (props) => {
             )
           : null}
       </div>
-      {isDefault
+      {props.arrows
         ? slider && (
             <>
               <LeftButton onClick={() => slider.prev()}>
