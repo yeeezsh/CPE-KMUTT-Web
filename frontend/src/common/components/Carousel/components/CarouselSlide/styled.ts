@@ -1,7 +1,9 @@
+import COLORS from 'common/constants/colors';
 import styled, { createGlobalStyle } from 'styled-components';
 
-interface DefaultProps {
+interface DesignProps {
   defaultStyle: boolean;
+  customStyle: string;
 }
 
 export const CarouselStyle = createGlobalStyle`
@@ -19,7 +21,7 @@ export const CarouselStyle = createGlobalStyle`
   .dash {
     border: none;
     height: 2px;
-    background: #4a60ac;
+    background: ${COLORS.PRIMARY_COLOR};
     opacity: 0.2;
     margin: 0 2px;
     cursor: pointer;
@@ -35,17 +37,21 @@ export const CarouselStyle = createGlobalStyle`
 `;
 
 export const Slides = styled.div`
-  height: ${(props: DefaultProps) => (props.defaultStyle ? '550px' : '400px')};
+  height: ${(props: DesignProps) =>
+    props.customStyle === 'Default'
+      ? '550px'
+      : props.customStyle === 'Slider'
+      ? '400px'
+      : '646px'};
   display: flex;
-  flex-direction: ${(props: DefaultProps) =>
-    props.defaultStyle ? 'row' : 'row-reverse'};
+  flex-direction: ${(props: DesignProps) => (props.defaultStyle ? 'row' : 'row-reverse')};
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: auto;
 `;
 
 export const LeftButton = styled.button`
-  background: #4a60ac;
+  background: ${COLORS.PRIMARY_COLOR};
   color: #fafafa;
   width: 50px;
   height: 50px;
@@ -64,7 +70,7 @@ export const LeftButton = styled.button`
 `;
 
 export const RightButton = styled.button`
-  background: #4a60ac;
+  background: ${COLORS.PRIMARY_COLOR};
   color: #fafafa;
   width: 50px;
   height: 50px;
@@ -94,19 +100,21 @@ export const SlideContent = styled.div`
 export const Tag = styled.p`
   font-size: 16px;
   font-weight: bold;
-  color: #4a60ac;
+  color: ${COLORS.PRIMARY_COLOR};
 `;
 
 export const Heading = styled.p`
   font-size: 34px;
   font-weight: bold;
-  color: #373736;
+  color: ${COLORS.GRAY_1};
 `;
 
 export const Caption = styled.p`
   font-family: Kanit;
   font-size: 14px;
-  color: #666666;
+  color: ${COLORS.GRAY_2};
+  height: 100%;
+  overflow-y: auto;
 `;
 
 export const Space = styled.div`
@@ -122,14 +130,21 @@ export const Image = styled.img`
 `;
 
 export const StyledButton = styled.button`
-  color: #4a60ac;
+  color: ${COLORS.PRIMARY_COLOR};
   width: fit-content;
   height: 40px;
-  border: 1px solid #4a60ac;
+  border: 1px solid ${COLORS.PRIMARY_COLOR};
   margin: 30px 0;
   padding: 7px 20px;
-  background: white;
+  background: none;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  & :hover {
+    background: ${COLORS.PRIMARY_COLOR};
+    color: white;
+  }
+  &: focus {
+    outline: none;
+  }
 `;

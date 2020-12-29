@@ -9,31 +9,37 @@ import {
   StyledButton,
   Title,
 } from './styled';
-import { SlideProps } from './types';
+import { CarouselProps } from './types';
 
-const Carousel: React.FC<SlideProps> = (props) => {
-  const isDefault = props.variant === 'Default' ? true : false;
+const Carousel: React.FC<CarouselProps> = (props) => {
   return (
-    <NavigationWrapper defaultMargin={isDefault}>
-      {isDefault ? (
-        <CarouselSlide item={props.item} variant={props.variant} />
-      ) : (
+    <NavigationWrapper defaultMargin={props.variant === 'Default' ? true : false}>
+      {props.title ? (
         <>
           <Title>
             <Section>
-              <Heading>กิจกรรมและความสำเร็จ</Heading>
-              <Description>
-                สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
-              </Description>
+              <Heading>{props.title.heading}</Heading>
+              <Description>{props.title.description}</Description>
             </Section>
-            <StyledButton>
+            <StyledButton as="a" href={props.title.link}>
               สำรวจทั้งหมด
               <ArrowRightOutlined style={{ marginLeft: '15px' }} />
             </StyledButton>
           </Title>
-
-          <CarouselSlide item={props.item} variant={props.variant} />
+          <CarouselSlide
+            item={props.item}
+            variant={props.variant}
+            fullText={props.fullText}
+            arrows={props.arrows}
+          />
         </>
+      ) : (
+        <CarouselSlide
+          item={props.item}
+          variant={props.variant}
+          fullText={props.fullText}
+          arrows={props.arrows}
+        />
       )}
     </NavigationWrapper>
   );

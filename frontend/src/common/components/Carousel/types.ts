@@ -7,10 +7,16 @@ export type ChildrenProps = {
   link?: string;
 };
 
-export type SlideProps = {
-  item: ChildrenProps[];
-  variant: 'Default' | 'Activity';
+export type CarouselTitle = {
+  heading?: string;
+  description?: string;
+  link?: string;
 };
 
-//อะไรประมาณนี้ แก้ด้วย
-export type CarouselProps = SlideProps | boolean;
+export type CarouselProps = {
+  item: ChildrenProps[];
+  title?: CarouselTitle;
+  variant: 'Default' | 'Slider' | 'PopUp';
+  fullText: boolean;
+  arrows: boolean;
+};

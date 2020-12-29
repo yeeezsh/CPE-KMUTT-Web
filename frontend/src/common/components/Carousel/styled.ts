@@ -1,3 +1,4 @@
+import COLORS from 'common/constants/colors';
 import styled from 'styled-components';
 
 interface WrapperProps {
@@ -24,29 +25,34 @@ export const Heading = styled.p`
   font-family: Kanit;
   font-weight: bold;
   font-size: 28px;
-  color: #4a60ac;
+  color: ${COLORS.PRIMARY_COLOR};
   margin: 0;
 `;
 
 export const Description = styled.p`
   font-family: Kanit;
   font-size: 14px;
-  color: #666666;
+  color: ${COLORS.GRAY_2};
   margin: 0;
 `;
 
 export const StyledButton = styled.button`
-  color: #4a60ac;
+  color: ${COLORS.PRIMARY_COLOR};
+  background: none;
+  border: none;
+  cursor: pointer;
   width: fit-content;
   height: 40px;
-  border: none;
   margin: 30px 0;
   padding: 0 20px;
-  background: white;
   font-size: 16px;
   font-weight: 600;
-  cursor: pointer;
-  &: focus {
+
+  &:focus {
     outline: none;
+  }
+  &:hover {
+    text-decoration: underline;
+    color: ${COLORS.PRIMARY_COLOR};
   }
 `;
