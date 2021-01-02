@@ -5,6 +5,9 @@ import Card from '.';
 const meta: Meta = {
   title: 'Commmon/Card',
   component: Card,
+  argTypes: {
+    primary: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -15,6 +18,6 @@ export const Default: React.FC = () => (
     description="ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563"
     date="28 ตุลาคม 2563"
     id="1"
-    primary={false}
+    primary={true}
   />
 );
