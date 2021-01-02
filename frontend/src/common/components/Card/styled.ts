@@ -22,8 +22,8 @@ export const Card = styled.div`
   }
 
   .card-body.card-normal {
-    width: 300px;
-    height: 210px;
+    width: 330px;
+    height: 250px;
     display: block;
     background-color: #ffffff;
     padding: 20px 15px;
@@ -57,8 +57,8 @@ export const Card = styled.div`
     padding-bottom: 16px;
     padding-right: 20px;
     position: relative;
-    height: 95px;
-    width: 290px;
+    height: 125px;
+    width: 330px;
 
     .card-discription {
       font-size: 14px;
