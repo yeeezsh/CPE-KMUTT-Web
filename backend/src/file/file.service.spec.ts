@@ -9,7 +9,7 @@ describe('FileService test', () => {
   let service: FileService;
   let module: TestingModule;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     module = await Test.createTestingModule({
       imports: [DatabaseModule],
       providers: [FileService],
@@ -23,13 +23,19 @@ describe('FileService test', () => {
     service = module.get<FileService>(FileService);
   });
 
-  afterAll(async () => {
-    await module.close();
-    await mongoose.disconnect();
-    await replSet.stop();
+  afterAll(async done => {
+    try {
+      await module.close();
+      await mongoose.connection.close();
+      await replSet.stop();
+      done();
+    } catch (error) {
+      console.log(error);
+      done();
+    }
   });
 
-  it('should be defined', () => {
+  it('Should be defined', () => {
     expect(service).toBeDefined();
   });
 });

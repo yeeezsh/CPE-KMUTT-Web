@@ -10,7 +10,7 @@ describe('FileController test', () => {
   let controller: FileController;
   let module: TestingModule;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     module = await Test.createTestingModule({
       imports: [DatabaseModule],
       controllers: [FileController],
@@ -21,13 +21,19 @@ describe('FileController test', () => {
         factory: async () => mockDatabaseFactory(),
       })
       .compile();
-
     controller = module.get<FileController>(FileController);
   });
-  afterAll(async () => {
-    await module.close();
-    await mongoose.disconnect();
-    await replSet.stop();
+
+  afterAll(async done => {
+    try {
+      await module.close();
+      await mongoose.connection.close();
+      await replSet.stop();
+      done();
+    } catch (error) {
+      console.log(error);
+      done();
+    }
   });
 
   it('should be defined', () => {

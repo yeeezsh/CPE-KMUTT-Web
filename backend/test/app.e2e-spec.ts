@@ -9,30 +9,31 @@ import { mockDatabaseFactory, replSet } from '../src/utils/database.factory';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
-  let mockDB: typeof mongoose;
 
   beforeAll(async () => {
-    mockDB = await mockDatabaseFactory();
-  });
-
-  afterAll(async () => {
-    await app.close();
-    await mongoose.disconnect();
-    await replSet.stop();
-  });
-
-  beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     })
       .overrideProvider(DATABASE_CONNECTION)
       .useFactory({
-        factory: () => mockDB,
+        factory: async () => mockDatabaseFactory(),
       })
       .compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
+  });
+
+  afterAll(async done => {
+    try {
+      await app.close();
+      await mongoose.connection.close();
+      await replSet.stop();
+      done();
+    } catch (error) {
+      console.log(error);
+      done();
+    }
   });
 
   it('/ (GET)', () =>
