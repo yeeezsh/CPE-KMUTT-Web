@@ -2,12 +2,13 @@ import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { MongoGridFS } from 'mongo-gridfs';
 import { GridFSBucketReadStream } from 'mongodb';
 import { FileInfoDto } from './@dtos/file.info.dto';
+import { DATABASE_CONNECTION } from '../database/constants/database.constant';
 
 @Injectable()
 export class FileService {
   private fileModel: MongoGridFS;
 
-  constructor(@Inject('DATABASE_CONNECTION') private readonly db: any) {
+  constructor(@Inject(DATABASE_CONNECTION) private readonly db: any) {
     const connect = this.db.connections[0].db;
     this.fileModel = new MongoGridFS(connect, 'fs');
   }

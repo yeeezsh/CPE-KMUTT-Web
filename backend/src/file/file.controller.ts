@@ -15,6 +15,7 @@ import { ApiBody, ApiConsumes } from '@nestjs/swagger';
 import { Response } from 'express';
 import { CreateFileDto } from './@dtos/file.create.dto';
 import { FileService } from './file.service';
+import { FileCreateType } from './@interfaces/file.create.interface';
 
 @Controller('file')
 export class FileController {
@@ -26,7 +27,7 @@ export class FileController {
   @ApiBody({
     type: CreateFileDto,
   })
-  upload(@UploadedFile() file: any) {
+  upload(@UploadedFile() file: FileCreateType) {
     return {
       message: 'File has been Uploaded',
       file: file,
