@@ -1,6 +1,6 @@
 import Container from 'common/components/Container';
 import Carousel from 'components/Carousel';
-import { CarouselTitle, ChildrenProps } from 'components/Carousel/types'; // For the example below
+import { ChildrenProps } from 'components/Carousel/types'; // For the example below
 import Head from 'next/head';
 import React from 'react';
 
@@ -30,12 +30,6 @@ const ARRAY: ChildrenProps[] = [
   },
 ];
 
-const Title: CarouselTitle = {
-  heading: 'กิจกรรมและความสำเร็จ',
-  description: 'สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด',
-  link: '#',
-};
-
 const Home: React.FC = () => {
   return (
     <>
@@ -47,13 +41,7 @@ const Home: React.FC = () => {
       <Carousel item={ARRAY} variant="Default" fullText={false} arrows={true} />
 
       <Container>
-        <Carousel
-          item={ARRAY}
-          variant="Slider"
-          fullText={false}
-          arrows={false}
-          title={Title}
-        />
+        <Carousel item={ARRAY} variant="Slider" fullText={false} arrows={false} />
       </Container>
     </>
   );
