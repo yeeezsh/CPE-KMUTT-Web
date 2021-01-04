@@ -10,6 +10,7 @@ import Container from 'common/components/Container';
 import Carousel from 'components/Carousel';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { CarouselProps } from 'components/Carousel/types'; // For the example below
 <<<<<<< HEAD
 >>>>>>> Add carousel to home page
@@ -31,6 +32,9 @@ import { ChildrenProps } from 'components/Carousel/types'; // For the example be
 =======
 import { CarouselTitle, ChildrenProps } from 'components/Carousel/types'; // For the example below
 >>>>>>> Update carousel in home page
+=======
+import { ChildrenProps } from 'components/Carousel/types'; // For the example below
+>>>>>>> Update carousel component
 import Head from 'next/head';
 import React from 'react';
 >>>>>>> Add props to home
@@ -60,12 +64,6 @@ const ARRAY: ChildrenProps[] = [
     caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
 ];
-
-const Title: CarouselTitle = {
-  heading: 'กิจกรรมและความสำเร็จ',
-  description: 'สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด',
-  link: '#',
-};
 
 const Home: React.FC = () => {
   return (
@@ -145,13 +143,7 @@ const Home: React.FC = () => {
       <Carousel item={ARRAY} variant="Default" fullText={false} arrows={true} />
 
       <Container>
-        <Carousel
-          item={ARRAY}
-          variant="Slider"
-          fullText={false}
-          arrows={false}
-          title={Title}
-        />
+        <Carousel item={ARRAY} variant="Slider" fullText={false} arrows={false} />
       </Container>
     </>
 >>>>>>> Add carousel to home page
