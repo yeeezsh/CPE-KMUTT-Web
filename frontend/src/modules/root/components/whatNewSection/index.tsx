@@ -6,8 +6,7 @@ import Card from 'common/components/Card';
 const WhatNewSection: React.FC = () => {
   return (
     <WhatNewStyle>
-      <div className="bracket-top"></div>
-      <div className="bracket-bottom"></div>
+      <div className="background-bracket"></div>
       <Container>
         <div className="portlet-title">
           <div className="portlet-title__header">มีอะไรใหม่</div>

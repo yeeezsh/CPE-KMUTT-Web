@@ -11,34 +11,16 @@ export const WhatNewStyle = styled.div`
   font-family: 'Kanit', sans-serif;
   background-color: #fafafa;
 
-  .bracket-top {
+  .background-bracket {
+    background-image: url(/images/whatNewSection_bg.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 525px;
+    width: 1440px;
     position: absolute;
-    width: 88px;
-    height: 300px;
-    left: 211.98px;
-    top: 0px;
-
-    /* default-primary-blue */
-
-    background: #4a60ac;
-    opacity: 0.05;
-    border-radius: 30000px;
-    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  }
-
-  .bracket-bottom {
-    position: absolute;
-    width: 88px;
-    height: 300px;
-    left: 211.98px;
-    top: 152px;
-
-    /* default-primary-blue */
-
-    background: #4a60ac;
-    opacity: 0.05;
-    border-radius: 30000px;
-    transform: matrix(0.71, -0.71, -0.71, -0.71, 0, 0);
+    left: 50%;
+    transform: translate(-50%, 0%);
   }
 
   .card-container {
