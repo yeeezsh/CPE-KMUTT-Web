@@ -1,6 +1,6 @@
-import NavbarType from './types';
+import { MenuItem, SubMenu } from './types';
 
-const NAVBAR_CONSTANT: NavbarType[] = [
+export const NAVBAR_MENU: MenuItem[] = [
   {
     key: '1',
     label: 'ปริญญาตรี',
@@ -26,9 +26,55 @@ const NAVBAR_CONSTANT: NavbarType[] = [
         link: '/#',
       },
     ],
+    picture: 'https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg',
   },
   {
     key: '2',
+    label: 'บัณฑิตศึกษา',
+    subMenu: [
+      {
+        key: '1',
+        label: 'หลักสูตรมหาบัณฑิต',
+        link: '/#',
+      },
+      {
+        key: '2',
+        label: 'หลักสูตรดุษฎีบัณฑิต',
+        link: '/#',
+      },
+    ],
+    picture: 'https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg',
+  },
+  {
+    key: '3',
+    label: 'ทุนการศึกษา',
+    subMenu: [
+      {
+        key: '1',
+        label: 'ทุนภาควิชา',
+        link: '/#',
+      },
+
+      {
+        key: '2',
+        label: 'ทุนเพชรพระจอมเกล้า',
+        link: '/#',
+      },
+      {
+        key: '3',
+        label: 'ทุน คปก.',
+        link: '/#',
+      },
+      {
+        key: '4',
+        label: 'ทุนต่างประเทศ',
+        link: '/#',
+      },
+    ],
+    picture: 'https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg',
+  },
+  {
+    key: '4',
     label: 'การรับเข้าศึกษา',
     subMenu: [
       {
@@ -47,9 +93,10 @@ const NAVBAR_CONSTANT: NavbarType[] = [
         link: '/#',
       },
     ],
+    picture: 'https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg',
   },
   {
-    key: '3',
+    key: '5',
     label: 'เกี่ยวกับเรา',
     subMenu: [
       {
@@ -69,170 +116,39 @@ const NAVBAR_CONSTANT: NavbarType[] = [
       },
       {
         key: '4',
-        label: 'ความสำเร็จ',
-        link: '/#',
-      },
-      {
-        key: '5',
-        label: 'งานวิจัย',
-        link: '/#',
-      },
-      {
-        key: '6',
         label: 'ความเป็นนานาชาติ',
         link: '/#',
       },
     ],
-  },
-  {
-    key: '4',
-    label: 'สำหรับนักศึกษา',
-    subMenu: [
-      {
-        key: '1',
-        label: 'ปฏิทินการศึกษา',
-        link: '/#',
-      },
-      {
-        key: '2',
-        label: 'ตารางเรียน / ตารางสอบ',
-        link: '/#',
-      },
-      {
-        key: '3',
-        label: 'เอกสารสำหรับนักศึกษา',
-        link: '/#',
-      },
-      {
-        key: '4',
-        label: 'LEB2',
-        link: '/#',
-      },
-      {
-        key: '5',
-        label: 'NEWACIS',
-        link: '/#',
-      },
-      {
-        key: '6',
-        label: 'สมุดติดต่อภายใน',
-        link: '/#',
-      },
-    ],
-  },
-  {
-    key: '5',
-    label: 'สำหรับบุคลากร',
-    subMenu: [
-      {
-        key: '1',
-        label: 'WEBMAIL',
-        link: '/#',
-      },
-      {
-        key: '2',
-        label: 'INTRANET',
-        link: '/#',
-      },
-      {
-        key: '3',
-        label: 'สมุดโทรศัพท์ มจธ.',
-        link: '/#',
-      },
-      {
-        key: '4',
-        label: 'ค้นหาบุคลากรและองค์กร มจธ.',
-        link: '/#',
-      },
-      {
-        key: '5',
-        label: 'ข่าวสาร',
-        link: '/#',
-      },
-      {
-        key: '6',
-        label: 'สหกรณ์ออมทรัพย์ มจธ.',
-        link: '/#',
-      },
-      {
-        key: '7',
-        label: 'สมุดโทรศัพท์ มจธ.',
-        link: '/#',
-      },
-      {
-        key: '8',
-        label: 'สมาคมศิษย์เก่า',
-        link: '/#',
-      },
-      {
-        key: '9',
-        label: 'หอสมุด',
-        link: '/#',
-      },
-      {
-        key: '10',
-        label: 'สำนักคอมพิวเตอร์',
-        link: '/#',
-      },
-      {
-        key: '11',
-        label: 'ผู้ดูแลระบบเว็บไซต์',
-        link: '/#',
-      },
-    ],
-  },
-  {
-    key: '6',
-    label: 'บัณฑิตศึกษา',
-    subMenu: [
-      {
-        key: '1',
-        label: 'หลักสูตรมหาบัณฑิต',
-        link: '/#',
-      },
-      {
-        key: '2',
-        label: 'หลักสูตรดุษฎีบัณฑิต',
-        link: '/#',
-      },
-    ],
-  },
-  {
-    key: '7',
-    label: 'ทุนการศึกษา',
-    subMenu: [
-      {
-        key: '1',
-        label: 'ทุนภาควิชา',
-        link: '/#',
-      },
-      {
-        key: '2',
-        label: 'ทุนเพชรพระจอมเกล้า',
-        link: '/#',
-      },
-      {
-        key: '3',
-        label: 'ทุน คปก.',
-        link: '/#',
-      },
-      {
-        key: '4',
-        label: 'ทุนผู้ช่วยสอน',
-        link: '/#',
-      },
-      {
-        key: '5',
-        label: 'ทุนจ้างงาน',
-        link: '/#',
-      },
-      {
-        key: '6',
-        label: 'ทุนต่างประเทศ',
-        link: '/#',
-      },
-    ],
+    picture: 'https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg',
   },
 ];
 
-export default NAVBAR_CONSTANT;
+export const STUDENT: MenuItem[] = [
+  { key: '1', label: 'ปฏิทินการศึกษา' },
+  { key: '2', label: 'ตารางเรียน / ตารางสอบ' },
+  { key: '3', label: 'เอกสารสำหรับนักศึกษา' },
+  { key: '4', label: 'LEB2' },
+  { key: '5', label: 'NewACIS' },
+  { key: '6', label: 'สมุดติดต่อภายในฯ' },
+];
+
+export const STAFF: MenuItem[] = [
+  { key: '1', label: 'WEBMAIL' },
+  { key: '2', label: 'INTRANET' },
+  { key: '3', label: 'สมุดโทรศัพท์ มจธ.' },
+  { key: '4', label: 'ค้นหาบุคคลากรและองค์กร มจธ.' },
+  { key: '6', label: 'ข่าวสาร' },
+  { key: '7', label: 'สหกรณ์ออมทรัพย์ มจธ.' },
+  { key: '8', label: 'สมาคมศิษย์เก่า' },
+  { key: '9', label: 'หอสมุด' },
+  { key: '10', label: 'สำนักคอมพิวเตอร์' },
+  { key: '11', label: 'ผู้ดูแลระบบเว็บไซต์' },
+];
+
+export const NAVBAR_SUB_MENU: SubMenu[] = [
+  { key: '1', label: 'สำหรับนักศึกษาปัจจุบัน', children: STUDENT },
+  { key: '2', label: 'สำหรับบุคลากร', children: STAFF },
+  { key: '3', label: 'ดาวน์โหลด', link: '#' },
+  { key: '4', label: 'ติดต่อเรา', link: '#' },
+];

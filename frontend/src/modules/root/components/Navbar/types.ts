@@ -1,8 +1,14 @@
-type NavbarType = {
+export type MenuItem = {
   key: string;
   label?: string;
   link?: string;
-  subMenu?: NavbarType[];
+  subMenu?: MenuItem[];
+  picture?: string;
 };
 
-export default NavbarType;
+export type SubMenu = {
+  key: string;
+  label: string;
+  children?: MenuItem[];
+  link?: string;
+};

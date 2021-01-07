@@ -1,5 +1,6 @@
 enum FontFamily {
-  Default = 'Sukhumvit Set',
+  TH = 'Kanit',
+  EN = 'Montserrat',
 }
 
 export default FontFamily;
