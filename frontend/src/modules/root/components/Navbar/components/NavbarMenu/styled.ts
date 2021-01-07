@@ -1,10 +1,7 @@
 import COLORS from 'common/constants/colors';
 import styled from 'styled-components';
 import fontFamily from 'styles/typography/fontFamily';
-
-interface DesignProps {
-  img: string;
-}
+import DesignProps from './interface';
 
 export const BorderTop = styled.div`
   border-top: 1px solid #eaeaea;

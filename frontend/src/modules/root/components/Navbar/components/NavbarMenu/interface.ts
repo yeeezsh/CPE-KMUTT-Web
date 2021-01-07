@@ -1,3 +1,3 @@
 export interface DesignProps {
-  pictureLink: string;
+  img: string;
 }
