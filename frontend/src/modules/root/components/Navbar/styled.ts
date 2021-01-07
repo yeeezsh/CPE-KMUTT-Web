@@ -68,7 +68,7 @@ export const LogoCPE = styled.img`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: fit-content;
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     display: none;
   }

@@ -8,7 +8,7 @@ describe('Navbar Tests', () => {
     expect(wrap.exists()).toBe(true);
   });
 
-  it('Should change visible to true', () => {
+  it('Should change visible to true when hamburger is clicked', () => {
     const wrapper = mount(<Navbar />);
     const hamburgerButton = wrapper.find('Dropdown').simulate('click');
 
