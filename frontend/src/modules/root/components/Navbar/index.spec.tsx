@@ -6,19 +6,19 @@ import { Cancel } from './styled';
 
 describe('Navbar Tests', () => {
   it('Navbar component should be defined', () => {
-    const wrap = shallow(<Navbar />);
+    const wrap = shallow(<Navbar visible />);
     expect(wrap.exists()).toBe(true);
   });
 
   it('Should change visible to true when hamburger is clicked', () => {
-    const wrapper = mount(<Navbar />);
+    const wrapper = mount(<Navbar visible />);
     wrapper.find(Dropdown).simulate('click');
     const dropdownVisible = wrapper.find(Dropdown).prop('visible')?.valueOf();
     expect(dropdownVisible).toBeTruthy();
   });
 
   it('Should change hamburger to cancel', () => {
-    const wrapper = mount(<Navbar />);
+    const wrapper = mount(<Navbar visible />);
     wrapper.find(Dropdown).simulate('click');
     const cancelButton = wrapper.find(Cancel);
     expect(cancelButton.exists()).toBe(true);

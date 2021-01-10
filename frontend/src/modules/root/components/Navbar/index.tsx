@@ -2,6 +2,7 @@ import { Dropdown } from 'antd';
 import Container from 'common/components/Container';
 import React, { useState } from 'react';
 import NavbarMenu from './components/NavbarMenu';
+import { NavBarProps } from './interface';
 import {
   Cancel,
   Department,
@@ -16,7 +17,7 @@ import {
   Wrapper,
 } from './styled';
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<NavBarProps> = () => {
   const [visible, setVisible] = useState(false);
 
   const showDropdown = () => setVisible((value) => !value);

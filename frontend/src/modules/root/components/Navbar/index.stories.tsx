@@ -1,14 +1,14 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import Navbar from 'modules/root/components/Navbar';
 import React from 'react';
-import { NavBarProps } from '.';
+import { NavBarProps } from './interface';
 
 export default {
   title: 'modules/root/components/Navbar',
   component: Navbar,
 } as Meta;
 
-const Template: Story = (args) => <Navbar {...args} />;
+const Template: Story = (args) => <Navbar visible {...args} />;
 
 export const Default = Template.bind({});
 

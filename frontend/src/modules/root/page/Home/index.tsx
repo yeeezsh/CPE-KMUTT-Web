@@ -17,7 +17,7 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <Navbar />
+        <Navbar visible />
         <WhatNewSection />
         <StaticSection
           id="1"
