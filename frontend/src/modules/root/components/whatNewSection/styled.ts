@@ -3,10 +3,6 @@ import COLORS from 'common/constants/colors';
 
 export const WhatNewStyle = styled.div`
   display: flex;
-  @font-face {
-    font-family: 'Kanit';
-    src: local('Kanit'), url(./fonts/Kanit-Regular.ttf) format('truetype');
-  }
 
   font-family: 'Kanit', sans-serif;
   background-color: #fafafa;

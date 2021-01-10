@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Kanit';
+    src: local('Kanit'), url(/fonts/Kanit-Regular.ttf) format('truetype');
+  }
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(/fonts/Montserrat-Regular.ttf) format('truetype');
+  }
+
+a:link , a:visited {
+  text-decoration: none;
+  color: #4A60AC;
+  font-size: 14px;
+}
+
+a:hover , a:active {
+  text-decoration: underline;
+  color: #666666;
+  font-size: 14px;
+}

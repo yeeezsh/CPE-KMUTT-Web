@@ -1,4 +1,3 @@
-import Container from 'common/components/Container';
 import Head from 'next/head';
 import React from 'react';
 import { Main } from './styled';

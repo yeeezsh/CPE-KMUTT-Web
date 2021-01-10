@@ -2,11 +2,6 @@ import styled from 'styled-components';
 import COLORS from 'common/constants/colors';
 
 export const Card = styled.div`
-  @font-face {
-    font-family: 'Kanit';
-    src: local('Kanit'), url(./fonts/Kanit-Regular.ttf) format('truetype');
-  }
-
   font-family: 'Kanit', sans-serif;
   width: 330px;
   height: 250px;
