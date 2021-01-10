@@ -1,17 +1,8 @@
 import { Divider } from 'antd';
 import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import fontFamily from 'styles/typography/fontFamily';
-
-export const IconStyle = createGlobalStyle`
-  .svg {
-    fill: ${COLORS.GRAY_1};
-  }
-  .svg: hover {
-    fill: ${COLORS.PRIMARY_COLOR};
-  }
-`;
 
 export const Nav = styled.div`
   width: 100%;
@@ -101,5 +92,23 @@ export const MenuButton = styled.button`
   }
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     margin-right: 6px;
+  }
+`;
+
+export const Hamburger = styled.svg`
+  width: 18px;
+  height: 12px;
+  margin-bottom: ;
+  &:hover {
+    fill: ${COLORS.PRIMARY_COLOR};
+  }
+`;
+
+export const Cancel = styled.svg`
+  width: 18px;
+  height: 12px;
+  margin-bottom: ;
+  &:hover {
+    fill: ${COLORS.PRIMARY_COLOR};
   }
 `;

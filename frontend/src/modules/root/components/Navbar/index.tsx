@@ -2,11 +2,11 @@ import { Dropdown } from 'antd';
 import Container from 'common/components/Container';
 import React, { useState } from 'react';
 import NavbarMenu from './components/NavbarMenu';
-import { NavBarProps } from './interface';
 import {
+  Cancel,
   Department,
   Faculty,
-  IconStyle,
+  Hamburger,
   LogoCPE,
   LogoKMUTT,
   MenuButton,
@@ -16,14 +16,13 @@ import {
   Wrapper,
 } from './styled';
 
-const Navbar: React.FC<NavBarProps> = () => {
+const Navbar: React.FC = () => {
   const [visible, setVisible] = useState(false);
 
   const showDropdown = () => setVisible((value) => !value);
 
   return (
     <Container>
-      <IconStyle />
       <Nav>
         <NavbarBrand>
           <LogoKMUTT src="/assets/LOGO-KMUTT.svg" />
@@ -37,7 +36,7 @@ const Navbar: React.FC<NavBarProps> = () => {
           </Wrapper>
         </NavbarBrand>
 
-        <MenuButton> {visible ? '​​' : 'EN'}</MenuButton>
+        <MenuButton>{visible ? '' : 'EN'}</MenuButton>
         <Dropdown
           visible={visible}
           overlay={NavbarMenu}
@@ -51,23 +50,13 @@ const Navbar: React.FC<NavBarProps> = () => {
           }}>
           <MenuButton>
             {visible ? (
-              <svg
-                className="svg"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 2.1268L12.59 0.821045L7 5.99777L1.41 0.821045L0 2.1268L5.59 7.30353L0 12.4803L1.41 13.786L7 8.60929L12.59 13.786L14 12.4803L8.41 7.30353L14 2.1268Z" />
-              </svg>
+              <Cancel viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 1.58278L12.59 0.167297L7 5.77905L1.41 0.167297L0 1.58278L5.59 7.19454L0 12.8063L1.41 14.2218L7 8.61002L12.59 14.2218L14 12.8063L8.41 7.19454L14 1.58278Z" />
+              </Cancel>
             ) : (
-              <svg
-                className="svg"
-                width="18"
-                height="12"
-                viewBox="0 0 18 12"
-                xmlns="http://www.w3.org/2000/svg">
+              <Hamburger viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 12H18V10H0V12ZM0 7H18V5H0V7ZM0 0V2H18V0H0Z" />
-              </svg>
+              </Hamburger>
             )}
           </MenuButton>
         </Dropdown>
