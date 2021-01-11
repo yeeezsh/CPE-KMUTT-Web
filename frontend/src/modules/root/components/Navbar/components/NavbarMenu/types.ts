@@ -5,10 +5,3 @@ export type MenuItem = {
   subMenu?: MenuItem[];
   picture?: string;
 };
-
-export type SubMenu = {
-  key: string;
-  label: string;
-  children?: MenuItem[];
-  link?: string;
-};

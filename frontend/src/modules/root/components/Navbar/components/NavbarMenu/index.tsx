@@ -1,7 +1,7 @@
 import { Divider } from 'antd';
 import Container from 'common/components/Container';
-import { NAVBAR_MENU, NAVBAR_SUB_MENU } from 'modules/root/components/Navbar/constants';
 import React from 'react';
+import { NAVBAR_MENU, NAVBAR_SUB_MENU } from './constants';
 import {
   BorderTop,
   Group,

@@ -1,4 +1,4 @@
-import { MenuItem, SubMenu } from './types';
+import { MenuItem } from './types';
 
 export const NAVBAR_MENU: MenuItem[] = [
   {
@@ -146,9 +146,9 @@ export const STAFF: MenuItem[] = [
   { key: '11', label: 'ผู้ดูแลระบบเว็บไซต์' },
 ];
 
-export const NAVBAR_SUB_MENU: SubMenu[] = [
-  { key: '1', label: 'สำหรับนักศึกษาปัจจุบัน', children: STUDENT },
-  { key: '2', label: 'สำหรับบุคลากร', children: STAFF },
+export const NAVBAR_SUB_MENU: MenuItem[] = [
+  { key: '1', label: 'สำหรับนักศึกษาปัจจุบัน', subMenu: STUDENT },
+  { key: '2', label: 'สำหรับบุคลากร', subMenu: STAFF },
   { key: '3', label: 'ดาวน์โหลด', link: '#' },
   { key: '4', label: 'ติดต่อเรา', link: '#' },
 ];
