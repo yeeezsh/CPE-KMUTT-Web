@@ -1,7 +1,7 @@
 import Container from 'common/components/Container';
 import Head from 'next/head';
 import React from 'react';
-import { Main, Title } from './styled';
+import { Main } from './styled';
 
 const Home: React.FC = () => {
   return (
