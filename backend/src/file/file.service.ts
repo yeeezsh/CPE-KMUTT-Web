@@ -1,8 +1,9 @@
-import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { MongoGridFS } from 'mongo-gridfs';
 import { GridFSBucketReadStream } from 'mongodb';
 import { FileInfoDto } from './@dtos/file.info.dto';
 import { DATABASE_CONNECTION } from '../database/constants/database.constant';
+import { FileNotFound } from '../common/Exception/file-error.exception';
 
 @Injectable()
 export class FileService {
@@ -28,7 +29,7 @@ export class FileService {
         contentType: result.contentType,
       };
     } catch (err) {
-      throw new HttpException('File not found', HttpStatus.NOT_FOUND);
+      throw new FileNotFound();
     }
   }
 

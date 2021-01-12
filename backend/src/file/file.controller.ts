@@ -2,8 +2,6 @@ import {
   Controller,
   Delete,
   Get,
-  HttpException,
-  HttpStatus,
   Param,
   Post,
   Res,
@@ -16,6 +14,7 @@ import { Response } from 'express';
 import { CreateFileDto } from './@dtos/file.create.dto';
 import { FileService } from './file.service';
 import { FileCreateType } from './@interfaces/file.create.interface';
+import { FileNotExistsException } from '../common/Exception/file-error.exception';
 
 @Controller('file')
 export class FileController {
@@ -39,10 +38,7 @@ export class FileController {
     const file = await this.filesService.findInfo(id);
     const filestream = await this.filesService.readStream(id);
     if (!filestream) {
-      throw new HttpException(
-        'An error occurred while retrieving file',
-        HttpStatus.EXPECTATION_FAILED,
-      );
+      throw new FileNotExistsException();
     }
     res.header('Content-Type', file.contentType);
     res.header(
@@ -58,10 +54,7 @@ export class FileController {
     const filestream = await this.filesService.readStream(id);
 
     if (!filestream) {
-      throw new HttpException(
-        'An error occurred while retrieving file',
-        HttpStatus.EXPECTATION_FAILED,
-      );
+      throw new FileNotExistsException();
     }
     res.header('Content-Type', file.contentType);
     res.header('Content-Disposition', 'attachment; filename=' + file.filename);
@@ -73,10 +66,7 @@ export class FileController {
     const file = await this.filesService.findInfo(id);
     const filestream = await this.filesService.deleteFile(id);
     if (!filestream) {
-      throw new HttpException(
-        'An error occurred during file deletion',
-        HttpStatus.EXPECTATION_FAILED,
-      );
+      throw new FileNotExistsException();
     }
     return {
       message: 'File has been deleted',
