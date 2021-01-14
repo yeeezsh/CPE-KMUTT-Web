@@ -15,8 +15,10 @@ export const Card = styled.div`
     background-repeat: no-repeat;
     background-position: center;
   }
+`;
 
-  .card-body.card-normal {
+export const CardBodyStyled = styled.div`
+  &.card-normal {
     width: 330px;
     height: 250px;
     display: block;
@@ -24,20 +26,20 @@ export const Card = styled.div`
     padding: 20px 15px;
     position: relative;
 
-    .card-discription {
+    .discription {
       font-size: 14px;
       color: ${COLORS.GRAY_1};
       font-weight: 700;
     }
 
-    .card-title {
+    .title {
       color: ${COLORS.PRIMARY_COLOR};
       font-size: 12px;
       font-weight: 700;
       margin-bottom: 6px;
     }
 
-    .card-date {
+    .date {
       color: ${COLORS.GRAY_2};
       font-size: 14px;
       bottom: 20px;
@@ -45,7 +47,7 @@ export const Card = styled.div`
     }
   }
 
-  .card-body.card-primary {
+  &.card-primary {
     background-color: ${COLORS.PRIMARY_COLOR};
     padding-left: 20px;
     padding-top: 10px;
@@ -55,13 +57,13 @@ export const Card = styled.div`
     height: 125px;
     width: 330px;
 
-    .card-discription {
+    .discription {
       font-size: 14px;
       color: #ffffff;
       font-weight: 700;
     }
 
-    .card-title {
+    .title {
       color: #ffffff;
       opacity: 0.5;
       font-size: 12px;
@@ -69,7 +71,7 @@ export const Card = styled.div`
       margin-bottom: 6px;
     }
 
-    .card-date {
+    .date {
       color: #ffffff;
       opacity: 0.5;
       font-size: 14px;
