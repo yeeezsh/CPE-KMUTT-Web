@@ -1,22 +1,34 @@
 import Container from 'common/components/Container';
 import Head from 'next/head';
 import React from 'react';
-import { Main, Title } from './styled';
+import { Main } from './styled';
 
 const Home: React.FC = () => {
   return (
-    <Container>
+    <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Computer Engineering | KMUTT</title>
+        <link rel="icon" href="/Logo.svg" />
       </Head>
+      {/* <Navbar></Navbar> 
 
-      <Main>
-        <Title>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </Title>
-      </Main>
-    </Container>
+          <Header></Header>
+
+          <Announcement></Announcement>
+
+          <HomeCarousel></HomeCarousel>
+
+          <Programme></Programme>
+
+          <Contact></Contact>
+
+          <Footer></Footer>
+
+      */}
+      <Container>
+        <Main></Main>
+      </Container>
+    </div>
   );
 };
 
