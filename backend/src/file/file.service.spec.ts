@@ -16,23 +16,17 @@ describe('FileService test', () => {
     })
       .overrideProvider(DATABASE_CONNECTION)
       .useFactory({
-        factory: async () => mockDatabaseFactory(),
+        factory: async () => await mockDatabaseFactory(),
       })
       .compile();
 
     service = module.get<FileService>(FileService);
   });
 
-  afterAll(async done => {
-    try {
-      await module.close();
-      await mongoose.connection.close();
-      await replSet.stop();
-      done();
-    } catch (error) {
-      console.log(error);
-      done();
-    }
+  afterAll(async () => {
+    await mongoose.disconnect();
+    await replSet.stop();
+    await module.close();
   });
 
   it('Should be defined', () => {

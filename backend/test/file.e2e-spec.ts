@@ -16,7 +16,7 @@ describe('AppController (e2e)', () => {
     })
       .overrideProvider(DATABASE_CONNECTION)
       .useFactory({
-        factory: async () => mockDatabaseFactory(),
+        factory: async () => await mockDatabaseFactory(),
       })
       .compile();
 
@@ -24,16 +24,10 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  afterAll(async done => {
-    try {
-      await app.close();
-      await mongoose.connection.close();
-      await replSet.stop();
-      done();
-    } catch (error) {
-      console.log(error);
-      done();
-    }
+  afterAll(async () => {
+    await mongoose.disconnect();
+    await replSet.stop();
+    await app.close();
   });
 
   //upload file
