@@ -18,8 +18,9 @@ const Cards: React.FC<CardProps> = ({ ...props }) => {
         className="card-picture"
         hidden={!props.primary}
         style={{
-          backgroundImage: 'url(/images/thumbnail.png)',
-        }}></div>
+          backgroundImage: `url(${props.links})`,
+        }}
+      />
       <CardBodyStyled className={mode}>
         <CardTitle>{props.title}</CardTitle>
         <CardDiscription>{props.description}</CardDiscription>

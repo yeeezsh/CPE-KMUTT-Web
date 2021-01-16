@@ -4,6 +4,34 @@ import { WhatNewStyle } from './styled';
 import Card from 'common/components/Card';
 
 const WhatNewSection: React.FC = () => {
+  const constants = [
+    {
+      id: '1',
+      title: 'การรับเข้าศึกษา',
+      description:
+        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
+      date: '28 ตุลาคม 2563',
+      links: '/images/thumbnail.png',
+      primary: true,
+    },
+    {
+      id: '2',
+      title: 'การรับเข้าศึกษา',
+      description:
+        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
+      date: '28 ตุลาคม 2563',
+      primary: false,
+    },
+    {
+      id: '3',
+      title: 'การรับเข้าศึกษา',
+      description:
+        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
+      date: '28 ตุลาคม 2563',
+      primary: false,
+    },
+  ];
+
   return (
     <WhatNewStyle>
       <div className="background-bracket"></div>
@@ -20,27 +48,17 @@ const WhatNewSection: React.FC = () => {
         </div>
 
         <div className="card-container">
-          <Card
-            title="การรับเข้าศึกษา"
-            description="ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563"
-            date="28 ตุลาคม 2563"
-            id="1"
-            primary={true}
-          />
-          <Card
-            title="การรับเข้าศึกษา"
-            description="ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563"
-            date="28 ตุลาคม 2563"
-            id="2"
-            primary={false}
-          />
-          <Card
-            title="การรับเข้าศึกษา"
-            description="ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563"
-            date="28 ตุลาคม 2563"
-            id="3"
-            primary={false}
-          />
+          {constants.map((data, index) => (
+            <Card
+              key={index}
+              title={data.title}
+              description={data.description}
+              date={data.date}
+              links={data.links}
+              id={data.id}
+              primary={data.primary}
+            />
+          ))}
         </div>
       </Container>
     </WhatNewStyle>

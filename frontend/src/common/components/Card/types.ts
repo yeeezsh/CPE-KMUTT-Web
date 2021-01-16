@@ -3,7 +3,7 @@ interface Card {
   title?: string;
   description?: string;
   date?: string;
-  links?: string[];
+  links?: string;
   primary?: boolean;
 }
 
