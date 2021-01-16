@@ -19,5 +19,4 @@ export const Title = styled.h1`
       text-decoration: underline;
     }
   }
-
 `;
