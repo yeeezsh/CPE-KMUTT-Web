@@ -1,7 +1,7 @@
 import BREAKPOINTS from 'common/constants/breakpoints';
 import styled from 'styled-components';
 
-export const Containers = styled.div`
+export const ContainerStyled = styled.div`
   display: flex;
   width: 100%;
   max-width: ${BREAKPOINTS.IPAD_LANDSCAPE};

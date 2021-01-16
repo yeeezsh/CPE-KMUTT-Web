@@ -3,17 +3,32 @@ import React from 'react';
 import { Main } from './styled';
 import WhatNewSection from '../../components/WhatNewSection';
 
+
 const Home: React.FC = () => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Computer Engineering | KMUTT</title>
+        <link rel="icon" href="/Logo.svg" />
       </Head>
-
       <Main>
         <WhatNewSection />
       </Main>
+      {/* <Navbar></Navbar>
+      
+          <Header></Header>
+
+          <Announcement></Announcement>
+
+          <HomeCarousel></HomeCarousel>
+
+          <Programme></Programme>
+
+          <Contact></Contact>
+
+          <Footer></Footer>
+          
+      */}
     </div>
   );
 };
