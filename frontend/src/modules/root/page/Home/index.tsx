@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import { Main } from './styled';
-import WhatNewSection from '../../components/whatNewSection';
+import WhatNewSection from '../../components/WhatNewSection';
 
 const Home: React.FC = () => {
   return (
