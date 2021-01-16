@@ -1,5 +1,12 @@
 import React from 'react';
-import { Card, CardBodyStyled } from './styled';
+import {
+  Card,
+  CardBodyStyled,
+  CardTitle,
+  CardDiscription,
+  CardDate,
+  CardNextBtn,
+} from './styled';
 import { CardProps } from './types';
 
 // Example components
@@ -14,10 +21,10 @@ const Cards: React.FC<CardProps> = ({ ...props }) => {
           backgroundImage: 'url(/images/thumbnail.png)',
         }}></div>
       <CardBodyStyled className={mode}>
-        <div className="title">{props.title}</div>
-        <div className="discription">{props.description}</div>
-        <div className="date">{props.date}</div>
-        <div className="card-next" hidden={!props.primary}></div>
+        <CardTitle>{props.title}</CardTitle>
+        <CardDiscription>{props.description}</CardDiscription>
+        <CardDate>{props.date}</CardDate>
+        <CardNextBtn hidden={!props.primary} />
       </CardBodyStyled>
     </Card>
   );
