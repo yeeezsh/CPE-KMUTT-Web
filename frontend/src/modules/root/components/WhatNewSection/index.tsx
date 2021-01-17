@@ -12,7 +12,7 @@ const WhatNewSection: React.FC = () => {
         'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
       date: '28 ตุลาคม 2563',
       links: '/images/thumbnail.png',
-      primary: true,
+      variant: 'primary',
     },
     {
       id: '2',
@@ -20,7 +20,7 @@ const WhatNewSection: React.FC = () => {
       description:
         'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
       date: '28 ตุลาคม 2563',
-      primary: false,
+      variant: 'normal',
     },
     {
       id: '3',
@@ -28,7 +28,7 @@ const WhatNewSection: React.FC = () => {
       description:
         'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
       date: '28 ตุลาคม 2563',
-      primary: false,
+      variant: 'normal',
     },
   ];
 
@@ -56,7 +56,7 @@ const WhatNewSection: React.FC = () => {
               date={data.date}
               links={data.links}
               id={data.id}
-              primary={data.primary}
+              variant={data.variant}
             />
           ))}
         </div>

@@ -4,7 +4,7 @@ interface Card {
   description?: string;
   date?: string;
   links?: string;
-  primary?: boolean;
+  variant?: string;
 }
 
 export interface CardProps extends Partial<Card> {
