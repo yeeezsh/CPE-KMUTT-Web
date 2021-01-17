@@ -10,7 +10,6 @@ const Home: React.FC = () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Main>
         <WhatNewSection />
         {/* <navbar></navbar> */}
@@ -18,5 +17,4 @@ const Home: React.FC = () => {
     </div>
   );
 };
-
 export default Home;
