@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import { Main } from './styled';
-// import WhatNewSection from '../../components/WhatNewSection';
+import WhatNewSection from 'modules/root/components/WhatNewSection';
 
 const Home: React.FC = () => {
   return (
@@ -11,8 +11,7 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        {/* <WhatNewSection /> */}
-        {/* <navbar></navbar> */}
+        <WhatNewSection />
       </Main>
     </div>
   );
