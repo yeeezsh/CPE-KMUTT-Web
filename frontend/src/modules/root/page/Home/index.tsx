@@ -13,6 +13,7 @@ const Home: React.FC = () => {
 
       <Main>
         <WhatNewSection />
+        {/* <navbar></navbar> */}
       </Main>
     </div>
   );
