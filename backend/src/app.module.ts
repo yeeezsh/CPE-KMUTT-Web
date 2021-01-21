@@ -10,7 +10,6 @@ import { AppResolver } from './app.resolver';
     ConfigModule,
     DatabaseModule,
     GraphQLModule.forRoot({
-      installSubscriptionHandlers: true,
       autoSchemaFile: 'schema.gql',
       sortSchema: true,
     }),
