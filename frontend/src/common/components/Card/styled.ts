@@ -80,16 +80,11 @@ export const CardBodyStyled = styled.div`
     }
 
     .card-next {
-      width: 20px;
-      height: 14px;
-      font-size: 14px;
-      bottom: 20px;
+      font-size: 20px;
+      bottom: 6px;
       right: 20px;
       position: absolute;
-      background-image: url(/images/arrow-right.svg);
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
+      color: #ffffff;
       cursor: pointer;
     }
   }
