@@ -4,6 +4,7 @@ import React from 'react';
 import { Main } from './styled';
 import StaticSection from 'modules/root/components/StaticSection';
 import WhatNewSection from 'modules/root/components/whatNewSection';
+import Footer from 'modules/root/components/Footer';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import Btn from 'common/components/Button';
 
@@ -60,6 +61,7 @@ const Home: React.FC = () => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
+        <Footer id="1"></Footer>
       </Main>
     </div>
   );
