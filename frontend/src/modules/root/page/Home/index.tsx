@@ -14,7 +14,6 @@ const Home: React.FC = () => {
         <title>Computer Engineering | KMUTT</title>
         <link rel="icon" href="/Logo.svg" />
       </Head>
-
       <Main>
         <WhatNewSection />
         <StaticSection
