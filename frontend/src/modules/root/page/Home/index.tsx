@@ -61,7 +61,7 @@ const Home: React.FC = () => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
-        <Footer id="1"></Footer>
+        <Footer key="1"></Footer>
       </Main>
     </div>
   );

@@ -1,7 +1,9 @@
 interface Footer {
-  primary?: boolean;
+  label?: string;
+  link?: string;
+  subMenu?: FooterProps[];
 }
 
 export interface FooterProps extends Partial<Footer> {
-  id: string;
+  key: string;
 }
