@@ -5,4 +5,6 @@ interface Static {
 export interface StaticProps extends Partial<Static> {
   id: string;
   background: string;
+  header: string;
+  content: string;
 }

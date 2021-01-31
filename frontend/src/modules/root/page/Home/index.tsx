@@ -11,8 +11,8 @@ const Home: React.FC = () => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Computer Engineering | KMUTT</title>
+        <link rel="icon" href="/Logo.svg" />
       </Head>
 
       <Main>
