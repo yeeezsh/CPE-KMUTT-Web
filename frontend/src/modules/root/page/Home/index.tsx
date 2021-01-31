@@ -1,9 +1,4 @@
-import {
-  StaticBody,
-  StaticContent,
-  StaticHeader,
-  ButtonStyled,
-} from 'modules/root/components/StaticSection/styled';
+import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
 import Head from 'next/head';
 import React from 'react';
 import { Main } from './styled';
@@ -22,56 +17,49 @@ const Home: React.FC = () => {
 
       <Main>
         <WhatNewSection />
-        <StaticSection id="1" background="/images/static_bg_curriculum.png">
-          <StaticBody>
-            <StaticHeader>ที่วิศวกรรมคอมพิวเตอร์ มจธ. เรามีหลักสูตรหลากหลาย</StaticHeader>
-            <StaticContent>
-              เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน ใช้งานรูบิค แซมบ้าเมาท์
-              แอดมิชชั่นคัตเอาต์โครนาโอ้ยเซ็นเซอร์ ผู้นำเมจิควิทย์
-              บลอนด์แทคติคไอซียูเยลลี่
-            </StaticContent>
-            <ButtonStyled>
-              <Btn color="primary">
-                สำรวจหลักสูตรทั้งหมด
-                <HiOutlineArrowRight
-                  className="Icon"
-                  style={{ marginLeft: '15px' }}
-                  size="20px"
-                />
-              </Btn>
-            </ButtonStyled>
-            <ButtonStyled>
-              <Btn color="white">
-                สมัครเข้าเรียน
-                <HiOutlineArrowRight
-                  className="Icon"
-                  style={{ marginLeft: '15px' }}
-                  size="20px"
-                />
-              </Btn>
-            </ButtonStyled>
-          </StaticBody>
+        <StaticSection
+          id="1"
+          background="/images/static_bg_curriculum.png"
+          header="ที่วิศวกรรมคอมพิวเตอร์ มจธ. เรามีหลักสูตรหลากหลาย"
+          content="เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน ใช้งานรูบิค แซมบ้าเมาท์
+            แอดมิชชั่นคัตเอาต์โครนาโอ้ยเซ็นเซอร์ ผู้นำเมจิควิทย์ บลอนด์แทคติคไอซียูเยลลี่">
+          <ButtonStyled>
+            <Btn color="primary">
+              สำรวจหลักสูตรทั้งหมด
+              <HiOutlineArrowRight
+                className="Icon"
+                style={{ marginLeft: '15px' }}
+                size="20px"
+              />
+            </Btn>
+          </ButtonStyled>
+          <ButtonStyled>
+            <Btn color="white">
+              สมัครเข้าเรียน
+              <HiOutlineArrowRight
+                className="Icon"
+                style={{ marginLeft: '15px' }}
+                size="20px"
+              />
+            </Btn>
+          </ButtonStyled>
         </StaticSection>
 
-        <StaticSection id="2" background="/images/static_bg_gallery.png">
-          <StaticBody>
-            <StaticHeader>แกลเลอรี่รูปภาพ</StaticHeader>
-            <StaticContent>
-              โดยมีอาจารย์ผู้สอนเป็นผู้ให้คำปรึกษา นักศึกษาต้องทำงานเป็นกลุ่ม
-              และมีการนำเสนอผลงาน ของตนเองให้เพื่อนๆ
-              ร่วมกันวิเคราะห์และวิจารณ์อย่างมีเหตุผล
-            </StaticContent>
-            <ButtonStyled>
-              <Btn color="white">
-                สำรวจแกลเลอรี่
-                <HiOutlineArrowRight
-                  className="Icon"
-                  style={{ marginLeft: '15px' }}
-                  size="20px"
-                />
-              </Btn>
-            </ButtonStyled>
-          </StaticBody>
+        <StaticSection
+          id="2"
+          background="/images/static_bg_gallery.png"
+          header="แกลเลอรี่รูปภาพ"
+          content="โดยมีอาจารย์ผู้สอนเป็นผู้ให้คำปรึกษา นักศึกษาต้องทำงานเป็นกลุ่ม และมีการนำเสนอผลงาน ของตนเองให้เพื่อนๆ ร่วมกันวิเคราะห์และวิจารณ์อย่างมีเหตุผล">
+          <ButtonStyled>
+            <Btn color="white">
+              สำรวจแกลเลอรี่
+              <HiOutlineArrowRight
+                className="Icon"
+                style={{ marginLeft: '15px' }}
+                size="20px"
+              />
+            </Btn>
+          </ButtonStyled>
         </StaticSection>
       </Main>
     </div>

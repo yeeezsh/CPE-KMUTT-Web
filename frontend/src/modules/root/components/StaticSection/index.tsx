@@ -1,12 +1,18 @@
 import Container from 'common/components/Container';
 import React from 'react';
-import { StaticStyle } from './styled';
+import { StaticStyle, StaticBody, StaticContent, StaticHeader } from './styled';
 import { StaticProps } from './types';
 
 const StaticSection: React.FC<StaticProps> = ({ children, ...props }) => {
   return (
     <StaticStyle style={{ backgroundImage: `url(${props.background})` }}>
-      <Container>{children}</Container>
+      <Container>
+        <StaticBody>
+          <StaticHeader>{props.header}</StaticHeader>
+          <StaticContent>{props.content}</StaticContent>
+          {children}
+        </StaticBody>
+      </Container>
     </StaticStyle>
   );
 };
