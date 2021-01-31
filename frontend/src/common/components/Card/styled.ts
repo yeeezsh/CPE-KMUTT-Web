@@ -7,14 +7,6 @@ export const Card = styled.div`
   height: 250px;
   display: block;
   position: relative;
-
-  .card-picture {
-    width: 330px;
-    height: 125px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
 `;
 
 export const CardTitle = styled.div`
@@ -84,4 +76,12 @@ export const CardBodyStyled = styled.div`
       bottom: 16px;
     }
   }
+`;
+
+export const CardImage = styled.div`
+  width: 330px;
+  height: 125px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;

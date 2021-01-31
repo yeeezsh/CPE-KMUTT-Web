@@ -6,6 +6,7 @@ import {
   CardDiscription,
   CardDate,
   CardNextBtn,
+  CardImage,
 } from './styled';
 import { CardProps } from './types';
 
@@ -35,8 +36,7 @@ const Cards: React.FC<CardProps> = ({ ...props }) => {
 
   return (
     <Card>
-      <div
-        className="card-picture"
+      <CardImage
         hidden={isCardHidden()}
         style={{
           backgroundImage: `url(${props.links})`,
