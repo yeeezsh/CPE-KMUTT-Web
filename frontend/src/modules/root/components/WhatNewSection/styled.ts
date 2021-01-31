@@ -61,3 +61,9 @@ export const CardContainer = styled.div`
   justify-content: space-between;
   margin-bottom: 105px;
 `;
+
+export const ShowAllButton = styled.div`
+  position: absolute;
+  right: 0;
+  top: 25px;
+`;

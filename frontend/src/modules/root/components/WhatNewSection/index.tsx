@@ -1,4 +1,5 @@
 import Container from 'common/components/Container';
+import Button from 'common/components/Button';
 import React from 'react';
 import {
   WhatNewStyle,
@@ -6,8 +7,10 @@ import {
   PortletTitleHeader,
   PortletDiscription,
   CardContainer,
+  ShowAllButton,
 } from './styled';
 import Card from 'common/components/Card';
+import { HiOutlineArrowRight } from 'react-icons/hi';
 
 const WhatNewSection: React.FC = () => {
   const constants = [
@@ -46,10 +49,16 @@ const WhatNewSection: React.FC = () => {
           <PortletDiscription>
             สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
           </PortletDiscription>
-          {/* <div className="show-all">
-            แสดงทั้งหมด
-            <div className="arrow-icon" />
-          </div> */}
+          <ShowAllButton>
+            <Button color="borderless">
+              แสดงทั้งหมด
+              <HiOutlineArrowRight
+                className="Icon"
+                style={{ marginLeft: '15px' }}
+                size="20px"
+              />
+            </Button>
+          </ShowAllButton>
         </PortletTitle>
 
         <CardContainer>
