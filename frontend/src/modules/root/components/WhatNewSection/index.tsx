@@ -1,6 +1,12 @@
 import Container from 'common/components/Container';
 import React from 'react';
-import { WhatNewStyle } from './styled';
+import {
+  WhatNewStyle,
+  PortletTitle,
+  PortletTitleHeader,
+  PortletDiscription,
+  CardContainer,
+} from './styled';
 import Card from 'common/components/Card';
 
 const WhatNewSection: React.FC = () => {
@@ -34,20 +40,19 @@ const WhatNewSection: React.FC = () => {
 
   return (
     <WhatNewStyle>
-      <div className="background-bracket"></div>
       <Container>
-        <div className="portlet-title">
-          <div className="portlet-title__header">มีอะไรใหม่</div>
-          <div className="portlet-discription">
+        <PortletTitle>
+          <PortletTitleHeader>มีอะไรใหม่</PortletTitleHeader>
+          <PortletDiscription>
             สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
-          </div>
-          <div className="show-all">
+          </PortletDiscription>
+          {/* <div className="show-all">
             แสดงทั้งหมด
             <div className="arrow-icon" />
-          </div>
-        </div>
+          </div> */}
+        </PortletTitle>
 
-        <div className="card-container">
+        <CardContainer>
           {constants.map((data, index) => (
             <Card
               key={index}
@@ -59,7 +64,7 @@ const WhatNewSection: React.FC = () => {
               variant={data.variant}
             />
           ))}
-        </div>
+        </CardContainer>
       </Container>
     </WhatNewStyle>
   );
