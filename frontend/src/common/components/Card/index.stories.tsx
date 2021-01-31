@@ -1,7 +1,6 @@
 import { Meta } from '@storybook/react/types-6-0';
 import React from 'react';
 import Card from '.';
-import 'public/css/styles.css';
 
 const meta: Meta = {
   title: 'Commmon/Card',
