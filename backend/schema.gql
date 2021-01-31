@@ -1,0 +1,11 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AppModel {
+  status: Int!
+}
+
+type Query {
+  serverStatus: AppModel!
+}
