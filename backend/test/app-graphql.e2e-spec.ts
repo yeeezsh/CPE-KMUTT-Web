@@ -3,13 +3,13 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
+import { AppModel } from '../src/app.resolver';
 import { DATABASE_CONNECTION } from '../src/database/constants/database.constant';
 import { mockDatabaseFactory, replSet } from '../src/utils/database.factory';
-
-describe('AppController (e2e)', () => {
+describe('AppResolver GraphQL', () => {
   let app: INestApplication;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     })
@@ -29,9 +29,25 @@ describe('AppController (e2e)', () => {
     await app.close();
   });
 
-  it('/ (GET)', () =>
-    request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!'));
+  it('Query server status', () => {
+    const expectedReturns: AppModel = { status: 200 };
+    return request(app.getHttpServer())
+      .post('/graphql')
+      .send({
+        query: `
+      {
+        serverStatus {
+          status
+        }
+      }
+      `,
+      })
+      .expect(res =>
+        expect(res.body.data).toEqual({
+          serverStatus: {
+            ...expectedReturns,
+          },
+        }),
+      );
+  });
 });
