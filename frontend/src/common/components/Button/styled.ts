@@ -1,7 +1,41 @@
-import styled from 'styled-components';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import COLORS from 'common/constants/colors';
+import styled, { css } from 'styled-components';
+import { ButtonProps } from './types';
 
-export const Btn = styled.button`
+const BACKGROUND_COLORS: any = {
+  primary: COLORS.PRIMARY_COLOR,
+  yellow: COLORS.YELLOW_1,
+  borderless: 'transparent',
+  white: '#ffffff',
+  transparent: 'transparent',
+};
+
+const BORDER_COLORS: any = {
+  primary: '#ffffff',
+  yellow: COLORS.YELLOW_1,
+  borderless: 'transparent',
+  white: '#ffffff',
+  transparent: COLORS.PRIMARY_COLOR,
+};
+
+const FONT_COLORS: any = {
+  primary: '#ffffff',
+  yellow: '#ffffff',
+  borderless: COLORS.PRIMARY_COLOR,
+  white: COLORS.PRIMARY_COLOR,
+  transparent: COLORS.PRIMARY_COLOR,
+};
+
+function applyColorCss({ $color = `primary` }: ButtonProps) {
+  return css`
+    border: 1px solid ${BORDER_COLORS[$color]};
+    background-color: ${BACKGROUND_COLORS[$color]};
+    color: ${FONT_COLORS[$color]};
+  `;
+}
+
+export const Btn = styled.button<ButtonProps>`
   /* Example*/
   font-family: 'Kanit', sans-serif;
   height: 40px;
@@ -9,10 +43,8 @@ export const Btn = styled.button`
   padding: 8px 20px;
   font-size: 16px;
   font-weight: 600;
-  border: 1px solid ${COLORS.PRIMARY_COLOR};
+  ${applyColorCss};
   display: flex;
   align-items: center;
-  background-color: transparent;
-  color: ${COLORS.PRIMARY_COLOR};
   cursor: pointer;
 `;

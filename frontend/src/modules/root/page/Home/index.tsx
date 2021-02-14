@@ -1,11 +1,11 @@
+import Btn from 'common/components/Button';
+import StaticSection from 'modules/root/components/StaticSection';
 import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
+import WhatNewSection from 'modules/root/components/whatNewSection';
 import Head from 'next/head';
 import React from 'react';
-import { Main } from './styled';
-import StaticSection from 'modules/root/components/StaticSection';
-import WhatNewSection from 'modules/root/components/whatNewSection';
 import { HiOutlineArrowRight } from 'react-icons/hi';
-import Btn from 'common/components/Button';
+import { Main } from './styled';
 
 const Home: React.FC = () => {
   return (
@@ -23,7 +23,7 @@ const Home: React.FC = () => {
           content="เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน ใช้งานรูบิค แซมบ้าเมาท์
             แอดมิชชั่นคัตเอาต์โครนาโอ้ยเซ็นเซอร์ ผู้นำเมจิควิทย์ บลอนด์แทคติคไอซียูเยลลี่">
           <ButtonStyled>
-            <Btn color="primary">
+            <Btn $color="primary">
               สำรวจหลักสูตรทั้งหมด
               <HiOutlineArrowRight
                 className="Icon"
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
             </Btn>
           </ButtonStyled>
           <ButtonStyled>
-            <Btn color="white">
+            <Btn $color="white">
               สมัครเข้าเรียน
               <HiOutlineArrowRight
                 className="Icon"
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
           header="แกลเลอรี่รูปภาพ"
           content="โดยมีอาจารย์ผู้สอนเป็นผู้ให้คำปรึกษา นักศึกษาต้องทำงานเป็นกลุ่ม และมีการนำเสนอผลงาน ของตนเองให้เพื่อนๆ ร่วมกันวิเคราะห์และวิจารณ์อย่างมีเหตุผล">
           <ButtonStyled>
-            <Btn color="white">
+            <Btn $color="white">
               สำรวจแกลเลอรี่
               <HiOutlineArrowRight
                 className="Icon"

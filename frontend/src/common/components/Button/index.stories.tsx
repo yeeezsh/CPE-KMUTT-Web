@@ -1,15 +1,14 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { HiOutlineArrowRight } from 'react-icons/hi';
 import Button from '.';
 import { ButtonProps } from './types';
-import { HiOutlineArrowRight } from 'react-icons/hi';
 
 export default {
   title: 'Commmon/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
-    // color: { control: 'color' },
   },
 } as Meta;
 
@@ -22,10 +21,10 @@ const Template: Story<ButtonProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  color: 'primary',
+  $color: 'primary',
 };
 
 export const Transparent = Template.bind({});
 Transparent.args = {
-  color: 'transparent',
+  $color: 'transparent',
 };
