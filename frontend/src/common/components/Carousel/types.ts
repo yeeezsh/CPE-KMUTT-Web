@@ -1,5 +1,5 @@
 export type ChildrenProps = {
-  id: string;
+  id: number;
   picture: string;
   heading?: string;
   caption?: string;
