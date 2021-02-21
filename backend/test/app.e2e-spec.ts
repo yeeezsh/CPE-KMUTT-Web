@@ -1,17 +1,14 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
+import * as mongoose from 'mongoose';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../src/app.module';
+import { DATABASE_CONNECTION } from '../src/database/constants/database.constant';
+import { mockDatabaseFactory, replSet } from '../src/utils/database.factory';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-<<<<<<< HEAD
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
-    }).compile();
-=======
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
@@ -21,7 +18,6 @@ describe('AppController (e2e)', () => {
         factory: async () => await mockDatabaseFactory(),
       })
       .compile();
->>>>>>> c2d74df6a9a845d96c163ed0377882c81f3b2b90
 
     app = moduleFixture.createNestApplication();
     await app.init();
