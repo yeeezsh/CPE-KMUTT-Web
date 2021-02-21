@@ -19,6 +19,7 @@ import React from 'react';
 <<<<<<< HEAD
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { Main } from './styled';
+<<<<<<< HEAD
 =======
 import { Container, Main } from './styled';
 >>>>>>> Fixed navbar
@@ -88,6 +89,13 @@ const SLIDER_SLIDE: ChildrenProps[] = [
     caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
 ];
+=======
+import Carousel from 'common/components/Carousel';
+import {
+  CAROUSEL_DEFAULT_CONSTANT,
+  CAROUSEL_SLIDER_CONSTANT,
+} from 'common/components/Carousel/constant';
+>>>>>>> Add carousels to home page
 
 const Home: React.FC = () => {
   return (
@@ -97,6 +105,7 @@ const Home: React.FC = () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+<<<<<<< HEAD
       <Main>
         <Navbar />
         <WhatNewSection />
@@ -163,6 +172,32 @@ const Home: React.FC = () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+=======
+      {/* <Navbar></Navbar> 
+
+          <Header></Header>
+
+          <Announcement></Announcement>
+      */}
+      <Carousel
+        item={CAROUSEL_DEFAULT_CONSTANT}
+        variant="Default"
+        fullText={false}
+        arrows={true}
+      />
+      <Container>
+        <Carousel
+          item={CAROUSEL_SLIDER_CONSTANT}
+          variant="Slider"
+          fullText={false}
+          arrows={false}
+        />
+      </Container>
+      {/*
+          <Programme></Programme>
+      
+          <Contact></Contact>
+>>>>>>> Add carousels to home page
 
       <Carousel item={DEFAULT_SLIDE} variant="Default" fullText={false} arrows={true} />
 
