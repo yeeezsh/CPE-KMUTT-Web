@@ -6,14 +6,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Caption,
   CarouselStyle,
+  Fader,
+  FaderSlide,
   Heading,
   Image,
   LeftButton,
   NavigationWrapper,
+  ProgressBar,
+  ProgressButton,
   RightButton,
   SlideContent,
   Slides,
-  Space,
   StyledButton,
   Tag,
 } from './styled';
@@ -39,6 +42,20 @@ const Carousel: React.FC<CarouselProps> = (props) => {
     },
   });
 
+  const [opacities, setOpacities] = useState<number[]>([]);
+  const [faderRef, fader] = useKeenSlider<HTMLDivElement>({
+    slides: props.item.length,
+    loop: true,
+    duration: 2000,
+    move(s) {
+      const new_opacities = s.details().positions.map((slide) => slide.portion);
+      setOpacities(new_opacities);
+    },
+    slideChanged(s) {
+      setCurrentSlide(s.details().relativeSlide);
+    },
+  });
+
   useEffect(() => {
     if (slideRef.current != null) {
       slideRef.current.addEventListener('mouseover', () => {
@@ -54,12 +71,24 @@ const Carousel: React.FC<CarouselProps> = (props) => {
     timer.current = setInterval(() => {
       if (!pause && slider) {
         slider.next();
+        fader.next();
       }
     }, 5000);
     return () => {
       clearInterval(timer.current);
     };
   }, [pause, slider]);
+
+  useEffect(() => {
+    if (faderRef.current != null) {
+      faderRef.current.addEventListener('mouseover', () => {
+        setPause(true);
+      });
+      faderRef.current.addEventListener('mouseout', () => {
+        setPause(false);
+      });
+    }
+  }, [faderRef]);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -68,115 +97,120 @@ const Carousel: React.FC<CarouselProps> = (props) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
   return (
     <NavigationWrapper>
       <CarouselStyle />
-      <div
-        className="keen-slider"
-        style={isDefault ? { background: '#f4f5f6' } : { background: 'white' }}
-        ref={slideRef}>
-        {props.item
-          ? props.item.map(
-              ({ id, picture, heading, caption, tag, link }: ChildrenProps) => {
-                return (
-                  <>
+      <Container>
+        <Slides defaultStyle={isDefault} customStyle={props.variant}>
+          <Fader
+            style={isDefault ? { background: '#f4f5f6' } : { background: 'white' }}
+            ref={faderRef}>
+            {slider && (
+              <ProgressBar defaultStyle={isDefault}>
+                {[...Array(slider.details().size).keys()].map((i) => {
+                  return (
+                    <ProgressButton
+                      defaultStyle={isDefault}
+                      key={i}
+                      onClick={() => {
+                        slider.moveToSlideRelative(i);
+                        fader.moveToSlideRelative(i);
+                      }}
+                      className={currentSlide === i ? ' active' : ''}
+                    />
+                  );
+                })}
+              </ProgressBar>
+            )}
+            {props.item
+              ? props.item.map(({ id, heading, caption, tag, link }: ChildrenProps) => {
+                  return (
+                    <>
+                      <FaderSlide key={id} style={{ opacity: opacities[id] }}>
+                        <SlideContent defaultStyle={isDefault}>
+                          {tag ? <Tag>#{tag}</Tag> : null}
+                          {heading ? (
+                            <Heading defaultStyle={isDefault}>{heading}</Heading>
+                          ) : null}
+                          {caption ? (
+                            props.fullText ? (
+                              <Caption defaultStyle={isDefault}>{caption}</Caption>
+                            ) : caption.length > 100 ? (
+                              <Caption defaultStyle={isDefault}>
+                                {caption.slice(0, 100)}...
+                              </Caption>
+                            ) : (
+                              <Caption defaultStyle={isDefault}>
+                                {caption.slice(0, 100)}
+                              </Caption>
+                            )
+                          ) : null}
+                          {link && !props.fullText ? (
+                            isDefault ? (
+                              <StyledButton as="a" href={link}>
+                                อ่านต่อเพิ่มเติม
+                                <ArrowRightOutlined style={{ marginLeft: '15px' }} />
+                              </StyledButton>
+                            ) : (
+                              <StyledButton onClick={showModal}>
+                                อ่านต่อเพิ่มเติม
+                                <ArrowRightOutlined style={{ marginLeft: '15px' }} />
+                              </StyledButton>
+                            )
+                          ) : null}
+                        </SlideContent>
+                      </FaderSlide>
+                    </>
+                  );
+                })
+              : null}
+          </Fader>
+          <div className="keen-slider" ref={slideRef}>
+            {props.item
+              ? props.item.map(({ id, picture }: ChildrenProps) => {
+                  return (
                     <div className="keen-slider__slide" key={id}>
-                      <Container>
-                        <Slides defaultStyle={isDefault} customStyle={props.variant}>
-                          <SlideContent>
-                            {slider && (
-                              <div className="dashes">
-                                {[...Array(slider.details().size).keys()].map((i) => {
-                                  return (
-                                    <button
-                                      key={i}
-                                      onClick={() => {
-                                        slider.moveToSlideRelative(i);
-                                      }}
-                                      className={
-                                        'dash' + (currentSlide === i ? ' active' : '')
-                                      }
-                                      style={
-                                        isDefault ? { width: '20px' } : { width: '100%' }
-                                      }
-                                    />
-                                  );
-                                })}
-                              </div>
-                            )}
-                            {tag ? <Tag>#{tag}</Tag> : null}
-                            {heading ? <Heading>{heading}</Heading> : null}
-                            {caption ? (
-                              props.fullText ? (
-                                <Caption>{caption}</Caption>
-                              ) : caption.length > 100 ? (
-                                <Caption>{caption.slice(0, 100)}...</Caption>
-                              ) : (
-                                <Caption>{caption.slice(0, 100)}</Caption>
-                              )
-                            ) : null}
-                            {link && !props.fullText ? (
-                              isDefault ? (
-                                <StyledButton as="a" href={link}>
-                                  อ่านต่อเพิ่มเติม
-                                  <ArrowRightOutlined style={{ marginLeft: '15px' }} />
-                                </StyledButton>
-                              ) : (
-                                <StyledButton onClick={showModal}>
-                                  อ่านต่อเพิ่มเติม
-                                  <ArrowRightOutlined style={{ marginLeft: '15px' }} />
-                                </StyledButton>
-                              )
-                            ) : null}
-                          </SlideContent>
-                          <Space />
-                          {picture ? <Image src={picture} alt="" /> : null}
-                        </Slides>
-                        <Modal
-                          centered
-                          keyboard
-                          visible={isModalVisible}
-                          onCancel={handleCancel}
-                          footer={null}
-                          width={1250}
-                          bodyStyle={{ padding: '0' }}>
-                          <Carousel
-                            item={props.item}
-                            variant="PopUp"
-                            fullText={true}
-                            arrows={true}
-                          />
-                        </Modal>
-                      </Container>
+                      <Image src={picture} alt="" />
                     </div>
-                  </>
-                );
-              },
-            )
-          : null}
-      </div>
-      {props.arrows
-        ? slider && (
-            <>
-              <LeftButton onClick={() => slider.prev()}>
-                <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M8.48521 2.51472L9.54587 3.57538L2.86902 10.2522L20.4654 10.2522L20.4654 11.7478L2.86902 11.7478L9.54587 18.4246L8.48521 19.4853L-6.83069e-05 11L8.48521 2.51472Z"
-                    fill="#FAFAFA"
-                  />
-                </svg>
-              </LeftButton>
-              <RightButton onClick={() => slider.next()}>
-                <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M13.5148 19.4853L12.4541 18.4246L19.131 11.7478L1.53463 11.7478L1.53463 10.2522L19.131 10.2522L12.4541 3.57538L13.5148 2.51472L22.0001 11L13.5148 19.4853Z"
-                    fill="#FAFAFA"
-                  />
-                </svg>
-              </RightButton>
-            </>
-          )
-        : null}
+                  );
+                })
+              : null}
+          </div>
+          {props.arrows
+            ? slider && (
+                <>
+                  <LeftButton onClick={() => slider.prev() & fader.prev()}>
+                    <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M8.48521 2.51472L9.54587 3.57538L2.86902 10.2522L20.4654 10.2522L20.4654 11.7478L2.86902 11.7478L9.54587 18.4246L8.48521 19.4853L-6.83069e-05 11L8.48521 2.51472Z"
+                        fill="#FAFAFA"
+                      />
+                    </svg>
+                  </LeftButton>
+                  <RightButton onClick={() => slider.next() & fader.next()}>
+                    <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M13.5148 19.4853L12.4541 18.4246L19.131 11.7478L1.53463 11.7478L1.53463 10.2522L19.131 10.2522L12.4541 3.57538L13.5148 2.51472L22.0001 11L13.5148 19.4853Z"
+                        fill="#FAFAFA"
+                      />
+                    </svg>
+                  </RightButton>
+                </>
+              )
+            : null}
+        </Slides>
+      </Container>
+      <Modal
+        centered
+        keyboard
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        footer={null}
+        width={1250}
+        bodyStyle={{ padding: '0' }}>
+        <Carousel item={props.item} variant="PopUp" fullText={true} arrows={true} />
+      </Modal>
     </NavigationWrapper>
   );
 };
