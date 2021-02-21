@@ -1,6 +1,7 @@
 import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 import styled, { createGlobalStyle } from 'styled-components';
+import { Progress } from 'antd';
 
 interface DesignProps {
   defaultStyle?: boolean;
@@ -125,7 +126,7 @@ export const Slides = styled.div`
   }
 `;
 
-export const ProgressBar = styled.div`
+export const ProgressContainer = styled.div`
   display: flex;
   padding: ${(props: DesignProps) => (props.defaultStyle ? '100px 0 40px 0' : '40px')};
   @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
@@ -138,17 +139,26 @@ export const ProgressBar = styled.div`
   }
 `;
 
-export const ProgressButton = styled.button`
+export const ProgressBar = styled.div`
   border: none;
   height: 2px;
-  width: ${(props: DesignProps) => (props.defaultStyle ? '20px' : '100%')};
+  width: 20px;
   background: ${COLORS.PRIMARY_COLOR};
   opacity: 0.2;
   margin: 0 2px;
   cursor: pointer;
-  &.focus {
-    outline: none;
+  &.active {
+    opacity: 1;
   }
+`;
+
+export const StyledProgress = styled(Progress)`
+  width: 100%;
+  height: 2px;
+  opacity: 0.2;
+  cursor: pointer;
+  margin: 0 2px;
+  top: -11px;
   &.active {
     opacity: 1;
   }
