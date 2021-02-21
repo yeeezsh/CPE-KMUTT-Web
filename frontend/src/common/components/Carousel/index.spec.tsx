@@ -6,14 +6,14 @@ describe('Carousel Tests', () => {
   const props = {
     item: [
       {
-        id: '1',
+        id: 0,
         picture: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
         heading: 'Test',
         caption: 'This is caption',
         link: '#',
       },
       {
-        id: '2',
+        id: 1,
         picture: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
         heading: 'Test++',
         caption: 'Caption is here',

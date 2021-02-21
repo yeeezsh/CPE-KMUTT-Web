@@ -13,7 +13,7 @@ export default {
 const Template: Story<CarouselProps> = (args) => <Carousel {...args} />;
 const sampleItem: ChildrenProps[] = [
   {
-    id: '1',
+    id: 0,
     picture: 'https://www.nicepng.com/png/detail/95-953450_man-man-with-laptop-png.png',
     heading: 'วิศวะคอมบางมดไม่ใช่สถานที่',
     caption:
@@ -21,7 +21,7 @@ const sampleItem: ChildrenProps[] = [
     link: '#',
   },
   {
-    id: '2',
+    id: 1,
     picture: 'https://static.bangkokpost.com/media/content/20190306/3122160.jpg',
     heading: 'ทีมอะไรไม่รู้คว้าแชมป์ NSC',
     caption:
