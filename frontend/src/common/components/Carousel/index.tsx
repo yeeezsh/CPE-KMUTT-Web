@@ -5,7 +5,6 @@ import { useKeenSlider } from 'keen-slider/react';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Caption,
-  CarouselStyle,
   Fader,
   FaderSlide,
   Heading,
@@ -20,6 +19,8 @@ import {
   StyledButton,
   Tag,
   StyledProgress,
+  StyledSlider,
+  StyledSliderSlide,
 } from './styled';
 import { CarouselProps, ChildrenProps } from './types';
 import COLORS from 'common/constants/colors';
@@ -29,11 +30,14 @@ const Carousel: React.FC<CarouselProps> = (props) => {
   const timer = useRef<number>();
   const [pause, setPause] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentPic, setCurrentPic] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [slideRef, slider] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     slideChanged(s) {
-      setProgress(0);
       setCurrentSlide(s.details().relativeSlide);
+      setCurrentPic(s.details().relativeSlide);
+      setProgress(0);
     },
     loop: true,
     duration: 2000,
@@ -45,6 +49,8 @@ const Carousel: React.FC<CarouselProps> = (props) => {
     },
   });
   const [opacities, setOpacities] = useState<number[]>([]);
+  const [currentContent, setCurrentContent] = useState(0);
+
   const [faderRef, fader] = useKeenSlider<HTMLDivElement>({
     slides: props.item.length,
     loop: true,
@@ -55,8 +61,26 @@ const Carousel: React.FC<CarouselProps> = (props) => {
     },
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide);
+      setCurrentContent(s.details().relativeSlide);
     },
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (currentContent !== currentSlide && currentPic === currentSlide) {
+        {
+          fader.moveToSlideRelative(currentSlide);
+        }
+      }
+    }, 200);
+    setTimeout(() => {
+      if (currentContent === currentSlide && currentPic !== currentSlide) {
+        {
+          slider.moveToSlideRelative(currentSlide);
+        }
+      }
+    }, 200);
+  }, [currentPic, currentSlide, currentContent, fader, slider]);
 
   useEffect(() => {
     if (slideRef.current != null) {
@@ -97,20 +121,21 @@ const Carousel: React.FC<CarouselProps> = (props) => {
     if (pagination === 1) {
       slider.next();
       fader.next();
+      setPagination(0);
     }
     if (pagination === -1) {
       slider.prev();
       fader.prev();
+      setPagination(0);
     }
   });
 
-  const [progress, setProgress] = useState(0);
   useEffect(() => {
     const updateProgress = () => setProgress(progress + 2.5);
-    if (progress < 100) {
+    if (!pause && progress < 100) {
       setTimeout(updateProgress, 100);
     }
-  }, [progress]);
+  }, [pause, progress]);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -122,7 +147,6 @@ const Carousel: React.FC<CarouselProps> = (props) => {
 
   return (
     <NavigationWrapper>
-      <CarouselStyle />
       <Container>
         <Slides defaultStyle={isDefault} customStyle={props.variant}>
           <Fader
@@ -201,17 +225,17 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                 })
               : null}
           </Fader>
-          <div className="keen-slider" ref={slideRef}>
+          <StyledSlider ref={slideRef}>
             {props.item
               ? props.item.map(({ id, picture }: ChildrenProps) => {
                   return (
-                    <div className="keen-slider__slide" key={id}>
+                    <StyledSliderSlide key={id}>
                       <Image src={picture} alt="" />
-                    </div>
+                    </StyledSliderSlide>
                   );
                 })
               : null}
-          </div>
+          </StyledSlider>
           {props.arrows
             ? slider && (
                 <>
