@@ -1,7 +1,7 @@
 import Btn from 'common/components/Button';
 import StaticSection from 'modules/root/components/StaticSection';
 import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
-import WhatNewSection from 'modules/root/components/whatNewSection';
+import WhatNewSection from 'modules/root/components/WhatNewSection';
 import Head from 'next/head';
 import React from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
