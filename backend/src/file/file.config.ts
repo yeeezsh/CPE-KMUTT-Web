@@ -6,7 +6,7 @@ import {
 import { Request } from 'express';
 import { FileRequestType } from './@interfaces/file.request.interface';
 import { DATABASE_CONNECTION } from '../database/constants/database.constant';
-import * as GridFsStorage from 'multer-gridfs-storage';
+import GridFsStorage from 'multer-gridfs-storage';
 
 Injectable();
 export class GridFsMulterConfigService implements MulterOptionsFactory {
