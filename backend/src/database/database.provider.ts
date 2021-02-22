@@ -1,5 +1,5 @@
 import { Provider } from '@nestjs/common';
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import { ConfigurationInterface } from '../config/@types/config.interface';
 import { APP_CONFIG } from '../config/config.constant';
 import { DATABASE_CONNECTION } from './constants/database.constant';
