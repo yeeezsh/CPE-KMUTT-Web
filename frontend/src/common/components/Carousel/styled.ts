@@ -1,6 +1,6 @@
 import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import { Progress } from 'antd';
 
 interface DesignProps {
@@ -8,24 +8,26 @@ interface DesignProps {
   customStyle?: string;
 }
 
-export const CarouselStyle = createGlobalStyle`
-  .keen-slider {
-    height: 100%;
-    width: 50%;
-    background: #f4f5f6;
-    @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-      height: 45%;
-      width: 100%;
-    }
-  }
-
-  .keen-slider__slide {
-    height: 100%;
+export const StyledSlider = styled.div.attrs({
+  className: 'keen-slider',
+})`
+  height: 100%;
+  width: 50%;
+  background: #f4f5f6;
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    height: 45%;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
   }
+`;
+
+export const StyledSliderSlide = styled.div.attrs({
+  className: 'keen-slider__slide',
+})`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 `;
 
 export const Fader = styled.div`
@@ -156,7 +158,6 @@ export const StyledProgress = styled(Progress)`
   width: 100%;
   height: 2px;
   opacity: 0.2;
-  cursor: pointer;
   margin: 0 2px;
   top: -11px;
   &.active {
