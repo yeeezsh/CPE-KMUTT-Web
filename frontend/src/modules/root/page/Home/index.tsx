@@ -11,8 +11,8 @@ const Home: React.FC = () => {
   return (
     <div>
       <Head>
-        <title>Computer Engineering | KMUTT</title>
-        <link rel="icon" href="/Logo.svg" />
+        <title>Create Next App</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
         <WhatNewSection />
@@ -64,5 +64,4 @@ const Home: React.FC = () => {
     </div>
   );
 };
-
 export default Home;
