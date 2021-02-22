@@ -12,6 +12,7 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "strictNullChecks": true,
-    "incremental": true
+    "incremental": true,
+    "esModuleInterop": true
   }
 }

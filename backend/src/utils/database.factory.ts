@@ -1,6 +1,6 @@
 import { Logger } from '@nestjs/common';
 import { MongoMemoryReplSet } from 'mongodb-memory-server';
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
 export const replSet = new MongoMemoryReplSet({
   replSet: { storageEngine: 'wiredTiger' },
