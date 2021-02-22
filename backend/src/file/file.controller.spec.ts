@@ -4,7 +4,7 @@ import { FileService } from './file.service';
 import { DatabaseModule } from './../database/database.module';
 import { DATABASE_CONNECTION } from '../database/constants/database.constant';
 import { mockDatabaseFactory, replSet } from '../utils/database.factory';
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
 describe('FileController test', () => {
   let controller: FileController;
