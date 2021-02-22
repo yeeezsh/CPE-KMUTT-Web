@@ -1,16 +1,16 @@
-import Container from 'common/components/Container';
 import Button from 'common/components/Button';
+import Card from 'common/components/Card';
+import Container from 'common/components/Container';
 import React from 'react';
+import { HiOutlineArrowRight } from 'react-icons/hi';
 import {
-  WhatNewStyle,
+  CardContainer,
+  PortletDiscription,
   PortletTitle,
   PortletTitleHeader,
-  PortletDiscription,
-  CardContainer,
   ShowAllButton,
+  WhatNewStyle,
 } from './styled';
-import Card from 'common/components/Card';
-import { HiOutlineArrowRight } from 'react-icons/hi';
 
 const WhatNewSection: React.FC = () => {
   const constants = [
@@ -50,7 +50,7 @@ const WhatNewSection: React.FC = () => {
             สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
           </PortletDiscription>
           <ShowAllButton>
-            <Button color="borderless">
+            <Button $color="borderless">
               แสดงทั้งหมด
               <HiOutlineArrowRight
                 className="Icon"
