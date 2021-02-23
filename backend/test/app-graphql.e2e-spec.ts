@@ -1,7 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
-import * as request from 'supertest';
+import mongoose from 'mongoose';
+import request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { AppModel } from '../src/app.resolver';
 import { DATABASE_CONNECTION } from '../src/database/constants/database.constant';
