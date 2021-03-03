@@ -3,7 +3,7 @@ import COLORS from 'common/constants/colors';
 import styled, { css } from 'styled-components';
 import { ButtonProps } from './types';
 
-const BACKGROUND_COLORS: any = {
+const BACKGROUND_COLORS = {
   primary: COLORS.PRIMARY_COLOR,
   yellow: COLORS.YELLOW_1,
   borderless: 'transparent',
@@ -11,7 +11,7 @@ const BACKGROUND_COLORS: any = {
   transparent: 'transparent',
 };
 
-const BORDER_COLORS: any = {
+const BORDER_COLORS = {
   primary: '#ffffff',
   yellow: COLORS.YELLOW_1,
   borderless: 'transparent',
@@ -19,7 +19,7 @@ const BORDER_COLORS: any = {
   transparent: COLORS.PRIMARY_COLOR,
 };
 
-const FONT_COLORS: any = {
+const FONT_COLORS = {
   primary: '#ffffff',
   yellow: '#ffffff',
   borderless: COLORS.PRIMARY_COLOR,
