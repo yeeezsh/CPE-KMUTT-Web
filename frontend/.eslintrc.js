@@ -28,6 +28,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended', // Make sure this is always the last element in the array.
   ],
+  plugins: ['import'],
   rules: {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'react/react-in-jsx-scope': 'off',
@@ -41,6 +42,45 @@ module.exports = {
         components: ['Link'],
         specialLink: ['hrefLeft', 'hrefRight'],
         aspects: ['invalidHref', 'preferButton'],
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: 'next',
+            group: 'external',
+            position: 'after',
+          },
+          {
+            pattern: 'next/**',
+            group: 'external',
+            position: 'after',
+          },
+          {
+            pattern: 'common/**',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: 'modules/**',
+            group: 'internal',
+            position: 'after',
+          },
+        ],
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        pathGroupsExcludedImportTypes: ['react', 'next'],
       },
     ],
   },
