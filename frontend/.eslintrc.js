@@ -59,11 +59,6 @@ module.exports = {
             position: 'after',
           },
           {
-            pattern: 'next/**',
-            group: 'external',
-            position: 'after',
-          },
-          {
             pattern: 'common/**',
             group: 'internal',
             position: 'after',
