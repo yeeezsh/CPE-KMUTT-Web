@@ -1,5 +1,7 @@
-import { Meta } from '@storybook/react/types-6-0';
 import React from 'react';
+
+import { Meta } from '@storybook/react/types-6-0';
+
 import Container from '.';
 
 const meta: Meta = {

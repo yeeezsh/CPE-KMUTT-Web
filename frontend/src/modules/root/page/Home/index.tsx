@@ -1,11 +1,15 @@
+import React from 'react';
+
+import Head from 'next/head';
+import { HiOutlineArrowRight } from 'react-icons/hi';
+
 import Btn from 'common/components/Button';
+
 import Footer from 'modules/root/components/Footer';
 import StaticSection from 'modules/root/components/StaticSection';
 import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
 import WhatNewSection from 'modules/root/components/WhatNewSection';
-import Head from 'next/head';
-import React from 'react';
-import { HiOutlineArrowRight } from 'react-icons/hi';
+
 import { Main } from './styled';
 
 const Home: React.FC = () => {
