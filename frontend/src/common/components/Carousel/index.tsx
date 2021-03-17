@@ -1,6 +1,7 @@
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { Modal } from 'antd';
 import Container from 'common/components/Container';
+import COLORS from 'common/constants/colors';
 import { useKeenSlider } from 'keen-slider/react';
 import React, { useEffect, useRef, useState } from 'react';
 import {
@@ -11,23 +12,23 @@ import {
   Image,
   LeftButton,
   NavigationWrapper,
-  ProgressContainer,
   ProgressBar,
+  ProgressContainer,
   RightButton,
   SlideContent,
   Slides,
   StyledButton,
-  Tag,
   StyledProgress,
   StyledSlider,
   StyledSliderSlide,
+  Tag,
 } from './styled';
 import { CarouselProps, ChildrenProps } from './types';
-import COLORS from 'common/constants/colors';
 
 const Carousel: React.FC<CarouselProps> = (props) => {
   const isDefault = props.variant === 'Default' ? true : false;
   const timer = useRef<number>();
+  const DEFAULT_INTERVAL = 5000;
   const [pause, setPause] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentPic, setCurrentPic] = useState(0);
@@ -66,20 +67,18 @@ const Carousel: React.FC<CarouselProps> = (props) => {
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      if (currentContent !== currentSlide && currentPic === currentSlide) {
-        {
-          fader.moveToSlideRelative(currentSlide);
-        }
-      }
-    }, 200);
-    setTimeout(() => {
-      if (currentContent === currentSlide && currentPic !== currentSlide) {
-        {
-          slider.moveToSlideRelative(currentSlide);
-        }
-      }
-    }, 200);
+    const contentNotMatch =
+      currentContent !== currentSlide && currentPic === currentSlide;
+    const pictureNotMatch =
+      currentContent === currentSlide && currentPic !== currentSlide;
+
+    if (contentNotMatch) {
+      fader.moveToSlideRelative(currentSlide);
+    }
+
+    if (pictureNotMatch) {
+      slider.moveToSlideRelative(currentSlide);
+    }
   }, [currentPic, currentSlide, currentContent, fader, slider]);
 
   useEffect(() => {
@@ -110,7 +109,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
         slider.next();
         fader.next();
       }
-    }, 5000);
+    }, DEFAULT_INTERVAL);
     return () => {
       clearInterval(timer.current);
     };
