@@ -71,13 +71,28 @@ const Carousel: React.FC<CarouselProps> = (props) => {
       currentContent !== currentSlide && currentPic === currentSlide;
     const pictureNotMatch =
       currentContent === currentSlide && currentPic !== currentSlide;
+    const lastSlideIndex = props.item.length - 1;
+    const currentIsLastSlide = currentSlide === lastSlideIndex;
+    const currentIsFirstSlide = currentSlide === 0;
 
     if (contentNotMatch) {
-      fader.moveToSlideRelative(currentSlide);
+      if (currentIsLastSlide && currentContent == 0) {
+        fader.prev();
+      } else if (currentIsFirstSlide && currentContent == lastSlideIndex) {
+        fader.next();
+      } else {
+        fader.moveToSlideRelative(currentSlide);
+      }
     }
 
     if (pictureNotMatch) {
-      slider.moveToSlideRelative(currentSlide);
+      if (currentIsLastSlide && currentPic == 0) {
+        slider.prev();
+      } else if (currentIsFirstSlide && currentPic == lastSlideIndex) {
+        slider.next();
+      } else {
+        slider.moveToSlideRelative(currentSlide);
+      }
     }
   }, [currentPic, currentSlide, currentContent, fader, slider]);
 
