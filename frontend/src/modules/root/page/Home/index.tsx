@@ -1,4 +1,5 @@
 import Btn from 'common/components/Button';
+import Footer from 'modules/root/components/Footer';
 import StaticSection from 'modules/root/components/StaticSection';
 import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
 import WhatNewSection from 'modules/root/components/WhatNewSection';
@@ -6,7 +7,6 @@ import Head from 'next/head';
 import React from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { Main } from './styled';
-import Footer from 'modules/root/components/Footer';
 
 const Home: React.FC = () => {
   return (
@@ -26,10 +26,7 @@ const Home: React.FC = () => {
           <ButtonStyled>
             <Btn $color="primary">
               สำรวจหลักสูตรทั้งหมด
-              <HiOutlineArrowRight
-                className="Icon"
-                style={{ marginLeft: '16px' }}
-              />
+              <HiOutlineArrowRight className="Icon" style={{ marginLeft: '16px' }} />
             </Btn>
           </ButtonStyled>
           <ButtonStyled>

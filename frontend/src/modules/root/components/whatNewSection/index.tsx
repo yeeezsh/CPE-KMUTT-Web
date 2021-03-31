@@ -1,47 +1,79 @@
+import Button from 'common/components/Button';
+import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 import React from 'react';
-import { WhatNewStyle } from './styled';
-import Card from 'common/components/Card';
+import { HiOutlineArrowRight } from 'react-icons/hi';
+import {
+  CardContainer,
+  PortletDiscription,
+  PortletTitle,
+  PortletTitleHeader,
+  ShowAllButton,
+  WhatNewStyle,
+} from './styled';
 
 const WhatNewSection: React.FC = () => {
+  const constants = [
+    {
+      id: '1',
+      title: 'การรับเข้าศึกษา',
+      description:
+        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
+      date: '28 ตุลาคม 2563',
+      links: '/images/thumbnail.png',
+      variant: 'primary',
+    },
+    {
+      id: '2',
+      title: 'การรับเข้าศึกษา',
+      description:
+        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
+      date: '28 ตุลาคม 2563',
+      variant: 'normal',
+    },
+    {
+      id: '3',
+      title: 'การรับเข้าศึกษา',
+      description:
+        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
+      date: '28 ตุลาคม 2563',
+      variant: 'normal',
+    },
+  ];
+
   return (
     <WhatNewStyle>
-      <div className="background-bracket"></div>
       <Container>
-        <div className="portlet-title">
-          <div className="portlet-title__header">มีอะไรใหม่</div>
-          <div className="portlet-discription">
+        <PortletTitle>
+          <PortletTitleHeader>มีอะไรใหม่</PortletTitleHeader>
+          <PortletDiscription>
             สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
-          </div>
-          <div className="show-all">
-            แสดงทั้งหมด
-            <div className="arrow-icon" />
-          </div>
-        </div>
+          </PortletDiscription>
+          <ShowAllButton>
+            <Button $color="borderless">
+              แสดงทั้งหมด
+              <HiOutlineArrowRight
+                className="Icon"
+                style={{ marginLeft: '15px' }}
+                size="20px"
+              />
+            </Button>
+          </ShowAllButton>
+        </PortletTitle>
 
-        <div className="card-container">
-          <Card
-            title="การรับเข้าศึกษา"
-            description="ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563"
-            date="28 ตุลาคม 2563"
-            id="1"
-            primary={true}
-          />
-          <Card
-            title="การรับเข้าศึกษา"
-            description="ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563"
-            date="28 ตุลาคม 2563"
-            id="2"
-            primary={false}
-          />
-          <Card
-            title="การรับเข้าศึกษา"
-            description="ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563"
-            date="28 ตุลาคม 2563"
-            id="3"
-            primary={false}
-          />
-        </div>
+        <CardContainer>
+          {constants.map((data, index) => (
+            <Card
+              key={index}
+              title={data.title}
+              description={data.description}
+              date={data.date}
+              links={data.links}
+              id={data.id}
+              variant={data.variant}
+            />
+          ))}
+        </CardContainer>
       </Container>
     </WhatNewStyle>
   );
