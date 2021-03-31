@@ -27,8 +27,8 @@ const Home: React.FC = () => {
               สำรวจหลักสูตรทั้งหมด
               <HiOutlineArrowRight
                 className="Icon"
-                style={{ marginLeft: '15px' }}
-                size="20px"
+                style={{ marginLeft: '16px' }}
+                size="16px"
               />
             </Btn>
           </ButtonStyled>
@@ -37,8 +37,8 @@ const Home: React.FC = () => {
               สมัครเข้าเรียน
               <HiOutlineArrowRight
                 className="Icon"
-                style={{ marginLeft: '15px' }}
-                size="20px"
+                style={{ marginLeft: '16px' }}
+                size="16px"
               />
             </Btn>
           </ButtonStyled>
@@ -54,8 +54,8 @@ const Home: React.FC = () => {
               สำรวจแกลเลอรี่
               <HiOutlineArrowRight
                 className="Icon"
-                style={{ marginLeft: '15px' }}
-                size="20px"
+                style={{ marginLeft: '16px' }}
+                size="16px"
               />
             </Btn>
           </ButtonStyled>
