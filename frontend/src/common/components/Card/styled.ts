@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import COLORS from 'common/constants/colors';
+import styled from 'styled-components';
 
 export const Card = styled.div`
   font-family: 'Kanit', sans-serif;
@@ -74,6 +74,16 @@ export const CardBodyStyled = styled.div`
       color: #ffffff;
       opacity: 0.5;
       bottom: 16px;
+      position: absolute;
+    }
+
+    .card-next {
+      font-size: 20px;
+      bottom: 6px;
+      right: 20px;
+      position: absolute;
+      color: #ffffff;
+      cursor: pointer;
     }
   }
 `;

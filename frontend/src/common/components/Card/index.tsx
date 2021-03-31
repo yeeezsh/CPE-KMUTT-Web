@@ -2,11 +2,11 @@ import React from 'react';
 import {
   Card,
   CardBodyStyled,
-  CardTitle,
-  CardDiscription,
   CardDate,
-  CardNextBtn,
+  CardDiscription,
   CardImage,
+  CardNextBtn,
+  CardTitle,
 } from './styled';
 import { CardProps } from './types';
 

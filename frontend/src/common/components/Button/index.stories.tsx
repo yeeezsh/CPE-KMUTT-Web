@@ -21,10 +21,10 @@ const Template: Story<ButtonProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  color: 'primary',
+  $color: 'primary',
 };
 
 export const Transparent = Template.bind({});
 Transparent.args = {
-  color: 'transparent',
+  $color: 'transparent',
 };
