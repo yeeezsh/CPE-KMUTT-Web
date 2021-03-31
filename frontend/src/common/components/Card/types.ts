@@ -3,8 +3,8 @@ interface Card {
   title?: string;
   description?: string;
   date?: string;
-  links?: string[];
-  primary?: boolean;
+  links?: string;
+  variant?: string;
 }
 
 export interface CardProps extends Partial<Card> {

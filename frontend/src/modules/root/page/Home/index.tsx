@@ -1,19 +1,19 @@
+import Btn from 'common/components/Button';
+import StaticSection from 'modules/root/components/StaticSection';
 import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
+import WhatNewSection from 'modules/root/components/WhatNewSection';
 import Head from 'next/head';
 import React from 'react';
-import { Main } from './styled';
-import StaticSection from 'modules/root/components/StaticSection';
-import WhatNewSection from 'modules/root/components/whatNewSection';
-import Footer from 'modules/root/components/Footer';
 import { HiOutlineArrowRight } from 'react-icons/hi';
-import Btn from 'common/components/Button';
+import { Main } from './styled';
+import Footer from 'modules/root/components/Footer';
 
 const Home: React.FC = () => {
   return (
     <div>
       <Head>
-        <title>Computer Engineering | KMUTT</title>
-        <link rel="icon" href="/Logo.svg" />
+        <title>Create Next App</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
         <WhatNewSection />
@@ -24,22 +24,21 @@ const Home: React.FC = () => {
           content="เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน ใช้งานรูบิค แซมบ้าเมาท์
             แอดมิชชั่นคัตเอาต์โครนาโอ้ยเซ็นเซอร์ ผู้นำเมจิควิทย์ บลอนด์แทคติคไอซียูเยลลี่">
           <ButtonStyled>
-            <Btn color="primary">
+            <Btn $color="primary">
               สำรวจหลักสูตรทั้งหมด
               <HiOutlineArrowRight
                 className="Icon"
-                style={{ marginLeft: '15px' }}
-                size="20px"
+                style={{ marginLeft: '16px' }}
               />
             </Btn>
           </ButtonStyled>
           <ButtonStyled>
-            <Btn color="white">
+            <Btn $color="white">
               สมัครเข้าเรียน
               <HiOutlineArrowRight
                 className="Icon"
-                style={{ marginLeft: '15px' }}
-                size="20px"
+                style={{ marginLeft: '16px' }}
+                size="16px"
               />
             </Btn>
           </ButtonStyled>
@@ -51,12 +50,12 @@ const Home: React.FC = () => {
           header="แกลเลอรี่รูปภาพ"
           content="โดยมีอาจารย์ผู้สอนเป็นผู้ให้คำปรึกษา นักศึกษาต้องทำงานเป็นกลุ่ม และมีการนำเสนอผลงาน ของตนเองให้เพื่อนๆ ร่วมกันวิเคราะห์และวิจารณ์อย่างมีเหตุผล">
           <ButtonStyled>
-            <Btn color="white">
+            <Btn $color="white">
               สำรวจแกลเลอรี่
               <HiOutlineArrowRight
                 className="Icon"
-                style={{ marginLeft: '15px' }}
-                size="20px"
+                style={{ marginLeft: '16px' }}
+                size="16px"
               />
             </Btn>
           </ButtonStyled>
@@ -66,5 +65,4 @@ const Home: React.FC = () => {
     </div>
   );
 };
-
 export default Home;
