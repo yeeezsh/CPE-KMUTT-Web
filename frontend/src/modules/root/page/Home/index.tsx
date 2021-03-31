@@ -1,4 +1,5 @@
 import Btn from 'common/components/Button';
+import Footer from 'modules/root/components/Footer';
 import StaticSection from 'modules/root/components/StaticSection';
 import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
 import WhatNewSection from 'modules/root/components/WhatNewSection';
@@ -25,11 +26,7 @@ const Home: React.FC = () => {
           <ButtonStyled>
             <Btn $color="primary">
               สำรวจหลักสูตรทั้งหมด
-              <HiOutlineArrowRight
-                className="Icon"
-                style={{ marginLeft: '16px' }}
-                size="16px"
-              />
+              <HiOutlineArrowRight className="Icon" style={{ marginLeft: '16px' }} />
             </Btn>
           </ButtonStyled>
           <ButtonStyled>
@@ -60,6 +57,7 @@ const Home: React.FC = () => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
+        <Footer key="1"></Footer>
       </Main>
     </div>
   );

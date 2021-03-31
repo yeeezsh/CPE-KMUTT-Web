@@ -15,7 +15,6 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'Montserrat';
       src: local('Montserrat'), url(/fonts/Montserrat-Regular.ttf) format('truetype');
     }
-
   a:link , a:visited {
     text-decoration: none;
     color: ${COLORS.PRIMARY_COLOR};
