@@ -1,51 +1,12 @@
+import { Modal, Progress } from 'antd';
 import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 import styled from 'styled-components';
-import { Progress } from 'antd';
 
 interface DesignProps {
   defaultStyle?: boolean;
   customStyle?: string;
 }
-
-export const StyledSlider = styled.div.attrs({
-  className: 'keen-slider',
-})`
-  height: 100%;
-  width: 50%;
-  background: #f4f5f6;
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    height: 45%;
-    width: 100%;
-  }
-`;
-
-export const StyledSliderSlide = styled.div.attrs({
-  className: 'keen-slider__slide',
-})`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-`;
-
-export const Fader = styled.div`
-  height: 100%;
-  width: 50%;
-  position: relative;
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    height: 55%;
-    width: 100%;
-  }
-`;
-
-export const FaderSlide = styled.div`
-  width: 100%;
-  height: 50%;
-  position: absolute;
-  margin-top: 0;
-`;
 
 export const NavigationWrapper = styled.div`
   position: relative;
@@ -108,36 +69,74 @@ export const RightButton = styled.button`
 
 export const Slides = styled.div`
   height: ${(props: DesignProps) =>
-    props.customStyle === 'Default'
-      ? '550px'
-      : props.customStyle === 'Slider'
-      ? '400px'
-      : '646px'};
+    props.defaultStyle ? '550px' : props.customStyle === 'Slider' ? '400px' : '646px'};
   width: 100%;
   display: flex;
   flex-direction: ${(props: DesignProps) => (props.defaultStyle ? 'row' : 'row-reverse')};
   align-items: center;
   justify-content: center;
-  overflow: ${(props: DesignProps) =>
-    props.customStyle === 'PopUp' ? 'auto' : 'hidden'};
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    height: ${(props: DesignProps) => (props.defaultStyle ? '655px' : '435px')};
+    height: ${(props: DesignProps) =>
+      props.defaultStyle ? '655px' : props.customStyle === 'Slider' ? '435px' : '646px'};
     overflow: hidden;
     flex-direction: ${(props: DesignProps) =>
       props.defaultStyle ? 'column' : 'column-reverse'};
   }
 `;
 
+export const StyledSlider = styled.div.attrs({
+  className: 'keen-slider',
+})`
+  height: 100%;
+  width: 50%;
+  background: #f4f5f6;
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    height: 45%;
+    width: 100%;
+  }
+`;
+
+export const StyledSliderSlide = styled.div.attrs({
+  className: 'keen-slider__slide',
+})`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+export const Fader = styled.div`
+  height: 100%;
+  width: 50%;
+  position: relative;
+  background: ${(props: DesignProps) => (props.defaultStyle ? '#f4f5f6' : 'white')};
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    height: 55%;
+    width: 100%;
+  }
+`;
+
+export const FaderSlide = styled.div`
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  margin-top: 0;
+`;
+
 export const ProgressContainer = styled.div`
   display: flex;
+  width: ${(props: DesignProps) => (props.customStyle === 'PopUp' ? '95%' : '100%')};
   padding: ${(props: DesignProps) => (props.defaultStyle ? '100px 0 40px 0' : '40px')};
   @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
-    margin-left: ${(props: DesignProps) => (props.defaultStyle ? '20px' : 'none')};
+    margin-left: ${(props: DesignProps) => (props.defaultStyle ? '20px' : '0')};
   }
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    width: 100%;
     justify-content: center;
     padding: ${(props: DesignProps) =>
       props.defaultStyle ? '20px 0 80px 0' : '20px 35px'};
+    margin-left: 0;
   }
 `;
 
@@ -154,20 +153,27 @@ export const ProgressBar = styled.div`
   }
 `;
 
-export const StyledProgress = styled(Progress)`
+export const AnimatedProgress = styled(Progress)`
   width: 100%;
   height: 2px;
-  opacity: 0.2;
   margin: 0 2px;
   top: -11px;
+  div {
+    transition: none;
+  }
   &.active {
     opacity: 1;
+    div {
+      transition: width 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0;
+    }
   }
 `;
 
 export const SlideContent = styled.div`
-  display: flex;
   width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
   flex-direction: column;
   font-family: 'Prompt';
   font-size: 14px;
@@ -215,8 +221,6 @@ export const Caption = styled.p`
   font-weight: ${(props: DesignProps) => (props.defaultStyle ? '300' : '400')};
   padding-bottom: 30px;
   color: ${COLORS.GRAY_2};
-  height: 100%;
-  overflow-y: auto;
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     font-size: ${(props: DesignProps) => (props.defaultStyle ? '14px' : '12px')};
     line-height: ${(props: DesignProps) => (props.defaultStyle ? '16px' : '20px')};
@@ -242,11 +246,30 @@ export const StyledButton = styled.button`
   font-weight: 400;
   cursor: pointer;
   z-index: 1;
-  & :hover {
+  &:hover {
     background: ${COLORS.PRIMARY_COLOR};
     color: white;
   }
-  &: focus {
+  &:focus {
     outline: none;
   }
+`;
+
+export const StyledModal = styled(Modal)`
+  span {
+    padding-top: 10px;
+    color: ${COLORS.PRIMARY_COLOR};
+  }
+`;
+
+export const Shadow = styled.div`
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 0.2s ease-out;
+  box-shadow: 0 -3em 3em -1em white inset;
+  display: ${(props: DesignProps) => (props.customStyle === 'PopUp' ? 'static' : 'none')};
 `;

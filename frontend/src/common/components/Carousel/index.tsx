@@ -1,10 +1,11 @@
 import { ArrowRightOutlined } from '@ant-design/icons';
-import { Modal } from 'antd';
 import Container from 'common/components/Container';
 import COLORS from 'common/constants/colors';
-import { useKeenSlider } from 'keen-slider/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
+import useProgressbar from './hooks/useProgressbar';
+import useSlider from './hooks/useSlider';
 import {
+  AnimatedProgress,
   Caption,
   Fader,
   FaderSlide,
@@ -15,10 +16,11 @@ import {
   ProgressBar,
   ProgressContainer,
   RightButton,
+  Shadow,
   SlideContent,
   Slides,
   StyledButton,
-  StyledProgress,
+  StyledModal,
   StyledSlider,
   StyledSliderSlide,
   Tag,
@@ -26,131 +28,9 @@ import {
 import { CarouselProps, ChildrenProps } from './types';
 
 const Carousel: React.FC<CarouselProps> = (props) => {
+  const SLIDE_COUNT = props.item.length;
   const isDefault = props.variant === 'Default' ? true : false;
-  const timer = useRef<number>();
-  const DEFAULT_INTERVAL = 5000;
-  const [pause, setPause] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentPic, setCurrentPic] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [slideRef, slider] = useKeenSlider<HTMLDivElement>({
-    initial: 0,
-    slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide);
-      setCurrentPic(s.details().relativeSlide);
-      setProgress(0);
-    },
-    loop: true,
-    duration: 2000,
-    dragStart: () => {
-      setPause(true);
-    },
-    dragEnd: () => {
-      setPause(false);
-    },
-  });
-  const [opacities, setOpacities] = useState<number[]>([]);
-  const [currentContent, setCurrentContent] = useState(0);
-
-  const [faderRef, fader] = useKeenSlider<HTMLDivElement>({
-    slides: props.item.length,
-    loop: true,
-    duration: 2000,
-    move(s) {
-      const new_opacities = s.details().positions.map((slide) => slide.portion);
-      setOpacities(new_opacities);
-    },
-    slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide);
-      setCurrentContent(s.details().relativeSlide);
-    },
-  });
-
-  useEffect(() => {
-    const contentNotMatch =
-      currentContent !== currentSlide && currentPic === currentSlide;
-    const pictureNotMatch =
-      currentContent === currentSlide && currentPic !== currentSlide;
-    const lastSlideIndex = props.item.length - 1;
-    const currentIsLastSlide = currentSlide === lastSlideIndex;
-    const currentIsFirstSlide = currentSlide === 0;
-
-    if (contentNotMatch) {
-      if (currentIsLastSlide && currentContent == 0) {
-        fader.prev();
-      } else if (currentIsFirstSlide && currentContent == lastSlideIndex) {
-        fader.next();
-      } else {
-        fader.moveToSlideRelative(currentSlide);
-      }
-    }
-
-    if (pictureNotMatch) {
-      if (currentIsLastSlide && currentPic == 0) {
-        slider.prev();
-      } else if (currentIsFirstSlide && currentPic == lastSlideIndex) {
-        slider.next();
-      } else {
-        slider.moveToSlideRelative(currentSlide);
-      }
-    }
-  }, [currentPic, currentSlide, currentContent, fader, slider]);
-
-  useEffect(() => {
-    if (slideRef.current != null) {
-      slideRef.current.addEventListener('mouseover', () => {
-        setPause(true);
-      });
-      slideRef.current.addEventListener('mouseout', () => {
-        setPause(false);
-      });
-    }
-  }, [slideRef]);
-
-  useEffect(() => {
-    if (faderRef.current != null) {
-      faderRef.current.addEventListener('mouseover', () => {
-        setPause(true);
-      });
-      faderRef.current.addEventListener('mouseout', () => {
-        setPause(false);
-      });
-    }
-  }, [faderRef]);
-
-  useEffect(() => {
-    timer.current = setInterval(() => {
-      if (!pause && slider) {
-        slider.next();
-        fader.next();
-      }
-    }, DEFAULT_INTERVAL);
-    return () => {
-      clearInterval(timer.current);
-    };
-  }, [pause, slider]);
-
-  const [pagination, setPagination] = useState(0);
-  useEffect(() => {
-    if (pagination === 1) {
-      slider.next();
-      fader.next();
-      setPagination(0);
-    }
-    if (pagination === -1) {
-      slider.prev();
-      fader.prev();
-      setPagination(0);
-    }
-  });
-
-  useEffect(() => {
-    const updateProgress = () => setProgress(progress + 2.5);
-    if (!pause && progress < 100) {
-      setTimeout(updateProgress, 100);
-    }
-  }, [pause, progress]);
-
+  const firstSlide = props.initialSlide ? props.initialSlide : 0;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
@@ -159,16 +39,31 @@ const Carousel: React.FC<CarouselProps> = (props) => {
     setIsModalVisible(false);
   };
 
+  const {
+    pause,
+    currentSlide,
+    opacities,
+    sliderRef,
+    slider,
+    faderRef,
+    fader,
+  } = useSlider(firstSlide, SLIDE_COUNT, isModalVisible);
+
+  const { progress } = useProgressbar(
+    SLIDE_COUNT,
+    pause || isModalVisible,
+    currentSlide,
+    firstSlide,
+  );
+
   return (
     <NavigationWrapper>
       <Container>
         <Slides defaultStyle={isDefault} customStyle={props.variant}>
-          <Fader
-            style={isDefault ? { background: '#f4f5f6' } : { background: 'white' }}
-            ref={faderRef}>
-            {slider && (
-              <ProgressContainer defaultStyle={isDefault}>
-                {[...Array(slider.details().size).keys()].map((i) => {
+          <Fader defaultStyle={isDefault} ref={faderRef}>
+            {fader && (
+              <ProgressContainer defaultStyle={isDefault} customStyle={props.variant}>
+                {[...Array(fader.details().size).keys()].map((i) => {
                   return (
                     <>
                       {isDefault ? (
@@ -181,9 +76,9 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                           }}
                         />
                       ) : (
-                        <StyledProgress
+                        <AnimatedProgress
                           key={i}
-                          percent={currentSlide != i ? 100 : progress}
+                          percent={i <= currentSlide ? progress[i] : 0}
                           showInfo={false}
                           strokeColor={COLORS.PRIMARY_COLOR}
                           strokeWidth={2}
@@ -199,47 +94,51 @@ const Carousel: React.FC<CarouselProps> = (props) => {
             {props.item
               ? props.item.map(({ id, heading, caption, tag, link }: ChildrenProps) => {
                   return (
-                    <>
-                      <FaderSlide key={id} style={{ opacity: opacities[id] }}>
-                        <SlideContent defaultStyle={isDefault}>
-                          {tag ? <Tag>#{tag}</Tag> : null}
-                          {heading ? (
-                            <Heading defaultStyle={isDefault}>{heading}</Heading>
-                          ) : null}
-                          {caption ? (
-                            props.fullText ? (
-                              <Caption defaultStyle={isDefault}>{caption}</Caption>
-                            ) : caption.length > 100 ? (
-                              <Caption defaultStyle={isDefault}>
-                                {caption.slice(0, 100)}...
-                              </Caption>
-                            ) : (
-                              <Caption defaultStyle={isDefault}>
-                                {caption.slice(0, 100)}
-                              </Caption>
-                            )
-                          ) : null}
-                          {link && !props.fullText ? (
-                            isDefault ? (
-                              <StyledButton as="a" href={link}>
-                                อ่านต่อเพิ่มเติม
-                                <ArrowRightOutlined style={{ marginLeft: '15px' }} />
-                              </StyledButton>
-                            ) : (
-                              <StyledButton onClick={showModal}>
-                                อ่านต่อเพิ่มเติม
-                                <ArrowRightOutlined style={{ marginLeft: '15px' }} />
-                              </StyledButton>
-                            )
-                          ) : null}
-                        </SlideContent>
-                      </FaderSlide>
-                    </>
+                    <FaderSlide
+                      key={id}
+                      style={{
+                        opacity: opacities[id],
+                        display: id === currentSlide ? 'block' : 'none',
+                      }}>
+                      <SlideContent defaultStyle={isDefault}>
+                        {tag ? <Tag>#{tag}</Tag> : null}
+                        {heading ? (
+                          <Heading defaultStyle={isDefault}>{heading}</Heading>
+                        ) : null}
+                        {caption ? (
+                          props.fullText ? (
+                            <Caption defaultStyle={isDefault}>{caption}</Caption>
+                          ) : caption.length > 100 ? (
+                            <Caption defaultStyle={isDefault}>
+                              {caption.slice(0, 100)}...
+                            </Caption>
+                          ) : (
+                            <Caption defaultStyle={isDefault}>
+                              {caption.slice(0, 100)}
+                            </Caption>
+                          )
+                        ) : null}
+                        {link && !props.fullText ? (
+                          isDefault ? (
+                            <StyledButton as="a" href={link}>
+                              อ่านต่อเพิ่มเติม
+                              <ArrowRightOutlined style={{ marginLeft: '15px' }} />
+                            </StyledButton>
+                          ) : (
+                            <StyledButton onClick={showModal}>
+                              อ่านต่อเพิ่มเติม
+                              <ArrowRightOutlined style={{ marginLeft: '15px' }} />
+                            </StyledButton>
+                          )
+                        ) : null}
+                        <Shadow customStyle={props.variant} />
+                      </SlideContent>
+                    </FaderSlide>
                   );
                 })
               : null}
           </Fader>
-          <StyledSlider ref={slideRef}>
+          <StyledSlider ref={sliderRef}>
             {props.item
               ? props.item.map(({ id, picture }: ChildrenProps) => {
                   return (
@@ -253,7 +152,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
           {props.arrows
             ? slider && (
                 <>
-                  <LeftButton onClick={() => setPagination(-1)}>
+                  <LeftButton onClick={() => slider.prev()}>
                     <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M8.48521 2.51472L9.54587 3.57538L2.86902 10.2522L20.4654 10.2522L20.4654 11.7478L2.86902 11.7478L9.54587 18.4246L8.48521 19.4853L-6.83069e-05 11L8.48521 2.51472Z"
@@ -261,7 +160,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                       />
                     </svg>
                   </LeftButton>
-                  <RightButton onClick={() => setPagination(1)}>
+                  <RightButton onClick={() => slider.next()}>
                     <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M13.5148 19.4853L12.4541 18.4246L19.131 11.7478L1.53463 11.7478L1.53463 10.2522L19.131 10.2522L12.4541 3.57538L13.5148 2.51472L22.0001 11L13.5148 19.4853Z"
@@ -274,16 +173,23 @@ const Carousel: React.FC<CarouselProps> = (props) => {
             : null}
         </Slides>
       </Container>
-      <Modal
+      <StyledModal
         centered
         keyboard
         visible={isModalVisible}
         onCancel={handleCancel}
         footer={null}
-        width={1250}
-        bodyStyle={{ padding: '0' }}>
-        <Carousel item={props.item} variant="PopUp" fullText={true} arrows={true} />
-      </Modal>
+        width={'auto'}
+        bodyStyle={{ padding: '0', height: '646px' }}
+        destroyOnClose={true}>
+        <Carousel
+          item={props.item}
+          variant="PopUp"
+          fullText={true}
+          arrows={true}
+          initialSlide={currentSlide}
+        />
+      </StyledModal>
     </NavigationWrapper>
   );
 };
