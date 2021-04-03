@@ -8,7 +8,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>browse News Page</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
