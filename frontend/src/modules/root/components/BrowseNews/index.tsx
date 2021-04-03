@@ -1,4 +1,3 @@
-// import { Button } from 'antd';
 import Btn from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
