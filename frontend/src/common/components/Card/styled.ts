@@ -7,6 +7,7 @@ export const Card = styled.div`
   height: 250px;
   display: block;
   position: relative;
+  margin-bottom: 20px;
 `;
 
 export const CardTitle = styled.div`
