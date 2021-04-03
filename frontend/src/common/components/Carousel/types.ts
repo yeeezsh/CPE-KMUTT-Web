@@ -12,4 +12,5 @@ export type CarouselProps = {
   variant: 'Default' | 'Slider' | 'PopUp';
   fullText: boolean;
   arrows: boolean;
+  initialSlide?: number;
 };
