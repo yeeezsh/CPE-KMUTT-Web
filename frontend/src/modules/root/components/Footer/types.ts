@@ -1,9 +1,6 @@
-interface Footer {
+export interface FooterProps {
+  key?: string;
   label?: string;
   link?: string;
   subMenu?: FooterProps[];
-}
-
-export interface FooterProps extends Partial<Footer> {
-  key: string;
 }
