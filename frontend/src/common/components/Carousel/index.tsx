@@ -106,7 +106,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                           <Heading defaultStyle={isDefault}>{heading}</Heading>
                         ) : null}
                         {caption ? (
-                          props.fullText ? (
+                          props.variant === 'PopUp' ? (
                             <Caption defaultStyle={isDefault}>{caption}</Caption>
                           ) : caption.length > 100 ? (
                             <Caption defaultStyle={isDefault}>
@@ -118,7 +118,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                             </Caption>
                           )
                         ) : null}
-                        {link && !props.fullText ? (
+                        {link && props.variant != 'PopUp' ? (
                           isDefault ? (
                             <StyledButton as="a" href={link}>
                               อ่านต่อเพิ่มเติม
@@ -149,7 +149,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                 })
               : null}
           </StyledSlider>
-          {props.arrows
+          {props.variant != 'Slider'
             ? slider && (
                 <>
                   <LeftButton onClick={() => slider.prev()}>
@@ -182,13 +182,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
         width={'auto'}
         bodyStyle={{ padding: '0', height: '646px' }}
         destroyOnClose={true}>
-        <Carousel
-          item={props.item}
-          variant="PopUp"
-          fullText={true}
-          arrows={true}
-          initialSlide={currentSlide}
-        />
+        <Carousel item={props.item} variant="PopUp" initialSlide={currentSlide} />
       </StyledModal>
     </NavigationWrapper>
   );
