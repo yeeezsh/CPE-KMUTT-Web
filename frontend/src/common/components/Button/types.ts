@@ -1,5 +1,4 @@
 export interface ButtonProps {
-  // Example
   children: React.ReactNode;
-  variant: 'Default' | 'Primary';
+  $color?: 'primary' | 'yellow' | 'borderless' | 'white' | 'transparent';
 }
