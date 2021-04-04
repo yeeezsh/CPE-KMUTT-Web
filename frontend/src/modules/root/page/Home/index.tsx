@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Btn from 'common/components/Button';
 import Footer from 'modules/root/components/Footer';
 import Navbar from 'modules/root/components/Navbar';
@@ -90,12 +91,21 @@ const SLIDER_SLIDE: ChildrenProps[] = [
   },
 ];
 =======
+=======
+>>>>>>> Edit carousel prop
 import Carousel from 'common/components/Carousel';
 import {
   CAROUSEL_DEFAULT_CONSTANT,
   CAROUSEL_SLIDER_CONSTANT,
 } from 'common/components/Carousel/constant';
+<<<<<<< HEAD
 >>>>>>> Add carousels to home page
+=======
+import Container from 'common/components/Container';
+import Head from 'next/head';
+import React from 'react';
+import { Main } from './styled';
+>>>>>>> Edit carousel prop
 
 const Home: React.FC = () => {
   return (
@@ -179,19 +189,9 @@ const Home: React.FC = () => {
 
           <Announcement></Announcement>
       */}
-      <Carousel
-        item={CAROUSEL_DEFAULT_CONSTANT}
-        variant="Default"
-        fullText={false}
-        arrows={true}
-      />
+      <Carousel item={CAROUSEL_DEFAULT_CONSTANT} variant="Default" />
       <Container>
-        <Carousel
-          item={CAROUSEL_SLIDER_CONSTANT}
-          variant="Slider"
-          fullText={false}
-          arrows={false}
-        />
+        <Carousel item={CAROUSEL_SLIDER_CONSTANT} variant="Slider" />
       </Container>
       {/*
           <Programme></Programme>

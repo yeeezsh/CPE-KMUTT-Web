@@ -10,7 +10,5 @@ export type ChildrenProps = {
 export type CarouselProps = {
   item: ChildrenProps[];
   variant: 'Default' | 'Slider' | 'PopUp';
-  fullText: boolean;
-  arrows: boolean;
   initialSlide?: number;
 };
