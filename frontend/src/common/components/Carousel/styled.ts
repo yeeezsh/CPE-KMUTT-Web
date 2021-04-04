@@ -8,10 +8,13 @@ interface DesignProps {
   customStyle?: string;
 }
 
-export const NavigationWrapper = styled.div`
+export const CarouselWrapper = styled.div`
   position: relative;
   margin: 0 auto;
   background: #f4f5f6;
+  font-family: 'Kanit';
+  padding-bottom: ${(props: DesignProps) =>
+    props.customStyle === 'Slider' ? '100px' : '0'};
 `;
 
 export const LeftButton = styled.button`
@@ -175,7 +178,6 @@ export const SlideContent = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  font-family: 'Prompt';
   font-size: 14px;
   padding: ${(props: DesignProps) => (props.defaultStyle ? '0 24px 0 0' : '0 40px')};
   @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
@@ -192,7 +194,6 @@ export const Tag = styled.p`
   font-size: 16px;
   line-height: 22px;
   font-weight: 700;
-  margin-bottom: 40px;
   color: ${COLORS.PRIMARY_COLOR};
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     font-size: 14px;
@@ -240,15 +241,18 @@ export const StyledButton = styled.button`
   width: fit-content;
   height: 40px;
   border: 1px solid ${COLORS.PRIMARY_COLOR};
-  padding: 7px 20px;
+  padding: 0 20px;
   background: none;
   font-size: 16px;
   font-weight: 400;
   cursor: pointer;
+  display: flex;
+  align-items: center;
   z-index: 1;
   &:hover {
     background: ${COLORS.PRIMARY_COLOR};
     color: white;
+    text-decoration: none;
   }
   &:focus {
     outline: none;
