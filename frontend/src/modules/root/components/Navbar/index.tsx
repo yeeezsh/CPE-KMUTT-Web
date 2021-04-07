@@ -23,8 +23,8 @@ const Navbar: React.FC<NavBarProps> = () => {
   const showDropdown = () => setVisible((value) => !value);
 
   return (
-    <Container>
-      <Nav>
+    <Nav visible={visible}>
+      <Container>
         <NavbarBrand>
           <LogoKMUTT src="/assets/LOGO-KMUTT.svg" />
           <StyledDivider type="vertical" />
@@ -61,8 +61,8 @@ const Navbar: React.FC<NavBarProps> = () => {
             )}
           </MenuButton>
         </Dropdown>
-      </Nav>
-    </Container>
+      </Container>
+    </Nav>
   );
 };
 

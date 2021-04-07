@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import fontFamily from 'styles/typography/fontFamily';
 import { DesignProps } from './interface';
 
-export const BorderTop = styled.div`
+export const MenuWrap = styled.div`
+  width: 100%;
+  background: white;
+  margin-top: -5px;
+  display: flex;
   border-top: 1px solid #eaeaea;
 `;
 
@@ -15,6 +19,7 @@ export const Menu = styled.div`
   background: white;
   justify-content: space-between;
   padding-bottom: 60px;
+  border-bottom: 1px solid #eaeaea;
 `;
 
 export const Group = styled.div`
@@ -42,15 +47,20 @@ export const Mask = styled.div`
 
 export const Item = styled.li`
   list-style: none;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 16px;
-  color: #666666;
+  padding-bottom: 6px;
+  color: ${COLORS.GRAY_2};
 `;
 
 export const ItemLink = styled.a`
-  font-weight: normal;
-  font-size: 14px;
-  color: #666666;
+  &:link,
+  &:visited {
+    color: ${COLORS.GRAY_2};
+    font-size: 14px;
+    font-weight: 300;
+    padding-bottom: 6px;
+  }
   &:hover {
     color: ${COLORS.PRIMARY_COLOR};
     text-decoration: underline;
@@ -59,15 +69,18 @@ export const ItemLink = styled.a`
 
 export const SubMenu = styled.div`
   width: 100%;
+  height: 62px;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const SubMenuItem = styled.div`
   font-family: ${fontFamily.TH};
+  display: flex;
   font-size: 14px;
   cursor: pointer;
-  padding: 0 40px 20px 0;
+  padding-right: 40px;
   color: ${COLORS.GRAY_2};
   &:hover {
     color: ${COLORS.PRIMARY_COLOR};

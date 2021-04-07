@@ -3,16 +3,23 @@ import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 import styled from 'styled-components';
 import fontFamily from 'styles/typography/fontFamily';
+import { NavBarProps } from './interface';
 
 export const Nav = styled.div`
   width: 100%;
   height: 100px;
+  position: fixed;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.8);
+  top: 0;
+  background: ${(props: NavBarProps) =>
+    props.visible ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.8)'};
   backdrop-filter: blur(70px);
   font-family: ${fontFamily.TH};
   font-style: normal;
   display: flex;
+  &:hover {
+    background: rgba(255, 255, 255, 1);
+  }
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     height: 60px;
   }
