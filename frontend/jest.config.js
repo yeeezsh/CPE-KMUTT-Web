@@ -1,6 +1,6 @@
 // module mapper hotfix
-const tsconfig = require('./tsconfig.json');
-const aliasModule = Object.keys(tsconfig.compilerOptions.paths)
+const tsconfig = require('./tsconfig.jest.json');
+const aliasModule = Object.keys(tsconfig.compilerOptions.paths || {})
   .map((alias) => {
     const value = tsconfig.compilerOptions.paths[alias];
     return {
@@ -35,4 +35,5 @@ module.exports = {
       babelConfig: true,
     },
   },
+  snapshotSerializers: ['enzyme-to-json/serializer'],
 };
