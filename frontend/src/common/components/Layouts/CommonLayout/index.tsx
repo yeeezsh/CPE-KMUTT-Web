@@ -22,6 +22,30 @@ import {
 } from './styled';
 import { CommonLayoutProps } from './types';
 
+export const FaqWithBanner: React.FC = () => (
+  <AnnouceFAQ>
+    <FAQRow className="align-center">
+      <FAQColumn>
+        <FAQHeader>มีคำถามหรือข้อสงสัย</FAQHeader>
+        <FAQContent>เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน</FAQContent>
+        <FAQButton>
+          <Btn $color={'transparent'}>
+            ติดต่อเรา
+            <HiOutlineArrowRight
+              className="Icon"
+              style={{ marginLeft: '16px' }}
+              size="16px"
+            />
+          </Btn>
+        </FAQButton>
+      </FAQColumn>
+      <FAQColumn>
+        <img src="/images/annouce_faq.png" alt="" />
+      </FAQColumn>
+    </FAQRow>
+  </AnnouceFAQ>
+);
+
 const CommonLayout: React.FC<CommonLayoutProps> = ({ children, ...props }) => {
   return (
     <CommonLayoutStyle>
@@ -67,27 +91,7 @@ const CommonLayout: React.FC<CommonLayoutProps> = ({ children, ...props }) => {
       </Container>
       {children}
 
-      <AnnouceFAQ>
-        <FAQRow className="align-center">
-          <FAQColumn>
-            <FAQHeader>มีคำถามหรือข้อสงสัย</FAQHeader>
-            <FAQContent>เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน</FAQContent>
-            <FAQButton>
-              <Btn $color={'transparent'}>
-                ติดต่อเรา
-                <HiOutlineArrowRight
-                  className="Icon"
-                  style={{ marginLeft: '16px' }}
-                  size="16px"
-                />
-              </Btn>
-            </FAQButton>
-          </FAQColumn>
-          <FAQColumn>
-            <img src="/images/annouce_faq.png" alt="" />
-          </FAQColumn>
-        </FAQRow>
-      </AnnouceFAQ>
+      {props.withFaqBanner && <FaqWithBanner />}
       <Footer />
     </CommonLayoutStyle>
   );

@@ -7,4 +7,5 @@ export interface CommonLayoutProps {
   children: React.ReactNode;
   header?: string;
   navigate?: CrumbProps[];
+  withFaqBanner?: boolean;
 }
