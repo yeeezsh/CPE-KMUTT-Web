@@ -37,4 +37,13 @@ export const Default = CommonLayoutStory.bind({});
 Default.args = {
   header: 'ข่าวสารและประกาศ',
   navigate: MOCK_NAVIGATE,
+  withFaqBanner: true,
+} as CommonLayoutProps;
+
+export const DefaultWithoutBanner = CommonLayoutStory.bind({});
+
+DefaultWithoutBanner.args = {
+  header: 'ข่าวสารและประกาศ',
+  navigate: MOCK_NAVIGATE,
+  withFaqBanner: false,
 } as CommonLayoutProps;
