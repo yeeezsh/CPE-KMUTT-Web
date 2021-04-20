@@ -2,9 +2,8 @@ import Btn from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { HiOutlineArrowDown, HiOutlineArrowRight } from 'react-icons/hi';
-import { constants } from './constant';
 import {
   AnnouceFAQ,
   BrowseNewsColumn,
@@ -16,7 +15,8 @@ import {
   FAQContent,
   FAQHeader,
 } from './styled';
-import { BrowseNewsProps, cardConstantsProps } from './types';
+import { BrowseNewsProps } from './types';
+import useLoadMore from './useLoadMore';
 
 const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean }> = (
   props,
@@ -27,21 +27,7 @@ const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean
 );
 
 const BrowseNews: React.FC<BrowseNewsProps> = () => {
-  const [newsData, setNewsData] = useState<cardConstantsProps[]>([]);
-  const [newsPerPage, setNewsPerPage] = useState(9);
-
-  useEffect(() => {
-    setNewsData(constants);
-  }, []);
-
-  const checkAmountPost = () => {
-    if (newsPerPage < newsData.length) return false;
-    else return true;
-  };
-
-  const loadMore = () => {
-    setNewsPerPage(newsPerPage + 3);
-  };
+  const { newsData, moreNewsData, loadMore } = useLoadMore();
 
   return (
     <BrowseNewsStyle>
@@ -49,13 +35,13 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
         <BrowsNewsHeader>
           {/* NavBar */}
           <NewsCategoryLink title="สำหรับนักศึกษาใหม่" link="/" active={true} />
-          <NewsCategoryLink title="สำหรับนักศึกษาปัจจุบัน" link="/" active={true} />
-          <NewsCategoryLink title="กิจกรรมนักศึกษา" link="/" active={true} />
-          <NewsCategoryLink title="ทุนการศึกษา" link="/" active={true} />
+          <NewsCategoryLink title="สำหรับนักศึกษาปัจจุบัน" link="/" />
+          <NewsCategoryLink title="กิจกรรมนักศึกษา" link="/" />
+          <NewsCategoryLink title="ทุนการศึกษา" link="/" />
         </BrowsNewsHeader>
 
         <BrowseNewsRow className="space-between">
-          {newsData.slice(0, newsPerPage).map((data, index) => {
+          {newsData.map((data, index) => {
             return (
               <Card
                 key={index}
@@ -71,7 +57,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
         </BrowseNewsRow>
 
         <BrowseNewsSeeMore>
-          <Btn $color={'transparent'} $hidden={checkAmountPost()} onClick={loadMore}>
+          <Btn $color={'transparent'} $hidden={moreNewsData} onClick={loadMore}>
             แสดงเก่ากว่านี้
             <HiOutlineArrowDown
               className="Icon"
@@ -81,6 +67,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
           </Btn>
         </BrowseNewsSeeMore>
       </Container>
+
       <AnnouceFAQ>
         <BrowseNewsRow className="align-center">
           <BrowseNewsColumn>
