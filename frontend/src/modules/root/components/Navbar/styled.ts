@@ -101,21 +101,3 @@ export const MenuButton = styled.button`
     margin-right: 6px;
   }
 `;
-
-export const Hamburger = styled.svg`
-  width: 18px;
-  height: 12px;
-  margin-bottom: ;
-  &:hover {
-    fill: ${COLORS.PRIMARY_COLOR};
-  }
-`;
-
-export const Cancel = styled.svg`
-  width: 18px;
-  height: 12px;
-  margin-bottom: ;
-  &:hover {
-    fill: ${COLORS.PRIMARY_COLOR};
-  }
-`;

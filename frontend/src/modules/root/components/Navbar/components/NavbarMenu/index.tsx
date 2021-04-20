@@ -13,7 +13,7 @@ import {
   SubMenuItem,
 } from './styled';
 
-const NavbarMenu: JSX.Element = (
+const NavbarMenu: React.FC = () => (
   <MenuWrap>
     <Container>
       <Menu>
