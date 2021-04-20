@@ -1,6 +1,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 import Btn from 'common/components/Button';
+<<<<<<< HEAD
+=======
+import Carousel from 'common/components/Carousel';
+import {
+  CAROUSEL_DEFAULT_CONSTANT,
+  CAROUSEL_SLIDER_CONSTANT,
+} from 'modules/home/constants';
+>>>>>>> Move constant to home
 import Footer from 'modules/root/components/Footer';
 import Navbar from 'modules/root/components/Navbar';
 import StaticSection from 'modules/root/components/StaticSection';

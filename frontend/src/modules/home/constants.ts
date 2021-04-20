@@ -1,4 +1,4 @@
-import { ChildrenProps } from './types';
+import { ChildrenProps } from '../../common/components/Carousel/types';
 
 //Example props for Carousel
 export const CAROUSEL_DEFAULT_CONSTANT: ChildrenProps[] = [
