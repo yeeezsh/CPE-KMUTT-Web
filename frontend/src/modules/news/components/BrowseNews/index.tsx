@@ -3,18 +3,13 @@ import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 import Link from 'next/link';
 import React from 'react';
-import { HiOutlineArrowDown, HiOutlineArrowRight } from 'react-icons/hi';
+import { HiOutlineArrowDown } from 'react-icons/hi';
 import { constants } from './constant';
 import {
-  AnnouceFAQ,
-  BrowseNewsColumn,
   BrowseNewsRow,
   BrowseNewsSeeMore,
   BrowseNewsStyle,
   BrowsNewsHeader,
-  FAQButton,
-  FAQContent,
-  FAQHeader,
 } from './styled';
 import { BrowseNewsProps } from './types';
 import useLoadMore from './useLoadMore';
@@ -68,29 +63,6 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
           </Btn>
         </BrowseNewsSeeMore>
       </Container>
-
-      {/* TODO: remove this FAQ  */}
-      <AnnouceFAQ>
-        <BrowseNewsRow className="align-center">
-          <BrowseNewsColumn>
-            <FAQHeader>มีคำถามหรือข้อสงสัย</FAQHeader>
-            <FAQContent>เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน</FAQContent>
-            <FAQButton>
-              <Btn $color={'transparent'}>
-                ติดต่อเรา
-                <HiOutlineArrowRight
-                  className="Icon"
-                  style={{ marginLeft: '16px' }}
-                  size="16px"
-                />
-              </Btn>
-            </FAQButton>
-          </BrowseNewsColumn>
-          <BrowseNewsColumn>
-            <img src="/images/annouce_faq.png" alt="" />
-          </BrowseNewsColumn>
-        </BrowseNewsRow>
-      </AnnouceFAQ>
     </BrowseNewsStyle>
   );
 };
