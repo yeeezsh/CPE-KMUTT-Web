@@ -5,7 +5,7 @@ import Card from '.';
 import { CardProps } from './types';
 
 const meta: Meta = {
-  title: 'Commmon/Card',
+  title: 'Common/Card',
   component: Card,
 };
 
