@@ -69,6 +69,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
         </BrowseNewsSeeMore>
       </Container>
 
+      {/* TODO: remove this FAQ  */}
       <AnnouceFAQ>
         <BrowseNewsRow className="align-center">
           <BrowseNewsColumn>
