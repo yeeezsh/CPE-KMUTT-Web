@@ -1,6 +1,6 @@
-export interface FooterProps {
-  key?: string;
+export interface Footer {
   label?: string;
   link?: string;
-  subMenu?: FooterProps[];
+  subMenu?: Footer[];
+  key?: string;
 }
