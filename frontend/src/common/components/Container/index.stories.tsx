@@ -3,7 +3,7 @@ import React from 'react';
 import Container from '.';
 
 const meta: Meta = {
-  title: 'Commmon/Container',
+  title: 'Common/Container',
   component: Container,
 };
 
