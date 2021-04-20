@@ -34,6 +34,17 @@ function applyColorCss({ $color = `primary` }: ButtonProps) {
   `;
 }
 
+function isHidden({ $hidden }: ButtonProps) {
+  if ($hidden)
+    return css`
+      display: none;
+    `;
+  else
+    return css`
+      display: flex;
+    `;
+}
+
 export const Btn = styled.button<ButtonProps>`
   /* Example*/
   font-family: 'Kanit', sans-serif;
@@ -43,7 +54,7 @@ export const Btn = styled.button<ButtonProps>`
   font-size: 16px;
   font-weight: 600;
   ${applyColorCss};
-  display: flex;
+  ${isHidden};
   align-items: center;
   cursor: pointer;
 `;
