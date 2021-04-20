@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { GlobalStyle } from 'modules/root/page/App/styled';
+import { GlobalStyle } from 'modules/root/pages/App/styled';
 import BrowseNews from '.';
 import { BrowseNewsProps } from './types';
 

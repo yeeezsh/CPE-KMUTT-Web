@@ -1,7 +1,7 @@
 import { Breadcrumb } from 'antd';
 import Btn from 'common/components/Button';
 import Container from 'common/components/Container';
-import Footer from 'modules/root/components/Footer';
+import Footer from 'modules/home/components/Footer';
 import React from 'react';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { HiOutlineArrowRight } from 'react-icons/hi';
