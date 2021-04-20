@@ -4,7 +4,7 @@ import Head from 'next/head';
 import React from 'react';
 import { Main } from './styled';
 
-const Home: React.FC = () => {
+const BrowseNewsPage: React.FC = () => {
   return (
     <div>
       <Head>
@@ -18,4 +18,4 @@ const Home: React.FC = () => {
     </div>
   );
 };
-export default Home;
+export default BrowseNewsPage;
