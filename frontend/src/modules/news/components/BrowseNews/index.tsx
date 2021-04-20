@@ -1,6 +1,7 @@
 import Btn from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { HiOutlineArrowDown, HiOutlineArrowRight } from 'react-icons/hi';
 import { constants } from './constant';
@@ -16,6 +17,14 @@ import {
   FAQHeader,
 } from './styled';
 import { BrowseNewsProps, cardConstantsProps } from './types';
+
+const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean }> = (
+  props,
+) => (
+  <Link href={props.link}>
+    <a className={`menu-item ${props.active ? 'active' : ''}`}>{props.title}</a>
+  </Link>
+);
 
 const BrowseNews: React.FC<BrowseNewsProps> = () => {
   const [newsData, setNewsData] = useState<cardConstantsProps[]>([]);
@@ -38,19 +47,13 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
     <BrowseNewsStyle>
       <Container>
         <BrowsNewsHeader>
-          <a href="/" className="menu-item active">
-            สำหรับนักศึกษาใหม่
-          </a>
-          <a href="/" className="menu-item">
-            สำหรับนักศึกษาปัจจุบัน
-          </a>
-          <a href="/" className="menu-item">
-            กิจกรรมนักศึกษา
-          </a>
-          <a href="/" className="menu-item">
-            ทุนการศึกษา
-          </a>
+          {/* NavBar */}
+          <NewsCategoryLink title="สำหรับนักศึกษาใหม่" link="/" active={true} />
+          <NewsCategoryLink title="สำหรับนักศึกษาปัจจุบัน" link="/" active={true} />
+          <NewsCategoryLink title="กิจกรรมนักศึกษา" link="/" active={true} />
+          <NewsCategoryLink title="ทุนการศึกษา" link="/" active={true} />
         </BrowsNewsHeader>
+
         <BrowseNewsRow className="space-between">
           {newsData.slice(0, newsPerPage).map((data, index) => {
             return (
