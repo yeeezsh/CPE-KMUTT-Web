@@ -1,16 +1,24 @@
 import { Breadcrumb } from 'antd';
+import Btn from 'common/components/Button';
 import Container from 'common/components/Container';
 import Footer from 'modules/root/components/Footer';
 import React from 'react';
 import { AiFillTwitterCircle } from 'react-icons/ai';
+import { HiOutlineArrowRight } from 'react-icons/hi';
 import { RiFacebookCircleFill } from 'react-icons/ri';
 import {
+  AnnouceFAQ,
   CommonLayoutStyle,
   CommonWrapperCanvas,
   CommonWrapperHeader,
   CommonWrapperHeaderContent,
   CommonWrapperRow,
   CommonWrapperSocial,
+  FAQButton,
+  FAQColumn,
+  FAQContent,
+  FAQHeader,
+  FAQRow,
 } from './styled';
 import { CommonLayoutProps } from './types';
 
@@ -58,6 +66,28 @@ const CommonLayout: React.FC<CommonLayoutProps> = ({ children, ...props }) => {
         </CommonWrapperRow>
       </Container>
       {children}
+
+      <AnnouceFAQ>
+        <FAQRow className="align-center">
+          <FAQColumn>
+            <FAQHeader>มีคำถามหรือข้อสงสัย</FAQHeader>
+            <FAQContent>เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน</FAQContent>
+            <FAQButton>
+              <Btn $color={'transparent'}>
+                ติดต่อเรา
+                <HiOutlineArrowRight
+                  className="Icon"
+                  style={{ marginLeft: '16px' }}
+                  size="16px"
+                />
+              </Btn>
+            </FAQButton>
+          </FAQColumn>
+          <FAQColumn>
+            <img src="/images/annouce_faq.png" alt="" />
+          </FAQColumn>
+        </FAQRow>
+      </AnnouceFAQ>
       <Footer />
     </CommonLayoutStyle>
   );

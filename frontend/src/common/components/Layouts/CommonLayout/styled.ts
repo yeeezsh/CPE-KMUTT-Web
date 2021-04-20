@@ -60,3 +60,33 @@ export const CommonWrapperSocial = styled.div`
     display: flex;
   }
 `;
+
+export const AnnouceFAQ = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+  padding-top: 32px;
+`;
+
+export const FAQButton = styled.div`
+  margin: 32px 0;
+`;
+
+export const FAQContent = styled.div`
+  color: ${COLORS.GRAY_2};
+  font-size: 14px;
+`;
+
+export const FAQHeader = styled.div`
+  color: ${COLORS.GRAY_1};
+  font-weight: bold;
+  font-size: 22px;
+`;
+export const FAQRow = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const FAQColumn = styled.div`
+  display: block;
+`;
