@@ -18,20 +18,20 @@ import {
 import { BrowseNewsProps, cardConstantsProps } from './types';
 
 const BrowseNews: React.FC<BrowseNewsProps> = () => {
-  const [param, setParam] = useState<cardConstantsProps[]>([]);
-  const [postsPerPage, setPostsPerPage] = useState(9);
+  const [newsData, setNewsData] = useState<cardConstantsProps[]>([]);
+  const [newsPerPage, setNewsPerPage] = useState(9);
 
   useEffect(() => {
-    setParam(constants);
+    setNewsData(constants);
   }, []);
 
   const checkAmountPost = () => {
-    if (postsPerPage < param.length) return false;
+    if (newsPerPage < newsData.length) return false;
     else return true;
   };
 
   const loadMore = () => {
-    setPostsPerPage(postsPerPage + 3);
+    setNewsPerPage(newsPerPage + 3);
   };
 
   return (
@@ -52,7 +52,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
           </a>
         </BrowsNewsHeader>
         <BrowseNewsRow className="space-between">
-          {param.slice(0, postsPerPage).map((data, index) => {
+          {newsData.slice(0, newsPerPage).map((data, index) => {
             return (
               <Card
                 key={index}
