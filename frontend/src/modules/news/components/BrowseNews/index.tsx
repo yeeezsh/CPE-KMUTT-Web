@@ -4,6 +4,7 @@ import Container from 'common/components/Container';
 import Link from 'next/link';
 import React from 'react';
 import { HiOutlineArrowDown, HiOutlineArrowRight } from 'react-icons/hi';
+import { constants } from './constant';
 import {
   AnnouceFAQ,
   BrowseNewsColumn,
@@ -27,7 +28,7 @@ const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean
 );
 
 const BrowseNews: React.FC<BrowseNewsProps> = () => {
-  const { newsData, moreNewsData, loadMore } = useLoadMore();
+  const { newsData, moreNewsData, loadMore } = useLoadMore({ initData: constants });
 
   return (
     <BrowseNewsStyle>
