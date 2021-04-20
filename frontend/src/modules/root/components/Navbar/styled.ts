@@ -1,8 +1,8 @@
 import { Divider } from 'antd';
 import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
+import fontFamily from 'common/styles/typography/fontFamily';
 import styled from 'styled-components';
-import fontFamily from 'styles/typography/fontFamily';
 import { NavBarProps } from './interface';
 
 export const Nav = styled.div`

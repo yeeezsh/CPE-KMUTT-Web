@@ -1,6 +1,6 @@
 import COLORS from 'common/constants/colors';
+import fontFamily from 'common/styles/typography/fontFamily';
 import styled from 'styled-components';
-import fontFamily from 'styles/typography/fontFamily';
 import { DesignProps } from './interface';
 
 export const MenuWrap = styled.div`

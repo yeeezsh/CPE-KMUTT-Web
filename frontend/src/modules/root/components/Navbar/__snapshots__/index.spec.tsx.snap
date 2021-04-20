@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Tests Navbar component should be defined 1`] = `
+<styled__Nav
+  visible={false}
+>
+  <Container>
+    <styled__NavbarBrand>
+      <styled__LogoKMUTT
+        src="/assets/LOGO-KMUTT.svg"
+      />
+      <styled__StyledDivider
+        type="vertical"
+      />
+      <styled__LogoCPE
+        src="/assets/LOGO-CPE.svg"
+      />
+      <styled__Wrapper>
+        <styled__Faculty>
+          ภาควิชาวิศวกรรมคอมพิวเตอร์
+        </styled__Faculty>
+        <styled__Department>
+          คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+        </styled__Department>
+      </styled__Wrapper>
+    </styled__NavbarBrand>
+    <styled__MenuButton>
+      EN
+    </styled__MenuButton>
+    <Dropdown
+      mouseEnterDelay={0.15}
+      mouseLeaveDelay={0.1}
+      overlay={<NavbarMenu />}
+      overlayStyle={
+        Object {
+          "marginTop": "40px",
+          "position": "fixed",
+          "width": "100%",
+        }
+      }
+      placement="bottomCenter"
+      trigger={
+        Array [
+          "click",
+        ]
+      }
+      visible={false}
+    >
+      <HamburgerButton
+        visible={false}
+      />
+    </Dropdown>
+  </Container>
+</styled__Nav>
+`;

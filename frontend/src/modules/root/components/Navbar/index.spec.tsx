@@ -1,39 +1,53 @@
-import { Dropdown } from 'antd';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
+import 'jest-styled-components';
 import * as React from 'react';
-import Navbar from '.';
-import { Cancel, LogoCPE, LogoKMUTT } from './styled';
+import * as NavbarType from '.';
 
 describe('Navbar Tests', () => {
+  const showDropdownSpy = jest.fn();
+  const useDropdownSpy = jest.fn();
+  jest.doMock('./hooks/useDropdown', () => useDropdownSpy);
+
+  const HamburgerButtonSpy = jest.fn();
+  jest.doMock('./components/HamburgerButton', () => HamburgerButtonSpy);
+
+  const { default: Navbar } = require('.') as typeof NavbarType;
+
+  beforeEach(() => {
+    useDropdownSpy.mockReturnValue({
+      visible: false,
+      showDropdown: showDropdownSpy,
+    });
+  });
+
   it('Navbar component should be defined', () => {
-    const wrap = shallow(<Navbar visible />);
-    expect(wrap.exists()).toBe(true);
+    const wrapper = shallow(<Navbar visible />);
+    expect(wrapper).toMatchSnapshot();
   });
-  it('Should have KMUTT logo', () => {
-    const wrap = shallow(<Navbar visible />);
-    const logoVisible = wrap.find(LogoKMUTT);
-    expect(logoVisible.exists()).toBe(true);
+
+  it('should be display EN when not visible', () => {
+    const wrapper = shallow(<Navbar visible />);
+
+    expect(wrapper.contains('EN')).toBeDefined();
   });
-  it('Should have CPE logo', () => {
-    const wrap = shallow(<Navbar visible />);
-    const logoVisible = wrap.find(LogoCPE);
-    expect(logoVisible.exists()).toBe(true);
+
+  it('should be not display EN when visible', () => {
+    useDropdownSpy.mockReturnValue({
+      visible: true,
+    });
+
+    const wrapper = shallow(<Navbar visible />);
+
+    expect(wrapper.contains('EN')).toBe(false);
   });
-  it('Should have hamburger button', () => {
-    const wrap = shallow(<Navbar visible />);
-    const hamburger = wrap.find(Dropdown);
-    expect(hamburger.exists()).toBe(true);
-  });
-  it('Should change visible to true when hamburger is clicked', () => {
-    const wrapper = mount(<Navbar visible />);
-    wrapper.find(Dropdown).simulate('click');
-    const dropdownVisible = wrapper.find(Dropdown).prop('visible')?.valueOf();
-    expect(dropdownVisible).toBe(true);
-  });
-  it('Should change hamburger to cancel', () => {
-    const wrapper = mount(<Navbar visible />);
-    wrapper.find(Dropdown).simulate('click');
-    const cancelButton = wrapper.find(Cancel);
-    expect(cancelButton.exists()).toBe(true);
-  });
+
+  //it('should be render HamburgerButton with props correctly', () => {
+  //  render(<Navbar visible />);
+
+  //  expect(HamburgerButtonSpy).toBeCalledTimes(1);
+  //  expect(HamburgerButtonSpy).toBeCalledWith({
+  //    onClick: showDropdownSpy,
+  //    visible: false,
+  //  });
+  //});
 });
