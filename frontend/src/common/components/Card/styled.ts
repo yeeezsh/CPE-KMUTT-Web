@@ -47,7 +47,6 @@ export const CardNextBtn = styled.div`
 export const CardBodyStyled = styled.div`
   position: relative;
   &.card-normal {
-    width: 330px;
     height: 250px;
     display: block;
     background-color: #ffffff;
@@ -60,7 +59,6 @@ export const CardBodyStyled = styled.div`
     padding-top: 10px;
     padding-bottom: 16px;
     height: 125px;
-    width: 330px;
 
     & > ${CardTitle} {
       color: #ffffff;
