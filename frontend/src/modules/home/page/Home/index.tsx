@@ -11,20 +11,6 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 import { Main } from './styled';
 
 const Home: React.FC = () => {
-  const crumbNav = [
-    {
-      link: '/',
-      title: 'หน้าแรก',
-    },
-    {
-      link: '/',
-      title: 'ประกาศ',
-    },
-    {
-      link: '/',
-      title: 'สำหรับนักศึกษาใหม่',
-    },
-  ];
   return (
     <div>
       <Head>
