@@ -58,6 +58,8 @@ const Home: React.FC = () => {
           </ButtonStyled>
         </StaticSection>
 
+        <Carousel variant="Slider" item={CAROUSEL_DEFAULT_CONSTANT} />
+
         <StaticSection
           id="2"
           background="/images/static_bg_gallery.png"
