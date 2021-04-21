@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  background-color: #fafafa;
+`;
 
 export const Title = styled.h1`
   margin: 0;

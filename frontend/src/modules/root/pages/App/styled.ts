@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
 import COLORS from 'common/constants/colors';
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -17,13 +17,29 @@ export const GlobalStyle = createGlobalStyle`
     }
   a:link , a:visited {
     text-decoration: none;
-    color: ${COLORS.PRIMARY_COLOR};
+    color: ${COLORS.GRAY_2};
     font-size: 14px;
   }
 
   a:hover , a:active {
     text-decoration: underline;
-    color: ${COLORS.GRAY_2};
+    color: ${COLORS.PRIMARY_COLOR};
     font-size: 14px;
   }
+
+  a:link.menu-item , a:visited.menu-item {
+    text-decoration: none;
+    color: ${COLORS.GRAY_2};
+    opacity: 0.6;
+    font-size: 14px;
+  }
+
+  a.menu-item.active, a:hover.menu-item , a:active.menu-item {
+    text-decoration: none;
+    color: ${COLORS.PRIMARY_COLOR};
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 1;
+  }
+
 `;
