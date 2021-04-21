@@ -6,7 +6,7 @@ import {
   PortletTitle,
   PortletTitleHeader,
   ShowAllButton,
-} from 'modules/root/components/WhatNewSection/styled';
+} from 'modules/home/components/WhatNewSection/styled';
 import React, { useState } from 'react';
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from 'react-icons/hi';
 import useProgressbar from './hooks/useProgressbar';
