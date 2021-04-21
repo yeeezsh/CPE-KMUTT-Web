@@ -1,6 +1,6 @@
-import { FooterProps } from './types';
+import { Footer } from './types';
 
-const FooterConstant: FooterProps[] = [
+const FooterConstant: Footer[] = [
   {
     key: '1',
     label: 'ปริญญาตรี',

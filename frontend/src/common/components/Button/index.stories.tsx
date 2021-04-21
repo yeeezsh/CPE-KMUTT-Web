@@ -5,7 +5,7 @@ import Button from '.';
 import { ButtonProps } from './types';
 
 export default {
-  title: 'Commmon/Button',
+  title: 'Common/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
