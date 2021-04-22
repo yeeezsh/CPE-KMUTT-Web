@@ -27,6 +27,21 @@ services:
       - mongodb-shard0
     command: yarn start:dev
     restart: always
+  strapi:
+    image: strapi/strapi
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: strapi
+      DATABASE_HOST: mongodb-sharded
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: cpeKMUTT@WebSite
+    volumes:
+      - ./strapi:/srv/app
+    ports:
+      - "1337:1337"
+    depends_on:
+      - mongodb-sharded
   mongodb-sharded:
     image: "bitnami/mongodb-sharded:4.2"
     environment:
