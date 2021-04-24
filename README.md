@@ -31,6 +31,8 @@ cd ./CPE-KMUTT-Web
 
 ### Docker
 
+run projecy via Docker in dev environment
+
 ```bash
 $ docker-compose -f docker-compose.dev.yml up --build
 ```
