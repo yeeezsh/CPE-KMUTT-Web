@@ -10,7 +10,7 @@ services:
       WAIT_HOSTS: mongo:27017
       TZ: Asia/Bangkok
       ORIGIN: http(|s):\/\/localhost:5000
-      DATABASE_CONNECTION: "mongodb://mongodb-sharded:27017/cpe-kmutt-web"
+      DATABASE_CONNECTION: "mongodb://mongos:27017/cpe-kmutt-web"
       DATABASE_USERAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
       DATABASE_AUTH_SOURCE: admin
@@ -32,7 +32,7 @@ services:
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
-      DATABASE_HOST: mongodb-sharded
+      DATABASE_HOST: mongos
       DATABASE_PORT: 27017
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
