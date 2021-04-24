@@ -13,6 +13,7 @@
     "baseUrl": "./",
     "strictNullChecks": true,
     "incremental": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   }
 }
