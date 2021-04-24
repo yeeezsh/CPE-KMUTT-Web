@@ -24,7 +24,7 @@ services:
     volumes:
       - "./backend:/backend"
     links:
-      - mongodb-shard0
+      - shard0
     command: yarn start:dev
     restart: always
   strapi:
@@ -41,7 +41,7 @@ services:
     ports:
       - "1337:1337"
     depends_on:
-      - mongodb-sharded
+      - shard0
   mongos:
     image: "bitnami/mongodb-sharded:4.2"
     environment:
