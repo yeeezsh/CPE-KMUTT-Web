@@ -1,24 +1,23 @@
+import Container from 'common/components/Container';
 import React from 'react';
+import FooterConstant from './constants';
 import {
-  FooterStyled,
-  HrLine,
   ContactContainer,
-  ContactHeader,
   ContactContent,
-  SiteMapContainer,
-  SiteMapSupContainer,
-  SiteMapHeader,
-  SiteMapLink,
+  ContactHeader,
   CopyRight,
   CopyRightContainer,
+  FooterStyled,
+  HrLine,
   InfoContainer,
   InfoLink,
+  SiteMapContainer,
+  SiteMapHeader,
+  SiteMapLink,
+  SiteMapSupContainer,
 } from './styled';
-import { FooterProps } from './types';
-import Container from 'common/components/Container';
-import FooterConstant from './constants';
 
-const StaticSection: React.FC<FooterProps> = () => {
+const StaticSection: React.FC = () => {
   return (
     <FooterStyled>
       <Container>

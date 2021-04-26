@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write ./src/**/*.ts{,x} --config ./.prettierrc.js",
-    "storybook": "start-storybook -p 6006 --no-dll",
+    "storybook": "start-storybook -p 6006 --no-dll -s ./public",
     "storybook:build": "build-storybook --no-dll"
   },
   "dependencies": {

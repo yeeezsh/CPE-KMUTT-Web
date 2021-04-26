@@ -1,9 +1,10 @@
 import Btn from 'common/components/Button';
-import Footer from 'modules/root/components/Footer';
-import Navbar from 'modules/root/components/Navbar';
-import StaticSection from 'modules/root/components/StaticSection';
-import { ButtonStyled } from 'modules/root/components/StaticSection/styled';
-import WhatNewSection from 'modules/root/components/WhatNewSection';
+import Carousel from 'common/components/Carousel';
+import { CAROUSEL_DEFAULT_CONSTANT } from 'common/components/Carousel/constant';
+import Footer from 'modules/home/components/Footer';
+import StaticSection from 'modules/home/components/StaticSection';
+import { ButtonStyled } from 'modules/home/components/StaticSection/styled';
+import WhatNewSection from 'modules/home/components/WhatNewSection';
 import Head from 'next/head';
 import React from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
@@ -17,7 +18,7 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <Navbar />
+        <Carousel variant="Default" item={CAROUSEL_DEFAULT_CONSTANT} />
         <WhatNewSection />
         <StaticSection
           id="1"
@@ -42,6 +43,8 @@ const Home: React.FC = () => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
+
+        <Carousel variant="Slider" item={CAROUSEL_DEFAULT_CONSTANT} />
 
         <StaticSection
           id="2"
