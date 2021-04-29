@@ -1,7 +1,10 @@
-import CommonLayout from 'common/components/Layouts/CommonLayout';
-import BrowseNews from 'modules/news/components/BrowseNews';
-import Head from 'next/head';
 import React from 'react';
+
+import Head from 'next/head';
+
+import CommonLayout from 'common/components/Layouts/CommonLayout';
+
+import BrowseNews from 'modules/news/components/BrowseNews';
 
 const MOCK_NAVIGATE = [
   {

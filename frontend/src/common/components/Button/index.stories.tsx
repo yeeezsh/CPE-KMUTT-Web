@@ -1,8 +1,11 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { HiOutlineArrowRight } from 'react-icons/hi';
-import Button from '.';
+
 import { ButtonProps } from './types';
+
+import Button from '.';
 
 export default {
   title: 'Common/Button',

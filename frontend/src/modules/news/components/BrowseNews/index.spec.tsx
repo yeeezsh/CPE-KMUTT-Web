@@ -1,13 +1,17 @@
-import Container from 'common/components/Container';
-import { shallow } from 'enzyme';
 import React from 'react';
-import BrowseNews from '.';
+
+import { shallow } from 'enzyme';
+
+import Container from 'common/components/Container';
+
 import {
   BrowseNewsRow,
   BrowseNewsSeeMore,
   BrowseNewsStyle,
   BrowsNewsHeader,
 } from './styled';
+
+import BrowseNews from '.';
 
 describe('BrowseNews Compnent', () => {
   it('BrowseNews Compnent should be defined', () => {

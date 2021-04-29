@@ -1,8 +1,12 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { GlobalStyle } from 'modules/root/pages/App/styled';
 import React from 'react';
-import Card from '.';
+
+import { Meta, Story } from '@storybook/react/types-6-0';
+
+import { GlobalStyle } from 'modules/root/pages/App/styled';
+
 import { CardProps } from './types';
+
+import Card from '.';
 
 const meta: Meta = {
   title: 'Common/Card',

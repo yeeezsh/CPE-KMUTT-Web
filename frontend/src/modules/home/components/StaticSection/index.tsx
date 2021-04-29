@@ -1,5 +1,7 @@
-import Container from 'common/components/Container';
 import React from 'react';
+
+import Container from 'common/components/Container';
+
 import { StaticStyle, StaticBody, StaticContent, StaticHeader } from './styled';
 import { StaticProps } from './types';
 

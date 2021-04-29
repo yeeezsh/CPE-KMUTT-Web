@@ -1,9 +1,12 @@
+import React from 'react';
+
+import Link from 'next/link';
+import { HiOutlineArrowDown } from 'react-icons/hi';
+
 import Btn from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
-import Link from 'next/link';
-import React from 'react';
-import { HiOutlineArrowDown } from 'react-icons/hi';
+
 import { constants } from './constant';
 import {
   BrowseNewsRow,

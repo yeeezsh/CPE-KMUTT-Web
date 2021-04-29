@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import COLORS from 'common/constants/colors';
 
 export const FooterStyled = styled.div`

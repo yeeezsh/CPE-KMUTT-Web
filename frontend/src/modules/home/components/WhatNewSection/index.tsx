@@ -1,8 +1,11 @@
+import React from 'react';
+
+import { HiOutlineArrowRight } from 'react-icons/hi';
+
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
-import React from 'react';
-import { HiOutlineArrowRight } from 'react-icons/hi';
+
 import {
   CardContainer,
   PortletDiscription,

@@ -1,7 +1,6 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
+    "source.fixAll": true
   },
   "files.exclude": {
     "**/.git": true,
@@ -11,5 +10,6 @@
     "**/.DS_Store": true,
     "**/node_modules": true
   },
-  "files.eol": "\n"
+  "files.eol": "\n",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }

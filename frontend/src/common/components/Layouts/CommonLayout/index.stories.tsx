@@ -1,7 +1,10 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
+
 import { GlobalStyle } from 'modules/root/pages/App/styled';
-import CommonLayout from '.';
+
 import { CommonLayoutProps } from './types';
+
+import CommonLayout from '.';
 
 const MOCK_NAVIGATE = [
   {

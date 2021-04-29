@@ -1,11 +1,15 @@
-import { Breadcrumb } from 'antd';
-import Btn from 'common/components/Button';
-import Container from 'common/components/Container';
-import Footer from 'modules/home/components/Footer';
 import React from 'react';
+
+import { Breadcrumb } from 'antd';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { RiFacebookCircleFill } from 'react-icons/ri';
+
+import Btn from 'common/components/Button';
+import Container from 'common/components/Container';
+
+import Footer from 'modules/home/components/Footer';
+
 import {
   AnnouceFAQ,
   CommonLayoutStyle,
