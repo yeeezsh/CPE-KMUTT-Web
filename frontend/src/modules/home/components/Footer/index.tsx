@@ -1,5 +1,7 @@
-import Container from 'common/components/Container';
 import React from 'react';
+
+import Container from 'common/components/Container';
+
 import FooterConstant from './constants';
 import {
   ContactContainer,

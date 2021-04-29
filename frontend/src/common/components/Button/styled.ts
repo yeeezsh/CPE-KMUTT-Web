@@ -1,5 +1,7 @@
-import COLORS from 'common/constants/colors';
 import styled, { css } from 'styled-components';
+
+import COLORS from 'common/constants/colors';
+
 import { ButtonProps } from './types';
 
 const BACKGROUND_COLORS = {

@@ -1,5 +1,6 @@
-import COLORS from 'common/constants/colors';
 import styled from 'styled-components';
+
+import COLORS from 'common/constants/colors';
 
 export const Card = styled.div`
   font-family: 'Kanit', sans-serif;
