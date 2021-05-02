@@ -45,7 +45,7 @@ services:
       - shard0
   mongos:
     container_name: monogs
-    image: "docker.io/bitnami/mongodb-sharded:4.4"
+    image: "bitnami/mongodb-sharded:latest"
     environment:
       MONGODB_ADVERTISED_HOSTNAME: mongos
       MONGODB_SHARDING_MODE: mongos
@@ -58,7 +58,7 @@ services:
       - "27017:27017"
   shard0:
     container_name: shard0
-    image: "docker.io/bitnami/mongodb-sharded:4.4"
+    image: "bitnami/mongodb-sharded:latest"
     environment:
       MONGODB_ADVERTISED_HOSTNAME: shard0
       MONGODB_SHARDING_MODE: shardsvr
@@ -71,7 +71,7 @@ services:
     volumes:
       - "./db/shard-0:/bitnami"
   cfg:
-    image: "docker.io/bitnami/mongodb-sharded:4.4"
+    image: "bitnami/mongodb-sharded:latest"
     container_name: cfg
     environment:
       MONGODB_ADVERTISED_HOSTNAME: cfg
