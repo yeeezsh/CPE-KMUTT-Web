@@ -2,6 +2,8 @@ import React from 'react';
 
 import Head from 'next/head';
 
+import Navbar from 'modules/root/components/Navbar';
+
 import { Main } from './styled';
 
 const Home: React.FC = () => {
@@ -11,7 +13,9 @@ const Home: React.FC = () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Main></Main>
+      <Main>
+        <Navbar />
+      </Main>
     </div>
   );
 };
