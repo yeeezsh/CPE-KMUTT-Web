@@ -28,6 +28,7 @@ services:
     command: yarn start:dev
     restart: always
   strapi:
+    container_name: strapi
     image: strapi/strapi
     environment:
       DATABASE_CLIENT: mongo
@@ -43,7 +44,8 @@ services:
     depends_on:
       - shard0
   mongos:
-    image: "bitnami/mongodb-sharded:4.2"
+    container_name: monogs
+    image: "docker.io/bitnami/mongodb-sharded:4.4"
     environment:
       MONGODB_ADVERTISED_HOSTNAME: mongos
       MONGODB_SHARDING_MODE: mongos
@@ -55,7 +57,8 @@ services:
     ports:
       - "27017:27017"
   shard0:
-    image: "bitnami/mongodb-sharded:4.2"
+    container_name: shard0
+    image: "docker.io/bitnami/mongodb-sharded:4.4"
     environment:
       MONGODB_ADVERTISED_HOSTNAME: shard0
       MONGODB_SHARDING_MODE: shardsvr
@@ -68,7 +71,8 @@ services:
     volumes:
       - "./db/shard-0:/bitnami"
   cfg:
-    image: "bitnami/mongodb-sharded:4.2"
+    image: "docker.io/bitnami/mongodb-sharded:4.4"
+    container_name: cfg
     environment:
       MONGODB_ADVERTISED_HOSTNAME: cfg
       MONGODB_SHARDING_MODE: configsvr
