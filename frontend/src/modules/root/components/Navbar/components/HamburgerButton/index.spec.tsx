@@ -16,16 +16,4 @@ describe('<HamburgerButton />', () => {
     wrapper.find(StyledMenuButton).simulate('click');
     expect(onClick).toBeCalled();
   });
-
-  it('should be match to snapshot when visible', () => {
-    const wrapper = shallow(<HamburgerButton visible={true} onClick={onClick} />);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should be match to snapshot when not visible', () => {
-    const wrapper = shallow(<HamburgerButton visible={false} onClick={onClick} />);
-
-    expect(wrapper).toMatchSnapshot();
-  });
 });
