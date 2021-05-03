@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-export default function useDropdown() {
+import { useDropdownType } from './types';
+
+export default function useDropdown(): useDropdownType {
   const [visible, setVisible] = useState(false);
 
   const showDropdown = () => {

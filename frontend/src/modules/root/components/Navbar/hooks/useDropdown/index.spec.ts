@@ -1,10 +1,8 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import * as useDropdownType from '.';
+import useDropdown from '.';
 
 describe('useDropdown()', () => {
-  const { default: useDropdown } = require('.') as typeof useDropdownType;
-
   afterEach(() => {
     jest.resetAllMocks();
   });

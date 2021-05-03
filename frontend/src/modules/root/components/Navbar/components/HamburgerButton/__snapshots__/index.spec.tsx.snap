@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HamburgerButton /> should be match to snapshot when not visible 1`] = `
-<styled__StyledMenuButton>
+<styled__StyledMenuButton
+  onClick={[MockFunction]}
+>
   <styled__Hamburger
     viewBox="0 0 18 12"
     xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +16,9 @@ exports[`<HamburgerButton /> should be match to snapshot when not visible 1`] = 
 `;
 
 exports[`<HamburgerButton /> should be match to snapshot when visible 1`] = `
-<styled__StyledMenuButton>
+<styled__StyledMenuButton
+  onClick={[MockFunction]}
+>
   <styled__Cancel
     viewBox="0 0 14 15"
     xmlns="http://www.w3.org/2000/svg"

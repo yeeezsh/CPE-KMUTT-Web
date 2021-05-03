@@ -3,7 +3,7 @@ import React from 'react';
 import { Cancel, Hamburger, StyledMenuButton } from './styled';
 import { HamburgerButtonProps } from './types';
 
-const HamburgerButton = ({ visible, onClick }: HamburgerButtonProps) => {
+const HamburgerButton: React.FC<HamburgerButtonProps> = ({ visible, onClick }) => {
   return (
     <StyledMenuButton onClick={onClick}>
       {visible ? (

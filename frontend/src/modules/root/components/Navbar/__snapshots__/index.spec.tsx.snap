@@ -46,7 +46,8 @@ exports[`Navbar Tests Navbar component should be defined 1`] = `
       }
       visible={false}
     >
-      <HamburgerButton
+      <mockConstructor
+        onClick={[MockFunction]}
         visible={false}
       />
     </Dropdown>
