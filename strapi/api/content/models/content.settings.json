@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contents",
+  "info": {
+    "name": "Content"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title_pr": {
+      "type": "string"
+    },
+    "canvas_pr": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "main_content": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.content-component"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": [
+        "Thai",
+        "English"
+      ]
+    }
+  }
+}
