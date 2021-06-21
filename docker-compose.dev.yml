@@ -30,7 +30,6 @@ services:
   strapi:
     container_name: strapi
     image: strapi/strapi
-    command: "npm install"
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
