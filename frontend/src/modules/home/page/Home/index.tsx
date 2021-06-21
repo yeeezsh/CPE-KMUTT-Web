@@ -4,6 +4,11 @@ import Head from 'next/head';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { Btn } from 'common/components/Button/styled';
+import Carousel from 'common/components/Carousel';
+import {
+  CAROUSEL_DEFAULT_CONSTANT,
+  CAROUSEL_SLIDER_CONSTANT,
+} from 'common/components/Carousel/constant';
 
 import Footer from 'modules/home/components/Footer';
 import StaticSection from 'modules/home/components/StaticSection';
@@ -22,6 +27,7 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
+        <Carousel variant="Default" item={CAROUSEL_DEFAULT_CONSTANT} />
         <WhatNewSection />
         <StaticSection
           id="1"
@@ -46,7 +52,7 @@ const Home: React.FC = () => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
-
+        <Carousel variant="Slider" item={CAROUSEL_SLIDER_CONSTANT} />
         <StaticSection
           id="2"
           background="/images/static_bg_gallery.png"
