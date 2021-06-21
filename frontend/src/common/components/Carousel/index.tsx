@@ -132,6 +132,13 @@ const Carousel: React.FC<CarouselProps> = (props) => {
             {/* body */}
             {props.item
               ? props.item.map(({ id, heading, caption, tag, link }: ChildrenProps) => {
+                  const displayCaption =
+                    props.variant === 'PopUp'
+                      ? `${caption || ''}`
+                      : `${(caption || '').slice(0, 100)}${
+                          caption && caption.length > 100 ? '...' : ''
+                        }`;
+
                   return (
                     <FaderSlide
                       key={id + '-body'}
@@ -141,22 +148,13 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                       }}>
                       <SlideContent defaultStyle={isDefault}>
                         {tag ? <Tag>#{tag}</Tag> : null}
-                        {heading ? (
-                          <Heading defaultStyle={isDefault}>{heading}</Heading>
-                        ) : null}
-                        {caption ? (
-                          props.variant === 'PopUp' ? (
-                            <Caption defaultStyle={isDefault}>{caption}</Caption>
-                          ) : caption.length > 100 ? (
-                            <Caption defaultStyle={isDefault}>
-                              {caption.slice(0, 100)}...
-                            </Caption>
-                          ) : (
-                            <Caption defaultStyle={isDefault}>
-                              {caption.slice(0, 100)}
-                            </Caption>
-                          )
-                        ) : null}
+                        {heading && <Heading defaultStyle={isDefault}>{heading}</Heading>}
+
+                        {caption && (
+                          <Caption defaultStyle={isDefault}>{displayCaption}</Caption>
+                        )}
+
+                        {/* //FIXME: refactor */}
                         {link && props.variant != 'PopUp' ? (
                           isDefault ? (
                             <StyledButton>
@@ -183,6 +181,8 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                 })
               : null}
           </Fader>
+
+          {/* //FIXME: refactor */}
           <StyledSlider ref={sliderRef}>
             {props.item
               ? props.item.map(({ id, picture }: ChildrenProps) => {
