@@ -16,7 +16,8 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write ./src/**/*.ts{,x} --config ./.prettierrc.js",
     "storybook": "start-storybook -s ./public -p 6006 --no-dll",
-    "storybook:build": "build-storybook --no-dll"
+    "storybook:build": "build-storybook --no-dll",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "antd": "4.8.2",
