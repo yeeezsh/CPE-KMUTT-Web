@@ -10,7 +10,7 @@ services:
       WAIT_HOSTS: mongo:27017
       TZ: Asia/Bangkok
       ORIGIN: http(|s):\/\/localhost:5000
-      DATABASE_CONNECTION: "mongodb://mongos:27017/cpe-kmutt-web"
+      DATABASE_CONNECTION: "mongodb://mongodb:27017/cpe-kmutt-web"
       DATABASE_USERAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
       DATABASE_AUTH_SOURCE: admin
@@ -24,15 +24,17 @@ services:
     volumes:
       - "./backend:/backend"
     links:
-      - shard0
+      - mongodb
     command: yarn start:dev
     restart: always
   strapi:
+    container_name: strapi
     image: strapi/strapi
+    command: "npm install"
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
-      DATABASE_HOST: mongos
+      DATABASE_HOST: mongodb
       DATABASE_PORT: 27017
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
@@ -41,41 +43,14 @@ services:
     ports:
       - "1337:1337"
     depends_on:
-      - shard0
-  mongos:
-    image: "bitnami/mongodb-sharded:4.2"
+      - mongodb
+  mongodb:
+    container_name: mongodb
+    image: "bitnami/mongodb:latest"
     environment:
-      MONGODB_ADVERTISED_HOSTNAME: mongos
-      MONGODB_SHARDING_MODE: mongos
-      MONGODB_CFG_PRIMARY_HOST: cfg
-      MONGODB_CFG_REPLICA_SET_NAME: cfgreplicaset
-      MONGODB_REPLICA_SET_KEY: cpekmuttweb
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
       TZ: Asia/Bangkok
     ports:
       - "27017:27017"
-  shard0:
-    image: "bitnami/mongodb-sharded:4.2"
-    environment:
-      MONGODB_ADVERTISED_HOSTNAME: shard0
-      MONGODB_SHARDING_MODE: shardsvr
-      MONGODB_MONGOS_HOST: mongos
-      MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
-      MONGODB_REPLICA_SET_MODE: primary
-      MONGODB_REPLICA_SET_KEY: cpekmuttweb
-      MONGODB_REPLICA_SET_NAME: shard0
-      TZ: Asia/Bangkok
     volumes:
-      - "./db/shard-0:/bitnami"
-  cfg:
-    image: "bitnami/mongodb-sharded:4.2"
-    environment:
-      MONGODB_ADVERTISED_HOSTNAME: cfg
-      MONGODB_SHARDING_MODE: configsvr
-      MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
-      MONGODB_REPLICA_SET_MODE: primary
-      MONGODB_REPLICA_SET_KEY: cpekmuttweb
-      MONGODB_REPLICA_SET_NAME: cfgreplicaset
-      TZ: Asia/Bangkok
-    volumes:
-      - "./db/cfg:/bitnami"
+      - "./db:/bitnami"
