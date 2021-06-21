@@ -5,6 +5,7 @@ import { useKeenSlider } from 'keen-slider/react';
 const SLIDE_EFFECT_DURATION = 2000;
 const SLIDE_CHANGE_PER_SEC = 5;
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function useSlide(
   firstSlide: number,
   SLIDE_COUNT: number,
