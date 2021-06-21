@@ -45,7 +45,7 @@ services:
       - mongodb
   mongodb:
     container_name: mongodb
-    image: "bitnami/mongodb-sharded:latest"
+    image: "bitnami/mongodb:latest"
     environment:
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
       TZ: Asia/Bangkok
