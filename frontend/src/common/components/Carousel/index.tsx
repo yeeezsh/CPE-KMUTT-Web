@@ -71,7 +71,8 @@ const Carousel: React.FC<CarouselProps> = (props) => {
   return (
     <CarouselWrapper customStyle={props.variant}>
       <Container>
-        {props.variant === 'Slider' ? (
+        {/* Title */}
+        {props.variant === 'Slider' && (
           <PortletTitle>
             <PortletTitleHeader>กิจกรรมและความสำเร็จ</PortletTitleHeader>
             <PortletDiscription>
@@ -88,26 +89,32 @@ const Carousel: React.FC<CarouselProps> = (props) => {
               </Button>
             </ShowAllButton>
           </PortletTitle>
-        ) : null}
+        )}
+
+        {/* progress bar */}
         <Slides defaultStyle={isDefault} customStyle={props.variant}>
           <Fader defaultStyle={isDefault} ref={faderRef}>
             {fader && (
               <ProgressContainer defaultStyle={isDefault} customStyle={props.variant}>
                 {[...Array(fader.details().size).keys()].map((i) => {
                   return (
-                    <>
-                      {isDefault ? (
+                    <React.Fragment key={i + '-progress=container'}>
+                      {/* fill */}
+                      {isDefault && (
                         <ProgressBar
                           className={currentSlide === i ? 'active' : ''}
-                          key={i}
+                          key={i + '-progress'}
                           onClick={() => {
                             slider.moveToSlideRelative(i);
                             fader.moveToSlideRelative(i);
                           }}
                         />
-                      ) : (
+                      )}
+
+                      {/* animate */}
+                      {!isDefault && (
                         <AnimatedProgress
-                          key={i}
+                          key={i + '-animate'}
                           percent={i <= currentSlide ? progress[i] : 0}
                           showInfo={false}
                           strokeColor={COLORS.PRIMARY_COLOR}
@@ -116,16 +123,18 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                           className={currentSlide >= i ? 'active' : ''}
                         />
                       )}
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </ProgressContainer>
             )}
+
+            {/* body */}
             {props.item
               ? props.item.map(({ id, heading, caption, tag, link }: ChildrenProps) => {
                   return (
                     <FaderSlide
-                      key={id}
+                      key={id + '-body'}
                       style={{
                         opacity: opacities[id],
                         display: id === currentSlide ? 'block' : 'none',
@@ -178,7 +187,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
             {props.item
               ? props.item.map(({ id, picture }: ChildrenProps) => {
                   return (
-                    <StyledSliderSlide key={id}>
+                    <StyledSliderSlide key={id + 'slide-image'}>
                       <Image src={picture} alt="" />
                     </StyledSliderSlide>
                   );
