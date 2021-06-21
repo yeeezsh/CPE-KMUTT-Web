@@ -212,7 +212,6 @@ export const Heading = styled.p`
     text-align: center;
     font-size: ${(props: DesignProps) => (props.defaultStyle ? '32px' : '24px')};
     line-height: ${(props: DesignProps) => (props.defaultStyle ? '48px' : '31px')};
-    font-weight: ${(props: DesignProps) => (props.defaultStyle ? '700' : '700')};
   }
 `;
 
