@@ -1,7 +1,7 @@
-FROM strapi/strapi as dev
+FROM node:14-alpine3.12 as dev
 COPY yarn.lock yarn.lock
 COPY package.json package.json
 RUN yarn install
-ADD . ./srv/app
-CMD ["npm", "run", "develop"]
+ADD . .
+CMD ["yarn", "develop"]
 
