@@ -28,7 +28,7 @@ const NavbarMenu: React.FC = () => (
                 </Image>
               ) : null}
               <Item>{label}</Item>
-              {subMenu?.map(({ key, label, link }) => {
+              {subMenu?.map(({ key: ItemKey, label: ItemLabel, link }) => {
                 return (
                   <ItemLink key={key} href={link}>
                     {label}
