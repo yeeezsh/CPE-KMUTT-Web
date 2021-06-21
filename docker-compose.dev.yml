@@ -29,7 +29,10 @@ services:
     restart: always
   strapi:
     container_name: strapi
-    image: strapi/strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+      target: dev
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
