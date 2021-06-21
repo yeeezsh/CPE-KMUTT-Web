@@ -3,5 +3,5 @@ COPY yarn.lock yarn.lock
 COPY package.json package.json
 RUN yarn install
 ADD . ./srv/app
-CMD ["npm", "develop"]
+CMD ["npm", "run", "develop"]
 
