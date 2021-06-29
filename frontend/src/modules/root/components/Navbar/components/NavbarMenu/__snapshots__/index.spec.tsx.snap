@@ -19,25 +19,25 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
           href="/#"
           key="1"
         >
-          หลักสูตรปกติ
+          ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="2"
+          key="1"
         >
-          หลักสูตรนานาชาติ
+          ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="3"
+          key="1"
         >
-          หลักสูตรวิทยาศาสตร์สุขภาพ
+          ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="4"
+          key="1"
         >
-          หลักสูตร Residental College
+          ปริญญาตรี
         </styled__ItemLink>
       </styled__Group>
       <styled__Group
@@ -53,15 +53,15 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="1"
+          key="2"
         >
-          หลักสูตรมหาบัณฑิต
+          บัณฑิตศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
           key="2"
         >
-          หลักสูตรดุษฎีบัณฑิต
+          บัณฑิตศึกษา
         </styled__ItemLink>
       </styled__Group>
       <styled__Group
@@ -77,27 +77,27 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="1"
+          key="3"
         >
-          ทุนภาควิชา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="/#"
-          key="2"
-        >
-          ทุนเพชรพระจอมเกล้า
+          ทุนการศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
           key="3"
         >
-          ทุน คปก.
+          ทุนการศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="4"
+          key="3"
         >
-          ทุนต่างประเทศ
+          ทุนการศึกษา
+        </styled__ItemLink>
+        <styled__ItemLink
+          href="/#"
+          key="3"
+        >
+          ทุนการศึกษา
         </styled__ItemLink>
       </styled__Group>
       <styled__Group
@@ -113,21 +113,21 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="1"
+          key="4"
         >
-          รับตรง (Active Recruitment)
+          การรับเข้าศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="2"
+          key="4"
         >
-          รับส่วนกลาง
+          การรับเข้าศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="3"
+          key="4"
         >
-          โครงการพิเศษ
+          การรับเข้าศึกษา
         </styled__ItemLink>
       </styled__Group>
       <styled__Group
@@ -143,27 +143,27 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="1"
+          key="5"
         >
-          ภาควิชา
+          เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="2"
+          key="5"
         >
-          บุคลากร
+          เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="3"
+          key="5"
         >
-          นักศึกษา
+          เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="4"
+          key="5"
         >
-          ความเป็นนานาชาติ
+          เกี่ยวกับเรา
         </styled__ItemLink>
       </styled__Group>
     </styled__Menu>
