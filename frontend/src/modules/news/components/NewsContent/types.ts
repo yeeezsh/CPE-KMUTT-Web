@@ -4,7 +4,10 @@ export interface NewsContentProps {
   content?: string;
   title?: string;
   postDate?: string;
-  file?: [];
+  file?: {
+    title?: string;
+    link?: string;
+  }[];
 }
 
 export interface cardConstantsProps {

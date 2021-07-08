@@ -33,24 +33,24 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
     <NewsContentStyle>
       <Container>
         <NewsContentHeader>{NEWS_CONTENT.title}</NewsContentHeader>
-        <NewsContentPostDate>{NEWS_CONTENT.date}</NewsContentPostDate>
+        <NewsContentPostDate>{NEWS_CONTENT.postDate}</NewsContentPostDate>
         <NewsContentTumbnail
           style={{
             backgroundImage: `url(${props.tumbnail})`,
           }}
         />
-        <NewsContentContainer>{NEWS_CONTENT.description}</NewsContentContainer>
+        <NewsContentContainer>{NEWS_CONTENT.content}</NewsContentContainer>
         <NewsContentFileConteiner>
           <NewsContentFileHeader>
-            ไฟล์แนบ ({NEWS_CONTENT.file.length})
+            ไฟล์แนบ ({NEWS_CONTENT?.file?.length})
           </NewsContentFileHeader>
-          {NEWS_CONTENT.file.map((data, index) => (
+          {NEWS_CONTENT?.file?.map((data, index) => (
             <NewsContentFileList key={index}>
               <NewsContentFileNameContainer>
                 <VscFilePdf style={{ marginRight: '16px' }} color="#DD2025" size="24px" />
                 <NewsContentFileName>{data.title}</NewsContentFileName>
               </NewsContentFileNameContainer>
-              <Link href={data.link}>ดาวน์โหลด</Link>
+              <Link href={data.link ?? '/'}>ดาวน์โหลด</Link>
             </NewsContentFileList>
           ))}
         </NewsContentFileConteiner>
