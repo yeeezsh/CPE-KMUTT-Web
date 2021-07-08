@@ -10,7 +10,7 @@ export const NewsContentStyle = styled.div`
   margin-top: 36px;
 `;
 
-export const NewsContentHeader = styled.div`
+export const NewsContentHeader = styled.h1`
   font-size: 24px;
   font-weight: 700;
   color: ${COLORS.GRAY_1};
@@ -35,7 +35,7 @@ export const NewsContentTumbnail = styled.div`
   background-position: center;
 `;
 
-export const NewsContentContainer = styled.div`
+export const NewsContentContainer = styled.p`
   font-size: 14px;
   font-weight: 500;
   color: ${COLORS.GRAY_1};
