@@ -8,7 +8,7 @@ import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 
-import { constants } from 'modules/news/components/NewsContent/constant';
+import { constants, NEWS_CONTENT } from 'modules/news/components/NewsContent/constant';
 
 import {
   NewsContentTumbnail,
@@ -32,45 +32,27 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
   return (
     <NewsContentStyle>
       <Container>
-        <NewsContentHeader>
-          ประกาศรายชื่อผู้มีสิทธิ์สอบสัมภาษณ์ โครงการ Active Recruitment รอบที่ 2
-        </NewsContentHeader>
-        <NewsContentPostDate>วันที่ 12 สิงหาคม 2563</NewsContentPostDate>
+        <NewsContentHeader>{NEWS_CONTENT.title}</NewsContentHeader>
+        <NewsContentPostDate>{NEWS_CONTENT.date}</NewsContentPostDate>
         <NewsContentTumbnail
           style={{
             backgroundImage: `url(${props.tumbnail})`,
           }}
         />
-        <NewsContentContainer>
-          ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์
-          มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี เริ่มก่อตั้ง
-          และเปิดสอนในระดับปริญญาตรีตั้งแต่ปีการศึกษา 2531
-          แต่ได้รับการอนุมัติให้จัดตั้งหน่วยงาน ภาควิชาวิศวกรรมคอมพิวเตอร์
-          และประกาศในพระราชกฤษฎีกา เมื่อวันที่ 11 กุมภาพันธ์ 2540
-          ภาควิชาวิศวกรรมคอมพิวเตอร์ เปิดสอนทั้งในระดับปริญญาตรี ปริญญาโท และปริญญาเอก
-          โดยในระดับปริญญาตรี แบ่งเป็น 2 หลักสูตร คือ หลักสูตรวิศวกรรมศาสตรบัณฑิต
-          สาขาวิชาวิศวกรรมคอมพิวเตอร์(ปกติ) และหลักสูตรวิศวกรรมศาสตรบัณฑิต
-          สาขาวิศวกรรมคอมพิวเตอร์ (หลักสูตรนานาชาติ) ส่วนในระดับปริญญาโท คือ
-          หลักสูตรวิศวกรรมศาสตรมหาบัณฑิต และวิทยาศาสตรมหาบัณฑิต
-          สาขาวิชาวิศวกรรมคอมพิวเตอร์ และในระดับปริญญาเอก คือ หลักสูตรปรัชญาดุษฎีบัณฑิต
-          สาขาวิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์
-        </NewsContentContainer>
+        <NewsContentContainer>{NEWS_CONTENT.description}</NewsContentContainer>
         <NewsContentFileConteiner>
-          <NewsContentFileHeader>ไฟล์แนบ (4)</NewsContentFileHeader>
-          <NewsContentFileList>
-            <NewsContentFileNameContainer>
-              <VscFilePdf style={{ marginRight: '16px' }} color="#DD2025" size="24px" />
-              <NewsContentFileName>CPE2021_AR_0.pdf</NewsContentFileName>
-            </NewsContentFileNameContainer>
-            <Link href="/news/">ดาวน์โหลด</Link>
-          </NewsContentFileList>
-          <NewsContentFileList>
-            <NewsContentFileNameContainer>
-              <VscFilePdf style={{ marginRight: '16px' }} color="#DD2025" size="24px" />
-              <NewsContentFileName>CPE2021_AR_0.pdf</NewsContentFileName>
-            </NewsContentFileNameContainer>
-            <Link href="/news/">ดาวน์โหลด</Link>
-          </NewsContentFileList>
+          <NewsContentFileHeader>
+            ไฟล์แนบ ({NEWS_CONTENT.file.length})
+          </NewsContentFileHeader>
+          {NEWS_CONTENT.file.map((data, index) => (
+            <NewsContentFileList key={index}>
+              <NewsContentFileNameContainer>
+                <VscFilePdf style={{ marginRight: '16px' }} color="#DD2025" size="24px" />
+                <NewsContentFileName>{data.title}</NewsContentFileName>
+              </NewsContentFileNameContainer>
+              <Link href={data.link}>ดาวน์โหลด</Link>
+            </NewsContentFileList>
+          ))}
         </NewsContentFileConteiner>
         <OtherNewsContainer>
           <OtherNewsHeaderContainer>

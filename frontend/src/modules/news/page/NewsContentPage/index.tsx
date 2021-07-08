@@ -28,7 +28,7 @@ const MOCK_NAVIGATE = [
 
 const NewsContentPage: React.FC = () => {
   const router = useRouter();
-  const route_id = router.query.id;
+  const route_id = router?.query?.id;
 
   return (
     <>
