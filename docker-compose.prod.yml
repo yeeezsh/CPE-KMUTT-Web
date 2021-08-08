@@ -19,7 +19,7 @@ services:
     ports:
       - 5000:3000
   backend:
-    container_name: backend
+    container_name: cpe-kmutt-backend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -46,7 +46,7 @@ services:
     command: yarn start:dev
     restart: always
   strapi:
-    container_name: strapi
+    container_name: cpe-kmutt-strapi
     image: strapi/strapi
     environment:
       DATABASE_CLIENT: mongo
