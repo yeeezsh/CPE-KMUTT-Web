@@ -9,7 +9,7 @@ services:
     ports:
       - "80:80"
   frontend:
-    container_name: cpe-kmutt-frontend
+    container_name: cpe-kmutt-frontend-prod
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -19,7 +19,7 @@ services:
     ports:
       - 5000:3000
   backend:
-    container_name: cpe-kmutt-backend
+    container_name: cpe-kmutt-backend-prod
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -46,7 +46,7 @@ services:
     command: yarn start:dev
     restart: always
   strapi:
-    container_name: cpe-kmutt-strapi
+    container_name: cpe-kmutt-strapi-prod
     image: strapi/strapi
     environment:
       DATABASE_CLIENT: mongo
