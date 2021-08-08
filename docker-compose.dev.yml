@@ -27,6 +27,18 @@ services:
       - mongodb
     command: yarn start:dev
     restart: always
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: dev
+    environment:
+      TZ: Asia/Bangkok
+    ports:
+      - 5000:3000
+    volumes:
+      - "./frontend:/frontend"
   strapi:
     container_name: strapi
     image: strapi/strapi
