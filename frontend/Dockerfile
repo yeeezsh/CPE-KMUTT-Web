@@ -12,7 +12,9 @@ EXPOSE 3000
 EXPOSE 49153
 
 FROM base as prod
-COPY . ./frontend
 WORKDIR /frontend
-CMD ["yarn", "prod"]
+COPY . ./
+ENV NODE_ENV production
+RUN yarn build
+CMD ["yarn", "start"]
 EXPOSE 3000
