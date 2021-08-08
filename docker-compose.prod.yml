@@ -1,0 +1,69 @@
+version: "3.4"
+services:
+  proxy:
+    container_name: proxy
+    restart: on-failure
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+  frontend:
+    container_name: cpe-kmutt-frontend-prod
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: prod
+    environment:
+      TZ: Asia/Bangkok
+  backend:
+    container_name: cpe-kmutt-backend-prod
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: dev
+    environment:
+      WAIT_HOSTS: mongo:27017
+      TZ: Asia/Bangkok
+      ORIGIN: http(|s):\/\/localhost:5000
+      DATABASE_CONNECTION: "mongodb://mongodb:27017/cpe-kmutt-web"
+      DATABASE_USERAME: root
+      DATABASE_PASSWORD: cpeKMUTT@WebSite
+      DATABASE_AUTH_SOURCE: admin
+      JWT_SECRET_KEY: very-secret-key.jwt
+      JWT_EXPIRES: 3600s
+      OPS_KEY: "CPE-KMUTT.opskey"
+      NODE_ENV: "development"
+      PORT: 3000
+    volumes:
+      - "./backend:/backend"
+    links:
+      - mongodb
+    command: yarn start:dev
+    restart: always
+  strapi:
+    container_name: cpe-kmutt-strapi-prod
+    image: strapi/strapi
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: strapi
+      DATABASE_HOST: mongodb
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: cpeKMUTT@WebSite
+    volumes:
+      - ./strapi:/srv/app
+    ports:
+      - "1337:1337"
+    depends_on:
+      - mongodb
+  mongodb:
+    container_name: mongodb
+    image: "bitnami/mongodb:latest"
+    environment:
+      MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
+      TZ: Asia/Bangkok
+    ports:
+      - "27017:27017"
+    volumes:
+      - "./db:/bitnami"
