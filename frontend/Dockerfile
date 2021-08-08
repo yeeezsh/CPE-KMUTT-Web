@@ -1,4 +1,5 @@
 FROM node:16-alpine3.11 as base
+WORKDIR /frontend
 COPY yarn.lock yarn.lock
 COPY package.json package.json
 RUN yarn install
