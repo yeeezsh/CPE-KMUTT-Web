@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { ErrorResponse, onError } from '@apollo/client/link/error';
 
-import HttpStatusCode from '../constants/httpStatusCode';
+import HttpStatusCode from './constants/httpStatusCode';
 
 // FIXME: not integrate with out react app
 //FIXME: missing env injection
