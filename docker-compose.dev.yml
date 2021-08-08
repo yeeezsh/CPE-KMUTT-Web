@@ -1,7 +1,7 @@
 version: "3.4"
 services:
   backend:
-    container_name: backend
+    container_name: cpe-kmutt-backend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
     command: yarn start:dev
     restart: always
   frontend:
-    container_name: frontend
+    container_name: cpe-kmutt-frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -40,7 +40,7 @@ services:
     volumes:
       - "./frontend:/frontend"
   strapi:
-    container_name: strapi
+    container_name: cpe-kmutt-strapi
     image: strapi/strapi
     environment:
       DATABASE_CLIENT: mongo
