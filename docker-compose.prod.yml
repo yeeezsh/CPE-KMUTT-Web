@@ -16,8 +16,6 @@ services:
       target: prod
     environment:
       TZ: Asia/Bangkok
-    ports:
-      - 5000:3000
   backend:
     container_name: cpe-kmutt-backend-prod
     build:
@@ -37,8 +35,6 @@ services:
       OPS_KEY: "CPE-KMUTT.opskey"
       NODE_ENV: "development"
       PORT: 3000
-    ports:
-      - 3000:3000
     volumes:
       - "./backend:/backend"
     links:
