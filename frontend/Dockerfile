@@ -4,12 +4,15 @@ COPY package.json package.json
 RUN yarn install
 
 FROM base as dev
-COPY . .
+COPY . ./frontend
+WORKDIR /frontend
 CMD ["yarn", "dev"]
 EXPOSE 3000
+EXPOSE 49153
 
 FROM base as uat
-COPY . .
+COPY . ./frontend
+WORKDIR /frontend
 RUN yarn build
 CMD ["yarn", "start"]
 EXPOSE 3000
