@@ -8,6 +8,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+  frontend:
+    container_name: cpe-kmutt-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: prod
+    environment:
+      TZ: Asia/Bangkok
+    ports:
+      - 5000:3000
   backend:
     container_name: backend
     build:
