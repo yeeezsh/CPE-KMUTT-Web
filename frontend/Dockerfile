@@ -14,6 +14,5 @@ EXPOSE 49153
 FROM base as prod
 COPY . ./frontend
 WORKDIR /frontend
-RUN yarn build
-CMD ["yarn", "start"]
+CMD ["yarn", "prod"]
 EXPOSE 3000
