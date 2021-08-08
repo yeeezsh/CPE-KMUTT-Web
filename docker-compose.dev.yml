@@ -37,6 +37,7 @@ services:
       TZ: Asia/Bangkok
     ports:
       - 5000:3000
+      - 49153:49153
     volumes:
       - "./frontend:/frontend"
   strapi:
