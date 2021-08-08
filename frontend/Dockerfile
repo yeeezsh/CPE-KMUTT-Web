@@ -10,7 +10,7 @@ CMD ["yarn", "dev"]
 EXPOSE 3000
 EXPOSE 49153
 
-FROM base as uat
+FROM base as prod
 COPY . ./frontend
 WORKDIR /frontend
 RUN yarn build
