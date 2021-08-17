@@ -39,7 +39,7 @@ $ docker-compose -f docker-compose.dev.yml up --build
 
 ### Issues
 
-#### DB not start
+#### DB
 
 when db not start cause have no permission to create dir e.g.
 
@@ -51,6 +51,6 @@ fix by this command
 sudo chown -R 1001 ./db
 ```
 
-#### Strapi not start
+#### Strapi
 
 Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delete `/strapi/node_modules` before restarting the strapi container to install a correct dependence on its own. Do not use yarn to install dependencies.
