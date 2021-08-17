@@ -1,16 +1,17 @@
 {
   "collectionName": "components_content_content_components",
   "info": {
-    "name": "Content-component",
-    "icon": "file-contract"
+    "name": "section_component",
+    "icon": "file-contract",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
+    "sub_header": {
       "type": "string"
     },
     "canvas": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -23,6 +24,11 @@
     },
     "body": {
       "type": "richtext"
+    },
+    "grid_images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content-sections.grid-image"
     }
   }
 }

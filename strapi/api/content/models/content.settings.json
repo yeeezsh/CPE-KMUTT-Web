@@ -16,32 +16,19 @@
     }
   },
   "attributes": {
-    "title_pr": {
+    "header": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
-    "canvas_pr": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
-      "plugin": "upload",
-      "required": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "main_content": {
+    "sections": {
       "type": "component",
       "repeatable": true,
-      "component": "content.content-component",
+      "component": "content-sections.content-component",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -51,7 +38,7 @@
     "content_id": {
       "type": "uid"
     },
-    "Tags": {
+    "tags": {
       "type": "component",
       "repeatable": true,
       "component": "tags.tags",

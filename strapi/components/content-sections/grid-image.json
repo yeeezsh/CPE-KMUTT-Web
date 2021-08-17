@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_content_grid_images",
+  "info": {
+    "name": "grid_image",
+    "icon": "images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}
