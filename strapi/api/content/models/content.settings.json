@@ -10,10 +10,19 @@
     "timestamps": true,
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title_pr": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "canvas_pr": {
       "model": "file",
@@ -23,22 +32,34 @@
       ],
       "plugin": "upload",
       "required": false,
-      "pluginOptions": {}
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "main_content": {
       "type": "component",
       "repeatable": true,
-      "component": "content.content-component"
-    },
-    "language": {
-      "type": "enumeration",
-      "enum": [
-        "Thai",
-        "English"
-      ]
+      "component": "content.content-component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "content_id": {
       "type": "uid"
+    },
+    "Tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tags.tags",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
