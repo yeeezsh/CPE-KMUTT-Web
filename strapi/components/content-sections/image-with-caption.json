@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_sections_image_with_captions",
+  "info": {
+    "name": "image_with_caption",
+    "icon": "image"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "caption": {
+      "type": "string"
+    }
+  }
+}
