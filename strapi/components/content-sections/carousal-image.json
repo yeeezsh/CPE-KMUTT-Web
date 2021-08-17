@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_content_grid_images",
+  "collectionName": "components_content_sections_carousal_images",
   "info": {
-    "name": "grid_image",
-    "icon": "th-large",
+    "name": "carousal_image",
+    "icon": "clone",
     "description": ""
   },
   "options": {},
