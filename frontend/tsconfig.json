@@ -15,7 +15,8 @@
     "jsx": "preserve",
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "downlevelIteration": true
   },
   "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "build", "out"]

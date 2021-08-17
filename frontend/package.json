@@ -7,6 +7,7 @@
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
+    "prod": "next build && next start",
     "test": "jest",
     "test:snapshots": "jest --updateSnapshot",
     "test:ci": "jest --all --ci --detectOpenHandles",
@@ -16,10 +17,14 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write ./src/**/*.ts{,x} --config ./.prettierrc.js",
     "storybook": "start-storybook -s ./public -p 6006 --no-dll",
-    "storybook:build": "build-storybook --no-dll"
+    "storybook:build": "build-storybook --no-dll",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.6",
     "antd": "4.8.2",
+    "graphql": "15.5.1",
+    "keen-slider": "5.4.0",
     "next": "10.0.1",
     "react": "16.14",
     "react-dom": "16.14",
@@ -28,6 +33,11 @@
   },
   "devDependencies": {
     "@babel/core": "7.0.0",
+    "@graphql-codegen/cli": "1.20.0",
+    "@graphql-codegen/import-types-preset": "^1.18.2",
+    "@graphql-codegen/typescript": "1.20.0",
+    "@graphql-codegen/typescript-operations": "1.17.13",
+    "@graphql-codegen/typescript-react-apollo": "2.2.1",
     "@storybook/addon-actions": "6.0.28",
     "@storybook/addon-essentials": "6.0.28",
     "@storybook/addon-links": "6.0.28",
