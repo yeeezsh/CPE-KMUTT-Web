@@ -36,6 +36,9 @@
         "Thai",
         "English"
       ]
+    },
+    "content_id": {
+      "type": "uid"
     }
   }
 }
