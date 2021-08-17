@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_grid_images",
+  "info": {
+    "name": "grid_image",
+    "icon": "th-large",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content-sections.image-with-caption"
+    }
+  }
+}
