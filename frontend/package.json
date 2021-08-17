@@ -7,6 +7,7 @@
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
+    "prod": "next build && next start",
     "test": "jest",
     "test:snapshots": "jest --updateSnapshot",
     "test:ci": "jest --all --ci --detectOpenHandles",
