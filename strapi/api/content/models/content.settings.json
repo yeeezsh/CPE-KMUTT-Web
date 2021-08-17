@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "contents",
   "info": {
-    "name": "Content"
+    "name": "Content",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -18,9 +19,7 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
       "required": false,
@@ -28,7 +27,7 @@
     },
     "main_content": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "content.content-component"
     },
     "language": {
