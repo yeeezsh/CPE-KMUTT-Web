@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_content_content_components",
+  "info": {
+    "name": "section_component",
+    "icon": "align-justify",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sub_header": {
+      "type": "string"
+    },
+    "canvas": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "body": {
+      "type": "richtext"
+    }
+  }
+}

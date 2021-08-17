@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_sections_carousal_images",
+  "info": {
+    "name": "carousal_image",
+    "icon": "clone",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content-sections.image-with-caption"
+    }
+  }
+}
