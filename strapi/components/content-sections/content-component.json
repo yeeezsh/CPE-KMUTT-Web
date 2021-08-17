@@ -2,7 +2,7 @@
   "collectionName": "components_content_content_components",
   "info": {
     "name": "section_component",
-    "icon": "file-contract",
+    "icon": "align-justify",
     "description": ""
   },
   "options": {},
@@ -11,7 +11,7 @@
       "type": "string"
     },
     "canvas": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -24,11 +24,6 @@
     },
     "body": {
       "type": "richtext"
-    },
-    "grid_images": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content-sections.grid-image"
     }
   }
 }

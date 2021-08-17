@@ -25,16 +25,6 @@
       },
       "required": true
     },
-    "sections": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content-sections.content-component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "content_id": {
       "type": "uid"
     },
@@ -47,6 +37,20 @@
           "localized": true
         }
       }
+    },
+    "dynamic_sections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "content-sections.carousal-image",
+        "content-sections.content-component",
+        "content-sections.grid-image"
+      ],
+      "required": true
     }
   }
 }
