@@ -12,8 +12,7 @@ import HttpStatusCode from './constants/httpStatusCode';
 
 // FIXME: not integrate with out react app
 //FIXME: missing env injection
-export const END_POINT =
-  process.env.APP_GRAPHQL_ENDPOINT || 'http://localhost:1337/graphql';
+export const END_POINT = process.env.APP_GRAPHQL_ENDPOINT || 'http://strapi:1337/graphql';
 
 const httpLink = createHttpLink({
   uri: END_POINT,
