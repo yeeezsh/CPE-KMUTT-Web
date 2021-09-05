@@ -26,6 +26,8 @@ export type BrowseNewsPageProps = {
   data?: GetNewsQuery;
 };
 
+// TODO: implement data api to compoenents
+// TODO: implement pagination
 const BrowseNewsPage: React.FC<BrowseNewsPageProps> = () => {
   return (
     <>
