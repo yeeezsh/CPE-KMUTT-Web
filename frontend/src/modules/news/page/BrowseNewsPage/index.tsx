@@ -28,15 +28,15 @@ export type BrowseNewsPageProps = {
 
 // TODO: implement data api to compoenents
 // TODO: implement pagination
-const BrowseNewsPage: React.FC<BrowseNewsPageProps> = () => {
+const BrowseNewsPage: React.FC<BrowseNewsPageProps> = ({ data }) => {
   return (
     <>
       <Head>
-        <title>browse News Page</title>
+        <title>ข่าวสารและประกาศ</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CommonLayout header="ข่าวสารและประกาศ" navigate={MOCK_NAVIGATE}>
-        <BrowseNews />
+        <BrowseNews data={data} />
       </CommonLayout>
     </>
   );

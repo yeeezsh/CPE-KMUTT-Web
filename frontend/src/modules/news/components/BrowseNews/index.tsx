@@ -25,9 +25,8 @@ const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean
   </Link>
 );
 
-const BrowseNews: React.FC<BrowseNewsProps> = () => {
+const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
   const { newsData, moreNewsData, loadMore } = useLoadMore({ initData: constants });
-
   return (
     <BrowseNewsStyle>
       <Container>
@@ -40,7 +39,21 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
         </BrowsNewsHeader>
 
         <BrowseNewsRow className="space-between">
-          {newsData.map((data, index) => {
+          {data?.contents &&
+            data.contents.map((e, i) => {
+              return (
+                <Card
+                  key={i}
+                  title={e?.header}
+                  description={e?.header}
+                  date={e?.header}
+                  links={e?._id}
+                  id={e?._id || Math.random().toLocaleString()}
+                  variant={i === 0 ? 'primary' : 'normal'}
+                />
+              );
+            })}
+          {/* {newsData.map((data, index) => {
             return (
               <Card
                 key={index}
@@ -52,7 +65,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = () => {
                 variant={data.variant}
               />
             );
-          })}
+          })} */}
         </BrowseNewsRow>
 
         <BrowseNewsSeeMore>
