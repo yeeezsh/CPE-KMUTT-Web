@@ -1,13 +1,11 @@
-import { useSelector } from 'react-redux';
-
 import { GetServerSideProps } from 'next';
 
 import { GetNewsDocument, GetNewsQuery } from 'common/generated/generated-types';
 import { client } from 'common/services/client';
-import { StoresState } from 'common/stores';
 
 import BrowseNewsPage from 'modules/news/page/BrowseNewsPage';
 import { DEFAULT_START_N_OF_NEWS, FIRST_N_OF_NEWS } from 'modules/news/reducers';
+import Navbar from 'modules/root/components/Navbar';
 
 // TODO: implement data api to compoenents
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -23,7 +21,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 };
 
 const NewsPages: React.FC<{ data: GetNewsQuery }> = ({ data }) => {
-  return <BrowseNewsPage data={data} />;
+  return (
+    <>
+      <Navbar />
+      <BrowseNewsPage data={data} />
+    </>
+  );
 };
 
 export default NewsPages;
