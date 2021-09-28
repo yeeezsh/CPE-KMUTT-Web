@@ -9,15 +9,15 @@ import {
   CardNextBtn,
   CardTitle,
 } from './styled';
-import { CardProps } from './types';
+import { CardProps, CardVariant } from './types';
 
 // Example components
 const Cards: React.FC<CardProps> = ({ ...props }) => {
   const cardMode = () => {
     switch (props.variant) {
-      case 'normal':
+      case CardVariant.normal:
         return 'card-normal';
-      case 'primary':
+      case CardVariant.primary:
         return 'card-primary';
       default:
         return 'card-primary';

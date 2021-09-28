@@ -4,9 +4,14 @@ interface Card {
   description?: string;
   date?: string;
   links?: string;
-  variant?: string;
+  variant?: CardVariant;
 }
 
 export interface CardProps extends Partial<Card> {
   id: string;
+}
+
+export enum CardVariant {
+  normal = 'normal',
+  primary = 'primary',
 }
