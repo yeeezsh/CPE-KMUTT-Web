@@ -47,7 +47,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
               return (
                 <Card
                   key={e._id}
-                  title={e?.header}
+                  title={e.title}
                   description={e.description}
                   date={e.date}
                   links={e.link}

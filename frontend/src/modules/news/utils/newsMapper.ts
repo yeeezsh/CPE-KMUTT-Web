@@ -32,6 +32,7 @@ export const newsMapper = (data: GetNewsQuery) => {
         variant: isPrimary ? CardVariant.primary : CardVariant.normal,
         date: new Date(e?.createdAt).toLocaleDateString(),
         raw_date: new Date(e?.createdAt).valueOf(), // use for compare
+        title: e?.header,
       };
     })
     .sort((a, b) => -(a.raw_date - b.raw_date)); // sort lastest news
