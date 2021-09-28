@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
+import { Provider } from 'react-redux';
 
 import Container from 'common/components/Container';
+import { store } from 'common/stores';
 
 import {
   BrowseNewsRow,
@@ -15,12 +17,20 @@ import BrowseNews from '.';
 
 describe('BrowseNews Compnent', () => {
   it('BrowseNews Compnent should be defined', () => {
-    const wrap = shallow(<BrowseNews />);
+    const wrap = shallow(
+      <Provider store={store}>
+        <BrowseNews />
+      </Provider>,
+    );
     expect(wrap.exists()).toBe(true);
   });
 
   it('BrowseNews Compnent should import these components', () => {
-    const wrap = shallow(<BrowseNews />);
+    const wrap = mount(
+      <Provider store={store}>
+        <BrowseNews />
+      </Provider>,
+    );
     expect(wrap.find(BrowseNewsStyle).exists()).toBe(true);
     expect(wrap.find(Container).exists()).toBe(true);
     expect(wrap.find(BrowsNewsHeader).exists()).toBe(true);
