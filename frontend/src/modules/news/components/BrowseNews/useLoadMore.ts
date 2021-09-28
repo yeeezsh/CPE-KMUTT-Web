@@ -12,14 +12,14 @@ export type useLoadMoreArgs = {
   initData: cardConstantsProps[];
 };
 
-export type useLoadMore = {
+export type useLoadMoreType = {
   newsData: cardConstantsProps[];
   moreNewsData: boolean;
   loadMore: () => void;
 };
 
 // TODO: move moreNewsData to logic to reducer
-const useLoadMore = (args: useLoadMoreArgs): useLoadMore => {
+const useLoadMore = (args: useLoadMoreArgs): useLoadMoreType => {
   const { initData } = args;
   const router = useRouter();
   const dispatch = useDispatch();
