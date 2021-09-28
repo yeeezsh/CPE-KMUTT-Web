@@ -1419,9 +1419,19 @@ export type GetNewsQuery = { __typename?: 'Query' } & {
   contents?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'Content' } & Pick<Content, '_id' | 'header'> & {
+        { __typename?: 'Content' } & Pick<Content, '_id' | 'header' | 'createdAt'> & {
             canvas_preview?: Maybe<
               { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+            dynamic_sections: Array<
+              Maybe<
+                | { __typename: 'ComponentContentSectionsCarousalImage' }
+                | ({ __typename: 'ComponentContentSectionsContentComponent' } & Pick<
+                    ComponentContentSectionsContentComponent,
+                    'body'
+                  >)
+                | { __typename: 'ComponentContentSectionsGridImage' }
+              >
             >;
           }
       >
@@ -1437,6 +1447,13 @@ export const GetNewsDocument = gql`
       canvas_preview {
         url
       }
+      dynamic_sections {
+        __typename
+        ... on ComponentContentSectionsContentComponent {
+          body
+        }
+      }
+      createdAt
     }
   }
 `;
