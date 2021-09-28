@@ -3,7 +3,7 @@ query GetNews($offset: Int = 0, $limit: Int = 25) {
     _id
     header
     canvas_preview {
-      previewUrl
+      url
     }
   }
 }

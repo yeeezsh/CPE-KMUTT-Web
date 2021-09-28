@@ -1421,7 +1421,7 @@ export type GetNewsQuery = { __typename?: 'Query' } & {
       Maybe<
         { __typename?: 'Content' } & Pick<Content, '_id' | 'header'> & {
             canvas_preview?: Maybe<
-              { __typename?: 'UploadFile' } & Pick<UploadFile, 'previewUrl'>
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
             >;
           }
       >
@@ -1435,7 +1435,7 @@ export const GetNewsDocument = gql`
       _id
       header
       canvas_preview {
-        previewUrl
+        url
       }
     }
   }
