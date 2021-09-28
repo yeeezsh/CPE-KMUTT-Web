@@ -7,6 +7,8 @@ import Btn from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 
+import { newsMapper } from 'modules/news/utils/newsMapper';
+
 import { constants } from './constant';
 import {
   BrowseNewsRow,
@@ -27,6 +29,7 @@ const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean
 
 const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
   const { newsData, moreNewsData, loadMore } = useLoadMore({ initData: constants });
+  const mapped = data && newsMapper(data);
   return (
     <BrowseNewsStyle>
       <Container>
@@ -39,33 +42,20 @@ const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
         </BrowsNewsHeader>
 
         <BrowseNewsRow className="space-between">
-          {data?.contents &&
-            data.contents.map((e, i) => {
+          {mapped &&
+            mapped.map((e) => {
               return (
                 <Card
-                  key={i}
+                  key={e._id}
                   title={e?.header}
-                  description={e?.header}
-                  date={e?.header}
-                  links={e?._id}
-                  id={e?._id || Math.random().toLocaleString()}
-                  variant={i === 0 ? 'primary' : 'normal'}
+                  description={e.description}
+                  date={e.date}
+                  links={e.link}
+                  id={e._id}
+                  variant={e.variant}
                 />
               );
             })}
-          {/* {newsData.map((data, index) => {
-            return (
-              <Card
-                key={index}
-                title={data.title}
-                description={data.description}
-                date={data.date}
-                links={data.links}
-                id={data.id}
-                variant={data.variant}
-              />
-            );
-          })} */}
         </BrowseNewsRow>
 
         <BrowseNewsSeeMore>
