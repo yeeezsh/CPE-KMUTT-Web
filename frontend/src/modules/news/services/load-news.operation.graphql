@@ -5,5 +5,12 @@ query GetNews($offset: Int = 0, $limit: Int = 25) {
     canvas_preview {
       url
     }
+    dynamic_sections {
+      __typename
+      ... on ComponentContentSectionsContentComponent {
+        body
+      }
+    }
+    createdAt
   }
 }
