@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 import fontFamily from 'common/styles/typography/fontFamily';
+export const NAVBAR_HEIGHT = '100px';
 
 import { NavBarProps } from './interface';
 
 export const Nav = styled.div`
   width: 100%;
-  height: 100px;
+  height: ${NAVBAR_HEIGHT};
   position: fixed;
   z-index: 1;
   top: 0;
