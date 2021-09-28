@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
 import { BROWSE_NEWS_PATH } from 'modules/news/constants';
