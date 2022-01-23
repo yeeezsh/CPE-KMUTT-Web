@@ -68,7 +68,7 @@ Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delet
 For testing stage, using mongo-tools for restore a data.
 
 ```bash
-cd /qa
+cd /qa/strapi
 
 mongorestore --host="localhost:27017" --username root --password cpeKMUTT@WebSite --authenticationDatabase admin
 ```
