@@ -53,6 +53,12 @@ sudo chown -R 1001 ./db
 
 #### Strapi
 
+default admin account
+
+| username              | password  |
+| --------------------- | --------- |
+| admin@cpe.kmutt.ac.th | Admin2021 |
+
 ##### Common issues
 
 Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delete `/strapi/node_modules` before restarting the strapi container to install a correct dependence on its own. Do not use yarn to install dependencies.
