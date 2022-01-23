@@ -16,11 +16,6 @@ export const END_POINT = process.env.APP_GRAPHQL_ENDPOINT || 'http://strapi:1337
 
 const httpLink = createHttpLink({
   uri: END_POINT,
-  // credentials: 'include',
-  headers: {
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWJmODJjZWNjZjhkMDBhNjkwMDFjMSIsImlhdCI6MTYzMDg1OTYzMiwiZXhwIjoxNjMzNDUxNjMyfQ.guLqsEKsewaGX0Y-_VJTta9Wqtas-iIB3ZJbtTCyPVE',
-  },
 });
 
 const logoutLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
