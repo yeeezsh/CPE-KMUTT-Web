@@ -53,4 +53,16 @@ sudo chown -R 1001 ./db
 
 #### Strapi
 
+##### Common issues
+
 Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delete `/strapi/node_modules` before restarting the strapi container to install a correct dependence on its own. Do not use yarn to install dependencies.
+
+##### Restore Strapi data
+
+For testing stage, using mongo-tools for restore a data.
+
+```bash
+cd /qa
+
+mongorestore --host="localhost:27017" --username root --password cpeKMUTT@WebSite --authenticationDatabase admin
+```
