@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
+import { NAVBAR_HEIGHT } from 'modules/root/components/Navbar/styled';
+
 export const Main = styled.main`
+  margin-top: ${NAVBAR_HEIGHT};
   background-color: #fafafa;
 `;
 

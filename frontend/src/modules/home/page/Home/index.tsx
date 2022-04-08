@@ -21,11 +21,11 @@ import { Main } from './styled';
 const Home: React.FC = () => {
   return (
     <div>
-      <Navbar />
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar />
       <Main>
         <Carousel variant="Default" item={CAROUSEL_DEFAULT_CONSTANT} />
         <WhatNewSection />

@@ -6,8 +6,8 @@ on:
       - main
 
 defaults:
-    run:
-        working-directory: frontend
+  run:
+    working-directory: frontend
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
       - name: Use Node.js 14-latest
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: "14.x"
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
@@ -27,7 +27,7 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn test:ci
-      - run: yarn export
+      - run: yarn build
   storybook:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +35,7 @@ jobs:
       - name: Use Node.js 14-latest
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: "14.x"
       - name: Cache node_modules
         uses: actions/cache@v1
         with:

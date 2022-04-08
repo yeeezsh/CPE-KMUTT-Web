@@ -1,5 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-const rootReducer = combineReducers({});
+
+import newsReducer from 'modules/news/reducers';
+const rootReducer = combineReducers({
+  news: newsReducer,
+});
 
 export type StoresState = ReturnType<typeof rootReducer>;
 
