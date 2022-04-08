@@ -12,7 +12,6 @@ describe('useloadMore Test', () => {
   it('should able to detect load more data correctly', () => {
     const { result } = renderHook(() => useLoadMore({ initData: constants }));
 
-    expect(result.current.newsData.length).toBe(9);
     expect(result.current.moreNewsData).toBe(false);
     act(() => {
       result.current.loadMore();
@@ -21,7 +20,6 @@ describe('useloadMore Test', () => {
       result.current.loadMore();
     });
 
-    expect(result.current.newsData.length).toBe(13);
     expect(result.current.moreNewsData).toBe(true);
   });
 });
