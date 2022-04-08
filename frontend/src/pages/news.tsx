@@ -23,7 +23,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 const NewsPages: React.FC<{ data: GetNewsQuery }> = ({ data }) => {
   return (
     <>
-      <Navbar />
       <BrowseNewsPage data={data} />
     </>
   );
