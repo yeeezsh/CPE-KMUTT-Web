@@ -4,6 +4,7 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
+import { CardVariant } from 'common/components/Card/types';
 import Container from 'common/components/Container';
 
 import {
@@ -24,7 +25,7 @@ const WhatNewSection: React.FC = () => {
         'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
       date: '28 ตุลาคม 2563',
       links: '/images/thumbnail.png',
-      variant: 'primary',
+      variant: CardVariant.primary,
     },
     {
       id: '2',
@@ -32,7 +33,7 @@ const WhatNewSection: React.FC = () => {
       description:
         'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
       date: '28 ตุลาคม 2563',
-      variant: 'normal',
+      variant: CardVariant.normal,
     },
     {
       id: '3',
@@ -40,7 +41,7 @@ const WhatNewSection: React.FC = () => {
       description:
         'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
       date: '28 ตุลาคม 2563',
-      variant: 'normal',
+      variant: CardVariant.normal,
     },
   ];
 

@@ -1,5 +1,8 @@
+import { GetNewsQuery } from 'common/generated/generated-types';
+
 export interface BrowseNewsProps {
   id?: string;
+  data?: GetNewsQuery;
 }
 
 export interface cardConstantsProps {

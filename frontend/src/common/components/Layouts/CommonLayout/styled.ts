@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 import COLORS from 'common/constants/colors';
 
+import { NAVBAR_HEIGHT } from 'modules/root/components/Navbar/styled';
+
 export const CommonLayoutStyle = styled.div`
   display: block;
   font-family: 'Kanit', sans-serif;
   background-color: #fafafa;
   width: 100%;
   margin: auto;
+  margin-top: ${NAVBAR_HEIGHT};
   .ant-breadcrumb {
     display: flex;
   }

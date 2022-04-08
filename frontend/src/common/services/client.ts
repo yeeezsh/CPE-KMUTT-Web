@@ -12,12 +12,10 @@ import HttpStatusCode from './constants/httpStatusCode';
 
 // FIXME: not integrate with out react app
 //FIXME: missing env injection
-export const END_POINT =
-  process.env.APP_GRAPHQL_ENDPOINT || 'http://localhost:1337/graphql';
+export const END_POINT = process.env.APP_GRAPHQL_ENDPOINT || 'http://strapi:1337/graphql';
 
 const httpLink = createHttpLink({
   uri: END_POINT,
-  credentials: 'include',
 });
 
 const logoutLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
@@ -62,6 +60,9 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const getApolloClient = (ctx?: any, initialState?: NormalizedCacheObject) => {
+export const getApolloClient = (
+  _ctx?: any,
+  _initialState?: NormalizedCacheObject,
+): ApolloClient<NormalizedCacheObject> => {
   return client;
 };
