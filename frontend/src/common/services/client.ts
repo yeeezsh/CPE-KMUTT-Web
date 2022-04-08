@@ -60,6 +60,9 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const getApolloClient = (ctx?: any, initialState?: NormalizedCacheObject) => {
+export const getApolloClient = (
+  _ctx?: any,
+  _initialState?: NormalizedCacheObject,
+): ApolloClient<NormalizedCacheObject> => {
   return client;
 };
