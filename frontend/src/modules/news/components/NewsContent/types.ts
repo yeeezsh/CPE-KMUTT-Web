@@ -1,3 +1,5 @@
+import { CardVariant } from 'common/components/Card/types';
+
 export interface NewsContentProps {
   id?: string;
   tumbnail?: string;
@@ -16,5 +18,5 @@ export interface cardConstantsProps {
   description?: string;
   date?: string;
   links?: string;
-  variant?: string;
+  variant?: CardVariant;
 }
