@@ -1,3 +1,5 @@
+import { CardVariant } from 'common/components/Card/types';
+
 import { NewsContentProps, cardConstantsProps } from './types';
 
 export const constants: cardConstantsProps[] = [
@@ -8,7 +10,7 @@ export const constants: cardConstantsProps[] = [
       'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
     date: '28 ตุลาคม 2563',
     links: '/images/thumbnail.png',
-    variant: 'primary',
+    variant: CardVariant.primary,
   },
   {
     id: '2',
@@ -16,7 +18,7 @@ export const constants: cardConstantsProps[] = [
     description:
       'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
     date: '28 ตุลาคม 2563',
-    variant: 'normal',
+    variant: CardVariant.normal,
   },
   {
     id: '3',
@@ -24,7 +26,7 @@ export const constants: cardConstantsProps[] = [
     description:
       'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
     date: '28 ตุลาคม 2563',
-    variant: 'normal',
+    variant: CardVariant.normal,
   },
 ];
 
