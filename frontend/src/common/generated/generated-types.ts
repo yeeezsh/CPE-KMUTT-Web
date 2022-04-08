@@ -1441,7 +1441,12 @@ export type GetNewsQuery = { __typename?: 'Query' } & {
 
 export const GetNewsDocument = gql`
   query GetNews($offset: Int = 0, $limit: Int = 25) {
-    contents(start: $offset, limit: $limit, publicationState: LIVE) {
+    contents(
+      start: $offset
+      limit: $limit
+      publicationState: LIVE
+      sort: "createdAt:desc"
+    ) {
       _id
       header
       canvas_preview {
