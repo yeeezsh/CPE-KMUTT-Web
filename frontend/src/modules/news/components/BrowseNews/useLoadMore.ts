@@ -13,7 +13,6 @@ export type useLoadMoreArgs = {
 };
 
 export type useLoadMoreType = {
-  newsData: cardConstantsProps[];
   moreNewsData: boolean;
   loadMore: () => void;
 };
@@ -23,13 +22,8 @@ const useLoadMore = (args: useLoadMoreArgs): useLoadMoreType => {
   const { initData } = args;
   const router = useRouter();
   const dispatch = useDispatch();
-  const [newsData, setNewsData] = useState<cardConstantsProps[]>([]);
   const [cur, setCur] = useState<number>(FIRST_N_OF_NEWS);
   const [moreNewsData, setMoreNewsData] = useState<boolean>(false);
-
-  useEffect(() => {
-    setNewsData(initData.slice(0, FIRST_N_OF_NEWS));
-  }, []);
 
   const loadMoreNews = () => {
     setCur(cur + LOADMORE_N_OF_NEWS);
@@ -40,12 +34,9 @@ const useLoadMore = (args: useLoadMoreArgs): useLoadMoreType => {
   useEffect(() => {
     if (cur < initData.length) setMoreNewsData(false);
     else setMoreNewsData(true);
-
-    setNewsData(initData.slice(0, cur));
   }, [cur]);
 
   return {
-    newsData,
     moreNewsData: moreNewsData,
     loadMore: () => {
       loadMoreNews();

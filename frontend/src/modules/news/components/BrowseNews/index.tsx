@@ -28,7 +28,7 @@ const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean
 );
 
 const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
-  const { newsData, moreNewsData, loadMore } = useLoadMore({ initData: constants });
+  const { moreNewsData, loadMore } = useLoadMore({ initData: constants });
   const mapped = data && newsMapper(data);
   return (
     <BrowseNewsStyle>
