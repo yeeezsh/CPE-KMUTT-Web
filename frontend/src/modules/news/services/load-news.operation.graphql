@@ -1,0 +1,21 @@
+query GetNews($offset: Int = 0, $limit: Int = 25) {
+  contents(
+    start: $offset
+    limit: $limit
+    publicationState: LIVE
+    sort: "createdAt:desc"
+  ) {
+    _id
+    header
+    canvas_preview {
+      url
+    }
+    dynamic_sections {
+      __typename
+      ... on ComponentContentSectionsContentComponent {
+        body
+      }
+    }
+    createdAt
+  }
+}
