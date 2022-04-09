@@ -33,7 +33,11 @@ const NewsContentPage: React.FC = () => {
   return (
     <>
       <Head>
-        <title>news Content Page</title>
+        <title>
+          {/* //TODO: join heading */}
+          ข่าวสารและประกาศ - ประกาศรายชื่อผู้มีสิทธิ์สอบสัมภาษณ์ โครงการ Active
+          Recruitment รอบที่ 2
+        </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CommonLayout header="ข่าวสารและประกาศ" navigate={MOCK_NAVIGATE}>
