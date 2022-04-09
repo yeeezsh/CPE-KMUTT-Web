@@ -12,7 +12,7 @@ export interface NewsContentProps {
   }[];
 }
 
-export interface cardConstantsProps {
+export interface CardConstantsProps {
   id: string;
   title?: string;
   description?: string;

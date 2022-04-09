@@ -1,8 +1,8 @@
 import { CardVariant } from 'common/components/Card/types';
 
-import { NewsContentProps, cardConstantsProps } from './types';
+import { NewsContentProps, CardConstantsProps } from './types';
 
-export const constants: cardConstantsProps[] = [
+export const constants: CardConstantsProps[] = [
   {
     id: '1',
     title: 'การรับเข้าศึกษา',
