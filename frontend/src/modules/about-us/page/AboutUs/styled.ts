@@ -8,5 +8,5 @@ export const AboutUsContainer = styled.div`
   max-width: ${BREAKPOINTS.IPAD_LANDSCAPE};
   margin: 0 auto;
   justify-content: space-between;
-  padding-top: 48px;
+  padding: 48px 0;
 `;

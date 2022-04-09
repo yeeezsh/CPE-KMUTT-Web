@@ -4,6 +4,7 @@ import Head from 'next/head';
 
 import Container from 'common/components/Container';
 import Header from 'common/components/Header';
+import { FaqWithBanner } from 'common/components/Layouts/CommonLayout';
 import NavigationMap from 'common/components/NavigationMap';
 
 import ContentSection from 'modules/about-us/components/ContentSection';
@@ -40,6 +41,7 @@ const AboutUs: React.FC<{ id: string }> = ({ id }) => {
         <SidebarSection activeKey={id} />
         <ContentSection />
       </AboutUsContainer>
+      <FaqWithBanner />
       <Footer key="1" />
     </>
   );
