@@ -41,50 +41,53 @@ export type ComponentContentSectionsCarousalImage = {
   __typename?: 'ComponentContentSectionsCarousalImage';
   id: Scalars['ID'];
   _id: Scalars['ID'];
-  images?: Maybe<Array<Maybe<ComponentContentSectionsImageWithCaption>>>;
+  images?: Maybe<ComponentContentSectionsImageWithCaption>;
 };
 
 export type ComponentContentSectionsCarousalImageInput = {
-  images?: Maybe<Array<Maybe<ComponentContentSectionsImageWithCaptionInput>>>;
-};
-
-export type ComponentContentSectionsContentComponent = {
-  __typename?: 'ComponentContentSectionsContentComponent';
-  id: Scalars['ID'];
-  _id: Scalars['ID'];
-  sub_header?: Maybe<Scalars['String']>;
-  canvas?: Maybe<UploadFile>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type ComponentContentSectionsContentComponentInput = {
-  sub_header?: Maybe<Scalars['String']>;
-  canvas?: Maybe<Scalars['ID']>;
-  body?: Maybe<Scalars['String']>;
+  images?: Maybe<ComponentContentSectionsImageWithCaptionInput>;
 };
 
 export type ComponentContentSectionsGridImage = {
   __typename?: 'ComponentContentSectionsGridImage';
   id: Scalars['ID'];
   _id: Scalars['ID'];
-  images?: Maybe<Array<Maybe<ComponentContentSectionsImageWithCaption>>>;
+  images?: Maybe<ComponentContentSectionsImageWithCaption>;
 };
 
 export type ComponentContentSectionsGridImageInput = {
-  images?: Maybe<Array<Maybe<ComponentContentSectionsImageWithCaptionInput>>>;
+  images?: Maybe<ComponentContentSectionsImageWithCaptionInput>;
 };
 
 export type ComponentContentSectionsImageWithCaption = {
   __typename?: 'ComponentContentSectionsImageWithCaption';
   id: Scalars['ID'];
   _id: Scalars['ID'];
-  image?: Maybe<UploadFile>;
-  caption?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  images?: Maybe<Array<Maybe<UploadFile>>>;
+};
+
+export type ComponentContentSectionsImageWithCaptionImagesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type ComponentContentSectionsImageWithCaptionInput = {
-  image?: Maybe<Scalars['ID']>;
-  caption?: Maybe<Scalars['String']>;
+  images?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ComponentContentSectionsTextContent = {
+  __typename?: 'ComponentContentSectionsTextContent';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  body?: Maybe<Scalars['String']>;
+};
+
+export type ComponentContentSectionsTextContentInput = {
+  body?: Maybe<Scalars['String']>;
 };
 
 export type ComponentTagsTagInput = {
@@ -112,7 +115,7 @@ export type Content = {
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
   header: Scalars['String'];
-  content_id?: Maybe<Scalars['String']>;
+  content_id: Scalars['String'];
   tags?: Maybe<Array<Maybe<ComponentTagsTags>>>;
   dynamic_sections: Array<Maybe<ContentDynamicSectionsDynamicZone>>;
   canvas_preview?: Maybe<UploadFile>;
@@ -197,8 +200,8 @@ export type ContentConnection_Id = {
 
 export type ContentDynamicSectionsDynamicZone =
   | ComponentContentSectionsCarousalImage
-  | ComponentContentSectionsContentComponent
-  | ComponentContentSectionsGridImage;
+  | ComponentContentSectionsGridImage
+  | ComponentContentSectionsTextContent;
 
 export type ContentGroupBy = {
   __typename?: 'ContentGroupBy';
@@ -215,7 +218,7 @@ export type ContentGroupBy = {
 
 export type ContentInput = {
   header: Scalars['String'];
-  content_id?: Maybe<Scalars['String']>;
+  content_id: Scalars['String'];
   tags?: Maybe<Array<Maybe<ComponentTagsTagInput>>>;
   dynamic_sections: Array<Scalars['ContentDynamicSectionsDynamicZoneInput']>;
   canvas_preview?: Maybe<Scalars['ID']>;
@@ -367,9 +370,9 @@ export type Morph =
   | UpdateUserPayload
   | DeleteUserPayload
   | ComponentContentSectionsCarousalImage
-  | ComponentContentSectionsContentComponent
   | ComponentContentSectionsGridImage
   | ComponentContentSectionsImageWithCaption
+  | ComponentContentSectionsTextContent
   | ComponentTagsTags;
 
 export type Mutation = {
@@ -1271,25 +1274,23 @@ export type DeleteUserPayload = {
 
 export type EditComponentContentSectionsCarousalImageInput = {
   id?: Maybe<Scalars['ID']>;
-  images?: Maybe<Array<Maybe<EditComponentContentSectionsImageWithCaptionInput>>>;
-};
-
-export type EditComponentContentSectionsContentComponentInput = {
-  id?: Maybe<Scalars['ID']>;
-  sub_header?: Maybe<Scalars['String']>;
-  canvas?: Maybe<Scalars['ID']>;
-  body?: Maybe<Scalars['String']>;
+  images?: Maybe<EditComponentContentSectionsImageWithCaptionInput>;
 };
 
 export type EditComponentContentSectionsGridImageInput = {
   id?: Maybe<Scalars['ID']>;
-  images?: Maybe<Array<Maybe<EditComponentContentSectionsImageWithCaptionInput>>>;
+  images?: Maybe<EditComponentContentSectionsImageWithCaptionInput>;
 };
 
 export type EditComponentContentSectionsImageWithCaptionInput = {
   id?: Maybe<Scalars['ID']>;
-  image?: Maybe<Scalars['ID']>;
-  caption?: Maybe<Scalars['String']>;
+  images?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type EditComponentContentSectionsTextContentInput = {
+  id?: Maybe<Scalars['ID']>;
+  body?: Maybe<Scalars['String']>;
 };
 
 export type EditComponentTagsTagInput = {
@@ -1410,6 +1411,70 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type CommonImagesFieldFragment = { __typename?: 'UploadFile' } & Pick<
+  UploadFile,
+  'id' | 'url' | 'caption' | 'alternativeText'
+>;
+
+export type GetNewsByIdQueryVariables = Exact<{
+  Id?: Maybe<Scalars['ID']>;
+}>;
+
+export type GetNewsByIdQuery = { __typename?: 'Query' } & {
+  content?: Maybe<
+    { __typename?: 'Content' } & Pick<Content, '_id' | 'header' | 'createdAt'> & {
+        canvas_preview?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
+        tags?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'ComponentTagsTags' } & {
+                tags?: Maybe<
+                  Array<Maybe<{ __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'tag_name'>>>
+                >;
+              }
+            >
+          >
+        >;
+        dynamic_sections: Array<
+          Maybe<
+            | ({ __typename: 'ComponentContentSectionsCarousalImage' } & {
+                images?: Maybe<
+                  { __typename?: 'ComponentContentSectionsImageWithCaption' } & Pick<
+                    ComponentContentSectionsImageWithCaption,
+                    '_id' | 'title'
+                  > & {
+                      images?: Maybe<
+                        Array<
+                          Maybe<{ __typename?: 'UploadFile' } & CommonImagesFieldFragment>
+                        >
+                      >;
+                    }
+                >;
+              })
+            | ({ __typename: 'ComponentContentSectionsGridImage' } & {
+                images?: Maybe<
+                  { __typename?: 'ComponentContentSectionsImageWithCaption' } & Pick<
+                    ComponentContentSectionsImageWithCaption,
+                    '_id' | 'title'
+                  > & {
+                      images?: Maybe<
+                        Array<
+                          Maybe<{ __typename?: 'UploadFile' } & CommonImagesFieldFragment>
+                        >
+                      >;
+                    }
+                >;
+              })
+            | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
+                ComponentContentSectionsTextContent,
+                'id' | 'body'
+              >)
+          >
+        >;
+      }
+  >;
+};
+
 export type GetNewsQueryVariables = Exact<{
   offset?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1423,22 +1488,68 @@ export type GetNewsQuery = { __typename?: 'Query' } & {
             canvas_preview?: Maybe<
               { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
             >;
-            dynamic_sections: Array<
-              Maybe<
-                | { __typename: 'ComponentContentSectionsCarousalImage' }
-                | ({ __typename: 'ComponentContentSectionsContentComponent' } & Pick<
-                    ComponentContentSectionsContentComponent,
-                    'body'
-                  >)
-                | { __typename: 'ComponentContentSectionsGridImage' }
-              >
-            >;
           }
       >
     >
   >;
 };
 
+export const CommonImagesFieldFragmentDoc = gql`
+  fragment commonImagesField on UploadFile {
+    id
+    url
+    caption
+    alternativeText
+  }
+`;
+export const GetNewsByIdDocument = gql`
+  query GetNewsById($Id: ID = "6250655783b006002f77a696") {
+    content(id: $Id) {
+      _id
+      header
+      canvas_preview {
+        url
+      }
+      tags {
+        tags {
+          tag_id
+          tag_name
+        }
+      }
+      dynamic_sections {
+        __typename
+        ... on ComponentContentSectionsGridImage {
+          images {
+            _id
+            title
+            images {
+              ...commonImagesField
+            }
+          }
+        }
+        ... on ComponentContentSectionsCarousalImage {
+          images {
+            _id
+            title
+            images {
+              ...commonImagesField
+            }
+          }
+        }
+        ... on ComponentContentSectionsTextContent {
+          id
+          body
+        }
+      }
+      createdAt
+    }
+  }
+  ${CommonImagesFieldFragmentDoc}
+`;
+export type GetNewsByIdQueryResult = Apollo.QueryResult<
+  GetNewsByIdQuery,
+  GetNewsByIdQueryVariables
+>;
 export const GetNewsDocument = gql`
   query GetNews($offset: Int = 0, $limit: Int = 25) {
     contents(
@@ -1451,12 +1562,6 @@ export const GetNewsDocument = gql`
       header
       canvas_preview {
         url
-      }
-      dynamic_sections {
-        __typename
-        ... on ComponentContentSectionsContentComponent {
-          body
-        }
       }
       createdAt
     }

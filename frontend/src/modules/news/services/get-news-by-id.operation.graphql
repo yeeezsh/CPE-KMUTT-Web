@@ -1,0 +1,48 @@
+fragment commonImagesField on UploadFile {
+  id
+  url
+  caption
+  alternativeText
+}
+
+query GetNewsById($Id: ID = "6250655783b006002f77a696") {
+  content(id: $Id) {
+    _id
+    header
+    canvas_preview {
+      url
+    }
+    tags {
+      tags {
+        tag_id
+        tag_name
+      }
+    }
+    dynamic_sections {
+      __typename
+      ... on ComponentContentSectionsGridImage {
+        images {
+          _id
+          title
+          images {
+            ...commonImagesField
+          }
+        }
+      }
+      ... on ComponentContentSectionsCarousalImage {
+        images {
+          _id
+          title
+          images {
+            ...commonImagesField
+          }
+        }
+      }
+      ... on ComponentContentSectionsTextContent {
+        id
+        body
+      }
+    }
+    createdAt
+  }
+}
