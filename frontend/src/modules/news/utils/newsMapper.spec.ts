@@ -4,7 +4,7 @@ import { GetNewsQuery } from 'common/generated/generated-types';
 import { newsMapper } from 'modules/news/utils/newsMapper';
 
 const MOCK_API = {
-  contents: [
+  newsAndAnnouncements: [
     {
       _id: '611c118368757f039a09a299',
       header: 'test',
@@ -65,7 +65,7 @@ describe('newsMapper should mapping correctly', () => {
   it('should get description from content correctly', () => {
     const mapped = newsMapper(MOCK_API);
 
-    expect(mapped).toHaveLength(MOCK_API.contents?.length || 0);
+    expect(mapped).toHaveLength(MOCK_API.newsAndAnnouncements?.length || 0);
     expect(mapped?.map((e) => e.description).some((d) => d.length > 0)).toBe(true);
   });
 
