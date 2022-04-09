@@ -55,6 +55,19 @@
     "tags": {
       "collection": "tag",
       "via": "news"
+    },
+    "seo_link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "default": "seo_link",
+      "regex": "[a-z\\-]",
+      "minLength": 5
     }
   }
 }
