@@ -25,7 +25,7 @@ export const newsMapper = (data: GetNewsQuery) => {
 
     return {
       ...e,
-      description: trimmedDesc,
+      description: trimmedDesc.replace(/<[^>]+>/g, ''),
       link: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : undefined,
       _id: e?._id || Math.random().toLocaleString(),
       variant: isPrimary ? CardVariant.primary : CardVariant.normal,

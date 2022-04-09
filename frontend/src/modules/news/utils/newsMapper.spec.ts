@@ -3,7 +3,7 @@ import { GetNewsQuery } from 'common/generated/generated-types';
 
 import { newsMapper } from 'modules/news/utils/newsMapper';
 
-const MOCK_API = {
+const MOCK_API: GetNewsQuery = {
   newsAndAnnouncements: [
     {
       _id: '611c118368757f039a09a299',
@@ -11,9 +11,9 @@ const MOCK_API = {
       canvas_preview: {
         url: '/uploads/Screen_Shot_2564_06_09_at_22_48_25_f94d4f73aa.png',
       },
-      dynamic_sections: [
+      dynamic_content: [
         {
-          __typename: 'ComponentContentSectionsContentComponent',
+          __typename: 'ComponentContentSectionsTextContent',
           body: 'test',
         },
         {
@@ -28,10 +28,10 @@ const MOCK_API = {
       canvas_preview: {
         url: '/uploads/Screen_Shot_2564_06_09_at_22_48_25_f94d4f73aa.png',
       },
-      dynamic_sections: [
+      dynamic_content: [
         {
-          __typename: 'ComponentContentSectionsContentComponent',
-          body: 'euieieieeiei',
+          __typename: 'ComponentContentSectionsTextContent',
+          body: '<p>euieieieeiei</p>',
         },
       ],
       createdAt: '2021-09-05T17:13:55.587Z',
@@ -42,16 +42,16 @@ const MOCK_API = {
       canvas_preview: {
         url: '/uploads/Screen_Shot_2564_06_06_at_15_53_08_ddf132fb2d.png',
       },
-      dynamic_sections: [],
+      dynamic_content: [],
       createdAt: '2021-09-28T15:51:06.394Z',
     },
     {
       _id: '61533d127495b0001f4bb02e',
       header: 'normal varian',
       canvas_preview: null,
-      dynamic_sections: [
+      dynamic_content: [
         {
-          __typename: 'ComponentContentSectionsContentComponent',
+          __typename: 'ComponentContentSectionsTextContent',
           body:
             'normal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal varian',
         },
@@ -76,5 +76,11 @@ describe('newsMapper should mapping correctly', () => {
 
     expect(haveLink?.variant).toBe(CardVariant.primary);
     expect(noLink?.variant).toBe(CardVariant.normal);
+  });
+
+  describe('newsMapper should map description correctly', () => {
+    const mapped = newsMapper(MOCK_API);
+    const foundHTMLTag = mapped?.some((e) => e.description.includes('<p>'));
+    expect(foundHTMLTag).toBe(false);
   });
 });
