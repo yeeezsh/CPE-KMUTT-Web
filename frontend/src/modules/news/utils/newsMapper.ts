@@ -1,6 +1,6 @@
 import { CardVariant } from 'common/components/Card/types';
 import {
-  ComponentContentSectionsContentComponent,
+  ComponentContentSectionsTextContent,
   GetNewsQuery,
 } from 'common/generated/generated-types';
 import { joinImageStrapi } from 'common/utils/join';
@@ -9,11 +9,11 @@ const MAX_DESCRIPTION_LENGTH = 120;
 const MAX_DESCRIPTION_LENGTH_PRIMARY = 45;
 
 export const newsMapper = (data: GetNewsQuery) => {
-  return data.contents?.map((e) => {
-    const getDesc = e?.dynamic_sections.find(
-      (d) => d?.__typename === 'ComponentContentSectionsContentComponent' && d.body,
-    ) as { __typename: 'ComponentContentSectionsContentComponent' } & Pick<
-      ComponentContentSectionsContentComponent,
+  return data.newsAndAnnouncements?.map((e) => {
+    const getDesc = e?.dynamic_content?.find(
+      (d) => d?.__typename === 'ComponentContentSectionsTextContent' && d.body,
+    ) as { __typename: 'ComponentContentSectionsTextContent' } & Pick<
+      ComponentContentSectionsTextContent,
       'body'
     >;
     const isPrimary = e?.canvas_preview?.url;

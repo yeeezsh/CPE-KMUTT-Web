@@ -398,7 +398,7 @@ export type NewsAndAnnouncement = {
   _id: Scalars['ID'];
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
-  header?: Maybe<Scalars['String']>;
+  header: Scalars['String'];
   canvas_preview?: Maybe<UploadFile>;
   dynamic_content?: Maybe<Array<Maybe<NewsAndAnnouncementDynamicContentDynamicZone>>>;
   locale?: Maybe<Scalars['String']>;
@@ -500,7 +500,7 @@ export type NewsAndAnnouncementGroupBy = {
 };
 
 export type NewsAndAnnouncementInput = {
-  header?: Maybe<Scalars['String']>;
+  header: Scalars['String'];
   canvas_preview?: Maybe<Scalars['ID']>;
   dynamic_content?: Maybe<
     Array<Scalars['NewsAndAnnouncementDynamicContentDynamicZoneInput']>
@@ -1439,6 +1439,18 @@ export type GetNewsQuery = { __typename?: 'Query' } & {
             canvas_preview?: Maybe<
               { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
             >;
+            dynamic_content?: Maybe<
+              Array<
+                Maybe<
+                  | { __typename?: 'ComponentContentSectionsGridImage' }
+                  | ({ __typename?: 'ComponentContentSectionsTextContent' } & Pick<
+                      ComponentContentSectionsTextContent,
+                      'body'
+                    >)
+                  | { __typename?: 'ComponentContentSectionsCarousalImage' }
+                >
+              >
+            >;
           }
       >
     >
@@ -1531,6 +1543,11 @@ export const GetNewsDocument = gql`
       header
       canvas_preview {
         url
+      }
+      dynamic_content {
+        ... on ComponentContentSectionsTextContent {
+          body
+        }
       }
       createdAt
     }

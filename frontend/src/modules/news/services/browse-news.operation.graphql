@@ -11,6 +11,11 @@ query GetNews($offset: Int = 0, $limit: Int = 25, $locale: String = "en") {
     canvas_preview {
       url
     }
+    dynamic_content {
+      ... on ComponentContentSectionsTextContent {
+        body
+      }
+    }
     createdAt
   }
 }
