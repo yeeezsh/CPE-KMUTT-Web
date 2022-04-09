@@ -1,9 +1,10 @@
-query GetNews($offset: Int = 0, $limit: Int = 25) {
-  contents(
+query GetNews($offset: Int = 0, $limit: Int = 25, $locale: String = "en") {
+  newsAndAnnouncements(
     start: $offset
     limit: $limit
     publicationState: LIVE
     sort: "createdAt:desc"
+    locale: $locale
   ) {
     _id
     header

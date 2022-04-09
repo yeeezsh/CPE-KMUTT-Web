@@ -5,20 +5,19 @@ fragment commonImagesField on UploadFile {
   alternativeText
 }
 
-query GetNewsById($Id: ID = "6250655783b006002f77a696") {
-  content(id: $Id) {
+query GetNewsById($Id: ID = "6251cfdd9b3a82002f857495") {
+  newsAndAnnouncement(id: $Id) {
     _id
+    locale
     header
     canvas_preview {
       url
     }
     tags {
-      tags {
-        tag_id
-        tag_name
-      }
+      tag_name
+      locale
     }
-    dynamic_sections {
+    dynamic_content {
       __typename
       ... on ComponentContentSectionsGridImage {
         images {
@@ -44,5 +43,6 @@ query GetNewsById($Id: ID = "6250655783b006002f77a696") {
       }
     }
     createdAt
+    updatedAt
   }
 }
