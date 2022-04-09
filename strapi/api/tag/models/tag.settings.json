@@ -27,6 +27,10 @@
           "localized": true
         }
       }
+    },
+    "news": {
+      "via": "tags",
+      "model": "news-and-announcement"
     }
   }
 }
