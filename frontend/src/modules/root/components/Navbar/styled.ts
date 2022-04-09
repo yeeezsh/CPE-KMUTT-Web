@@ -76,7 +76,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Faculty = styled.div`
-  font-weight: bold;
   font-size: 18px;
   color: ${COLORS.PRIMARY_COLOR};
   margin-top: 26px;
