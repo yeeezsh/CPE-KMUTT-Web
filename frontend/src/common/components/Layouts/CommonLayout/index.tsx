@@ -9,6 +9,7 @@ import Btn from 'common/components/Button';
 import Container from 'common/components/Container';
 
 import Footer from 'modules/home/components/Footer';
+import Navbar from 'modules/root/components/Navbar';
 
 import {
   AnnouceFAQ,
@@ -52,52 +53,55 @@ export const FaqWithBanner: React.FC = () => (
 
 const CommonLayout: React.FC<CommonLayoutProps> = ({ children, ...props }) => {
   return (
-    <CommonLayoutStyle>
-      <CommonWrapperHeader>
-        <CommonWrapperCanvas>
-          <CommonWrapperRow className="center">
-            <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>
-          </CommonWrapperRow>
-        </CommonWrapperCanvas>
-      </CommonWrapperHeader>
-      <Container>
-        <CommonWrapperRow className="space-between">
-          <Breadcrumb separator="/">
-            {props.navigate?.map((items, index) => {
-              return (
-                <Breadcrumb.Item href={items.link} key={index}>
-                  {items.title}
-                </Breadcrumb.Item>
-              );
-            })}
-          </Breadcrumb>
-
-          <CommonWrapperSocial>
-            <CommonWrapperRow>
-              Share this page to:
-              <a href="/">
-                <RiFacebookCircleFill
-                  size="19px"
-                  color="#3B5998"
-                  style={{ marginLeft: '8px' }}
-                />
-              </a>
-              <a href="/">
-                <AiFillTwitterCircle
-                  size="19px"
-                  color="#00ACEE"
-                  style={{ marginLeft: '8px' }}
-                />
-              </a>
+    <>
+      <Navbar />
+      <CommonLayoutStyle>
+        <CommonWrapperHeader>
+          <CommonWrapperCanvas>
+            <CommonWrapperRow className="center">
+              <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>
             </CommonWrapperRow>
-          </CommonWrapperSocial>
-        </CommonWrapperRow>
-      </Container>
-      {children}
+          </CommonWrapperCanvas>
+        </CommonWrapperHeader>
+        <Container>
+          <CommonWrapperRow className="space-between">
+            <Breadcrumb separator="/">
+              {props.navigate?.map((items, index) => {
+                return (
+                  <Breadcrumb.Item href={items.link} key={index}>
+                    {items.title}
+                  </Breadcrumb.Item>
+                );
+              })}
+            </Breadcrumb>
 
-      {props.withFaqBanner && <FaqWithBanner />}
-      <Footer />
-    </CommonLayoutStyle>
+            <CommonWrapperSocial>
+              <CommonWrapperRow>
+                Share this page to:
+                <a href="/">
+                  <RiFacebookCircleFill
+                    size="19px"
+                    color="#3B5998"
+                    style={{ marginLeft: '8px' }}
+                  />
+                </a>
+                <a href="/">
+                  <AiFillTwitterCircle
+                    size="19px"
+                    color="#00ACEE"
+                    style={{ marginLeft: '8px' }}
+                  />
+                </a>
+              </CommonWrapperRow>
+            </CommonWrapperSocial>
+          </CommonWrapperRow>
+        </Container>
+        {children}
+
+        {props.withFaqBanner && <FaqWithBanner />}
+        <Footer />
+      </CommonLayoutStyle>
+    </>
   );
 };
 
