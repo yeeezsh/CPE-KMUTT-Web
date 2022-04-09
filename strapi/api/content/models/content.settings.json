@@ -26,7 +26,8 @@
       "required": true
     },
     "content_id": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
     },
     "tags": {
       "type": "component",
@@ -48,7 +49,8 @@
       "components": [
         "content-sections.carousal-image",
         "content-sections.content-component",
-        "content-sections.grid-image"
+        "content-sections.grid-image",
+        "content-sections.text-content"
       ],
       "required": true
     },
@@ -65,14 +67,6 @@
           "localized": false
         }
       }
-    },
-    "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
     }
   }
 }
