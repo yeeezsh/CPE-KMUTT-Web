@@ -48,7 +48,6 @@
       "type": "dynamiczone",
       "components": [
         "content-sections.carousal-image",
-        "content-sections.content-component",
         "content-sections.grid-image",
         "content-sections.text-content"
       ],
