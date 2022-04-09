@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>CPE KMUTT</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
