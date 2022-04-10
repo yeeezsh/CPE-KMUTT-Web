@@ -32,14 +32,17 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
   return (
     <NewsContentStyle>
       <Container>
-        <NewsContentHeader>{NEWS_CONTENT.title}</NewsContentHeader>
-        <NewsContentPostDate>{NEWS_CONTENT.postDate}</NewsContentPostDate>
+        <NewsContentHeader>{props.title}</NewsContentHeader>
+        <NewsContentPostDate>{props.postDate}</NewsContentPostDate>
         <NewsContentTumbnail
           style={{
             backgroundImage: `url(${props.tumbnail})`,
           }}
         />
-        <NewsContentContainer>{NEWS_CONTENT.content}</NewsContentContainer>
+
+        {/* dyanmic contents */}
+        {props.contents}
+
         <NewsContentFileConteiner>
           <NewsContentFileHeader>
             ไฟล์แนบ ({NEWS_CONTENT?.file?.length})
