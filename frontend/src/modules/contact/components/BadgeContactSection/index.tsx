@@ -2,8 +2,8 @@ import React from 'react';
 
 import { HiOutlineArrowRight } from 'react-icons/hi';
 
-import Button from '../Button';
-import Container from '../Container';
+import Button from 'common/components/Button';
+import Container from 'common/components/Container';
 
 import {
   BadgeListContainer,
@@ -14,7 +14,7 @@ import {
   Description,
 } from './styled';
 
-const BadgeContact: React.FC = () => {
+const BadgeContactSection: React.FC = () => {
   return (
     <BadgeListContainer>
       <Container>
@@ -45,7 +45,7 @@ const BadgeContact: React.FC = () => {
             <Description>เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน</Description>
             <Button $color="transparent">
               ไปที่ Facebook&nbsp;
-              <HiOutlineArrowRight />{' '}
+              <HiOutlineArrowRight />
             </Button>
           </Badge>
         </BadgeList>
@@ -54,4 +54,4 @@ const BadgeContact: React.FC = () => {
   );
 };
 
-export default BadgeContact;
+export default BadgeContactSection;

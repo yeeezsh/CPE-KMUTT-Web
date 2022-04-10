@@ -14,6 +14,7 @@ export const BadgeList = styled.div`
   background: #f5f5f5;
   margin: 65px 0;
 `;
+
 export const Badge = styled.div`
   width: 30%;
   display: flex;
@@ -40,6 +41,7 @@ export const BadgeName = styled.p`
     font-size: 16px;
   }
 `;
+
 export const Description = styled.p`
   font-size: 14px;
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
