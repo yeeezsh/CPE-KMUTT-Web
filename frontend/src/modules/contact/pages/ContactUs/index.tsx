@@ -9,7 +9,7 @@ import colors from 'common/constants/colors';
 import BadgeContactSection from 'modules/contact/components/BadgeContactSection';
 import { CONTACT_US_TITLE } from 'modules/contact/constants';
 
-import { BREADCRUMB } from './constants';
+import { BREADCRUMB, HEADER_BACKGROUND_IMAGE } from './constants';
 import { Address, ContactDetail, ContactSection, StyledRow } from './styled';
 
 const ContactUs: React.FC = () => {
@@ -18,7 +18,10 @@ const ContactUs: React.FC = () => {
       <Head>
         <title>{CONTACT_US_TITLE}</title>
       </Head>
-      <CommonLayout header="ติดต่อเรา" navigate={BREADCRUMB}>
+      <CommonLayout
+        header="ติดต่อเรา"
+        navigate={BREADCRUMB}
+        headerBackgroundImage={HEADER_BACKGROUND_IMAGE}>
         <Container>
           <ContactSection>
             <StyledRow>
