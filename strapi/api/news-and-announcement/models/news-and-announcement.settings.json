@@ -65,7 +65,7 @@
       "type": "string",
       "required": true,
       "unique": false,
-      "regex": "[a-z\\-]",
+      "regex": "^[a-z]\\S*$",
       "minLength": 5
     }
   }
