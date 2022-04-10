@@ -25,9 +25,10 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
     if (dynamic_element?.__typename === 'ComponentContentSectionsTextContent')
       return (
         <NewsContentContainer
-          key={dynamic_element._id}
-          dangerouslySetInnerHTML={{ __html: dynamic_element.body as string }}
-        />
+          key={dynamic_element.id}
+          dangerouslySetInnerHTML={{
+            __html: dynamic_element.body as string,
+          }}></NewsContentContainer>
       );
 
     return <></>;
