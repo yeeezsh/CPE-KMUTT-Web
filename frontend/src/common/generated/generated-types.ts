@@ -1519,8 +1519,13 @@ export type CommonImagesFieldFragment = { __typename?: 'UploadFile' } & Pick<
   'id' | 'url' | 'caption' | 'alternativeText'
 >;
 
+export type CommonContentSectionFragment = {
+  __typename?: 'ComponentContentSectionsTextContent';
+} & Pick<ComponentContentSectionsTextContent, 'id' | 'body'>;
+
 export type GetNewsByIdQueryVariables = Exact<{
   Id: Scalars['ID'];
+  LocaleConnection: Scalars['String'];
 }>;
 
 export type GetNewsByIdQuery = { __typename?: 'Query' } & {
@@ -1559,10 +1564,9 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
                       }
                   >;
                 })
-              | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
-                  ComponentContentSectionsTextContent,
-                  'id' | 'body'
-                >)
+              | ({
+                  __typename: 'ComponentContentSectionsTextContent';
+                } & CommonContentSectionFragment)
               | ({ __typename: 'ComponentContentSectionsCarousalImage' } & {
                   images?: Maybe<
                     { __typename?: 'ComponentContentSectionsImageWithCaption' } & Pick<
@@ -1598,6 +1602,36 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
         >;
       }
   >;
+  newsAndAnnouncementsConnection?: Maybe<
+    { __typename?: 'NewsAndAnnouncementConnection' } & {
+      values?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'NewsAndAnnouncement' } & Pick<
+              NewsAndAnnouncement,
+              '_id' | 'header' | 'createdAt'
+            > & {
+                canvas_preview?: Maybe<
+                  { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+                >;
+                dynamic_content?: Maybe<
+                  Array<
+                    Maybe<
+                      | { __typename?: 'ComponentContentSectionsGridImage' }
+                      | ({ __typename?: 'ComponentContentSectionsTextContent' } & Pick<
+                          ComponentContentSectionsTextContent,
+                          'body'
+                        >)
+                      | { __typename?: 'ComponentContentSectionsCarousalImage' }
+                    >
+                  >
+                >;
+              }
+          >
+        >
+      >;
+    }
+  >;
 };
 
 export const CommonImagesFieldFragmentDoc = gql`
@@ -1606,6 +1640,12 @@ export const CommonImagesFieldFragmentDoc = gql`
     url
     caption
     alternativeText
+  }
+`;
+export const CommonContentSectionFragmentDoc = gql`
+  fragment commonContentSection on ComponentContentSectionsTextContent {
+    id
+    body
   }
 `;
 export const GetNewsDocument = gql`
@@ -1633,7 +1673,7 @@ export const GetNewsDocument = gql`
 `;
 export type GetNewsQueryResult = Apollo.QueryResult<GetNewsQuery, GetNewsQueryVariables>;
 export const GetNewsByIdDocument = gql`
-  query GetNewsById($Id: ID!) {
+  query GetNewsById($Id: ID!, $LocaleConnection: String!) {
     newsAndAnnouncement(id: $Id) {
       _id
       locale
@@ -1669,8 +1709,7 @@ export const GetNewsByIdDocument = gql`
           }
         }
         ... on ComponentContentSectionsTextContent {
-          id
-          body
+          ...commonContentSection
         }
       }
       download {
@@ -1684,8 +1723,28 @@ export const GetNewsByIdDocument = gql`
       createdAt
       updatedAt
     }
+    newsAndAnnouncementsConnection(
+      sort: "createdAt:desc"
+      limit: 4
+      locale: $LocaleConnection
+    ) {
+      values {
+        _id
+        header
+        canvas_preview {
+          url
+        }
+        dynamic_content {
+          ... on ComponentContentSectionsTextContent {
+            body
+          }
+        }
+        createdAt
+      }
+    }
   }
   ${CommonImagesFieldFragmentDoc}
+  ${CommonContentSectionFragmentDoc}
 `;
 export type GetNewsByIdQueryResult = Apollo.QueryResult<
   GetNewsByIdQuery,

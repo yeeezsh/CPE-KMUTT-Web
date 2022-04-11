@@ -8,7 +8,8 @@ import NewsContentPage from 'modules/news/page/NewsContentPage';
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { data } = await client.query<GetNewsByIdQuery>({
     query: GetNewsByIdDocument,
-    variables: { Id: params?.id },
+    // TODO: remove this locale hardcode
+    variables: { Id: params?.id, LocaleConnection: 'th' },
   });
   return {
     props: { data },

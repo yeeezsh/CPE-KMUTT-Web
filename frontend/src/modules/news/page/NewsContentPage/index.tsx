@@ -14,9 +14,15 @@ import { useNewsContentParser } from 'modules/news/hooks/useNewsContentParser';
 
 const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
   // NewsContent
-  const { header, title, postDate, thumbnail, contents, download } = useNewsContentParser(
-    data,
-  );
+  const {
+    header,
+    title,
+    postDate,
+    thumbnail,
+    contents,
+    download,
+    connections,
+  } = useNewsContentParser(data);
   const tags = useTags(
     data?.newsAndAnnouncement?.tags as Tag[],
     [
@@ -45,7 +51,6 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* //TODO: remove this mock tag*/}
-      {/* TODO: implemente files section */}
       <CommonLayout header="ข่าวสารและประกาศ" navigate={tags}>
         <NewsContent
           title={title}
@@ -53,6 +58,7 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
           tumbnail={thumbnail}
           contents={contents}
           file={download}
+          connections={connections}
         />
       </CommonLayout>
     </>

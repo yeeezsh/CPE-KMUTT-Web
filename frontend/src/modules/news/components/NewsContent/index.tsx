@@ -7,12 +7,10 @@ import { VscFilePdf } from 'react-icons/vsc';
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
-
-import { constants, NEWS_CONTENT } from 'modules/news/components/NewsContent/constant';
+import { STATIC_NEWS_LINK } from 'common/constants/links';
 
 import {
   NewsContentTumbnail,
-  NewsContentContainer,
   NewsContentFileConteiner,
   NewsContentFileHeader,
   NewsContentFileList,
@@ -63,32 +61,37 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
           </NewsContentFileConteiner>
         )}
 
-        <OtherNewsContainer>
-          <OtherNewsHeaderContainer>
-            <OtherNewsHeader>ประกาศอื่นๆ</OtherNewsHeader>
-            <Button $color="borderless">
-              แสดงทั้งหมด
-              <HiOutlineArrowRight
-                className="Icon"
-                style={{ marginLeft: '15px' }}
-                size="20px"
-              />
-            </Button>
-          </OtherNewsHeaderContainer>
-          <OtherNewsCardContainer>
-            {constants.map((data, index) => (
-              <Card
-                key={index}
-                title={data.title}
-                description={data.description}
-                date={data.date}
-                links={data.links}
-                id={data.id}
-                variant={data.variant}
-              />
-            ))}
-          </OtherNewsCardContainer>
-        </OtherNewsContainer>
+        {/* connections */}
+        {props.connections && (
+          <OtherNewsContainer>
+            <OtherNewsHeaderContainer>
+              <OtherNewsHeader>ประกาศอื่นๆ</OtherNewsHeader>
+              <Link href={STATIC_NEWS_LINK}>
+                <Button $color="borderless">
+                  แสดงทั้งหมด
+                  <HiOutlineArrowRight
+                    className="Icon"
+                    style={{ marginLeft: '15px' }}
+                    size="20px"
+                  />
+                </Button>
+              </Link>
+            </OtherNewsHeaderContainer>
+            <OtherNewsCardContainer>
+              {props.connections.map((data) => (
+                <Card
+                  key={'news-connections-' + data.id}
+                  title={data.title}
+                  description={data.description}
+                  date={data.date}
+                  links={data.links}
+                  id={data.id}
+                  variant={data.variant}
+                />
+              ))}
+            </OtherNewsCardContainer>
+          </OtherNewsContainer>
+        )}
       </Container>
     </NewsContentStyle>
   );

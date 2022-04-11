@@ -2,14 +2,28 @@ import React from 'react';
 
 import dayjs from 'dayjs';
 
+import { CardVariant } from 'common/components/Card/types';
 import { NEWS_DATE_FORMAT } from 'common/constants/format';
 import {
   GetNewsByIdQuery,
+  GetNewsQuery,
   NewsAndAnnouncementDynamicContentDynamicZone,
 } from 'common/generated/generated-types';
 import { joinFileDownloadStrapi, joinImageStrapi } from 'common/utils/join';
 
 import { NewsContentContainer } from 'modules/news/components/NewsContent/styled';
+import { CardConstantsProps } from 'modules/news/components/NewsContent/types';
+import { newsConnectionMapper } from 'modules/news/utils/newsMapper';
+
+export type NewsConnection = {
+  description: string;
+  link: string | undefined;
+  _id: string;
+  variant: CardVariant;
+  date: string;
+  raw_date: number;
+  title: string | undefined;
+};
 
 export type UseNewsContentParser = {
   header: string | undefined;
@@ -18,6 +32,7 @@ export type UseNewsContentParser = {
   postDate: string;
   contents: JSX.Element[] | undefined;
   download?: { title?: string; link?: string }[];
+  connections?: CardConstantsProps[];
 };
 
 export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentParser => {
@@ -49,6 +64,7 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
     title: e?.name,
     link: joinFileDownloadStrapi(e?.url || ''),
   }));
+  const connections = newsConnectionMapper(data);
 
-  return { header, title, thumbnail, postDate, contents, download };
+  return { header, title, thumbnail, postDate, contents, download, connections };
 };

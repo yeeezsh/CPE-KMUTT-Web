@@ -11,6 +11,7 @@ export interface NewsContentProps {
     link?: string;
   }[];
   contents?: JSX.Element[];
+  connections?: CardConstantsProps[];
 }
 
 export interface CardConstantsProps {
