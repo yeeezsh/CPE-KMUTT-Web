@@ -37,6 +37,24 @@ export type AdminUser = {
   lastname: Scalars['String'];
 };
 
+export type ComponentCommonFileDownload = {
+  __typename?: 'ComponentCommonFileDownload';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  files?: Maybe<Array<Maybe<UploadFile>>>;
+};
+
+export type ComponentCommonFileDownloadFilesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ComponentCommonFileDownloadInput = {
+  files?: Maybe<Array<Maybe<Scalars['ID']>>>;
+};
+
 export type ComponentContentSectionsCarousalImage = {
   __typename?: 'ComponentContentSectionsCarousalImage';
   id: Scalars['ID'];
@@ -171,6 +189,7 @@ export type Morph =
   | NewsAndAnnouncementConnectionHeader
   | NewsAndAnnouncementConnectionCanvas_Preview
   | NewsAndAnnouncementConnectionSeo_Link
+  | NewsAndAnnouncementConnectionDownload
   | NewsAndAnnouncementConnectionLocale
   | NewsAndAnnouncementConnectionPublished_At
   | CreateNewsAndAnnouncementPayload
@@ -250,6 +269,7 @@ export type Morph =
   | CreateUserPayload
   | UpdateUserPayload
   | DeleteUserPayload
+  | ComponentCommonFileDownload
   | ComponentContentSectionsCarousalImage
   | ComponentContentSectionsGridImage
   | ComponentContentSectionsImageWithCaption
@@ -404,6 +424,7 @@ export type NewsAndAnnouncement = {
   canvas_preview?: Maybe<UploadFile>;
   dynamic_content?: Maybe<Array<Maybe<NewsAndAnnouncementDynamicContentDynamicZone>>>;
   seo_link: Scalars['String'];
+  download?: Maybe<ComponentCommonFileDownload>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
   tags?: Maybe<Array<Maybe<Tag>>>;
@@ -446,6 +467,12 @@ export type NewsAndAnnouncementConnectionCanvas_Preview = {
 export type NewsAndAnnouncementConnectionCreatedAt = {
   __typename?: 'NewsAndAnnouncementConnectionCreatedAt';
   key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionDownload = {
+  __typename?: 'NewsAndAnnouncementConnectionDownload';
+  key?: Maybe<Scalars['ID']>;
   connection?: Maybe<NewsAndAnnouncementConnection>;
 };
 
@@ -505,6 +532,7 @@ export type NewsAndAnnouncementGroupBy = {
   header?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionHeader>>>;
   canvas_preview?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionCanvas_Preview>>>;
   seo_link?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionSeo_Link>>>;
+  download?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionDownload>>>;
   locale?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionLocale>>>;
   published_at?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionPublished_At>>>;
 };
@@ -517,6 +545,7 @@ export type NewsAndAnnouncementInput = {
   >;
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link: Scalars['String'];
+  download?: Maybe<ComponentCommonFileDownloadInput>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -1301,6 +1330,11 @@ export type DeleteUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type EditComponentCommonFileDownloadInput = {
+  id?: Maybe<Scalars['ID']>;
+  files?: Maybe<Array<Maybe<Scalars['ID']>>>;
+};
+
 export type EditComponentContentSectionsCarousalImageInput = {
   id?: Maybe<Scalars['ID']>;
   images?: Maybe<EditComponentContentSectionsImageWithCaptionInput>;
@@ -1362,6 +1396,7 @@ export type EditNewsAndAnnouncementInput = {
   >;
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link?: Maybe<Scalars['String']>;
+  download?: Maybe<EditComponentCommonFileDownloadInput>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -1547,6 +1582,20 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
             >
           >
         >;
+        download?: Maybe<
+          { __typename?: 'ComponentCommonFileDownload' } & {
+            files?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'UploadFile' } & Pick<
+                    UploadFile,
+                    'url' | 'name' | '_id' | 'mime'
+                  >
+                >
+              >
+            >;
+          }
+        >;
       }
   >;
 };
@@ -1622,6 +1671,14 @@ export const GetNewsByIdDocument = gql`
         ... on ComponentContentSectionsTextContent {
           id
           body
+        }
+      }
+      download {
+        files {
+          url
+          name
+          _id
+          mime
         }
       }
       createdAt
