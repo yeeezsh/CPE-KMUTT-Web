@@ -66,6 +66,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
           <OtherNewsContainer>
             <OtherNewsHeaderContainer>
               <OtherNewsHeader>ประกาศอื่นๆ</OtherNewsHeader>
+              {/* TODO: bad use link here */}
               <Link href={STATIC_NEWS_LINK}>
                 <Button $color="borderless">
                   แสดงทั้งหมด
