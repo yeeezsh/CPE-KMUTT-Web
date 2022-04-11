@@ -5,7 +5,6 @@ import React from 'react';
 import Head from 'next/head';
 
 import CommonLayout from 'common/components/Layouts/CommonLayout';
-import { CrumbProps } from 'common/components/Layouts/CommonLayout/types';
 import { GetNewsByIdQuery, Tag } from 'common/generated/generated-types';
 import { useTags } from 'common/hooks/useTags';
 
