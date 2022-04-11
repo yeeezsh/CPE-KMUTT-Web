@@ -26,7 +26,6 @@ jobs:
           restore-keys: yarn-
       - run: yarn
       - run: yarn lint
-      - run: yarn test:ci --clearCache
       - run: yarn test:ci
       - run: yarn build
   storybook:
