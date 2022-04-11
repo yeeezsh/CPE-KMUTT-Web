@@ -1,3 +1,4 @@
+import { CardVariant } from 'common/components/Card/types';
 import { GetNewsByIdQuery } from 'common/generated/generated-types';
 
 import { useNewsContentParser } from 'modules/news/hooks/useNewsContentParser';
@@ -94,5 +95,11 @@ describe('useNewsContentParser hooks', () => {
     expect(download && download[0].link).toBe(
       'http://localhost:1337/uploads/Test_PD_Ffile_cdbe4170b9.pdf',
     );
+  });
+
+  it('should parse connection correctly', () => {
+    const { connections } = useNewsContentParser(MOCK_API);
+    expect(connections && connections[0].variant).toBe(CardVariant.normal);
+    expect(connections && connections[1].variant).toBe(CardVariant.primary);
   });
 });
