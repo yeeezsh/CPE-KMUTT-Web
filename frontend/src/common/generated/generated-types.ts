@@ -1485,7 +1485,7 @@ export type CommonImagesFieldFragment = { __typename?: 'UploadFile' } & Pick<
 >;
 
 export type GetNewsByIdQueryVariables = Exact<{
-  Id?: Maybe<Scalars['ID']>;
+  Id: Scalars['ID'];
 }>;
 
 export type GetNewsByIdQuery = { __typename?: 'Query' } & {
@@ -1584,7 +1584,7 @@ export const GetNewsDocument = gql`
 `;
 export type GetNewsQueryResult = Apollo.QueryResult<GetNewsQuery, GetNewsQueryVariables>;
 export const GetNewsByIdDocument = gql`
-  query GetNewsById($Id: ID = "6251cfdd9b3a82002f857495") {
+  query GetNewsById($Id: ID!) {
     newsAndAnnouncement(id: $Id) {
       _id
       locale

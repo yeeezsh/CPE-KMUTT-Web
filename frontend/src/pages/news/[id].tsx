@@ -8,7 +8,7 @@ import NewsContentPage from 'modules/news/page/NewsContentPage';
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { data } = await client.query<GetNewsByIdQuery>({
     query: GetNewsByIdDocument,
-    variables: { id: params },
+    variables: { Id: params?.id },
   });
   return {
     props: { data },

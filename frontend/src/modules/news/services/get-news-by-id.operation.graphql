@@ -5,7 +5,7 @@ fragment commonImagesField on UploadFile {
   alternativeText
 }
 
-query GetNewsById($Id: ID = "6251cfdd9b3a82002f857495") {
+query GetNewsById($Id: ID!) {
   newsAndAnnouncement(id: $Id) {
     _id
     locale
