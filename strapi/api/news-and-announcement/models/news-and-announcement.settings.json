@@ -67,6 +67,16 @@
       "unique": false,
       "regex": "^[a-z]\\S*$",
       "minLength": 5
+    },
+    "download": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "common.file-download"
     }
   }
 }

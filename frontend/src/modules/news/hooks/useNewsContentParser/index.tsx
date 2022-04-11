@@ -6,7 +6,7 @@ import {
   GetNewsByIdQuery,
   NewsAndAnnouncementDynamicContentDynamicZone,
 } from 'common/generated/generated-types';
-import { joinImageStrapi } from 'common/utils/join';
+import { joinFileDownloadStrapi, joinImageStrapi } from 'common/utils/join';
 
 import { NewsContentContainer } from 'modules/news/components/NewsContent/styled';
 
@@ -16,6 +16,7 @@ export type UseNewsContentParser = {
   thumbnail: string | undefined;
   postDate: string;
   contents: JSX.Element[] | undefined;
+  download?: { title?: string; link?: string }[];
 };
 
 export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentParser => {
@@ -45,6 +46,10 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
   const contents = data?.newsAndAnnouncement?.dynamic_content?.map((e) =>
     mapContents(e as NewsAndAnnouncementDynamicContentDynamicZone),
   );
+  const download = data?.newsAndAnnouncement?.download?.files?.map((e) => ({
+    title: e?.name,
+    link: joinFileDownloadStrapi(e?.url || ''),
+  }));
 
-  return { header, title, thumbnail, postDate, contents };
+  return { header, title, thumbnail, postDate, contents, download };
 };

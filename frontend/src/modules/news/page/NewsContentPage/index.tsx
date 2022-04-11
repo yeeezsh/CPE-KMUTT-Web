@@ -32,7 +32,9 @@ const MOCK_NAVIGATE = [
 
 const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
   // NewsContent
-  const { header, title, postDate, thumbnail, contents } = useNewsContentParser(data);
+  const { header, title, postDate, thumbnail, contents, download } = useNewsContentParser(
+    data,
+  );
   const tags = useTags(
     data?.newsAndAnnouncement?.tags as Tag[],
     [
@@ -47,8 +49,6 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
     ],
     '/news',
   );
-
-  console.log(tags);
 
   return (
     <>
@@ -67,6 +67,7 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
           postDate={postDate}
           tumbnail={thumbnail}
           contents={contents}
+          file={download}
         />
       </CommonLayout>
     </>

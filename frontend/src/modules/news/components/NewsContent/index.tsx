@@ -43,20 +43,26 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
         {/* dyanmic contents */}
         {props.contents}
 
-        <NewsContentFileConteiner>
-          <NewsContentFileHeader>
-            ไฟล์แนบ ({NEWS_CONTENT?.file?.length})
-          </NewsContentFileHeader>
-          {NEWS_CONTENT?.file?.map((data, index) => (
-            <NewsContentFileList key={index}>
-              <NewsContentFileNameContainer>
-                <VscFilePdf style={{ marginRight: '16px' }} color="#DD2025" size="24px" />
-                <NewsContentFileName>{data.title}</NewsContentFileName>
-              </NewsContentFileNameContainer>
-              <Link href={data.link ?? '/'}>ดาวน์โหลด</Link>
-            </NewsContentFileList>
-          ))}
-        </NewsContentFileConteiner>
+        {/* files & download */}
+        {props.file && (
+          <NewsContentFileConteiner>
+            <NewsContentFileHeader>ไฟล์แนบ ({props.file?.length})</NewsContentFileHeader>
+            {props.file?.map((data, index) => (
+              <NewsContentFileList key={index}>
+                <NewsContentFileNameContainer>
+                  <VscFilePdf
+                    style={{ marginRight: '16px' }}
+                    color="#DD2025"
+                    size="24px"
+                  />
+                  <NewsContentFileName>{data.title}</NewsContentFileName>
+                </NewsContentFileNameContainer>
+                <Link href={data.link ?? '/'}>ดาวน์โหลด</Link>
+              </NewsContentFileList>
+            ))}
+          </NewsContentFileConteiner>
+        )}
+
         <OtherNewsContainer>
           <OtherNewsHeaderContainer>
             <OtherNewsHeader>ประกาศอื่นๆ</OtherNewsHeader>

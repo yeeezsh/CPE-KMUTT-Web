@@ -45,6 +45,14 @@ query GetNewsById($Id: ID!) {
         body
       }
     }
+    download {
+      files {
+        url
+        name
+        _id
+        mime
+      }
+    }
     createdAt
     updatedAt
   }
