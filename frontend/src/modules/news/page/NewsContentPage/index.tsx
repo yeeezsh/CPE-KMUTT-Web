@@ -5,6 +5,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import CommonLayout from 'common/components/Layouts/CommonLayout';
+import { STATIC_HOME_LINK, STATIC_NEWS_LINK } from 'common/constants/links';
 import { GetNewsByIdQuery, Tag } from 'common/generated/generated-types';
 import { useTags } from 'common/hooks/useTags';
 
@@ -21,17 +22,17 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
     [
       {
         title: 'หน้าแรก',
-        link: '/',
+        link: STATIC_HOME_LINK,
       },
       {
         title: 'ประกาศ',
-        link: '/news',
+        link: STATIC_NEWS_LINK,
       },
     ],
     [
       {
         title: header as string,
-        link: join('/news', data?.newsAndAnnouncement?._id || ''),
+        link: join(STATIC_HOME_LINK, data?.newsAndAnnouncement?._id || ''),
       },
     ],
     '/news',

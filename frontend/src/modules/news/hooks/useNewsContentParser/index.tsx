@@ -2,6 +2,7 @@ import React from 'react';
 
 import dayjs from 'dayjs';
 
+import { NEWS_DATE_FORMAT } from 'common/constants/format';
 import {
   GetNewsByIdQuery,
   NewsAndAnnouncementDynamicContentDynamicZone,
@@ -40,9 +41,7 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
   const thumbnail = joinImageStrapi(
     data?.newsAndAnnouncement?.canvas_preview?.url as string,
   );
-  const postDate = dayjs(data?.newsAndAnnouncement?.createdAt).format(
-    'dddd, DD MMMM YYYY',
-  );
+  const postDate = dayjs(data?.newsAndAnnouncement?.createdAt).format(NEWS_DATE_FORMAT);
   const contents = data?.newsAndAnnouncement?.dynamic_content?.map((e) =>
     mapContents(e as NewsAndAnnouncementDynamicContentDynamicZone),
   );
