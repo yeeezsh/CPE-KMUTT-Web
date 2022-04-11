@@ -6,7 +6,7 @@ import {
 } from 'common/generated/generated-types';
 import { joinImageStrapi } from 'common/utils/join';
 
-import { CardConstantsProps } from 'modules/news/components/NewsContent/types';
+import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
 
 const MAX_DESCRIPTION_LENGTH = 120;
 const MAX_DESCRIPTION_LENGTH_PRIMARY = 45;
@@ -41,7 +41,7 @@ export const newsMapper = (data: GetNewsQuery) => {
 
 export const newsConnectionMapper = (
   data?: GetNewsByIdQuery,
-): CardConstantsProps[] | undefined => {
+): CardNewsConnectionProps[] => {
   const mapped = data?.newsAndAnnouncementsConnection?.values
     ?.map((e) => {
       const getDesc = e?.dynamic_content?.find(
@@ -59,13 +59,14 @@ export const newsConnectionMapper = (
 
       return {
         id: e?._id || Math.random().toLocaleString(),
-        title: e?.header,
+        title: e?.header as string,
         description: trimmedDesc.replace(/<[^>]+>/g, ''),
         date: new Date(e?.createdAt).toLocaleDateString(),
-        links: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : undefined,
+        links: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : '/',
         variant: isPrimary ? CardVariant.primary : CardVariant.normal,
       };
     })
-    .flat();
-  return mapped;
+    .flat() as CardNewsConnectionProps[];
+
+  return mapped || [];
 };

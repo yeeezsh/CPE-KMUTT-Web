@@ -12,7 +12,7 @@ import {
 import { joinFileDownloadStrapi, joinImageStrapi } from 'common/utils/join';
 
 import { NewsContentContainer } from 'modules/news/components/NewsContent/styled';
-import { CardConstantsProps } from 'modules/news/components/NewsContent/types';
+import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
 import { newsConnectionMapper } from 'modules/news/utils/newsMapper';
 
 export type NewsConnection = {
@@ -32,7 +32,7 @@ export type UseNewsContentParser = {
   postDate: string;
   contents: JSX.Element[] | undefined;
   download?: { title?: string; link?: string }[];
-  connections?: CardConstantsProps[];
+  connections?: CardNewsConnectionProps[];
 };
 
 export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentParser => {
