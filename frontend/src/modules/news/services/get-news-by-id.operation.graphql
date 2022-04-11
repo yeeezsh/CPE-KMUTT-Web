@@ -16,6 +16,9 @@ query GetNewsById($Id: ID = "6251cfdd9b3a82002f857495") {
     tags {
       tag_name
       locale
+      tag_id
+      _id
+      seo_link
     }
     dynamic_content {
       __typename

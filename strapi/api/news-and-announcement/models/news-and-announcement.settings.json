@@ -53,8 +53,8 @@
       }
     },
     "tags": {
-      "collection": "tag",
-      "via": "news"
+      "via": "news",
+      "collection": "tag"
     },
     "seo_link": {
       "pluginOptions": {

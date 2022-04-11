@@ -170,6 +170,7 @@ export type Morph =
   | NewsAndAnnouncementConnectionUpdatedAt
   | NewsAndAnnouncementConnectionHeader
   | NewsAndAnnouncementConnectionCanvas_Preview
+  | NewsAndAnnouncementConnectionSeo_Link
   | NewsAndAnnouncementConnectionLocale
   | NewsAndAnnouncementConnectionPublished_At
   | CreateNewsAndAnnouncementPayload
@@ -186,6 +187,7 @@ export type Morph =
   | TagConnectionTag_Id
   | TagConnectionTag_Name
   | TagConnectionNews
+  | TagConnectionSeo_Link
   | TagConnectionLocale
   | CreateTagPayload
   | UpdateTagPayload
@@ -401,6 +403,7 @@ export type NewsAndAnnouncement = {
   header: Scalars['String'];
   canvas_preview?: Maybe<UploadFile>;
   dynamic_content?: Maybe<Array<Maybe<NewsAndAnnouncementDynamicContentDynamicZone>>>;
+  seo_link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
   tags?: Maybe<Array<Maybe<Tag>>>;
@@ -470,6 +473,12 @@ export type NewsAndAnnouncementConnectionPublished_At = {
   connection?: Maybe<NewsAndAnnouncementConnection>;
 };
 
+export type NewsAndAnnouncementConnectionSeo_Link = {
+  __typename?: 'NewsAndAnnouncementConnectionSeo_link';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
 export type NewsAndAnnouncementConnectionUpdatedAt = {
   __typename?: 'NewsAndAnnouncementConnectionUpdatedAt';
   key?: Maybe<Scalars['DateTime']>;
@@ -495,6 +504,7 @@ export type NewsAndAnnouncementGroupBy = {
   updatedAt?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionUpdatedAt>>>;
   header?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionHeader>>>;
   canvas_preview?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionCanvas_Preview>>>;
+  seo_link?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionSeo_Link>>>;
   locale?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionLocale>>>;
   published_at?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionPublished_At>>>;
 };
@@ -506,6 +516,7 @@ export type NewsAndAnnouncementInput = {
     Array<Scalars['NewsAndAnnouncementDynamicContentDynamicZoneInput']>
   >;
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  seo_link: Scalars['String'];
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -656,6 +667,7 @@ export type Tag = {
   tag_id: Scalars['String'];
   tag_name?: Maybe<Scalars['String']>;
   news?: Maybe<NewsAndAnnouncement>;
+  seo_link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Tag>>>;
 };
@@ -704,6 +716,12 @@ export type TagConnectionNews = {
   connection?: Maybe<TagConnection>;
 };
 
+export type TagConnectionSeo_Link = {
+  __typename?: 'TagConnectionSeo_link';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<TagConnection>;
+};
+
 export type TagConnectionTag_Id = {
   __typename?: 'TagConnectionTag_id';
   key?: Maybe<Scalars['String']>;
@@ -737,6 +755,7 @@ export type TagGroupBy = {
   tag_id?: Maybe<Array<Maybe<TagConnectionTag_Id>>>;
   tag_name?: Maybe<Array<Maybe<TagConnectionTag_Name>>>;
   news?: Maybe<Array<Maybe<TagConnectionNews>>>;
+  seo_link?: Maybe<Array<Maybe<TagConnectionSeo_Link>>>;
   locale?: Maybe<Array<Maybe<TagConnectionLocale>>>;
 };
 
@@ -744,6 +763,7 @@ export type TagInput = {
   tag_id: Scalars['String'];
   tag_name?: Maybe<Scalars['String']>;
   news?: Maybe<Scalars['ID']>;
+  seo_link: Scalars['String'];
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -1341,6 +1361,7 @@ export type EditNewsAndAnnouncementInput = {
     Array<Scalars['NewsAndAnnouncementDynamicContentDynamicZoneInput']>
   >;
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  seo_link?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -1362,6 +1383,7 @@ export type EditTagInput = {
   tag_id?: Maybe<Scalars['String']>;
   tag_name?: Maybe<Scalars['String']>;
   news?: Maybe<Scalars['ID']>;
+  seo_link?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -1474,7 +1496,14 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
     > & {
         canvas_preview?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
         tags?: Maybe<
-          Array<Maybe<{ __typename?: 'Tag' } & Pick<Tag, 'tag_name' | 'locale'>>>
+          Array<
+            Maybe<
+              { __typename?: 'Tag' } & Pick<
+                Tag,
+                'tag_name' | 'locale' | 'tag_id' | '_id' | 'seo_link'
+              >
+            >
+          >
         >;
         dynamic_content?: Maybe<
           Array<
@@ -1566,6 +1595,9 @@ export const GetNewsByIdDocument = gql`
       tags {
         tag_name
         locale
+        tag_id
+        _id
+        seo_link
       }
       dynamic_content {
         __typename
