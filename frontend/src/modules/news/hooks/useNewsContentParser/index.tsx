@@ -6,7 +6,6 @@ import { CardVariant } from 'common/components/Card/types';
 import { NEWS_DATE_FORMAT } from 'common/constants/format';
 import {
   GetNewsByIdQuery,
-  GetNewsQuery,
   NewsAndAnnouncementDynamicContentDynamicZone,
 } from 'common/generated/generated-types';
 import { joinFileDownloadStrapi, joinImageStrapi } from 'common/utils/join';
