@@ -87,7 +87,7 @@ describe('useNewsContentParser hooks', () => {
   it('should parse date/thumbnail/download correctly', () => {
     const { postDate, thumbnail, download } = useNewsContentParser(MOCK_API);
 
-    expect(postDate).toEqual('Sunday, 10 April 2022');
+    expect(postDate).toEqual('Saturday, 09 April 2022');
     expect(thumbnail).toEqual(
       'http://localhost:1337/uploads/Screen_Shot_2565_04_10_at_01_25_36_640b8cdc10.png',
     );
