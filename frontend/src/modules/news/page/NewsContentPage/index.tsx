@@ -1,9 +1,12 @@
+import { join } from 'path';
+
 import React from 'react';
 
 import Head from 'next/head';
 
 import CommonLayout from 'common/components/Layouts/CommonLayout';
-import { GetNewsByIdQuery } from 'common/generated/generated-types';
+import { GetNewsByIdQuery, Tag } from 'common/generated/generated-types';
+import { useTags } from 'common/hooks/useTags';
 
 import NewsContent from 'modules/news/components/NewsContent';
 import { useNewsContentParser } from 'modules/news/hooks/useNewsContentParser';
@@ -30,6 +33,22 @@ const MOCK_NAVIGATE = [
 const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
   // NewsContent
   const { header, title, postDate, thumbnail, contents } = useNewsContentParser(data);
+  const tags = useTags(
+    data?.newsAndAnnouncement?.tags as Tag[],
+    [
+      { title: 'home', link: '/' },
+      { title: 'news', link: '/news' },
+    ],
+    [
+      {
+        title: header as string,
+        link: join('/news', data?.newsAndAnnouncement?._id || ''),
+      },
+    ],
+    '/news',
+  );
+
+  console.log(tags);
 
   return (
     <>
@@ -38,7 +57,11 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* //TODO: remove this mock tag*/}
-      <CommonLayout header="ข่าวสารและประกาศ" navigate={MOCK_NAVIGATE}>
+      {/* TODO: implemente files section */}
+      <CommonLayout
+        header="ข่าวสารและประกาศ"
+        // navigate={MOCK_NAVIGATE}
+        navigate={tags}>
         <NewsContent
           title={title}
           postDate={postDate}
