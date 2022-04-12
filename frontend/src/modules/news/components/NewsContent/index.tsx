@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { VscFilePdf } from 'react-icons/vsc';
 
@@ -27,6 +28,12 @@ import {
 import { NewsContentProps } from './types';
 
 const NewsContent: React.FC<NewsContentProps> = (props) => {
+  const router = useRouter();
+
+  function gotoAllNews() {
+    router.push(STATIC_NEWS_LINK);
+  }
+
   return (
     <NewsContentStyle>
       <Container>
@@ -66,17 +73,14 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
           <OtherNewsContainer>
             <OtherNewsHeaderContainer>
               <OtherNewsHeader>ประกาศอื่นๆ</OtherNewsHeader>
-              {/* TODO: bad use link here */}
-              <Link href={STATIC_NEWS_LINK}>
-                <Button $color="borderless">
-                  แสดงทั้งหมด
-                  <HiOutlineArrowRight
-                    className="Icon"
-                    style={{ marginLeft: '15px' }}
-                    size="20px"
-                  />
-                </Button>
-              </Link>
+              <Button $color="borderless" onClick={gotoAllNews}>
+                แสดงทั้งหมด
+                <HiOutlineArrowRight
+                  className="Icon"
+                  style={{ marginLeft: '15px' }}
+                  size="20px"
+                />
+              </Button>
             </OtherNewsHeaderContainer>
             <OtherNewsCardContainer>
               {props.connections.map((data) => (
