@@ -54,7 +54,8 @@
     },
     "tags": {
       "via": "news",
-      "collection": "tag"
+      "collection": "tag",
+      "dominant": true
     },
     "seo_link": {
       "pluginOptions": {

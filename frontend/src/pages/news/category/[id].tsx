@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, params }) 
       where: apiQuery,
     },
   });
-  console.log(data);
+
   return {
     props: { data },
   };
