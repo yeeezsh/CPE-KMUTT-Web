@@ -6,8 +6,8 @@ import CommonLayout from 'common/components/Layouts/CommonLayout';
 import {
   STATIC_HOME_LINK,
   STATIC_NEWS_CATEGORY_LINK,
-  STATIC_NEWS_CATEGORY_LINK_ID,
-  STATIC_NEWS_CATEGORY_LINK_ID_PATTERN,
+  STATIC_NEWS_CATEGORY_ID_LINK,
+  STATIC_NEWS_CATEGORY_ID_LINK_PATTERN,
   STATIC_NEWS_ID_LINK,
   STATIC_NEWS_ID_LINK_PATTERN,
 } from 'common/constants/links';
@@ -48,7 +48,7 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
         ),
       },
     ],
-    STATIC_NEWS_CATEGORY_LINK_ID.replace(STATIC_NEWS_CATEGORY_LINK_ID_PATTERN, ''),
+    STATIC_NEWS_CATEGORY_ID_LINK.replace(STATIC_NEWS_CATEGORY_ID_LINK_PATTERN, ''),
   );
 
   return (

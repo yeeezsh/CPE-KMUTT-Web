@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 
 import {
   STATIC_NEWS_CATEGORY_LINK,
-  STATIC_NEWS_CATEGORY_LINK_ID,
-  STATIC_NEWS_CATEGORY_LINK_ID_PATTERN,
+  STATIC_NEWS_CATEGORY_ID_LINK,
+  STATIC_NEWS_CATEGORY_ID_LINK_PATTERN,
 } from 'common/constants/links';
 import { GetNewsByTagSeoLinkQuery } from 'common/generated/generated-types';
 
@@ -25,8 +25,8 @@ export const useTagsCategories = (data?: GetNewsByTagSeoLinkQuery): TagNewsCateg
     tags?.map((e) => ({
       title: e?.tag_name || '',
       link: join(
-        STATIC_NEWS_CATEGORY_LINK_ID.replace(
-          STATIC_NEWS_CATEGORY_LINK_ID_PATTERN,
+        STATIC_NEWS_CATEGORY_ID_LINK.replace(
+          STATIC_NEWS_CATEGORY_ID_LINK_PATTERN,
           e?.seo_link || '',
         ),
       ),

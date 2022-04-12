@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 
-import { DEFAULT_STATIC_NEWS_CATEGORY_LINK } from 'common/constants/links';
+import { DEFAULT_STATIC_NEWS_CATEGORY_QUERY } from 'common/constants/links';
 import {
   GetNewsByTagSeoLinkDocument,
   GetNewsByTagSeoLinkQuery,
@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, params }) 
   const id = params?.id;
 
   const apiQuery =
-    id === DEFAULT_STATIC_NEWS_CATEGORY_LINK
+    id === DEFAULT_STATIC_NEWS_CATEGORY_QUERY
       ? {}
       : {
           tags: {
