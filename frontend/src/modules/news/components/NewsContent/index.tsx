@@ -1,5 +1,3 @@
-import { join } from 'path';
-
 import React from 'react';
 
 import Link from 'next/link';
@@ -11,7 +9,6 @@ import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 import {
-  STATIC_NEWS_CATEGORY_LINK,
   STATIC_NEWS_ID_LINK,
   STATIC_NEWS_ID_LINK_PATTERN,
   STATIC_NEWS_LINK,

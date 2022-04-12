@@ -54,7 +54,7 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
   const title = data?.newsAndAnnouncement?.header;
   const thumbnail =
     data?.newsAndAnnouncement?.canvas_preview?.url &&
-    joinImageStrapi(data?.newsAndAnnouncement?.canvas_preview?.url as string);
+    joinImageStrapi(data?.newsAndAnnouncement.canvas_preview.url);
   const postDate = dayjs(data?.newsAndAnnouncement?.createdAt).format(NEWS_DATE_FORMAT);
   const contents = data?.newsAndAnnouncement?.dynamic_content?.map((e) =>
     mapContents(e as NewsAndAnnouncementDynamicContentDynamicZone),
