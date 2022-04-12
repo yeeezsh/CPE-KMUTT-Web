@@ -35,7 +35,8 @@ const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
       <Container>
         <BrowsNewsHeader>
           {/* NavBar */}
-          <NewsCategoryLink title="สำหรับนักศึกษาใหม่" link="/" active={true} />
+          <NewsCategoryLink title="ทั้งหมด" link="/" active={true} />
+          <NewsCategoryLink title="สำหรับนักศึกษาใหม่" link="/" />
           <NewsCategoryLink title="สำหรับนักศึกษาปัจจุบัน" link="/" />
           <NewsCategoryLink title="กิจกรรมนักศึกษา" link="/" />
           <NewsCategoryLink title="ทุนการศึกษา" link="/" />

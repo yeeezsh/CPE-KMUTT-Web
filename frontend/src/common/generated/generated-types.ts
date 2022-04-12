@@ -1479,6 +1479,49 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type GetNewsByTagSeoLinkQueryVariables = Exact<{
+  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  where?: Maybe<Scalars['JSON']>;
+}>;
+
+export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
+  newsAndAnnouncements?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'NewsAndAnnouncement' } & Pick<
+          NewsAndAnnouncement,
+          '_id' | 'header' | 'createdAt'
+        > & {
+            canvas_preview?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+            dynamic_content?: Maybe<
+              Array<
+                Maybe<
+                  | { __typename: 'ComponentContentSectionsGridImage' }
+                  | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
+                      ComponentContentSectionsTextContent,
+                      'body'
+                    >)
+                  | { __typename: 'ComponentContentSectionsCarousalImage' }
+                >
+              >
+            >;
+            tags?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'tag_name' | 'seo_link'>
+                >
+              >
+            >;
+          }
+      >
+    >
+  >;
+};
+
 export type GetNewsQueryVariables = Exact<{
   offset?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1648,6 +1691,45 @@ export const CommonContentSectionFragmentDoc = gql`
     body
   }
 `;
+export const GetNewsByTagSeoLinkDocument = gql`
+  query GetNewsByTagSeoLink(
+    $offset: Int = 0
+    $limit: Int = 25
+    $locale: String = "en"
+    $where: JSON
+  ) {
+    newsAndAnnouncements(
+      start: $offset
+      limit: $limit
+      publicationState: LIVE
+      sort: "createdAt:desc"
+      locale: $locale
+      where: $where
+    ) {
+      _id
+      header
+      canvas_preview {
+        url
+      }
+      dynamic_content {
+        __typename
+        ... on ComponentContentSectionsTextContent {
+          body
+        }
+      }
+      tags {
+        tag_id
+        tag_name
+        seo_link
+      }
+      createdAt
+    }
+  }
+`;
+export type GetNewsByTagSeoLinkQueryResult = Apollo.QueryResult<
+  GetNewsByTagSeoLinkQuery,
+  GetNewsByTagSeoLinkQueryVariables
+>;
 export const GetNewsDocument = gql`
   query GetNews($offset: Int = 0, $limit: Int = 25, $locale: String = "en") {
     newsAndAnnouncements(
