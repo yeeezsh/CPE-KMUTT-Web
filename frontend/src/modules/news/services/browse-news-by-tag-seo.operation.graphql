@@ -1,9 +1,14 @@
 query GetNewsByTagSeoLink(
   $offset: Int = 0
   $limit: Int = 25
-  $locale: String = "en"
+  $locale: String!
   $where: JSON
 ) {
+  tags(locale: $locale) {
+    tag_id
+    seo_link
+    tag_name
+  }
   newsAndAnnouncements(
     start: $offset
     limit: $limit

@@ -30,7 +30,10 @@ export const getServerSideProps: GetServerSideProps = async ({ query, params }) 
       offset: start,
       limit,
       where: apiQuery,
+      // TOOD: implement i18n
+      locale: 'th',
     },
+    fetchPolicy: 'network-only',
   });
 
   return {

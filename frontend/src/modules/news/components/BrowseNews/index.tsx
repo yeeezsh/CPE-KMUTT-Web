@@ -7,6 +7,7 @@ import Btn from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 
+import { useTagsCategories } from 'modules/news/hooks/useTagCategories';
 import { newsMapper } from 'modules/news/utils/newsMapper';
 
 import { constants } from './constant';
@@ -19,10 +20,14 @@ import {
 import { BrowseNewsProps } from './types';
 import useLoadMore from './useLoadMore';
 
-const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean }> = (
-  props,
-) => (
-  <Link href={props.link}>
+export type TagNewsCategory = {
+  title: string;
+  link: string;
+  active?: boolean;
+};
+
+const NewsCategoryLink: React.FC<TagNewsCategory> = (props) => (
+  <Link href={props.link} scroll={false}>
     <a className={`menu-item ${props.active ? 'active' : ''}`}>{props.title}</a>
   </Link>
 );
@@ -30,16 +35,23 @@ const NewsCategoryLink: React.FC<{ title: string; link: string; active?: boolean
 const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
   const { moreNewsData, loadMore } = useLoadMore({ initData: constants });
   const mapped = data && newsMapper(data);
+
+  const tags = useTagsCategories(data);
+
   return (
     <BrowseNewsStyle>
       <Container>
         <BrowsNewsHeader>
-          {/* NavBar */}
-          <NewsCategoryLink title="ทั้งหมด" link="/" active={true} />
-          <NewsCategoryLink title="สำหรับนักศึกษาใหม่" link="/" />
-          <NewsCategoryLink title="สำหรับนักศึกษาปัจจุบัน" link="/" />
-          <NewsCategoryLink title="กิจกรรมนักศึกษา" link="/" />
-          <NewsCategoryLink title="ทุนการศึกษา" link="/" />
+          {/* Tags Cateogries */}
+          {tags &&
+            tags.map((e) => (
+              <NewsCategoryLink
+                key={'NewsCategoryLink-' + e.link}
+                title={e.title}
+                link={e.link}
+                active={e.active}
+              />
+            ))}
         </BrowsNewsHeader>
 
         <BrowseNewsRow className="space-between">
