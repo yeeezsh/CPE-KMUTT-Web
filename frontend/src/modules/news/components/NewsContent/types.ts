@@ -19,6 +19,6 @@ export interface CardNewsConnectionProps {
   title?: string;
   description?: string;
   date?: string;
-  links?: string;
+  thumbnail?: string;
   variant?: CardVariant;
 }

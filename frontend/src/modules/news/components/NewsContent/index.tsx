@@ -10,7 +10,7 @@ import { VscFilePdf } from 'react-icons/vsc';
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
-import { STATIC_NEWS_LINK } from 'common/constants/links';
+import { STATIC_NEWS_CATEGORY_LINK, STATIC_NEWS_LINK } from 'common/constants/links';
 
 import {
   NewsContentTumbnail,
@@ -100,7 +100,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
                   title={data.title}
                   description={data.description}
                   date={data.date}
-                  thumbnail={data.links}
+                  thumbnail={data.thumbnail}
                   id={data.id}
                   variant={data.variant}
                 />
