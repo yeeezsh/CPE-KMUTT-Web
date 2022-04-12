@@ -10,7 +10,12 @@ import { VscFilePdf } from 'react-icons/vsc';
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
-import { STATIC_NEWS_CATEGORY_LINK, STATIC_NEWS_LINK } from 'common/constants/links';
+import {
+  STATIC_NEWS_CATEGORY_LINK,
+  STATIC_NEWS_ID_LINK,
+  STATIC_NEWS_ID_LINK_PATTERN,
+  STATIC_NEWS_LINK,
+} from 'common/constants/links';
 
 import {
   NewsContentTumbnail,
@@ -37,7 +42,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
   }
 
   function onCardClick(newsId: string) {
-    router.push(join(STATIC_NEWS_LINK, newsId));
+    router.push(STATIC_NEWS_ID_LINK.replace(STATIC_NEWS_ID_LINK_PATTERN, newsId));
   }
 
   return (
