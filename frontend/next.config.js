@@ -8,6 +8,11 @@ module.exports = {
         destination: '/news/category/all',
         permanent: true,
       },
+      {
+        source: '/news',
+        destination: '/news/category/all',
+        permanent: true,
+      },
     ];
   },
 };

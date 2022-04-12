@@ -4,7 +4,6 @@ import { DEFAULT_STATIC_NEWS_CATEGORY_LINK } from 'common/constants/links';
 import {
   GetNewsByTagSeoLinkDocument,
   GetNewsByTagSeoLinkQuery,
-  GetNewsQuery,
 } from 'common/generated/generated-types';
 import { client } from 'common/services/client';
 
@@ -39,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, params }) 
   };
 };
 
-const NewsCategoryPages: React.FC<{ data: GetNewsQuery }> = ({ data }) => {
+const NewsCategoryPages: React.FC<{ data: GetNewsByTagSeoLinkQuery }> = ({ data }) => {
   return (
     <>
       <BrowseNewsPage data={data} />

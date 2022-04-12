@@ -3,7 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import CommonLayout from 'common/components/Layouts/CommonLayout';
-import { GetNewsQuery } from 'common/generated/generated-types';
+import { GetNewsByTagSeoLinkQuery } from 'common/generated/generated-types';
 
 import BrowseNews from 'modules/news/components/BrowseNews';
 
@@ -23,7 +23,7 @@ const MOCK_NAVIGATE = [
 ];
 
 export type BrowseNewsPageProps = {
-  data?: GetNewsQuery;
+  data?: GetNewsByTagSeoLinkQuery;
 };
 
 // TODO: implement data api to compoenents

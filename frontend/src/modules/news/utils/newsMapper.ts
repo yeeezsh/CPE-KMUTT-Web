@@ -2,7 +2,7 @@ import { CardVariant } from 'common/components/Card/types';
 import {
   ComponentContentSectionsTextContent,
   GetNewsByIdQuery,
-  GetNewsQuery,
+  GetNewsByTagSeoLinkQuery,
 } from 'common/generated/generated-types';
 import { joinImageStrapi } from 'common/utils/join';
 
@@ -12,7 +12,7 @@ const MAX_DESCRIPTION_LENGTH = 240;
 const MAX_DESCRIPTION_LENGTH_PRIMARY = 55;
 const REGEX_PATTERN = /<[^>]*>/g;
 
-export const newsMapper = (data: GetNewsQuery) => {
+export const newsMapper = (data: GetNewsByTagSeoLinkQuery) => {
   return data.newsAndAnnouncements?.map((e) => {
     const getDesc = e?.dynamic_content?.find(
       (d) => d?.__typename === 'ComponentContentSectionsTextContent' && d.body,

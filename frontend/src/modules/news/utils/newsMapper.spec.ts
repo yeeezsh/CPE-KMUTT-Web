@@ -1,9 +1,9 @@
 import { CardVariant } from 'common/components/Card/types';
-import { GetNewsQuery } from 'common/generated/generated-types';
+import { GetNewsByTagSeoLinkQuery } from 'common/generated/generated-types';
 
 import { newsMapper } from 'modules/news/utils/newsMapper';
 
-const MOCK_API: GetNewsQuery = {
+const MOCK_API: GetNewsByTagSeoLinkQuery = {
   newsAndAnnouncements: [
     {
       _id: '625304b36079e600207d6bf6',

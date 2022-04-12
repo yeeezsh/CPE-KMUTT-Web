@@ -1522,41 +1522,6 @@ export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
   >;
 };
 
-export type GetNewsQueryVariables = Exact<{
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  locale?: Maybe<Scalars['String']>;
-}>;
-
-export type GetNewsQuery = { __typename?: 'Query' } & {
-  newsAndAnnouncements?: Maybe<
-    Array<
-      Maybe<
-        { __typename?: 'NewsAndAnnouncement' } & Pick<
-          NewsAndAnnouncement,
-          '_id' | 'header' | 'createdAt'
-        > & {
-            canvas_preview?: Maybe<
-              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
-            >;
-            dynamic_content?: Maybe<
-              Array<
-                Maybe<
-                  | { __typename: 'ComponentContentSectionsGridImage' }
-                  | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
-                      ComponentContentSectionsTextContent,
-                      'body'
-                    >)
-                  | { __typename: 'ComponentContentSectionsCarousalImage' }
-                >
-              >
-            >;
-          }
-      >
-    >
-  >;
-};
-
 export type CommonImagesFieldFragment = { __typename?: 'UploadFile' } & Pick<
   UploadFile,
   'id' | 'url' | 'caption' | 'alternativeText'
@@ -1730,31 +1695,6 @@ export type GetNewsByTagSeoLinkQueryResult = Apollo.QueryResult<
   GetNewsByTagSeoLinkQuery,
   GetNewsByTagSeoLinkQueryVariables
 >;
-export const GetNewsDocument = gql`
-  query GetNews($offset: Int = 0, $limit: Int = 25, $locale: String = "en") {
-    newsAndAnnouncements(
-      start: $offset
-      limit: $limit
-      publicationState: LIVE
-      sort: "createdAt:desc"
-      locale: $locale
-    ) {
-      _id
-      header
-      canvas_preview {
-        url
-      }
-      dynamic_content {
-        __typename
-        ... on ComponentContentSectionsTextContent {
-          body
-        }
-      }
-      createdAt
-    }
-  }
-`;
-export type GetNewsQueryResult = Apollo.QueryResult<GetNewsQuery, GetNewsQueryVariables>;
 export const GetNewsByIdDocument = gql`
   query GetNewsById($Id: ID!, $LocaleConnection: String!) {
     newsAndAnnouncement(id: $Id) {
