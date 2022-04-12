@@ -8,8 +8,9 @@ import { joinImageStrapi } from 'common/utils/join';
 
 import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
 
-const MAX_DESCRIPTION_LENGTH = 120;
-const MAX_DESCRIPTION_LENGTH_PRIMARY = 45;
+const MAX_DESCRIPTION_LENGTH = 240;
+const MAX_DESCRIPTION_LENGTH_PRIMARY = 90;
+const REGEX_PATTERN = /<[^>]*>/g;
 
 export const newsMapper = (data: GetNewsQuery) => {
   return data.newsAndAnnouncements?.map((e) => {
@@ -28,7 +29,7 @@ export const newsMapper = (data: GetNewsQuery) => {
 
     return {
       ...e,
-      description: trimmedDesc.replace(/<[^>]+>/g, ''),
+      description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
       link: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : undefined,
       _id: e?._id || Math.random().toLocaleString(),
       variant: isPrimary ? CardVariant.primary : CardVariant.normal,
@@ -60,7 +61,7 @@ export const newsConnectionMapper = (
       return {
         id: e?._id || Math.random().toLocaleString(),
         title: e?.header as string,
-        description: trimmedDesc.replace(/<[^>]+>/g, ''),
+        description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
         date: new Date(e?.createdAt).toLocaleDateString(),
         links: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : '/',
         variant: isPrimary ? CardVariant.primary : CardVariant.normal,
