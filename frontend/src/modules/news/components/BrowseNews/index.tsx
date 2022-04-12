@@ -63,7 +63,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
                   title={e.title}
                   description={e.description}
                   date={e.date}
-                  links={e.link}
+                  thumbnail={e.link}
                   id={e._id}
                   variant={e.variant}
                 />

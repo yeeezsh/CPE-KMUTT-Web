@@ -40,7 +40,7 @@ const Cards: React.FC<CardProps> = ({ ...props }) => {
       <CardImage
         hidden={isCardHidden()}
         style={{
-          backgroundImage: `url(${props.links})`,
+          backgroundImage: `url(${props.thumbnail})`,
         }}
       />
       <CardBodyStyled className={cardMode()}>

@@ -89,7 +89,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
                   title={data.title}
                   description={data.description}
                   date={data.date}
-                  links={data.links}
+                  thumbnail={data.links}
                   id={data.id}
                   variant={data.variant}
                 />
