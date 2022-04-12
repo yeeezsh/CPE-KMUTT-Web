@@ -46,8 +46,8 @@ describe('newsMapper should mapping correctly', () => {
 
   it('should mappped a varaint style from content correctly', () => {
     const mapped = newsMapper(MOCK_API);
-    const haveLink = mapped?.find((e) => e.link);
-    const noLink = mapped?.find((e) => !e.link);
+    const haveLink = mapped?.find((e) => e.thumbnail);
+    const noLink = mapped?.find((e) => !e.thumbnail);
 
     expect(haveLink?.variant).toBe(CardVariant.primary);
     expect(noLink?.variant).toBe(CardVariant.normal);

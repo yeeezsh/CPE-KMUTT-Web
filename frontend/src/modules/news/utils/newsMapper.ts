@@ -30,7 +30,9 @@ export const newsMapper = (data: GetNewsByTagSeoLinkQuery) => {
     return {
       ...e,
       description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
-      link: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : undefined,
+      thumbnail: e?.canvas_preview?.url
+        ? joinImageStrapi(e.canvas_preview.url)
+        : undefined,
       _id: e?._id || Math.random().toLocaleString(),
       variant: isPrimary ? CardVariant.primary : CardVariant.normal,
       date: new Date(e?.createdAt).toLocaleDateString(),
@@ -63,7 +65,7 @@ export const newsConnectionMapper = (
         title: e?.header as string,
         description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
         date: new Date(e?.createdAt).toLocaleDateString(),
-        links: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : '/',
+        thumbnail: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : '/',
         variant: isPrimary ? CardVariant.primary : CardVariant.normal,
       };
     })
