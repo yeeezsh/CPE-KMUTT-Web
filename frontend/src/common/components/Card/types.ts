@@ -9,6 +9,7 @@ interface Card {
 
 export interface CardProps extends Partial<Card> {
   id: string;
+  onClick?: () => void;
 }
 
 export enum CardVariant {

@@ -36,7 +36,7 @@ const Cards: React.FC<CardProps> = ({ ...props }) => {
   };
 
   return (
-    <Card>
+    <Card onClick={props.onClick}>
       <CardImage
         hidden={isCardHidden()}
         style={{
