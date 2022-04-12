@@ -1,3 +1,5 @@
+import { join } from 'path';
+
 import React from 'react';
 
 import Link from 'next/link';
@@ -34,16 +36,24 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
     router.push(STATIC_NEWS_LINK);
   }
 
+  function onCardClick(newsId: string) {
+    router.push(join(STATIC_NEWS_LINK, newsId));
+  }
+
   return (
     <NewsContentStyle>
       <Container>
         <NewsContentHeader>{props.title}</NewsContentHeader>
         <NewsContentPostDate>{props.postDate}</NewsContentPostDate>
-        <NewsContentTumbnail
-          style={{
-            backgroundImage: `url(${props.tumbnail})`,
-          }}
-        />
+
+        {/* canvas */}
+        {props.tumbnail && (
+          <NewsContentTumbnail
+            style={{
+              backgroundImage: `url(${props.tumbnail})`,
+            }}
+          />
+        )}
 
         {/* dyanmic contents */}
         {props.contents}
@@ -85,6 +95,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
             <OtherNewsCardContainer>
               {props.connections.map((data) => (
                 <Card
+                  onClick={() => onCardClick(data.id)}
                   key={'news-connections-' + data.id}
                   title={data.title}
                   description={data.description}

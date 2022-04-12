@@ -1,11 +1,15 @@
+import { join } from 'path';
+
 import React from 'react';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { HiOutlineArrowDown } from 'react-icons/hi';
 
 import Btn from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
+import { STATIC_NEWS_LINK } from 'common/constants/links';
 
 import { useTagsCategories } from 'modules/news/hooks/useTagCategories';
 import { newsMapper } from 'modules/news/utils/newsMapper';
@@ -33,11 +37,14 @@ const NewsCategoryLink: React.FC<TagNewsCategory> = (props) => (
 );
 
 const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
+  const router = useRouter();
   const { moreNewsData, loadMore } = useLoadMore({ initData: constants });
   const mapped = data && newsMapper(data);
-
   const tags = useTagsCategories(data);
 
+  function onCardClick(newsId: string) {
+    router.push(join(STATIC_NEWS_LINK, newsId));
+  }
   return (
     <BrowseNewsStyle>
       <Container>
@@ -59,6 +66,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
             mapped.map((e) => {
               return (
                 <Card
+                  onClick={() => onCardClick(e._id)}
                   key={e._id}
                   title={e.title}
                   description={e.description}
