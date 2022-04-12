@@ -9,7 +9,7 @@ import { joinImageStrapi } from 'common/utils/join';
 import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
 
 const MAX_DESCRIPTION_LENGTH = 240;
-const MAX_DESCRIPTION_LENGTH_PRIMARY = 90;
+const MAX_DESCRIPTION_LENGTH_PRIMARY = 55;
 const REGEX_PATTERN = /<[^>]*>/g;
 
 export const newsMapper = (data: GetNewsQuery) => {

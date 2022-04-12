@@ -72,6 +72,7 @@ query GetNewsById($Id: ID!, $LocaleConnection: String!) {
         url
       }
       dynamic_content {
+        __typename
         ... on ComponentContentSectionsTextContent {
           body
         }

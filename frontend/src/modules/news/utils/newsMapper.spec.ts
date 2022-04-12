@@ -6,60 +6,35 @@ import { newsMapper } from 'modules/news/utils/newsMapper';
 const MOCK_API: GetNewsQuery = {
   newsAndAnnouncements: [
     {
-      _id: '611c118368757f039a09a299',
-      header: 'test',
-      canvas_preview: {
-        url: '/uploads/Screen_Shot_2564_06_09_at_22_48_25_f94d4f73aa.png',
-      },
-      dynamic_content: [
-        {
-          __typename: 'ComponentContentSectionsTextContent',
-          body: 'test',
-        },
-        {
-          __typename: 'ComponentContentSectionsGridImage',
-        },
-      ],
-      createdAt: '2021-08-17T19:44:03.806Z',
-    },
-    {
-      _id: '6134fad39f62d60101e39103',
-      header: 'test 2',
-      canvas_preview: {
-        url: '/uploads/Screen_Shot_2564_06_09_at_22_48_25_f94d4f73aa.png',
-      },
-      dynamic_content: [
-        {
-          __typename: 'ComponentContentSectionsTextContent',
-          body: '<p>euieieieeiei</p>',
-        },
-      ],
-      createdAt: '2021-09-05T17:13:55.587Z',
-    },
-    {
-      _id: '615339ea7495b0001f4bb02c',
-      header: 'canvas',
-      canvas_preview: {
-        url: '/uploads/Screen_Shot_2564_06_06_at_15_53_08_ddf132fb2d.png',
-      },
-      dynamic_content: [],
-      createdAt: '2021-09-28T15:51:06.394Z',
-    },
-    {
-      _id: '61533d127495b0001f4bb02e',
-      header: 'normal varian',
+      _id: '625304b36079e600207d6bf6',
+      header: 'ข่าวสารทั่วไป 1',
       canvas_preview: null,
       dynamic_content: [
         {
           __typename: 'ComponentContentSectionsTextContent',
           body:
-            'normal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal variannormal varian',
+            '<h1>ทดสอบข่าวสารทั่วไป</h1>\n<p>ซ้าย</p>\n<p style="text-align: center;">กลาง</p>\n<p style="text-align: right;">ขวา</p>',
         },
       ],
-      createdAt: '2021-09-28T16:04:34.810Z',
+      createdAt: '2022-04-10T16:24:19.498Z',
+    },
+    {
+      _id: '6251d112d76d140063baec29',
+      header: 'ประกาศรายชื่อผู้มีสิทธิ์สอบสัมภาษณ์ โครงการ Active Recruitment รอบที่ 2',
+      canvas_preview: {
+        url: '/uploads/Screen_Shot_2565_04_10_at_01_25_36_640b8cdc10.png',
+      },
+      dynamic_content: [
+        {
+          __typename: 'ComponentContentSectionsTextContent',
+          body:
+            '<p>ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี เริ่มก่อตั้งและเปิดสอนในระดับปริญญาตรีตั้งแต่ปีการศึกษา 2531แต่ได้รับการอนุมัติให้จัดตั้งหน่วยงาน ภาควิชาวิศวกรรมคอมพิวเตอร์และประกาศในพระราชกฤษฎีกา เมื่อวันที่ 11 กุมภาพันธ์ 2540ภาควิชาวิศวกรรมคอมพิวเตอร์ เปิดสอนทั้งในระดับปริญญาตรี ปริญญาโท และปริญญาเอกโดยในระดับปริญญาตรี แบ่งเป็น 2 หลักสูตร คือ หลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมคอมพิวเตอร์(ปกติ) และหลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิศวกรรมคอมพิวเตอร์ (หลักสูตรนานาชาติ) ส่วนในระดับปริญญาโท คือหลักสูตรวิศวกรรมศาสตรมหาบัณฑิต และวิทยาศาสตรมหาบัณฑิตสาขาวิชาวิศวกรรมคอมพิวเตอร์ และในระดับปริญญาเอก คือ หลักสูตรปรัชญาดุษฎีบัณฑิตสาขาวิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์</p>',
+        },
+      ],
+      createdAt: '2022-04-09T18:31:46.504Z',
     },
   ],
-} as GetNewsQuery;
+};
 
 describe('newsMapper should mapping correctly', () => {
   it('should get description from content correctly', () => {

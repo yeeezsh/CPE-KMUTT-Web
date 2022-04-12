@@ -12,6 +12,7 @@ query GetNews($offset: Int = 0, $limit: Int = 25, $locale: String = "en") {
       url
     }
     dynamic_content {
+      __typename
       ... on ComponentContentSectionsTextContent {
         body
       }

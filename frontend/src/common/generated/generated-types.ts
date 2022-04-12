@@ -1499,12 +1499,12 @@ export type GetNewsQuery = { __typename?: 'Query' } & {
             dynamic_content?: Maybe<
               Array<
                 Maybe<
-                  | { __typename?: 'ComponentContentSectionsGridImage' }
-                  | ({ __typename?: 'ComponentContentSectionsTextContent' } & Pick<
+                  | { __typename: 'ComponentContentSectionsGridImage' }
+                  | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
                       ComponentContentSectionsTextContent,
                       'body'
                     >)
-                  | { __typename?: 'ComponentContentSectionsCarousalImage' }
+                  | { __typename: 'ComponentContentSectionsCarousalImage' }
                 >
               >
             >;
@@ -1617,12 +1617,12 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
                 dynamic_content?: Maybe<
                   Array<
                     Maybe<
-                      | { __typename?: 'ComponentContentSectionsGridImage' }
-                      | ({ __typename?: 'ComponentContentSectionsTextContent' } & Pick<
+                      | { __typename: 'ComponentContentSectionsGridImage' }
+                      | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
                           ComponentContentSectionsTextContent,
                           'body'
                         >)
-                      | { __typename?: 'ComponentContentSectionsCarousalImage' }
+                      | { __typename: 'ComponentContentSectionsCarousalImage' }
                     >
                   >
                 >;
@@ -1663,6 +1663,7 @@ export const GetNewsDocument = gql`
         url
       }
       dynamic_content {
+        __typename
         ... on ComponentContentSectionsTextContent {
           body
         }
@@ -1735,6 +1736,7 @@ export const GetNewsByIdDocument = gql`
           url
         }
         dynamic_content {
+          __typename
           ... on ComponentContentSectionsTextContent {
             body
           }
