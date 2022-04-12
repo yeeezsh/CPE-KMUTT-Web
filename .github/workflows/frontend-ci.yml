@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: "16.x"
       - name: Cache node_modules
-        uses: actions/cache@v3
+        uses: actions/cache@v1
         with:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: "14.x"
       - name: Cache node_modules
-        uses: actions/cache@v3
+        uses: actions/cache@v1
         with:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
