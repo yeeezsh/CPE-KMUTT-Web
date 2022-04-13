@@ -4,7 +4,7 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
-import { CardVariant } from 'common/components/Card/types';
+import { CardProps } from 'common/components/Card/types';
 import Container from 'common/components/Container';
 
 import {
@@ -16,35 +16,9 @@ import {
   WhatNewStyle,
 } from './styled';
 
-const WhatNewSection: React.FC = () => {
-  const constants = [
-    {
-      id: '1',
-      title: 'การรับเข้าศึกษา',
-      description:
-        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
-      date: '28 ตุลาคม 2563',
-      links: '/images/thumbnail.png',
-      variant: CardVariant.primary,
-    },
-    {
-      id: '2',
-      title: 'การรับเข้าศึกษา',
-      description:
-        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
-      date: '28 ตุลาคม 2563',
-      variant: CardVariant.normal,
-    },
-    {
-      id: '3',
-      title: 'การรับเข้าศึกษา',
-      description:
-        'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
-      date: '28 ตุลาคม 2563',
-      variant: CardVariant.normal,
-    },
-  ];
+export type WhatNewSectionProps = { data?: CardProps[] };
 
+const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
   return (
     <WhatNewStyle>
       <Container>
@@ -65,19 +39,21 @@ const WhatNewSection: React.FC = () => {
           </ShowAllButton>
         </PortletTitle>
 
-        <CardContainer>
-          {constants.map((data, index) => (
-            <Card
-              key={index}
-              title={data.title}
-              description={data.description}
-              date={data.date}
-              thumbnail={data.links}
-              id={data.id}
-              variant={data.variant}
-            />
-          ))}
-        </CardContainer>
+        {data && (
+          <CardContainer>
+            {data.map((data, index) => (
+              <Card
+                key={index}
+                title={data.title}
+                description={data.description}
+                date={data.date}
+                thumbnail={data.thumbnail}
+                id={data.id}
+                variant={data.variant}
+              />
+            ))}
+          </CardContainer>
+        )}
       </Container>
     </WhatNewStyle>
   );

@@ -17,7 +17,9 @@ import Navbar from 'modules/root/components/Navbar';
 import { Main } from './styled';
 
 const Home: React.FC<HomesProps> = ({ data }) => {
-  const { mainCarousal, activityAndAwardsCarousal } = useHomeContentParser(data);
+  const { mainCarousal, activityAndAwardsCarousal, whatsNews } = useHomeContentParser(
+    data,
+  );
 
   return (
     <div>
@@ -32,7 +34,9 @@ const Home: React.FC<HomesProps> = ({ data }) => {
           // item={CAROUSEL_DEFAULT_CONSTANT}
           item={mainCarousal}
         />
-        <WhatNewSection />
+
+        <WhatNewSection data={whatsNews} />
+
         <StaticSection
           id="1"
           background="/images/static_bg_curriculum.png"
