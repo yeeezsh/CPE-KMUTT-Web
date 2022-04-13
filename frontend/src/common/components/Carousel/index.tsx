@@ -37,7 +37,7 @@ import {
   StyledSliderSlide,
   Tag,
 } from './styled';
-import { CarouselProps, ChildrenProps } from './types';
+import { CarouselProps, CarouselItem } from './types';
 
 const Carousel: React.FC<CarouselProps> = (props) => {
   const SLIDE_COUNT = props.item.length;
@@ -131,7 +131,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
 
             {/* body */}
             {props.item
-              ? props.item.map(({ id, heading, caption, tag, link }: ChildrenProps) => {
+              ? props.item.map(({ id, heading, caption, tag, link }: CarouselItem) => {
                   const displayCaption =
                     props.variant === 'PopUp'
                       ? `${caption || ''}`
@@ -185,7 +185,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
           {/* //FIXME: refactor */}
           <StyledSlider ref={sliderRef}>
             {props.item
-              ? props.item.map(({ id, picture }: ChildrenProps) => {
+              ? props.item.map(({ id, picture }: CarouselItem) => {
                   return (
                     <StyledSliderSlide key={id + 'slide-image'}>
                       <Image src={picture} alt="" />
