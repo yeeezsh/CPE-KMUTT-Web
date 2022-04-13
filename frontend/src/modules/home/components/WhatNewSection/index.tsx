@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import { CardProps } from 'common/components/Card/types';
 import Container from 'common/components/Container';
+import { STATIC_NEWS_ID_LINK, STATIC_NEWS_ID_LINK_PATTERN } from 'common/constants/links';
 
 import {
   CardContainer,
@@ -19,6 +21,12 @@ import {
 export type WhatNewSectionProps = { data?: CardProps[] };
 
 const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
+  const router = useRouter();
+
+  function onCardClick(url?: string) {
+    url && router.push(STATIC_NEWS_ID_LINK.replace(STATIC_NEWS_ID_LINK_PATTERN, url));
+  }
+
   return (
     <WhatNewStyle>
       <Container>
@@ -50,6 +58,7 @@ const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
                 thumbnail={data.thumbnail}
                 id={data.id}
                 variant={data.variant}
+                onClick={() => onCardClick(data.id)}
               />
             ))}
           </CardContainer>
