@@ -5,7 +5,6 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { Btn } from 'common/components/Button/styled';
 import Carousel from 'common/components/Carousel';
-import { CAROUSEL_SLIDER_CONSTANT } from 'common/components/Carousel/constant';
 
 import Footer from 'modules/home/components/Footer';
 import StaticSection from 'modules/home/components/StaticSection';
@@ -18,7 +17,8 @@ import Navbar from 'modules/root/components/Navbar';
 import { Main } from './styled';
 
 const Home: React.FC<HomesProps> = ({ data }) => {
-  const { mainCarousal } = useHomeContentParser(data);
+  const { mainCarousal, activityAndAwardsCarousal } = useHomeContentParser(data);
+
   return (
     <div>
       <Head>
@@ -56,7 +56,11 @@ const Home: React.FC<HomesProps> = ({ data }) => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
-        <Carousel variant="Slider" item={CAROUSEL_SLIDER_CONSTANT} />
+        <Carousel
+          variant="Slider"
+          // item={CAROUSEL_SLIDER_CONSTANT}
+          item={activityAndAwardsCarousal}
+        />
         <StaticSection
           id="2"
           background="/images/static_bg_gallery.png"
