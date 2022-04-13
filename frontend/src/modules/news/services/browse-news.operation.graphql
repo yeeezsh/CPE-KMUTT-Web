@@ -1,18 +1,19 @@
-query GetNews($offset: Int = 0, $limit: Int = 25) {
-  contents(
+query GetNews($offset: Int = 0, $limit: Int = 25, $locale: String = "en") {
+  newsAndAnnouncements(
     start: $offset
     limit: $limit
     publicationState: LIVE
     sort: "createdAt:desc"
+    locale: $locale
   ) {
     _id
     header
     canvas_preview {
       url
     }
-    dynamic_sections {
+    dynamic_content {
       __typename
-      ... on ComponentContentSectionsContentComponent {
+      ... on ComponentContentSectionsTextContent {
         body
       }
     }

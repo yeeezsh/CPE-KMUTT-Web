@@ -66,9 +66,11 @@ const CommonLayout: React.FC<CommonLayoutProps> = ({ children, ...props }) => {
         <Container>
           <CommonWrapperRow className="space-between">
             <Breadcrumb separator="/">
-              {props.navigate?.map((items, index) => {
+              {props.navigate?.map((items) => {
                 return (
-                  <Breadcrumb.Item href={items.link} key={index}>
+                  <Breadcrumb.Item
+                    href={items.link}
+                    key={items.link + items.title + '-breadcrumb'}>
                     {items.title}
                   </Breadcrumb.Item>
                 );

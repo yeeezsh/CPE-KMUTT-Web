@@ -10,9 +10,11 @@ export interface NewsContentProps {
     title?: string;
     link?: string;
   }[];
+  contents?: JSX.Element[];
+  connections?: CardNewsConnectionProps[];
 }
 
-export interface CardConstantsProps {
+export interface CardNewsConnectionProps {
   id: string;
   title?: string;
   description?: string;

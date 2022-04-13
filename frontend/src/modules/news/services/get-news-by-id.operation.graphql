@@ -1,0 +1,83 @@
+fragment commonImagesField on UploadFile {
+  id
+  url
+  caption
+  alternativeText
+}
+
+fragment commonContentSection on ComponentContentSectionsTextContent {
+  id
+  body
+}
+
+query GetNewsById($Id: ID!, $LocaleConnection: String!) {
+  newsAndAnnouncement(id: $Id) {
+    _id
+    locale
+    header
+    canvas_preview {
+      url
+    }
+    tags {
+      tag_name
+      locale
+      tag_id
+      _id
+      seo_link
+    }
+    dynamic_content {
+      __typename
+      ... on ComponentContentSectionsGridImage {
+        images {
+          _id
+          title
+          images {
+            ...commonImagesField
+          }
+        }
+      }
+      ... on ComponentContentSectionsCarousalImage {
+        images {
+          _id
+          title
+          images {
+            ...commonImagesField
+          }
+        }
+      }
+      ... on ComponentContentSectionsTextContent {
+        ...commonContentSection
+      }
+    }
+    download {
+      files {
+        url
+        name
+        _id
+        mime
+      }
+    }
+    createdAt
+    updatedAt
+  }
+  newsAndAnnouncementsConnection(
+    sort: "createdAt:desc"
+    limit: 4
+    locale: $LocaleConnection
+  ) {
+    values {
+      _id
+      header
+      canvas_preview {
+        url
+      }
+      dynamic_content {
+        __typename
+        ... on ComponentContentSectionsTextContent {
+          body
+        }
+      }
+      createdAt
+    }
+  }
+}
