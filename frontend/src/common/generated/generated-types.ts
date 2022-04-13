@@ -108,6 +108,40 @@ export type ComponentContentSectionsTextContentInput = {
   body?: Maybe<Scalars['String']>;
 };
 
+export type ComponentHomeActivityNAwardInput = {
+  title: Scalars['String'];
+  description: Scalars['String'];
+  image?: Maybe<Scalars['ID']>;
+  tag?: Maybe<Scalars['ID']>;
+};
+
+export type ComponentHomeActivityNAwards = {
+  __typename?: 'ComponentHomeActivityNAwards';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  title: Scalars['String'];
+  description: Scalars['String'];
+  image?: Maybe<UploadFile>;
+  tag?: Maybe<Tag>;
+};
+
+export type ComponentHomeMainCanvaInput = {
+  title: Scalars['String'];
+  description: Scalars['String'];
+  image?: Maybe<Scalars['ID']>;
+  news_announcement?: Maybe<Scalars['ID']>;
+};
+
+export type ComponentHomeMainCanvas = {
+  __typename?: 'ComponentHomeMainCanvas';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  title: Scalars['String'];
+  description: Scalars['String'];
+  image?: Maybe<UploadFile>;
+  news_announcement?: Maybe<NewsAndAnnouncement>;
+};
+
 export type ComponentTagsTagInput = {
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
@@ -152,6 +186,36 @@ export type FileInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type Home = {
+  __typename?: 'Home';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  main_canvas?: Maybe<Array<Maybe<ComponentHomeMainCanvas>>>;
+  activities_n_awards?: Maybe<Array<Maybe<ComponentHomeActivityNAwards>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  localizations?: Maybe<Array<Maybe<Home>>>;
+};
+
+export type HomeLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type HomeInput = {
+  main_canvas?: Maybe<Array<Maybe<ComponentHomeMainCanvaInput>>>;
+  activities_n_awards?: Maybe<Array<Maybe<ComponentHomeActivityNAwardInput>>>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type I18NLocale = {
   __typename?: 'I18NLocale';
   id: Scalars['ID'];
@@ -178,6 +242,9 @@ export type Morph =
   | UsersPermissionsMeRole
   | UsersPermissionsLoginPayload
   | UserPermissionsPasswordPayload
+  | Home
+  | UpdateHomePayload
+  | DeleteHomePayload
   | NewsAndAnnouncement
   | NewsAndAnnouncementConnection
   | NewsAndAnnouncementAggregator
@@ -273,10 +340,14 @@ export type Morph =
   | ComponentContentSectionsGridImage
   | ComponentContentSectionsImageWithCaption
   | ComponentContentSectionsTextContent
+  | ComponentHomeActivityNAwards
+  | ComponentHomeMainCanvas
   | ComponentTagsTags;
 
 export type Mutation = {
   __typename?: 'Mutation';
+  updateHome?: Maybe<UpdateHomePayload>;
+  deleteHome?: Maybe<DeleteHomePayload>;
   createNewsAndAnnouncement?: Maybe<CreateNewsAndAnnouncementPayload>;
   updateNewsAndAnnouncement?: Maybe<UpdateNewsAndAnnouncementPayload>;
   deleteNewsAndAnnouncement?: Maybe<DeleteNewsAndAnnouncementPayload>;
@@ -297,6 +368,7 @@ export type Mutation = {
   updateUser?: Maybe<UpdateUserPayload>;
   /** Delete an existing user */
   deleteUser?: Maybe<DeleteUserPayload>;
+  createHomeLocalization: Home;
   createNewsAndAnnouncementLocalization: NewsAndAnnouncement;
   createTagLocalization: Tag;
   upload: UploadFile;
@@ -307,6 +379,15 @@ export type Mutation = {
   forgotPassword?: Maybe<UserPermissionsPasswordPayload>;
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
+};
+
+export type MutationUpdateHomeArgs = {
+  input?: Maybe<UpdateHomeInput>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type MutationDeleteHomeArgs = {
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type MutationCreateNewsAndAnnouncementArgs = {
@@ -359,6 +440,10 @@ export type MutationUpdateUserArgs = {
 
 export type MutationDeleteUserArgs = {
   input?: Maybe<DeleteUserInput>;
+};
+
+export type MutationCreateHomeLocalizationArgs = {
+  input: UpdateHomeInput;
 };
 
 export type MutationCreateNewsAndAnnouncementLocalizationArgs = {
@@ -559,6 +644,7 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  home?: Maybe<Home>;
   newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
   newsAndAnnouncements?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
   newsAndAnnouncementsConnection?: Maybe<NewsAndAnnouncementConnection>;
@@ -575,6 +661,11 @@ export type Query = {
   users?: Maybe<Array<Maybe<UsersPermissionsUser>>>;
   usersConnection?: Maybe<UsersPermissionsUserConnection>;
   me?: Maybe<UsersPermissionsMe>;
+};
+
+export type QueryHomeArgs = {
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type QueryNewsAndAnnouncementArgs = {
@@ -1293,6 +1384,11 @@ export type DeleteFilePayload = {
   file?: Maybe<UploadFile>;
 };
 
+export type DeleteHomePayload = {
+  __typename?: 'deleteHomePayload';
+  home?: Maybe<Home>;
+};
+
 export type DeleteNewsAndAnnouncementInput = {
   where?: Maybe<InputId>;
 };
@@ -1355,6 +1451,22 @@ export type EditComponentContentSectionsTextContentInput = {
   body?: Maybe<Scalars['String']>;
 };
 
+export type EditComponentHomeActivityNAwardInput = {
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['ID']>;
+  tag?: Maybe<Scalars['ID']>;
+};
+
+export type EditComponentHomeMainCanvaInput = {
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['ID']>;
+  news_announcement?: Maybe<Scalars['ID']>;
+};
+
 export type EditComponentTagsTagInput = {
   id?: Maybe<Scalars['ID']>;
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
@@ -1376,6 +1488,16 @@ export type EditFileInput = {
   provider?: Maybe<Scalars['String']>;
   provider_metadata?: Maybe<Scalars['JSON']>;
   related?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditHomeInput = {
+  main_canvas?: Maybe<Array<Maybe<EditComponentHomeMainCanvaInput>>>;
+  activities_n_awards?: Maybe<Array<Maybe<EditComponentHomeActivityNAwardInput>>>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -1438,6 +1560,15 @@ export type EditUserInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type UpdateHomeInput = {
+  data?: Maybe<EditHomeInput>;
+};
+
+export type UpdateHomePayload = {
+  __typename?: 'updateHomePayload';
+  home?: Maybe<Home>;
+};
+
 export type UpdateNewsAndAnnouncementInput = {
   where?: Maybe<InputId>;
   data?: Maybe<EditNewsAndAnnouncementInput>;
@@ -1476,6 +1607,81 @@ export type UpdateUserInput = {
 export type UpdateUserPayload = {
   __typename?: 'updateUserPayload';
   user?: Maybe<UsersPermissionsUser>;
+};
+
+export type GetHomeQueryVariables = Exact<{
+  locale?: Maybe<Scalars['String']>;
+}>;
+
+export type GetHomeQuery = { __typename?: 'Query' } & {
+  home?: Maybe<
+    { __typename?: 'Home' } & {
+      main_canvas?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'ComponentHomeMainCanvas' } & Pick<
+              ComponentHomeMainCanvas,
+              '_id' | 'title' | 'description'
+            > & {
+                news_announcement?: Maybe<
+                  { __typename?: 'NewsAndAnnouncement' } & Pick<
+                    NewsAndAnnouncement,
+                    'seo_link'
+                  >
+                >;
+                image?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
+              }
+          >
+        >
+      >;
+      activities_n_awards?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'ComponentHomeActivityNAwards' } & Pick<
+              ComponentHomeActivityNAwards,
+              '_id' | 'title' | 'description'
+            > & {
+                image?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
+                tag?: Maybe<{ __typename?: 'Tag' } & Pick<Tag, '_id' | 'tag_name'>>;
+              }
+          >
+        >
+      >;
+    }
+  >;
+  newsAndAnnouncements?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'NewsAndAnnouncement' } & Pick<
+          NewsAndAnnouncement,
+          '_id' | 'header' | 'createdAt'
+        > & {
+            canvas_preview?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+            tags?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'tag_name' | 'seo_link'>
+                >
+              >
+            >;
+            dynamic_content?: Maybe<
+              Array<
+                Maybe<
+                  | { __typename: 'ComponentContentSectionsGridImage' }
+                  | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
+                      ComponentContentSectionsTextContent,
+                      'body'
+                    >)
+                  | { __typename: 'ComponentContentSectionsCarousalImage' }
+                >
+              >
+            >;
+          }
+      >
+    >
+  >;
 };
 
 export type GetNewsByTagSeoLinkQueryVariables = Exact<{
@@ -1658,6 +1864,61 @@ export const CommonContentSectionFragmentDoc = gql`
     body
   }
 `;
+export const GetHomeDocument = gql`
+  query GetHome($locale: String = "th") {
+    home(locale: $locale, publicationState: LIVE) {
+      main_canvas {
+        _id
+        title
+        news_announcement {
+          seo_link
+        }
+        description
+        image {
+          url
+        }
+      }
+      activities_n_awards {
+        _id
+        title
+        description
+        image {
+          url
+        }
+        tag {
+          _id
+          tag_name
+        }
+      }
+    }
+    newsAndAnnouncements(
+      start: 0
+      limit: 3
+      publicationState: LIVE
+      sort: "createdAt:desc"
+      locale: $locale
+    ) {
+      _id
+      header
+      canvas_preview {
+        url
+      }
+      tags {
+        tag_id
+        tag_name
+        seo_link
+      }
+      dynamic_content {
+        __typename
+        ... on ComponentContentSectionsTextContent {
+          body
+        }
+      }
+      createdAt
+    }
+  }
+`;
+export type GetHomeQueryResult = Apollo.QueryResult<GetHomeQuery, GetHomeQueryVariables>;
 export const GetNewsByTagSeoLinkDocument = gql`
   query GetNewsByTagSeoLink(
     $offset: Int = 0

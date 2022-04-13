@@ -1,0 +1,53 @@
+query GetHome($locale: String = "th") {
+  home(locale: $locale, publicationState: LIVE) {
+    main_canvas {
+      _id
+      title
+      news_announcement {
+        seo_link
+      }
+      description
+      image {
+        url
+      }
+    }
+    activities_n_awards {
+      _id
+      title
+      description
+      image {
+        url
+      }
+      tag {
+        _id
+        tag_name
+      }
+    }
+  }
+
+  newsAndAnnouncements(
+    start: 0
+    limit: 3
+    publicationState: LIVE
+    sort: "createdAt:desc"
+    locale: $locale
+  ) {
+    _id
+    header
+    canvas_preview {
+      url
+    }
+    tags {
+      tag_id
+      tag_name
+      seo_link
+    }
+    dynamic_content {
+      __typename
+      ... on ComponentContentSectionsTextContent {
+        body
+      }
+    }
+    createdAt
+  }
+}

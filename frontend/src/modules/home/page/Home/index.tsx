@@ -14,15 +14,16 @@ import Footer from 'modules/home/components/Footer';
 import StaticSection from 'modules/home/components/StaticSection';
 import { ButtonStyled } from 'modules/home/components/StaticSection/styled';
 import WhatNewSection from 'modules/home/components/WhatNewSection';
+import { HomesProps } from 'modules/home/page/Home/types';
 import Navbar from 'modules/root/components/Navbar';
 
 import { Main } from './styled';
 
-const Home: React.FC = () => {
+const Home: React.FC<HomesProps> = ({ data }) => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>หน้าแรก</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
