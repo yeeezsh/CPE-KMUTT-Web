@@ -205,7 +205,6 @@ export type Morph =
   | TagConnectionUpdatedAt
   | TagConnectionTag_Id
   | TagConnectionTag_Name
-  | TagConnectionNews
   | TagConnectionSeo_Link
   | TagConnectionLocale
   | CreateTagPayload
@@ -695,10 +694,17 @@ export type Tag = {
   updatedAt: Scalars['DateTime'];
   tag_id: Scalars['String'];
   tag_name?: Maybe<Scalars['String']>;
-  news?: Maybe<NewsAndAnnouncement>;
   seo_link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
+  news?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
   localizations?: Maybe<Array<Maybe<Tag>>>;
+};
+
+export type TagNewsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type TagLocalizationsArgs = {
@@ -736,12 +742,6 @@ export type TagConnectionId = {
 export type TagConnectionLocale = {
   __typename?: 'TagConnectionLocale';
   key?: Maybe<Scalars['String']>;
-  connection?: Maybe<TagConnection>;
-};
-
-export type TagConnectionNews = {
-  __typename?: 'TagConnectionNews';
-  key?: Maybe<Scalars['ID']>;
   connection?: Maybe<TagConnection>;
 };
 
@@ -783,7 +783,6 @@ export type TagGroupBy = {
   updatedAt?: Maybe<Array<Maybe<TagConnectionUpdatedAt>>>;
   tag_id?: Maybe<Array<Maybe<TagConnectionTag_Id>>>;
   tag_name?: Maybe<Array<Maybe<TagConnectionTag_Name>>>;
-  news?: Maybe<Array<Maybe<TagConnectionNews>>>;
   seo_link?: Maybe<Array<Maybe<TagConnectionSeo_Link>>>;
   locale?: Maybe<Array<Maybe<TagConnectionLocale>>>;
 };
@@ -791,7 +790,7 @@ export type TagGroupBy = {
 export type TagInput = {
   tag_id: Scalars['String'];
   tag_name?: Maybe<Scalars['String']>;
-  news?: Maybe<Scalars['ID']>;
+  news?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link: Scalars['String'];
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
@@ -1417,7 +1416,7 @@ export type EditRoleInput = {
 export type EditTagInput = {
   tag_id?: Maybe<Scalars['String']>;
   tag_name?: Maybe<Scalars['String']>;
-  news?: Maybe<Scalars['ID']>;
+  news?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
@@ -1479,13 +1478,17 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
-export type GetNewsQueryVariables = Exact<{
+export type GetNewsByTagSeoLinkQueryVariables = Exact<{
   offset?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  locale?: Maybe<Scalars['String']>;
+  locale: Scalars['String'];
+  where?: Maybe<Scalars['JSON']>;
 }>;
 
-export type GetNewsQuery = { __typename?: 'Query' } & {
+export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
+  tags?: Maybe<
+    Array<Maybe<{ __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'seo_link' | 'tag_name'>>>
+  >;
   newsAndAnnouncements?: Maybe<
     Array<
       Maybe<
@@ -1505,6 +1508,13 @@ export type GetNewsQuery = { __typename?: 'Query' } & {
                       'body'
                     >)
                   | { __typename: 'ComponentContentSectionsCarousalImage' }
+                >
+              >
+            >;
+            tags?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'tag_name' | 'seo_link'>
                 >
               >
             >;
@@ -1648,14 +1658,25 @@ export const CommonContentSectionFragmentDoc = gql`
     body
   }
 `;
-export const GetNewsDocument = gql`
-  query GetNews($offset: Int = 0, $limit: Int = 25, $locale: String = "en") {
+export const GetNewsByTagSeoLinkDocument = gql`
+  query GetNewsByTagSeoLink(
+    $offset: Int = 0
+    $limit: Int = 25
+    $locale: String!
+    $where: JSON
+  ) {
+    tags(locale: $locale) {
+      tag_id
+      seo_link
+      tag_name
+    }
     newsAndAnnouncements(
       start: $offset
       limit: $limit
       publicationState: LIVE
       sort: "createdAt:desc"
       locale: $locale
+      where: $where
     ) {
       _id
       header
@@ -1668,11 +1689,19 @@ export const GetNewsDocument = gql`
           body
         }
       }
+      tags {
+        tag_id
+        tag_name
+        seo_link
+      }
       createdAt
     }
   }
 `;
-export type GetNewsQueryResult = Apollo.QueryResult<GetNewsQuery, GetNewsQueryVariables>;
+export type GetNewsByTagSeoLinkQueryResult = Apollo.QueryResult<
+  GetNewsByTagSeoLinkQuery,
+  GetNewsByTagSeoLinkQueryVariables
+>;
 export const GetNewsByIdDocument = gql`
   query GetNewsById($Id: ID!, $LocaleConnection: String!) {
     newsAndAnnouncement(id: $Id) {

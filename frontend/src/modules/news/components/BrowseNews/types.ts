@@ -1,8 +1,8 @@
-import { GetNewsQuery } from 'common/generated/generated-types';
+import { GetNewsByTagSeoLinkQuery } from 'common/generated/generated-types';
 
 export interface BrowseNewsProps {
   id?: string;
-  data?: GetNewsQuery;
+  data?: GetNewsByTagSeoLinkQuery;
 }
 
 export interface cardConstantsProps {

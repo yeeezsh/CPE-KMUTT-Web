@@ -1,11 +1,16 @@
-import { join } from 'path';
-
 import React from 'react';
 
 import Head from 'next/head';
 
 import CommonLayout from 'common/components/Layouts/CommonLayout';
-import { STATIC_HOME_LINK, STATIC_NEWS_LINK } from 'common/constants/links';
+import {
+  STATIC_HOME_LINK,
+  STATIC_NEWS_CATEGORY_LINK,
+  STATIC_NEWS_CATEGORY_ID_LINK,
+  STATIC_NEWS_CATEGORY_ID_LINK_PATTERN,
+  STATIC_NEWS_ID_LINK,
+  STATIC_NEWS_ID_LINK_PATTERN,
+} from 'common/constants/links';
 import { GetNewsByIdQuery, Tag } from 'common/generated/generated-types';
 import { useTags } from 'common/hooks/useTags';
 
@@ -13,7 +18,6 @@ import NewsContent from 'modules/news/components/NewsContent';
 import { useNewsContentParser } from 'modules/news/hooks/useNewsContentParser';
 
 const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
-  // NewsContent
   const {
     header,
     title,
@@ -32,16 +36,19 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
       },
       {
         title: 'ประกาศ',
-        link: STATIC_NEWS_LINK,
+        link: STATIC_NEWS_CATEGORY_LINK,
       },
     ],
     [
       {
         title: header as string,
-        link: join(STATIC_HOME_LINK, data?.newsAndAnnouncement?._id || ''),
+        link: STATIC_NEWS_ID_LINK.replace(
+          STATIC_NEWS_ID_LINK_PATTERN,
+          data?.newsAndAnnouncement?._id || '',
+        ),
       },
     ],
-    '/news',
+    STATIC_NEWS_CATEGORY_ID_LINK.replace(STATIC_NEWS_CATEGORY_ID_LINK_PATTERN, ''),
   );
 
   return (

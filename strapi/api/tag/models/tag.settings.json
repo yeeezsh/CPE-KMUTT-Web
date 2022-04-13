@@ -30,7 +30,7 @@
     },
     "news": {
       "via": "tags",
-      "model": "news-and-announcement"
+      "collection": "news-and-announcement"
     },
     "seo_link": {
       "pluginOptions": {

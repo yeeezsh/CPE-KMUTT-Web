@@ -2,7 +2,7 @@ import { CardVariant } from 'common/components/Card/types';
 import {
   ComponentContentSectionsTextContent,
   GetNewsByIdQuery,
-  GetNewsQuery,
+  GetNewsByTagSeoLinkQuery,
 } from 'common/generated/generated-types';
 import { joinImageStrapi } from 'common/utils/join';
 
@@ -12,7 +12,7 @@ const MAX_DESCRIPTION_LENGTH = 240;
 const MAX_DESCRIPTION_LENGTH_PRIMARY = 55;
 const REGEX_PATTERN = /<[^>]*>/g;
 
-export const newsMapper = (data: GetNewsQuery) => {
+export const newsMapper = (data: GetNewsByTagSeoLinkQuery) => {
   return data.newsAndAnnouncements?.map((e) => {
     const getDesc = e?.dynamic_content?.find(
       (d) => d?.__typename === 'ComponentContentSectionsTextContent' && d.body,
@@ -30,7 +30,9 @@ export const newsMapper = (data: GetNewsQuery) => {
     return {
       ...e,
       description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
-      link: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : undefined,
+      thumbnail: e?.canvas_preview?.url
+        ? joinImageStrapi(e.canvas_preview.url)
+        : undefined,
       _id: e?._id || Math.random().toLocaleString(),
       variant: isPrimary ? CardVariant.primary : CardVariant.normal,
       date: new Date(e?.createdAt).toLocaleDateString(),
@@ -63,7 +65,7 @@ export const newsConnectionMapper = (
         title: e?.header as string,
         description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
         date: new Date(e?.createdAt).toLocaleDateString(),
-        links: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : '/',
+        thumbnail: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : '/',
         variant: isPrimary ? CardVariant.primary : CardVariant.normal,
       };
     })

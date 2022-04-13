@@ -9,7 +9,10 @@ export const useTags = (
   suffix: CrumbProps[] = [],
   rootLink?: string,
 ): CrumbProps[] => {
-  const tags = data?.map((e) => ({ title: e.tag_name, link: e._id })) as CrumbProps[];
+  const tags = data?.map((e) => ({
+    title: e.tag_name,
+    link: e.seo_link,
+  })) as CrumbProps[];
   const mappedRootTags = tags.map((e) => ({
     ...e,
     // TODO: map to news category

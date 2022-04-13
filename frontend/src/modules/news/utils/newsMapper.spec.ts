@@ -1,9 +1,9 @@
 import { CardVariant } from 'common/components/Card/types';
-import { GetNewsQuery } from 'common/generated/generated-types';
+import { GetNewsByTagSeoLinkQuery } from 'common/generated/generated-types';
 
 import { newsMapper } from 'modules/news/utils/newsMapper';
 
-const MOCK_API: GetNewsQuery = {
+const MOCK_API: GetNewsByTagSeoLinkQuery = {
   newsAndAnnouncements: [
     {
       _id: '625304b36079e600207d6bf6',
@@ -46,8 +46,8 @@ describe('newsMapper should mapping correctly', () => {
 
   it('should mappped a varaint style from content correctly', () => {
     const mapped = newsMapper(MOCK_API);
-    const haveLink = mapped?.find((e) => e.link);
-    const noLink = mapped?.find((e) => !e.link);
+    const haveLink = mapped?.find((e) => e.thumbnail);
+    const noLink = mapped?.find((e) => !e.thumbnail);
 
     expect(haveLink?.variant).toBe(CardVariant.primary);
     expect(noLink?.variant).toBe(CardVariant.normal);
