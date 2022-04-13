@@ -1626,7 +1626,7 @@ export type GetHomeQuery = { __typename?: 'Query' } & {
                 news_announcement?: Maybe<
                   { __typename?: 'NewsAndAnnouncement' } & Pick<
                     NewsAndAnnouncement,
-                    'seo_link'
+                    '_id' | 'seo_link'
                   >
                 >;
                 image?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
@@ -1871,6 +1871,7 @@ export const GetHomeDocument = gql`
         _id
         title
         news_announcement {
+          _id
           seo_link
         }
         description

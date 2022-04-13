@@ -5,21 +5,20 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { Btn } from 'common/components/Button/styled';
 import Carousel from 'common/components/Carousel';
-import {
-  CAROUSEL_DEFAULT_CONSTANT,
-  CAROUSEL_SLIDER_CONSTANT,
-} from 'common/components/Carousel/constant';
+import { CAROUSEL_SLIDER_CONSTANT } from 'common/components/Carousel/constant';
 
 import Footer from 'modules/home/components/Footer';
 import StaticSection from 'modules/home/components/StaticSection';
 import { ButtonStyled } from 'modules/home/components/StaticSection/styled';
 import WhatNewSection from 'modules/home/components/WhatNewSection';
+import { useHomeContentParser } from 'modules/home/hooks/useHomeContentParser';
 import { HomesProps } from 'modules/home/page/Home/types';
 import Navbar from 'modules/root/components/Navbar';
 
 import { Main } from './styled';
 
 const Home: React.FC<HomesProps> = ({ data }) => {
+  const { mainCarousal } = useHomeContentParser(data);
   return (
     <div>
       <Head>
@@ -28,7 +27,11 @@ const Home: React.FC<HomesProps> = ({ data }) => {
       </Head>
       <Navbar />
       <Main>
-        <Carousel variant="Default" item={CAROUSEL_DEFAULT_CONSTANT} />
+        <Carousel
+          variant="Default"
+          // item={CAROUSEL_DEFAULT_CONSTANT}
+          item={mainCarousal}
+        />
         <WhatNewSection />
         <StaticSection
           id="1"

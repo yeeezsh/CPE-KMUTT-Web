@@ -4,6 +4,7 @@ query GetHome($locale: String = "th") {
       _id
       title
       news_announcement {
+        _id
         seo_link
       }
       description
