@@ -13,3 +13,4 @@ out/
 node_modules/
 .vscode
 server/
+src/common/generated/generated-types.ts

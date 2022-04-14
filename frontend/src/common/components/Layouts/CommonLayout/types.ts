@@ -1,4 +1,4 @@
-interface CrumbProps {
+export interface CrumbProps {
   link: string;
   title: string;
 }

@@ -2,12 +2,13 @@
   "collectionName": "components_content_sections_image_with_captions",
   "info": {
     "name": "image_with_caption",
-    "icon": "image"
+    "icon": "image",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "image": {
-      "model": "file",
+    "images": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images"
@@ -16,7 +17,7 @@
       "required": true,
       "pluginOptions": {}
     },
-    "caption": {
+    "title": {
       "type": "string"
     }
   }
