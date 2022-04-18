@@ -59,6 +59,30 @@ default admin account
 | --------------------- | --------- |
 | admin@cpe.kmutt.ac.th | Admin2021 |
 
+###### Codegen
+
+how to build a new API and generate native code for frontend
+
+- add new `collection/single` type via strapi admin http://localhost:1337/admin
+- config permission for `public` user http://localhost:1337/admin/settings/users-permissions/roles
+- play query on strapi graphql http://localhost:1337/graphql
+- copy your query to `frontend/src` and should be placed in `service` domain
+  file name should following this convention `[name-w-action].operation.graphql`
+- run `yarn codegen` on frontend project
+  then call by graphql client in `next/pages` following these example in _src/pages/index.tsx_
+
+```tsx
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await client.query<GetHomeQuery>({
+    query: GetHomeDocument,
+    variables: { locale: "th" },
+  });
+  return {
+    props: { data },
+  };
+};
+```
+
 ##### Common issues
 
 Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delete `/strapi/node_modules` before restarting the strapi container to install a correct dependence on its own. Do not use yarn to install dependencies.
