@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_uses",
+  "info": {
+    "name": "contact us"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "main_title": {
+      "type": "string"
+    },
+    "address_title": {
+      "type": "string"
+    },
+    "address_content": {
+      "type": "text"
+    },
+    "contact_title": {
+      "type": "string"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "string"
+    },
+    "google_map_link": {
+      "type": "string"
+    }
+  }
+}
