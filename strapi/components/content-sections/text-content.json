@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_content_sections_text_contents",
+  "info": {
+    "name": "text_content",
+    "icon": "pen",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "richtext"
+    }
+  }
+}

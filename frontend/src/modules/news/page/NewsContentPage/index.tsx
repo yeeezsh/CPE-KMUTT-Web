@@ -1,47 +1,72 @@
 import React from 'react';
 
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 import CommonLayout from 'common/components/Layouts/CommonLayout';
+import {
+  STATIC_HOME_LINK,
+  STATIC_NEWS_CATEGORY_LINK,
+  STATIC_NEWS_CATEGORY_ID_LINK,
+  STATIC_NEWS_CATEGORY_ID_LINK_PATTERN,
+  STATIC_NEWS_ID_LINK,
+  STATIC_NEWS_ID_LINK_PATTERN,
+} from 'common/constants/links';
+import { GetNewsByIdQuery, Tag } from 'common/generated/generated-types';
+import { useTags } from 'common/hooks/useTags';
 
 import NewsContent from 'modules/news/components/NewsContent';
+import { useNewsContentParser } from 'modules/news/hooks/useNewsContentParser';
 
-const MOCK_NAVIGATE = [
-  {
-    link: '/',
-    title: 'หน้าแรก',
-  },
-  {
-    link: '/',
-    title: 'ประกาศ',
-  },
-  {
-    link: '/',
-    title: 'สำหรับนักศึกษาใหม่',
-  },
-  {
-    link: '/',
-    title: 'ประกาศรายชื่อผู้มีสิทธิ์สอบสัมภาษณ์​ โครงการ Active Recruitment รอบที่ 2',
-  },
-];
-
-const NewsContentPage: React.FC = () => {
-  const router = useRouter();
-  const route_id = router?.query?.id;
+const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
+  const {
+    header,
+    title,
+    postDate,
+    thumbnail,
+    contents,
+    download,
+    connections,
+  } = useNewsContentParser(data);
+  const tags = useTags(
+    data?.newsAndAnnouncement?.tags as Tag[],
+    [
+      {
+        title: 'หน้าแรก',
+        link: STATIC_HOME_LINK,
+      },
+      {
+        title: 'ประกาศ',
+        link: STATIC_NEWS_CATEGORY_LINK,
+      },
+    ],
+    [
+      {
+        title: header as string,
+        link: STATIC_NEWS_ID_LINK.replace(
+          STATIC_NEWS_ID_LINK_PATTERN,
+          data?.newsAndAnnouncement?._id || '',
+        ),
+      },
+    ],
+    STATIC_NEWS_CATEGORY_ID_LINK.replace(STATIC_NEWS_CATEGORY_ID_LINK_PATTERN, ''),
+  );
 
   return (
     <>
       <Head>
-        <title>
-          {/* //TODO: join heading */}
-          ข่าวสารและประกาศ - ประกาศรายชื่อผู้มีสิทธิ์สอบสัมภาษณ์ โครงการ Active
-          Recruitment รอบที่ 2
-        </title>
+        <title>{header}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CommonLayout header="ข่าวสารและประกาศ" navigate={MOCK_NAVIGATE}>
-        <NewsContent tumbnail="/images/thumbnail2.png" />
+      {/* //TODO: remove this mock tag*/}
+      <CommonLayout header="ข่าวสารและประกาศ" navigate={tags}>
+        <NewsContent
+          title={title}
+          postDate={postDate}
+          tumbnail={thumbnail}
+          contents={contents}
+          file={download}
+          connections={connections}
+        />
       </CommonLayout>
     </>
   );

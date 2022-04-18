@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Breadcrumb } from 'antd';
+import Link from 'next/link';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { RiFacebookCircleFill } from 'react-icons/ri';
@@ -72,10 +73,10 @@ const CommonLayout: React.FC<CommonLayoutProps> = ({
         <Container>
           <CommonWrapperRow className="space-between">
             <Breadcrumb separator="/">
-              {props.navigate?.map((items, index) => {
+              {props.navigate?.map((items) => {
                 return (
-                  <Breadcrumb.Item href={items.link} key={index}>
-                    {items.title}
+                  <Breadcrumb.Item key={items.link + items.title + '-breadcrumb'}>
+                    <Link href={items.link}>{items.title}</Link>
                   </Breadcrumb.Item>
                 );
               })}

@@ -27,6 +27,20 @@
           "localized": true
         }
       }
+    },
+    "news": {
+      "via": "tags",
+      "collection": "news-and-announcement"
+    },
+    "seo_link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "regex": "^[a-z]\\S*$",
+      "required": true
     }
   }
 }

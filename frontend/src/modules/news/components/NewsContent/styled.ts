@@ -35,7 +35,7 @@ export const NewsContentTumbnail = styled.div`
   background-position: center;
 `;
 
-export const NewsContentContainer = styled.p`
+export const NewsContentContainer = styled.div`
   font-size: 14px;
   font-weight: 500;
   color: ${COLORS.GRAY_1};

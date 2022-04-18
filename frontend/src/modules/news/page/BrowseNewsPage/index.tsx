@@ -3,31 +3,26 @@ import React from 'react';
 import Head from 'next/head';
 
 import CommonLayout from 'common/components/Layouts/CommonLayout';
-import { GetNewsQuery } from 'common/generated/generated-types';
+import { STATIC_HOME_LINK, STATIC_NEWS_CATEGORY_LINK } from 'common/constants/links';
+import { GetNewsByTagSeoLinkQuery } from 'common/generated/generated-types';
 
 import BrowseNews from 'modules/news/components/BrowseNews';
 
-const MOCK_NAVIGATE = [
+const DEFAULT_NAVIGATE = [
   {
-    link: '/',
     title: 'หน้าแรก',
+    link: STATIC_HOME_LINK,
   },
   {
-    link: '/',
     title: 'ประกาศ',
-  },
-  {
-    link: '/',
-    title: 'สำหรับนักศึกษาใหม่',
+    link: STATIC_NEWS_CATEGORY_LINK,
   },
 ];
 
 export type BrowseNewsPageProps = {
-  data?: GetNewsQuery;
+  data?: GetNewsByTagSeoLinkQuery;
 };
 
-// TODO: implement data api to compoenents
-// TODO: implement pagination
 const BrowseNewsPage: React.FC<BrowseNewsPageProps> = ({ data }) => {
   return (
     <>
@@ -35,7 +30,7 @@ const BrowseNewsPage: React.FC<BrowseNewsPageProps> = ({ data }) => {
         <title>ข่าวสารและประกาศ</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CommonLayout header="ข่าวสารและประกาศ" navigate={MOCK_NAVIGATE}>
+      <CommonLayout header="ข่าวสารและประกาศ" navigate={DEFAULT_NAVIGATE}>
         <BrowseNews data={data} />
       </CommonLayout>
     </>

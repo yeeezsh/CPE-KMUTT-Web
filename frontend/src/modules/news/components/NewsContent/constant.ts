@@ -1,15 +1,15 @@
 import { CardVariant } from 'common/components/Card/types';
 
-import { NewsContentProps, CardConstantsProps } from './types';
+import { NewsContentProps, CardNewsConnectionProps } from './types';
 
-export const constants: CardConstantsProps[] = [
+export const constants: CardNewsConnectionProps[] = [
   {
     id: '1',
     title: 'การรับเข้าศึกษา',
     description:
       'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
     date: '28 ตุลาคม 2563',
-    links: '/images/thumbnail.png',
+    thumbnail: '/images/thumbnail.png',
     variant: CardVariant.primary,
   },
   {
