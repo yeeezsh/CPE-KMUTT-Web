@@ -15,6 +15,15 @@ import {
 
 import BrowseNews from '.';
 
+jest.mock('next/router', () => ({
+  useRouter: jest.fn().mockImplementation(() => ({
+    query: {
+      id: '1',
+    },
+    beforePopState: jest.requireActual('next/router'),
+  })),
+}));
+
 describe('BrowseNews Compnent', () => {
   it('BrowseNews Compnent should be defined', () => {
     const wrap = shallow(

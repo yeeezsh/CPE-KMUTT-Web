@@ -38,7 +38,7 @@ export const Variant: Story<CardProps> = () => (
         date="28 ตุลาคม 2563"
         id="1"
         variant={CardVariant.primary}
-        links="/images/thumbnail.png"
+        thumbnail="/images/thumbnail.png"
       />
     </div>
   </>

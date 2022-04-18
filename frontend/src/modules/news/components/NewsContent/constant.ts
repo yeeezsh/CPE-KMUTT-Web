@@ -9,7 +9,7 @@ export const constants: CardNewsConnectionProps[] = [
     description:
       'ประกาศรายชื่อผู้มีสิทธิ์เข้าศึกษา โครงการ Active Recruitment รอบที่ 2 ประจำปีการศึกษา 2563',
     date: '28 ตุลาคม 2563',
-    links: '/images/thumbnail.png',
+    thumbnail: '/images/thumbnail.png',
     variant: CardVariant.primary,
   },
   {

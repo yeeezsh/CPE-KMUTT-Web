@@ -8,7 +8,11 @@ import { VscFilePdf } from 'react-icons/vsc';
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
-import { STATIC_NEWS_LINK } from 'common/constants/links';
+import {
+  STATIC_NEWS_ID_LINK,
+  STATIC_NEWS_ID_LINK_PATTERN,
+  STATIC_NEWS_LINK,
+} from 'common/constants/links';
 
 import {
   NewsContentTumbnail,
@@ -34,16 +38,24 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
     router.push(STATIC_NEWS_LINK);
   }
 
+  function onCardClick(newsId: string) {
+    router.push(STATIC_NEWS_ID_LINK.replace(STATIC_NEWS_ID_LINK_PATTERN, newsId));
+  }
+
   return (
     <NewsContentStyle>
       <Container>
         <NewsContentHeader>{props.title}</NewsContentHeader>
         <NewsContentPostDate>{props.postDate}</NewsContentPostDate>
-        <NewsContentTumbnail
-          style={{
-            backgroundImage: `url(${props.tumbnail})`,
-          }}
-        />
+
+        {/* canvas */}
+        {props.tumbnail && (
+          <NewsContentTumbnail
+            style={{
+              backgroundImage: `url(${props.tumbnail})`,
+            }}
+          />
+        )}
 
         {/* dyanmic contents */}
         {props.contents}
@@ -85,11 +97,12 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
             <OtherNewsCardContainer>
               {props.connections.map((data) => (
                 <Card
+                  onClick={() => onCardClick(data.id)}
                   key={'news-connections-' + data.id}
                   title={data.title}
                   description={data.description}
                   date={data.date}
-                  links={data.links}
+                  thumbnail={data.thumbnail}
                   id={data.id}
                   variant={data.variant}
                 />

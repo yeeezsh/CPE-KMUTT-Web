@@ -9,6 +9,7 @@ export const Card = styled.div`
   display: block;
   position: relative;
   margin-bottom: 20px;
+  cursor: pointer;
 `;
 
 export const CardTitle = styled.div`
