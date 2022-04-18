@@ -1,0 +1,38 @@
+query GetNewsByTagSeoLink(
+  $offset: Int = 0
+  $limit: Int = 25
+  $locale: String!
+  $where: JSON
+) {
+  tags(locale: $locale) {
+    tag_id
+    seo_link
+    tag_name
+  }
+  newsAndAnnouncements(
+    start: $offset
+    limit: $limit
+    publicationState: LIVE
+    sort: "createdAt:desc"
+    locale: $locale
+    where: $where
+  ) {
+    _id
+    header
+    canvas_preview {
+      url
+    }
+    dynamic_content {
+      __typename
+      ... on ComponentContentSectionsTextContent {
+        body
+      }
+    }
+    tags {
+      tag_id
+      tag_name
+      seo_link
+    }
+    createdAt
+  }
+}

@@ -17,25 +17,25 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="1"
+          key="1-submenu-1"
         >
           ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="1"
+          key="1-submenu-2"
         >
           ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="1"
+          key="1-submenu-3"
         >
           ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="1"
+          key="1-submenu-4"
         >
           ปริญญาตรี
         </styled__ItemLink>
@@ -53,13 +53,13 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="2"
+          key="2-submenu-1"
         >
           บัณฑิตศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="2"
+          key="2-submenu-2"
         >
           บัณฑิตศึกษา
         </styled__ItemLink>
@@ -77,25 +77,25 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="3"
+          key="3-submenu-1"
         >
           ทุนการศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="3"
+          key="3-submenu-2"
         >
           ทุนการศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="3"
+          key="3-submenu-3"
         >
           ทุนการศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="3"
+          key="3-submenu-4"
         >
           ทุนการศึกษา
         </styled__ItemLink>
@@ -113,19 +113,19 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="4"
+          key="4-submenu-1"
         >
           การรับเข้าศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="4"
+          key="4-submenu-2"
         >
           การรับเข้าศึกษา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="4"
+          key="4-submenu-3"
         >
           การรับเข้าศึกษา
         </styled__ItemLink>
@@ -143,25 +143,25 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
         </styled__Item>
         <styled__ItemLink
           href="/#"
-          key="5"
+          key="5-submenu-1"
         >
           เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="5"
+          key="5-submenu-2"
         >
           เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="5"
+          key="5-submenu-3"
         >
           เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
           href="/#"
-          key="5"
+          key="5-submenu-4"
         >
           เกี่ยวกับเรา
         </styled__ItemLink>

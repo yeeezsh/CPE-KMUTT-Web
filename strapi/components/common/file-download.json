@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_common_file_downloads",
+  "info": {
+    "name": "file-download",
+    "icon": "file-download"
+  },
+  "options": {},
+  "attributes": {
+    "files": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

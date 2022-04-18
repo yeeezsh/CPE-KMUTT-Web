@@ -13,8 +13,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** Input type for dynamic zone dynamic_sections of Content */
-  ContentDynamicSectionsDynamicZoneInput: any;
   /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
@@ -23,6 +21,8 @@ export type Scalars = {
   JSON: any;
   /** The `Long` scalar type represents 52-bit integers */
   Long: any;
+  /** Input type for dynamic zone dynamic_content of NewsAndAnnouncement */
+  NewsAndAnnouncementDynamicContentDynamicZoneInput: any;
   /** A time string with format: HH:mm:ss.SSS */
   Time: any;
   /** The `Upload` scalar type represents a file upload. */
@@ -37,54 +37,75 @@ export type AdminUser = {
   lastname: Scalars['String'];
 };
 
+export type ComponentCommonFileDownload = {
+  __typename?: 'ComponentCommonFileDownload';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  files?: Maybe<Array<Maybe<UploadFile>>>;
+};
+
+export type ComponentCommonFileDownloadFilesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ComponentCommonFileDownloadInput = {
+  files?: Maybe<Array<Maybe<Scalars['ID']>>>;
+};
+
 export type ComponentContentSectionsCarousalImage = {
   __typename?: 'ComponentContentSectionsCarousalImage';
   id: Scalars['ID'];
   _id: Scalars['ID'];
-  images?: Maybe<Array<Maybe<ComponentContentSectionsImageWithCaption>>>;
+  images?: Maybe<ComponentContentSectionsImageWithCaption>;
 };
 
 export type ComponentContentSectionsCarousalImageInput = {
-  images?: Maybe<Array<Maybe<ComponentContentSectionsImageWithCaptionInput>>>;
-};
-
-export type ComponentContentSectionsContentComponent = {
-  __typename?: 'ComponentContentSectionsContentComponent';
-  id: Scalars['ID'];
-  _id: Scalars['ID'];
-  sub_header?: Maybe<Scalars['String']>;
-  canvas?: Maybe<UploadFile>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type ComponentContentSectionsContentComponentInput = {
-  sub_header?: Maybe<Scalars['String']>;
-  canvas?: Maybe<Scalars['ID']>;
-  body?: Maybe<Scalars['String']>;
+  images?: Maybe<ComponentContentSectionsImageWithCaptionInput>;
 };
 
 export type ComponentContentSectionsGridImage = {
   __typename?: 'ComponentContentSectionsGridImage';
   id: Scalars['ID'];
   _id: Scalars['ID'];
-  images?: Maybe<Array<Maybe<ComponentContentSectionsImageWithCaption>>>;
+  images?: Maybe<ComponentContentSectionsImageWithCaption>;
 };
 
 export type ComponentContentSectionsGridImageInput = {
-  images?: Maybe<Array<Maybe<ComponentContentSectionsImageWithCaptionInput>>>;
+  images?: Maybe<ComponentContentSectionsImageWithCaptionInput>;
 };
 
 export type ComponentContentSectionsImageWithCaption = {
   __typename?: 'ComponentContentSectionsImageWithCaption';
   id: Scalars['ID'];
   _id: Scalars['ID'];
-  image?: Maybe<UploadFile>;
-  caption?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  images?: Maybe<Array<Maybe<UploadFile>>>;
+};
+
+export type ComponentContentSectionsImageWithCaptionImagesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type ComponentContentSectionsImageWithCaptionInput = {
-  image?: Maybe<Scalars['ID']>;
-  caption?: Maybe<Scalars['String']>;
+  images?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ComponentContentSectionsTextContent = {
+  __typename?: 'ComponentContentSectionsTextContent';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  body?: Maybe<Scalars['String']>;
+};
+
+export type ComponentContentSectionsTextContentInput = {
+  body?: Maybe<Scalars['String']>;
 };
 
 export type ComponentTagsTagInput = {
@@ -103,127 +124,6 @@ export type ComponentTagsTagsTagsArgs = {
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
   where?: Maybe<Scalars['JSON']>;
-};
-
-export type Content = {
-  __typename?: 'Content';
-  id: Scalars['ID'];
-  _id: Scalars['ID'];
-  createdAt: Scalars['DateTime'];
-  updatedAt: Scalars['DateTime'];
-  header: Scalars['String'];
-  content_id?: Maybe<Scalars['String']>;
-  tags?: Maybe<Array<Maybe<ComponentTagsTags>>>;
-  dynamic_sections: Array<Maybe<ContentDynamicSectionsDynamicZone>>;
-  canvas_preview?: Maybe<UploadFile>;
-  locale?: Maybe<Scalars['String']>;
-  published_at?: Maybe<Scalars['DateTime']>;
-  localizations?: Maybe<Array<Maybe<Content>>>;
-};
-
-export type ContentLocalizationsArgs = {
-  sort?: Maybe<Scalars['String']>;
-  limit?: Maybe<Scalars['Int']>;
-  start?: Maybe<Scalars['Int']>;
-  where?: Maybe<Scalars['JSON']>;
-};
-
-export type ContentAggregator = {
-  __typename?: 'ContentAggregator';
-  count?: Maybe<Scalars['Int']>;
-  totalCount?: Maybe<Scalars['Int']>;
-};
-
-export type ContentConnection = {
-  __typename?: 'ContentConnection';
-  values?: Maybe<Array<Maybe<Content>>>;
-  groupBy?: Maybe<ContentGroupBy>;
-  aggregate?: Maybe<ContentAggregator>;
-};
-
-export type ContentConnectionCanvas_Preview = {
-  __typename?: 'ContentConnectionCanvas_preview';
-  key?: Maybe<Scalars['ID']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentConnectionContent_Id = {
-  __typename?: 'ContentConnectionContent_id';
-  key?: Maybe<Scalars['String']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentConnectionCreatedAt = {
-  __typename?: 'ContentConnectionCreatedAt';
-  key?: Maybe<Scalars['DateTime']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentConnectionHeader = {
-  __typename?: 'ContentConnectionHeader';
-  key?: Maybe<Scalars['String']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentConnectionId = {
-  __typename?: 'ContentConnectionId';
-  key?: Maybe<Scalars['ID']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentConnectionLocale = {
-  __typename?: 'ContentConnectionLocale';
-  key?: Maybe<Scalars['String']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentConnectionPublished_At = {
-  __typename?: 'ContentConnectionPublished_at';
-  key?: Maybe<Scalars['DateTime']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentConnectionUpdatedAt = {
-  __typename?: 'ContentConnectionUpdatedAt';
-  key?: Maybe<Scalars['DateTime']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentConnection_Id = {
-  __typename?: 'ContentConnection_id';
-  key?: Maybe<Scalars['ID']>;
-  connection?: Maybe<ContentConnection>;
-};
-
-export type ContentDynamicSectionsDynamicZone =
-  | ComponentContentSectionsCarousalImage
-  | ComponentContentSectionsContentComponent
-  | ComponentContentSectionsGridImage;
-
-export type ContentGroupBy = {
-  __typename?: 'ContentGroupBy';
-  id?: Maybe<Array<Maybe<ContentConnectionId>>>;
-  _id?: Maybe<Array<Maybe<ContentConnection_Id>>>;
-  createdAt?: Maybe<Array<Maybe<ContentConnectionCreatedAt>>>;
-  updatedAt?: Maybe<Array<Maybe<ContentConnectionUpdatedAt>>>;
-  header?: Maybe<Array<Maybe<ContentConnectionHeader>>>;
-  content_id?: Maybe<Array<Maybe<ContentConnectionContent_Id>>>;
-  canvas_preview?: Maybe<Array<Maybe<ContentConnectionCanvas_Preview>>>;
-  locale?: Maybe<Array<Maybe<ContentConnectionLocale>>>;
-  published_at?: Maybe<Array<Maybe<ContentConnectionPublished_At>>>;
-};
-
-export type ContentInput = {
-  header: Scalars['String'];
-  content_id?: Maybe<Scalars['String']>;
-  tags?: Maybe<Array<Maybe<ComponentTagsTagInput>>>;
-  dynamic_sections: Array<Scalars['ContentDynamicSectionsDynamicZoneInput']>;
-  canvas_preview?: Maybe<Scalars['ID']>;
-  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  locale?: Maybe<Scalars['String']>;
-  published_at?: Maybe<Scalars['DateTime']>;
-  created_by?: Maybe<Scalars['ID']>;
-  updated_by?: Maybe<Scalars['ID']>;
 };
 
 export type FileInfoInput = {
@@ -278,22 +178,23 @@ export type Morph =
   | UsersPermissionsMeRole
   | UsersPermissionsLoginPayload
   | UserPermissionsPasswordPayload
-  | Content
-  | ContentConnection
-  | ContentAggregator
-  | ContentGroupBy
-  | ContentConnectionId
-  | ContentConnection_Id
-  | ContentConnectionCreatedAt
-  | ContentConnectionUpdatedAt
-  | ContentConnectionHeader
-  | ContentConnectionContent_Id
-  | ContentConnectionCanvas_Preview
-  | ContentConnectionLocale
-  | ContentConnectionPublished_At
-  | CreateContentPayload
-  | UpdateContentPayload
-  | DeleteContentPayload
+  | NewsAndAnnouncement
+  | NewsAndAnnouncementConnection
+  | NewsAndAnnouncementAggregator
+  | NewsAndAnnouncementGroupBy
+  | NewsAndAnnouncementConnectionId
+  | NewsAndAnnouncementConnection_Id
+  | NewsAndAnnouncementConnectionCreatedAt
+  | NewsAndAnnouncementConnectionUpdatedAt
+  | NewsAndAnnouncementConnectionHeader
+  | NewsAndAnnouncementConnectionCanvas_Preview
+  | NewsAndAnnouncementConnectionSeo_Link
+  | NewsAndAnnouncementConnectionDownload
+  | NewsAndAnnouncementConnectionLocale
+  | NewsAndAnnouncementConnectionPublished_At
+  | CreateNewsAndAnnouncementPayload
+  | UpdateNewsAndAnnouncementPayload
+  | DeleteNewsAndAnnouncementPayload
   | Tag
   | TagConnection
   | TagAggregator
@@ -304,6 +205,7 @@ export type Morph =
   | TagConnectionUpdatedAt
   | TagConnectionTag_Id
   | TagConnectionTag_Name
+  | TagConnectionSeo_Link
   | TagConnectionLocale
   | CreateTagPayload
   | UpdateTagPayload
@@ -366,17 +268,18 @@ export type Morph =
   | CreateUserPayload
   | UpdateUserPayload
   | DeleteUserPayload
+  | ComponentCommonFileDownload
   | ComponentContentSectionsCarousalImage
-  | ComponentContentSectionsContentComponent
   | ComponentContentSectionsGridImage
   | ComponentContentSectionsImageWithCaption
+  | ComponentContentSectionsTextContent
   | ComponentTagsTags;
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createContent?: Maybe<CreateContentPayload>;
-  updateContent?: Maybe<UpdateContentPayload>;
-  deleteContent?: Maybe<DeleteContentPayload>;
+  createNewsAndAnnouncement?: Maybe<CreateNewsAndAnnouncementPayload>;
+  updateNewsAndAnnouncement?: Maybe<UpdateNewsAndAnnouncementPayload>;
+  deleteNewsAndAnnouncement?: Maybe<DeleteNewsAndAnnouncementPayload>;
   createTag?: Maybe<CreateTagPayload>;
   updateTag?: Maybe<UpdateTagPayload>;
   deleteTag?: Maybe<DeleteTagPayload>;
@@ -394,7 +297,7 @@ export type Mutation = {
   updateUser?: Maybe<UpdateUserPayload>;
   /** Delete an existing user */
   deleteUser?: Maybe<DeleteUserPayload>;
-  createContentLocalization: Content;
+  createNewsAndAnnouncementLocalization: NewsAndAnnouncement;
   createTagLocalization: Tag;
   upload: UploadFile;
   multipleUpload: Array<Maybe<UploadFile>>;
@@ -406,16 +309,16 @@ export type Mutation = {
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
 };
 
-export type MutationCreateContentArgs = {
-  input?: Maybe<CreateContentInput>;
+export type MutationCreateNewsAndAnnouncementArgs = {
+  input?: Maybe<CreateNewsAndAnnouncementInput>;
 };
 
-export type MutationUpdateContentArgs = {
-  input?: Maybe<UpdateContentInput>;
+export type MutationUpdateNewsAndAnnouncementArgs = {
+  input?: Maybe<UpdateNewsAndAnnouncementInput>;
 };
 
-export type MutationDeleteContentArgs = {
-  input?: Maybe<DeleteContentInput>;
+export type MutationDeleteNewsAndAnnouncementArgs = {
+  input?: Maybe<DeleteNewsAndAnnouncementInput>;
 };
 
 export type MutationCreateTagArgs = {
@@ -458,8 +361,8 @@ export type MutationDeleteUserArgs = {
   input?: Maybe<DeleteUserInput>;
 };
 
-export type MutationCreateContentLocalizationArgs = {
-  input: UpdateContentInput;
+export type MutationCreateNewsAndAnnouncementLocalizationArgs = {
+  input: UpdateNewsAndAnnouncementInput;
 };
 
 export type MutationCreateTagLocalizationArgs = {
@@ -510,6 +413,145 @@ export type MutationEmailConfirmationArgs = {
   confirmation: Scalars['String'];
 };
 
+export type NewsAndAnnouncement = {
+  __typename?: 'NewsAndAnnouncement';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  header: Scalars['String'];
+  canvas_preview?: Maybe<UploadFile>;
+  dynamic_content?: Maybe<Array<Maybe<NewsAndAnnouncementDynamicContentDynamicZone>>>;
+  seo_link: Scalars['String'];
+  download?: Maybe<ComponentCommonFileDownload>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  tags?: Maybe<Array<Maybe<Tag>>>;
+  localizations?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
+};
+
+export type NewsAndAnnouncementTagsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type NewsAndAnnouncementLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type NewsAndAnnouncementAggregator = {
+  __typename?: 'NewsAndAnnouncementAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type NewsAndAnnouncementConnection = {
+  __typename?: 'NewsAndAnnouncementConnection';
+  values?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
+  groupBy?: Maybe<NewsAndAnnouncementGroupBy>;
+  aggregate?: Maybe<NewsAndAnnouncementAggregator>;
+};
+
+export type NewsAndAnnouncementConnectionCanvas_Preview = {
+  __typename?: 'NewsAndAnnouncementConnectionCanvas_preview';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionCreatedAt = {
+  __typename?: 'NewsAndAnnouncementConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionDownload = {
+  __typename?: 'NewsAndAnnouncementConnectionDownload';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionHeader = {
+  __typename?: 'NewsAndAnnouncementConnectionHeader';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionId = {
+  __typename?: 'NewsAndAnnouncementConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionLocale = {
+  __typename?: 'NewsAndAnnouncementConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionPublished_At = {
+  __typename?: 'NewsAndAnnouncementConnectionPublished_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionSeo_Link = {
+  __typename?: 'NewsAndAnnouncementConnectionSeo_link';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnectionUpdatedAt = {
+  __typename?: 'NewsAndAnnouncementConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementConnection_Id = {
+  __typename?: 'NewsAndAnnouncementConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<NewsAndAnnouncementConnection>;
+};
+
+export type NewsAndAnnouncementDynamicContentDynamicZone =
+  | ComponentContentSectionsGridImage
+  | ComponentContentSectionsTextContent
+  | ComponentContentSectionsCarousalImage;
+
+export type NewsAndAnnouncementGroupBy = {
+  __typename?: 'NewsAndAnnouncementGroupBy';
+  id?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionId>>>;
+  _id?: Maybe<Array<Maybe<NewsAndAnnouncementConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionUpdatedAt>>>;
+  header?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionHeader>>>;
+  canvas_preview?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionCanvas_Preview>>>;
+  seo_link?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionSeo_Link>>>;
+  download?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionDownload>>>;
+  locale?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionLocale>>>;
+  published_at?: Maybe<Array<Maybe<NewsAndAnnouncementConnectionPublished_At>>>;
+};
+
+export type NewsAndAnnouncementInput = {
+  header: Scalars['String'];
+  canvas_preview?: Maybe<Scalars['ID']>;
+  dynamic_content?: Maybe<
+    Array<Scalars['NewsAndAnnouncementDynamicContentDynamicZoneInput']>
+  >;
+  tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  seo_link: Scalars['String'];
+  download?: Maybe<ComponentCommonFileDownloadInput>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW',
@@ -517,9 +559,9 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
-  content?: Maybe<Content>;
-  contents?: Maybe<Array<Maybe<Content>>>;
-  contentsConnection?: Maybe<ContentConnection>;
+  newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
+  newsAndAnnouncements?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
+  newsAndAnnouncementsConnection?: Maybe<NewsAndAnnouncementConnection>;
   tag?: Maybe<Tag>;
   tags?: Maybe<Array<Maybe<Tag>>>;
   tagsConnection?: Maybe<TagConnection>;
@@ -535,12 +577,12 @@ export type Query = {
   me?: Maybe<UsersPermissionsMe>;
 };
 
-export type QueryContentArgs = {
+export type QueryNewsAndAnnouncementArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<PublicationState>;
 };
 
-export type QueryContentsArgs = {
+export type QueryNewsAndAnnouncementsArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -549,7 +591,7 @@ export type QueryContentsArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-export type QueryContentsConnectionArgs = {
+export type QueryNewsAndAnnouncementsConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -652,8 +694,17 @@ export type Tag = {
   updatedAt: Scalars['DateTime'];
   tag_id: Scalars['String'];
   tag_name?: Maybe<Scalars['String']>;
+  seo_link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
+  news?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
   localizations?: Maybe<Array<Maybe<Tag>>>;
+};
+
+export type TagNewsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type TagLocalizationsArgs = {
@@ -694,6 +745,12 @@ export type TagConnectionLocale = {
   connection?: Maybe<TagConnection>;
 };
 
+export type TagConnectionSeo_Link = {
+  __typename?: 'TagConnectionSeo_link';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<TagConnection>;
+};
+
 export type TagConnectionTag_Id = {
   __typename?: 'TagConnectionTag_id';
   key?: Maybe<Scalars['String']>;
@@ -726,12 +783,15 @@ export type TagGroupBy = {
   updatedAt?: Maybe<Array<Maybe<TagConnectionUpdatedAt>>>;
   tag_id?: Maybe<Array<Maybe<TagConnectionTag_Id>>>;
   tag_name?: Maybe<Array<Maybe<TagConnectionTag_Name>>>;
+  seo_link?: Maybe<Array<Maybe<TagConnectionSeo_Link>>>;
   locale?: Maybe<Array<Maybe<TagConnectionLocale>>>;
 };
 
 export type TagInput = {
   tag_id: Scalars['String'];
   tag_name?: Maybe<Scalars['String']>;
+  news?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  seo_link: Scalars['String'];
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -1188,13 +1248,13 @@ export type UsersPermissionsUserGroupBy = {
   role?: Maybe<Array<Maybe<UsersPermissionsUserConnectionRole>>>;
 };
 
-export type CreateContentInput = {
-  data?: Maybe<ContentInput>;
+export type CreateNewsAndAnnouncementInput = {
+  data?: Maybe<NewsAndAnnouncementInput>;
 };
 
-export type CreateContentPayload = {
-  __typename?: 'createContentPayload';
-  content?: Maybe<Content>;
+export type CreateNewsAndAnnouncementPayload = {
+  __typename?: 'createNewsAndAnnouncementPayload';
+  newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
 };
 
 export type CreateRoleInput = {
@@ -1224,15 +1284,6 @@ export type CreateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
-export type DeleteContentInput = {
-  where?: Maybe<InputId>;
-};
-
-export type DeleteContentPayload = {
-  __typename?: 'deleteContentPayload';
-  content?: Maybe<Content>;
-};
-
 export type DeleteFileInput = {
   where?: Maybe<InputId>;
 };
@@ -1240,6 +1291,15 @@ export type DeleteFileInput = {
 export type DeleteFilePayload = {
   __typename?: 'deleteFilePayload';
   file?: Maybe<UploadFile>;
+};
+
+export type DeleteNewsAndAnnouncementInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteNewsAndAnnouncementPayload = {
+  __typename?: 'deleteNewsAndAnnouncementPayload';
+  newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
 };
 
 export type DeleteRoleInput = {
@@ -1269,45 +1329,35 @@ export type DeleteUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
-export type EditComponentContentSectionsCarousalImageInput = {
+export type EditComponentCommonFileDownloadInput = {
   id?: Maybe<Scalars['ID']>;
-  images?: Maybe<Array<Maybe<EditComponentContentSectionsImageWithCaptionInput>>>;
+  files?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
-export type EditComponentContentSectionsContentComponentInput = {
+export type EditComponentContentSectionsCarousalImageInput = {
   id?: Maybe<Scalars['ID']>;
-  sub_header?: Maybe<Scalars['String']>;
-  canvas?: Maybe<Scalars['ID']>;
-  body?: Maybe<Scalars['String']>;
+  images?: Maybe<EditComponentContentSectionsImageWithCaptionInput>;
 };
 
 export type EditComponentContentSectionsGridImageInput = {
   id?: Maybe<Scalars['ID']>;
-  images?: Maybe<Array<Maybe<EditComponentContentSectionsImageWithCaptionInput>>>;
+  images?: Maybe<EditComponentContentSectionsImageWithCaptionInput>;
 };
 
 export type EditComponentContentSectionsImageWithCaptionInput = {
   id?: Maybe<Scalars['ID']>;
-  image?: Maybe<Scalars['ID']>;
-  caption?: Maybe<Scalars['String']>;
+  images?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type EditComponentContentSectionsTextContentInput = {
+  id?: Maybe<Scalars['ID']>;
+  body?: Maybe<Scalars['String']>;
 };
 
 export type EditComponentTagsTagInput = {
   id?: Maybe<Scalars['ID']>;
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
-};
-
-export type EditContentInput = {
-  header?: Maybe<Scalars['String']>;
-  content_id?: Maybe<Scalars['String']>;
-  tags?: Maybe<Array<Maybe<EditComponentTagsTagInput>>>;
-  dynamic_sections: Array<Scalars['ContentDynamicSectionsDynamicZoneInput']>;
-  canvas_preview?: Maybe<Scalars['ID']>;
-  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  locale?: Maybe<Scalars['String']>;
-  published_at?: Maybe<Scalars['DateTime']>;
-  created_by?: Maybe<Scalars['ID']>;
-  updated_by?: Maybe<Scalars['ID']>;
 };
 
 export type EditFileInput = {
@@ -1337,6 +1387,22 @@ export type EditLocaleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditNewsAndAnnouncementInput = {
+  header?: Maybe<Scalars['String']>;
+  canvas_preview?: Maybe<Scalars['ID']>;
+  dynamic_content?: Maybe<
+    Array<Scalars['NewsAndAnnouncementDynamicContentDynamicZoneInput']>
+  >;
+  tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  seo_link?: Maybe<Scalars['String']>;
+  download?: Maybe<EditComponentCommonFileDownloadInput>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditRoleInput = {
   name?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
@@ -1350,6 +1416,8 @@ export type EditRoleInput = {
 export type EditTagInput = {
   tag_id?: Maybe<Scalars['String']>;
   tag_name?: Maybe<Scalars['String']>;
+  news?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  seo_link?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -1370,14 +1438,14 @@ export type EditUserInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type UpdateContentInput = {
+export type UpdateNewsAndAnnouncementInput = {
   where?: Maybe<InputId>;
-  data?: Maybe<EditContentInput>;
+  data?: Maybe<EditNewsAndAnnouncementInput>;
 };
 
-export type UpdateContentPayload = {
-  __typename?: 'updateContentPayload';
-  content?: Maybe<Content>;
+export type UpdateNewsAndAnnouncementPayload = {
+  __typename?: 'updateNewsAndAnnouncementPayload';
+  newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
 };
 
 export type UpdateRoleInput = {
@@ -1410,27 +1478,44 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
-export type GetNewsQueryVariables = Exact<{
+export type GetNewsByTagSeoLinkQueryVariables = Exact<{
   offset?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
+  locale: Scalars['String'];
+  where?: Maybe<Scalars['JSON']>;
 }>;
 
-export type GetNewsQuery = { __typename?: 'Query' } & {
-  contents?: Maybe<
+export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
+  tags?: Maybe<
+    Array<Maybe<{ __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'seo_link' | 'tag_name'>>>
+  >;
+  newsAndAnnouncements?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'Content' } & Pick<Content, '_id' | 'header' | 'createdAt'> & {
+        { __typename?: 'NewsAndAnnouncement' } & Pick<
+          NewsAndAnnouncement,
+          '_id' | 'header' | 'createdAt'
+        > & {
             canvas_preview?: Maybe<
               { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
             >;
-            dynamic_sections: Array<
-              Maybe<
-                | { __typename: 'ComponentContentSectionsCarousalImage' }
-                | ({ __typename: 'ComponentContentSectionsContentComponent' } & Pick<
-                    ComponentContentSectionsContentComponent,
-                    'body'
-                  >)
-                | { __typename: 'ComponentContentSectionsGridImage' }
+            dynamic_content?: Maybe<
+              Array<
+                Maybe<
+                  | { __typename: 'ComponentContentSectionsGridImage' }
+                  | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
+                      ComponentContentSectionsTextContent,
+                      'body'
+                    >)
+                  | { __typename: 'ComponentContentSectionsCarousalImage' }
+                >
+              >
+            >;
+            tags?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'tag_name' | 'seo_link'>
+                >
               >
             >;
           }
@@ -1439,27 +1524,260 @@ export type GetNewsQuery = { __typename?: 'Query' } & {
   >;
 };
 
-export const GetNewsDocument = gql`
-  query GetNews($offset: Int = 0, $limit: Int = 25) {
-    contents(
+export type CommonImagesFieldFragment = { __typename?: 'UploadFile' } & Pick<
+  UploadFile,
+  'id' | 'url' | 'caption' | 'alternativeText'
+>;
+
+export type CommonContentSectionFragment = {
+  __typename?: 'ComponentContentSectionsTextContent';
+} & Pick<ComponentContentSectionsTextContent, 'id' | 'body'>;
+
+export type GetNewsByIdQueryVariables = Exact<{
+  Id: Scalars['ID'];
+  LocaleConnection: Scalars['String'];
+}>;
+
+export type GetNewsByIdQuery = { __typename?: 'Query' } & {
+  newsAndAnnouncement?: Maybe<
+    { __typename?: 'NewsAndAnnouncement' } & Pick<
+      NewsAndAnnouncement,
+      '_id' | 'locale' | 'header' | 'createdAt' | 'updatedAt'
+    > & {
+        canvas_preview?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
+        tags?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'Tag' } & Pick<
+                Tag,
+                'tag_name' | 'locale' | 'tag_id' | '_id' | 'seo_link'
+              >
+            >
+          >
+        >;
+        dynamic_content?: Maybe<
+          Array<
+            Maybe<
+              | ({ __typename: 'ComponentContentSectionsGridImage' } & {
+                  images?: Maybe<
+                    { __typename?: 'ComponentContentSectionsImageWithCaption' } & Pick<
+                      ComponentContentSectionsImageWithCaption,
+                      '_id' | 'title'
+                    > & {
+                        images?: Maybe<
+                          Array<
+                            Maybe<
+                              { __typename?: 'UploadFile' } & CommonImagesFieldFragment
+                            >
+                          >
+                        >;
+                      }
+                  >;
+                })
+              | ({
+                  __typename: 'ComponentContentSectionsTextContent';
+                } & CommonContentSectionFragment)
+              | ({ __typename: 'ComponentContentSectionsCarousalImage' } & {
+                  images?: Maybe<
+                    { __typename?: 'ComponentContentSectionsImageWithCaption' } & Pick<
+                      ComponentContentSectionsImageWithCaption,
+                      '_id' | 'title'
+                    > & {
+                        images?: Maybe<
+                          Array<
+                            Maybe<
+                              { __typename?: 'UploadFile' } & CommonImagesFieldFragment
+                            >
+                          >
+                        >;
+                      }
+                  >;
+                })
+            >
+          >
+        >;
+        download?: Maybe<
+          { __typename?: 'ComponentCommonFileDownload' } & {
+            files?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'UploadFile' } & Pick<
+                    UploadFile,
+                    'url' | 'name' | '_id' | 'mime'
+                  >
+                >
+              >
+            >;
+          }
+        >;
+      }
+  >;
+  newsAndAnnouncementsConnection?: Maybe<
+    { __typename?: 'NewsAndAnnouncementConnection' } & {
+      values?: Maybe<
+        Array<
+          Maybe<
+            { __typename?: 'NewsAndAnnouncement' } & Pick<
+              NewsAndAnnouncement,
+              '_id' | 'header' | 'createdAt'
+            > & {
+                canvas_preview?: Maybe<
+                  { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+                >;
+                dynamic_content?: Maybe<
+                  Array<
+                    Maybe<
+                      | { __typename: 'ComponentContentSectionsGridImage' }
+                      | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
+                          ComponentContentSectionsTextContent,
+                          'body'
+                        >)
+                      | { __typename: 'ComponentContentSectionsCarousalImage' }
+                    >
+                  >
+                >;
+              }
+          >
+        >
+      >;
+    }
+  >;
+};
+
+export const CommonImagesFieldFragmentDoc = gql`
+  fragment commonImagesField on UploadFile {
+    id
+    url
+    caption
+    alternativeText
+  }
+`;
+export const CommonContentSectionFragmentDoc = gql`
+  fragment commonContentSection on ComponentContentSectionsTextContent {
+    id
+    body
+  }
+`;
+export const GetNewsByTagSeoLinkDocument = gql`
+  query GetNewsByTagSeoLink(
+    $offset: Int = 0
+    $limit: Int = 25
+    $locale: String!
+    $where: JSON
+  ) {
+    tags(locale: $locale) {
+      tag_id
+      seo_link
+      tag_name
+    }
+    newsAndAnnouncements(
       start: $offset
       limit: $limit
       publicationState: LIVE
       sort: "createdAt:desc"
+      locale: $locale
+      where: $where
     ) {
       _id
       header
       canvas_preview {
         url
       }
-      dynamic_sections {
+      dynamic_content {
         __typename
-        ... on ComponentContentSectionsContentComponent {
+        ... on ComponentContentSectionsTextContent {
           body
         }
+      }
+      tags {
+        tag_id
+        tag_name
+        seo_link
       }
       createdAt
     }
   }
 `;
-export type GetNewsQueryResult = Apollo.QueryResult<GetNewsQuery, GetNewsQueryVariables>;
+export type GetNewsByTagSeoLinkQueryResult = Apollo.QueryResult<
+  GetNewsByTagSeoLinkQuery,
+  GetNewsByTagSeoLinkQueryVariables
+>;
+export const GetNewsByIdDocument = gql`
+  query GetNewsById($Id: ID!, $LocaleConnection: String!) {
+    newsAndAnnouncement(id: $Id) {
+      _id
+      locale
+      header
+      canvas_preview {
+        url
+      }
+      tags {
+        tag_name
+        locale
+        tag_id
+        _id
+        seo_link
+      }
+      dynamic_content {
+        __typename
+        ... on ComponentContentSectionsGridImage {
+          images {
+            _id
+            title
+            images {
+              ...commonImagesField
+            }
+          }
+        }
+        ... on ComponentContentSectionsCarousalImage {
+          images {
+            _id
+            title
+            images {
+              ...commonImagesField
+            }
+          }
+        }
+        ... on ComponentContentSectionsTextContent {
+          ...commonContentSection
+        }
+      }
+      download {
+        files {
+          url
+          name
+          _id
+          mime
+        }
+      }
+      createdAt
+      updatedAt
+    }
+    newsAndAnnouncementsConnection(
+      sort: "createdAt:desc"
+      limit: 4
+      locale: $LocaleConnection
+    ) {
+      values {
+        _id
+        header
+        canvas_preview {
+          url
+        }
+        dynamic_content {
+          __typename
+          ... on ComponentContentSectionsTextContent {
+            body
+          }
+        }
+        createdAt
+      }
+    }
+  }
+  ${CommonImagesFieldFragmentDoc}
+  ${CommonContentSectionFragmentDoc}
+`;
+export type GetNewsByIdQueryResult = Apollo.QueryResult<
+  GetNewsByIdQuery,
+  GetNewsByIdQueryVariables
+>;
