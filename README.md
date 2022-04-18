@@ -92,7 +92,7 @@ since we've a custom library for strapi e.g. WYSIWYG, it needed for external bui
 # point to strapi plugin
 $ cd /strapi/plugins/wysiwyg
 
-#install dependency for plugin
+# install dependency for plugin
 $ yarn
 
 # build on /strapi
