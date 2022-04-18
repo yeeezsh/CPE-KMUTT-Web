@@ -33,7 +33,7 @@ cd ./CPE-KMUTT-Web
 
 run projecy via Docker in dev environment
 
-```bash
+```console
 $ docker-compose -f docker-compose.dev.yml up --build
 ```
 
@@ -47,8 +47,8 @@ when db not start cause have no permission to create dir e.g.
 
 fix by this command
 
-```sh
-sudo chown -R 1001 ./db
+```console
+$ sudo chown -R 1001 ./db
 ```
 
 #### Strapi
@@ -87,7 +87,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 since we've a custom library for strapi e.g. WYSIWYG, it needed for external build before starting strapi by following these steps
 
-```bash
+```console
 
 # point to strapi plugin
 $ cd /strapi/plugins/wysiwyg
@@ -109,8 +109,8 @@ Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delet
 
 For testing stage, using mongo-tools for restore a data.
 
-```bash
-cd /qa/strapi
+```console
+$ cd /qa/strapi
 
-mongorestore --host="localhost:27017" --username root --password cpeKMUTT@WebSite --authenticationDatabase admin
+$ mongorestore --host="localhost:27017" --username root --password cpeKMUTT@WebSite --authenticationDatabase admin
 ```
