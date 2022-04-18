@@ -83,6 +83,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 ```
 
+###### Build Library
+
+since we've a custom library for strapi e.g. WYSIWYG, it needed for external build before starting strapi by following these steps
+
+```bash
+
+# point to strapi plugin
+$ cd /strapi/plugins/wysiwyg
+
+#install dependency for plugin
+$ yarn
+
+# build on /strapi
+cd ../../
+$ yarn build
+
+```
+
 ##### Common issues
 
 Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delete `/strapi/node_modules` before restarting the strapi container to install a correct dependence on its own. Do not use yarn to install dependencies.
