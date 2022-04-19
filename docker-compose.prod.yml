@@ -18,6 +18,7 @@ services:
       TZ: Asia/Bangkok
   backend:
     container_name: cpe-kmutt-backend-prod
+    restart: always
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -40,9 +41,9 @@ services:
     links:
       - mongodb
     command: yarn start:dev
-    restart: always
   strapi:
     container_name: cpe-kmutt-strapi-prod
+    restart: always
     image: strapi/strapi
     environment:
       DATABASE_CLIENT: mongo
@@ -60,6 +61,7 @@ services:
   mongodb:
     container_name: mongodb
     image: "bitnami/mongodb:latest"
+    restart: on-failure
     environment:
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
       TZ: Asia/Bangkok
