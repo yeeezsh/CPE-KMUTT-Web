@@ -12,6 +12,7 @@ import {
   PortletDiscription,
   PortletTitle,
   PortletTitleHeader,
+  PortletTextWrapper,
   ShowAllButton,
   WhatNewStyle,
 } from './styled';
@@ -49,10 +50,13 @@ const WhatNewSection: React.FC = () => {
     <WhatNewStyle>
       <Container>
         <PortletTitle>
-          <PortletTitleHeader>มีอะไรใหม่</PortletTitleHeader>
-          <PortletDiscription>
-            สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
-          </PortletDiscription>
+          <PortletTextWrapper>
+            <PortletTitleHeader>มีอะไรใหม่</PortletTitleHeader>
+            <PortletDiscription>
+              สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
+            </PortletDiscription>
+          </PortletTextWrapper>
+
           <ShowAllButton>
             <Button $color="borderless">
               แสดงทั้งหมด

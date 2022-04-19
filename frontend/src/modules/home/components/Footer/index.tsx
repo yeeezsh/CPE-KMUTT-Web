@@ -50,7 +50,7 @@ const StaticSection: React.FC = () => {
         <HrLine />
         <CopyRightContainer>
           <CopyRight>
-            Copyright © 2020 ภาควิชาวิศวกรรมคอมพิวเตอร์
+            Copyright © 2022 ภาควิชาวิศวกรรมคอมพิวเตอร์
             มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี · สงวนสิทธิ์ทุกประการ
           </CopyRight>
           <InfoContainer>
