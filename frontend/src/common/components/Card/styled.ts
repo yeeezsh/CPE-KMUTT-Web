@@ -17,12 +17,21 @@ export const CardTitle = styled.div`
   font-weight: 700;
   margin-bottom: 6px;
   color: ${COLORS.PRIMARY_COLOR};
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const CardDiscription = styled.div`
   font-size: 14px;
   font-weight: 700;
   color: ${COLORS.GRAY_1};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
 export const CardDate = styled.div`
