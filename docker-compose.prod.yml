@@ -76,3 +76,17 @@ services:
       - "27017:27017"
     volumes:
       - "./db:/bitnami"
+  strapi-worker:
+    restart: always
+    image: strapi/strapi
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: strapi
+      DATABASE_HOST: mongodb
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: cpeKMUTT@WebSite
+    volumes:
+      - ./strapi:/srv/app
+    depends_on:
+      - mongodb
