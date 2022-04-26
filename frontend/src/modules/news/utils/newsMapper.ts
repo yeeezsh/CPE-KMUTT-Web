@@ -4,7 +4,7 @@ import {
   GetNewsByIdQuery,
   GetNewsByTagSeoLinkQuery,
 } from 'common/generated/generated-types';
-import { joinImageStrapi } from 'common/utils/join';
+import { ImageStrapiUrl } from 'common/utils/url';
 
 import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
 
@@ -31,7 +31,7 @@ export const newsMapper = (data: GetNewsByTagSeoLinkQuery) => {
       ...e,
       description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
       thumbnail: e?.canvas_preview?.url
-        ? joinImageStrapi(e.canvas_preview.url)
+        ? ImageStrapiUrl(e.canvas_preview.url)
         : undefined,
       _id: e?._id || Math.random().toLocaleString(),
       variant: isPrimary ? CardVariant.primary : CardVariant.normal,
@@ -65,7 +65,7 @@ export const newsConnectionMapper = (
         title: e?.header as string,
         description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
         date: new Date(e?.createdAt).toLocaleDateString(),
-        thumbnail: e?.canvas_preview?.url ? joinImageStrapi(e.canvas_preview.url) : '/',
+        thumbnail: e?.canvas_preview?.url ? ImageStrapiUrl(e.canvas_preview.url) : '/',
         variant: isPrimary ? CardVariant.primary : CardVariant.normal,
       };
     })

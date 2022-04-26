@@ -1,7 +1,7 @@
-import { ChildrenProps } from './types';
+import { CarouselItem } from './types';
 
 //Example props for Carousel
-export const CAROUSEL_DEFAULT_CONSTANT: ChildrenProps[] = [
+export const CAROUSEL_DEFAULT_CONSTANT: CarouselItem[] = [
   {
     id: 0,
     picture: 'https://www.nicepng.com/png/detail/95-953450_man-man-with-laptop-png.png',
@@ -32,7 +32,7 @@ export const CAROUSEL_DEFAULT_CONSTANT: ChildrenProps[] = [
   },
 ];
 
-export const CAROUSEL_SLIDER_CONSTANT: ChildrenProps[] = [
+export const CAROUSEL_SLIDER_CONSTANT: CarouselItem[] = [
   {
     id: 0,
     picture: 'https://static.bangkokpost.com/media/content/20190306/3122160.jpg',

@@ -5,30 +5,34 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { Btn } from 'common/components/Button/styled';
 import Carousel from 'common/components/Carousel';
-import {
-  CAROUSEL_DEFAULT_CONSTANT,
-  CAROUSEL_SLIDER_CONSTANT,
-} from 'common/components/Carousel/constant';
 
 import Footer from 'modules/home/components/Footer';
 import StaticSection from 'modules/home/components/StaticSection';
 import { ButtonStyled } from 'modules/home/components/StaticSection/styled';
 import WhatNewSection from 'modules/home/components/WhatNewSection';
+import { useHomeContentParser } from 'modules/home/hooks/useHomeContentParser';
+import { HomesProps } from 'modules/home/page/Home/types';
 import Navbar from 'modules/root/components/Navbar';
 
 import { Main } from './styled';
 
-const Home: React.FC = () => {
+const Home: React.FC<HomesProps> = ({ data }) => {
+  const { mainCarousal, activityAndAwardsCarousal, whatsNews } = useHomeContentParser(
+    data,
+  );
+
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>หน้าแรก</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <Main>
-        <Carousel variant="Default" item={CAROUSEL_DEFAULT_CONSTANT} />
-        <WhatNewSection />
+        <Carousel variant="Default" item={mainCarousal} />
+
+        <WhatNewSection data={whatsNews} />
+
         <StaticSection
           id="1"
           background="/images/static_bg_curriculum.png"
@@ -52,7 +56,7 @@ const Home: React.FC = () => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
-        <Carousel variant="Slider" item={CAROUSEL_SLIDER_CONSTANT} />
+        <Carousel variant="Slider" item={activityAndAwardsCarousal} />
         <StaticSection
           id="2"
           background="/images/static_bg_gallery.png"
