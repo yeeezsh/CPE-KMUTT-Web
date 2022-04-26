@@ -20,7 +20,8 @@ services:
       target: prod
     environment:
       TZ: Asia/Bangkok
-      STRAPI_ENDPOINT: http://beta.cpe.kmutt.ac.th:1337/
+      STRAPI_ENDPOINT: http://beta.cpe.kmutt.ac.th/strapi/
+      APP_GRAPHQL_ENDPOINT: http://beta.cpe.kmutt.ac.th/strapi/
     depends_on:
     - strapi
   backend:
