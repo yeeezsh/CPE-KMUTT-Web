@@ -2,6 +2,7 @@ version: "3.4"
 services:
   backend:
     container_name: cpe-kmutt-backend
+    restart: always
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -26,9 +27,11 @@ services:
     links:
       - mongodb
     command: yarn start:dev
-    restart: always
+    depends_on:
+      - mongodb
   frontend:
     container_name: cpe-kmutt-frontend
+    restart: always
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -41,8 +44,11 @@ services:
       - 49153:49153
     volumes:
       - "./frontend:/frontend"
+    depends_on:
+    - strapi
   strapi:
     container_name: cpe-kmutt-strapi
+    restart: on-failure
     image: strapi/strapi
     environment:
       DATABASE_CLIENT: mongo
@@ -59,6 +65,7 @@ services:
       - mongodb
   mongodb:
     container_name: mongodb
+    restart: on-failure
     image: "bitnami/mongodb:latest"
     environment:
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite

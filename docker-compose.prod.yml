@@ -8,8 +8,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+    depends_on:
+      - strapi
+      - mongodb
   frontend:
     container_name: cpe-kmutt-frontend-prod
+    restart: on-failure
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -17,9 +21,11 @@ services:
     environment:
       TZ: Asia/Bangkok
       STRAPI_ENDPOINT: http://beta.cpe.kmutt.ac.th:1337
+    depends_on:
+    - strapi
   backend:
     container_name: cpe-kmutt-backend-prod
-    restart: always
+    restart: on-failure
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -44,7 +50,7 @@ services:
     command: yarn start:dev
   strapi:
     container_name: cpe-kmutt-strapi-prod
-    restart: always
+    restart: on-failure
     image: strapi/strapi
     environment:
       DATABASE_CLIENT: mongo
