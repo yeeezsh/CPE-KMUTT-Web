@@ -37,6 +37,12 @@ run projecy via Docker in dev environment
 $ docker-compose -f docker-compose.dev.yml up --build
 ```
 
+for production deployment
+
+```console
+$ docker-compose -f docker-compose.prod.yml up --build --scale strapi-worker=3
+```
+
 ### Issues
 
 #### DB
