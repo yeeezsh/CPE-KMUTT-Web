@@ -4,7 +4,7 @@ import {
   GetNewsByIdQuery,
   GetNewsByTagSeoLinkQuery,
 } from 'common/generated/generated-types';
-import { ImageStrapiUrl } from 'common/utils/url';
+import { ImageStrapiUrl } from 'common/utils/urls';
 
 import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
 

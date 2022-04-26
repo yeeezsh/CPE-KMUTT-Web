@@ -8,7 +8,7 @@ import {
   ComponentContentSectionsTextContent,
   GetHomeQuery,
 } from 'common/generated/generated-types';
-import { ImageStrapiUrl } from 'common/utils/url';
+import { ImageStrapiUrl } from 'common/utils/urls';
 
 const MAX_DESCRIPTION_LENGTH = 240;
 const MAX_DESCRIPTION_LENGTH_PRIMARY = 55;
