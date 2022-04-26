@@ -40,7 +40,7 @@ $ docker-compose -f docker-compose.dev.yml up --build
 ### Production deployment
 
 ```console
-$ docker-compose -f docker-compose.prod.yml up --build --scale strapi-worker=3
+$ docker-compose -f docker-compose.prod.yml up -d --build --scale strapi-worker=3
 ```
 
 please check the proxy config in [nginx.conf](./proxy/nginx.conf) to match the `--scale` setting
