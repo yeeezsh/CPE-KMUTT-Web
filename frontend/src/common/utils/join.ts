@@ -1,6 +1,8 @@
-import { join } from 'path';
+import { URL } from 'url';
 
 import { STRAPI_ENDPOINT } from 'common/constants';
 
-export const joinImageStrapi = (url: string): string => join(STRAPI_ENDPOINT, url);
-export const joinFileDownloadStrapi = (url: string): string => join(STRAPI_ENDPOINT, url);
+export const joinImageStrapi = (url: string): string =>
+  new URL(url, STRAPI_ENDPOINT).href;
+export const joinFileDownloadStrapi = (url: string): string =>
+  new URL(url, STRAPI_ENDPOINT).href;
