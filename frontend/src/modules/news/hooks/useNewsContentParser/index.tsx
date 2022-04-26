@@ -8,7 +8,7 @@ import {
   GetNewsByIdQuery,
   NewsAndAnnouncementDynamicContentDynamicZone,
 } from 'common/generated/generated-types';
-import { FileDownloadStrapiUrl, ImageStrapiUrl } from 'common/utils/url';
+import { FileDownloadStrapiUrl, ImageStrapiUrl } from 'common/utils/urls';
 
 import { NewsContentContainer } from 'modules/news/components/NewsContent/styled';
 import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
