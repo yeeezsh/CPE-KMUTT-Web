@@ -35,6 +35,7 @@ services:
       target: dev
     environment:
       TZ: Asia/Bangkok
+      STRAPI_ENDPOINT: http://localhost:1337
     ports:
       - 5000:3000
       - 49153:49153

@@ -2,6 +2,8 @@ FROM node:16-alpine3.11 as base
 WORKDIR /frontend
 COPY yarn.lock yarn.lock
 COPY package.json package.json
+ARG STRAPI_ENDPOINT
+ENV STRAPI_ENDPOINT=${STRAPI_ENDPOINT}
 RUN yarn install
 
 FROM base as dev
