@@ -16,7 +16,7 @@ services:
       target: prod
     environment:
       TZ: Asia/Bangkok
-      STRAPI_ENDPOINT: http://beta.cpe.kmutt.ac.th:1337/
+      STRAPI_ENDPOINT: http://beta.cpe.kmutt.ac.th:1337
   backend:
     container_name: cpe-kmutt-backend-prod
     restart: always
