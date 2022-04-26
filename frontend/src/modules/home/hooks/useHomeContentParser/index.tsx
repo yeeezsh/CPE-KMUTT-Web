@@ -8,7 +8,7 @@ import {
   ComponentContentSectionsTextContent,
   GetHomeQuery,
 } from 'common/generated/generated-types';
-import { joinImageStrapi } from 'common/utils/join';
+import { ImageStrapiUrl } from 'common/utils/url';
 
 const MAX_DESCRIPTION_LENGTH = 240;
 const MAX_DESCRIPTION_LENGTH_PRIMARY = 55;
@@ -24,7 +24,7 @@ export const useHomeContentParser = (data?: GetHomeQuery): UseHomeContentParser 
   function commonMapper(e: any, i: number) {
     return {
       id: i,
-      picture: joinImageStrapi(e?.image?.url || ''),
+      picture: ImageStrapiUrl(e?.image?.url || ''),
       heading: e?.title,
       caption: e?.description.replaceAll(REGEX_PATTERN, ''),
     };
@@ -62,7 +62,7 @@ export const useHomeContentParser = (data?: GetHomeQuery): UseHomeContentParser 
       title: e?.header,
       description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
       thumbnail: e?.canvas_preview?.url
-        ? joinImageStrapi(e.canvas_preview.url)
+        ? ImageStrapiUrl(e.canvas_preview.url)
         : undefined,
       date: dayjs(e?.createdAt).format(NEWS_DATE_FORMAT),
       variant: isPrimary ? CardVariant.primary : CardVariant.normal,
