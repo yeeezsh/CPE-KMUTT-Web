@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_home_main_canvas",
+  "info": {
+    "name": "main_canvas",
+    "icon": "images"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "news_announcement": {
+      "model": "news-and-announcement"
+    }
+  }
+}

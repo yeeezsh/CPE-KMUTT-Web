@@ -8,7 +8,7 @@ import {
   GetNewsByIdQuery,
   NewsAndAnnouncementDynamicContentDynamicZone,
 } from 'common/generated/generated-types';
-import { joinFileDownloadStrapi, joinImageStrapi } from 'common/utils/join';
+import { FileDownloadStrapiUrl, ImageStrapiUrl } from 'common/utils/url';
 
 import { NewsContentContainer } from 'modules/news/components/NewsContent/styled';
 import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
@@ -54,14 +54,14 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
   const title = data?.newsAndAnnouncement?.header;
   const thumbnail =
     data?.newsAndAnnouncement?.canvas_preview?.url &&
-    joinImageStrapi(data?.newsAndAnnouncement.canvas_preview.url);
+    ImageStrapiUrl(data?.newsAndAnnouncement.canvas_preview.url);
   const postDate = dayjs(data?.newsAndAnnouncement?.createdAt).format(NEWS_DATE_FORMAT);
   const contents = data?.newsAndAnnouncement?.dynamic_content?.map((e) =>
     mapContents(e as NewsAndAnnouncementDynamicContentDynamicZone),
   );
   const download = data?.newsAndAnnouncement?.download?.files?.map((e) => ({
     title: e?.name,
-    link: joinFileDownloadStrapi(e?.url || ''),
+    link: FileDownloadStrapiUrl(e?.url || ''),
   }));
   const connections = newsConnectionMapper(data);
 
