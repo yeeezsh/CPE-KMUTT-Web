@@ -49,16 +49,16 @@ const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
 
         {data && (
           <CardContainer>
-            {data.map((data, index) => (
+            {data.map((el, index) => (
               <Card
                 key={index}
-                title={data.title}
-                description={data.description}
-                date={data.date}
-                thumbnail={data.thumbnail}
-                id={data.id}
-                variant={data.variant}
-                onClick={() => onCardClick(data.id)}
+                title={el.title}
+                description={el.description}
+                date={el.date}
+                thumbnail={el.thumbnail}
+                id={el.id}
+                variant={el.variant}
+                onClick={() => onCardClick(el.id)}
               />
             ))}
           </CardContainer>
