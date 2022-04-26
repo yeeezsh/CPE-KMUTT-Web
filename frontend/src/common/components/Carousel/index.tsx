@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { useRouter } from 'next/router';
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from 'react-icons/hi';
 
 import Button from 'common/components/Button';
@@ -50,6 +51,11 @@ const Carousel: React.FC<CarouselProps> = (props) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  const router = useRouter();
+
+  function onClickLink(link: string) {
+    router.push(link);
+  }
 
   const {
     pause,
@@ -157,7 +163,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                         {/* //FIXME: refactor */}
                         {link && props.variant != 'PopUp' ? (
                           isDefault ? (
-                            <StyledButton>
+                            <StyledButton onClick={() => onClickLink(link)}>
                               อ่านต่อเพิ่มเติม
                               <HiOutlineArrowRight
                                 style={{ marginLeft: '15px' }}

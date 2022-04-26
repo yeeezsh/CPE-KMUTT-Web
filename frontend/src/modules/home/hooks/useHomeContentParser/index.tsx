@@ -20,7 +20,6 @@ type UseHomeContentParser = {
   whatsNews: CardProps[];
 };
 
-// TODO: test
 export const useHomeContentParser = (data?: GetHomeQuery): UseHomeContentParser => {
   function commonMapper(e: any, i: number) {
     return {
@@ -33,7 +32,6 @@ export const useHomeContentParser = (data?: GetHomeQuery): UseHomeContentParser 
 
   const mainCarousal = data?.home?.main_canvas?.map((e, i) => ({
     ...commonMapper(e, i),
-
     link:
       e?.news_announcement?.seo_link &&
       STATIC_NEWS_ID_LINK.replace(STATIC_NEWS_ID_LINK_PATTERN, e?.news_announcement?._id),

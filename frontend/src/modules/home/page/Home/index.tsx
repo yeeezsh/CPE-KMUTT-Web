@@ -29,11 +29,7 @@ const Home: React.FC<HomesProps> = ({ data }) => {
       </Head>
       <Navbar />
       <Main>
-        <Carousel
-          variant="Default"
-          // item={CAROUSEL_DEFAULT_CONSTANT}
-          item={mainCarousal}
-        />
+        <Carousel variant="Default" item={mainCarousal} />
 
         <WhatNewSection data={whatsNews} />
 
@@ -60,11 +56,7 @@ const Home: React.FC<HomesProps> = ({ data }) => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
-        <Carousel
-          variant="Slider"
-          // item={CAROUSEL_SLIDER_CONSTANT}
-          item={activityAndAwardsCarousal}
-        />
+        <Carousel variant="Slider" item={activityAndAwardsCarousal} />
         <StaticSection
           id="2"
           background="/images/static_bg_gallery.png"
