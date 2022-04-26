@@ -1,4 +1,4 @@
-export type ChildrenProps = {
+export type CarouselItem = {
   id: number;
   picture: string;
   heading?: string;
@@ -8,7 +8,7 @@ export type ChildrenProps = {
 };
 
 export type CarouselProps = {
-  item: ChildrenProps[];
+  item: CarouselItem[];
   variant: 'Default' | 'Slider' | 'PopUp';
   initialSlide?: number;
 };
