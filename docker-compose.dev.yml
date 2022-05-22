@@ -45,11 +45,13 @@ services:
     volumes:
       - "./frontend:/frontend"
     depends_on:
-    - strapi
+      - strapi
   strapi:
     container_name: cpe-kmutt-strapi
     restart: on-failure
-    image: strapi/strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
