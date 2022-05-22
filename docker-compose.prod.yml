@@ -51,7 +51,9 @@ services:
   strapi:
     container_name: cpe-kmutt-strapi-prod
     restart: on-failure
-    image: strapi/strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
