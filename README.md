@@ -98,7 +98,7 @@ since we've a custom library for strapi e.g. WYSIWYG, it needed for external bui
 ```console
 
 # point to strapi plugin
-$ cd /strapi/plugins/wysiwyg
+$ cd ./strapi/plugins/wysiwyg
 
 # install dependency for plugin
 $ yarn
