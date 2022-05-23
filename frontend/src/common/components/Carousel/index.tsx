@@ -41,7 +41,7 @@ import {
 import { CarouselProps, CarouselItem } from './types';
 
 const Carousel: React.FC<CarouselProps> = (props) => {
-  const SLIDE_COUNT = props.item.length;
+  const SLIDE_COUNT = props?.item?.length || 0;
   const isDefault = props.variant === 'Default' ? true : false;
   const firstSlide = props.initialSlide ? props.initialSlide : 0;
   const [isModalVisible, setIsModalVisible] = useState(false);
