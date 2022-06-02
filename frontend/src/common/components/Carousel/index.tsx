@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { useRouter } from 'next/router';
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from 'react-icons/hi';
 
 import Button from 'common/components/Button';
@@ -38,10 +39,10 @@ import {
   StyledSliderSlide,
   Tag,
 } from './styled';
-import { CarouselProps, ChildrenProps } from './types';
+import { CarouselProps, CarouselItem } from './types';
 
 const Carousel: React.FC<CarouselProps> = (props) => {
-  const SLIDE_COUNT = props.item.length;
+  const SLIDE_COUNT = props?.item?.length || 0;
   const isDefault = props.variant === 'Default' ? true : false;
   const firstSlide = props.initialSlide ? props.initialSlide : 0;
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -51,6 +52,11 @@ const Carousel: React.FC<CarouselProps> = (props) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  const router = useRouter();
+
+  function onClickLink(link: string) {
+    router.push(link);
+  }
 
   const {
     pause,
@@ -135,7 +141,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
 
             {/* body */}
             {props.item
-              ? props.item.map(({ id, heading, caption, tag, link }: ChildrenProps) => {
+              ? props.item.map(({ id, heading, caption, tag, link }: CarouselItem) => {
                   const displayCaption =
                     props.variant === 'PopUp'
                       ? `${caption || ''}`
@@ -161,7 +167,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                         {/* //FIXME: refactor */}
                         {link && props.variant != 'PopUp' ? (
                           isDefault ? (
-                            <StyledButton>
+                            <StyledButton onClick={() => onClickLink(link)}>
                               อ่านต่อเพิ่มเติม
                               <HiOutlineArrowRight
                                 style={{ marginLeft: '15px' }}
@@ -189,7 +195,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
           {/* //FIXME: refactor */}
           <StyledSlider ref={sliderRef}>
             {props.item
-              ? props.item.map(({ id, picture }: ChildrenProps) => {
+              ? props.item.map(({ id, picture }: CarouselItem) => {
                   return (
                     <StyledSliderSlide key={id + 'slide-image'}>
                       <Image src={picture} alt="" />

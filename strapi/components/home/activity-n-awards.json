@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_home_activity_n_awards",
+  "info": {
+    "name": "activity_n_awards",
+    "icon": "award",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "tag": {
+      "model": "tag"
+    }
+  }
+}
