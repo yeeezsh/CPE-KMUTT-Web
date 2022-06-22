@@ -12,7 +12,6 @@ services:
       - strapi
       - mongodb
   frontend:
-    container_name: cpe-kmutt-frontend-prod
     restart: on-failure
     build:
       context: ./frontend
@@ -20,9 +19,10 @@ services:
       target: prod
     environment:
       TZ: Asia/Bangkok
-      STRAPI_ENDPOINT: http://beta.cpe.kmutt.ac.th:1337
+      STRAPI_ENDPOINT: http://beta.cpe.kmutt.ac.th/strapi/
+      APP_GRAPHQL_ENDPOINT: http://beta.cpe.kmutt.ac.th/strapi/
     depends_on:
-    - strapi
+      - strapi
   backend:
     container_name: cpe-kmutt-backend-prod
     restart: on-failure
@@ -51,7 +51,9 @@ services:
   strapi:
     container_name: cpe-kmutt-strapi-prod
     restart: on-failure
-    image: strapi/strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
@@ -61,8 +63,6 @@ services:
       DATABASE_PASSWORD: cpeKMUTT@WebSite
     volumes:
       - ./strapi:/srv/app
-    ports:
-      - "1337:1337"
     depends_on:
       - mongodb
   mongodb:
@@ -72,7 +72,5 @@ services:
     environment:
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
       TZ: Asia/Bangkok
-    ports:
-      - "27017:27017"
     volumes:
       - "./db:/bitnami"

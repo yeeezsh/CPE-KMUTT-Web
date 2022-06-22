@@ -38,18 +38,20 @@ services:
       target: dev
     environment:
       TZ: Asia/Bangkok
-      STRAPI_ENDPOINT: http://localhost:1337
+      STRAPI_ENDPOINT: http://localhost:1337/
     ports:
       - 5000:3000
       - 49153:49153
     volumes:
       - "./frontend:/frontend"
     depends_on:
-    - strapi
+      - strapi
   strapi:
     container_name: cpe-kmutt-strapi
     restart: on-failure
-    image: strapi/strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
