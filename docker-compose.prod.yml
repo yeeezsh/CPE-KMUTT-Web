@@ -62,7 +62,7 @@ services:
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
     volumes:
-      - ./strapi:/srv/app
+      - ./uploads/:/app/public/uploads
     depends_on:
       - mongodb
   mongodb:
