@@ -1,5 +1,5 @@
 import 'antd/dist/antd.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { ApolloProvider } from '@apollo/client';
 import type { AppProps } from 'next/app';
@@ -15,9 +15,11 @@ const tagManagerArgs = {
   gtmId: 'GTM-PF6LN2L',
 };
 
-TagManager.initialize(tagManagerArgs);
-
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+  useEffect(() => {
+    TagManager.initialize(tagManagerArgs);
+  }, []);
+
   return (
     <>
       <GlobalStyle />
