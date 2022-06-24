@@ -23,6 +23,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@reduxjs/toolkit": "1.6.1",
+    "@types/react-gtm-module": "2.0.1",
     "antd": "4.8.2",
     "dayjs": "1.11.0",
     "graphql": "15.5.1",
@@ -30,6 +31,7 @@
     "next": "10.0.1",
     "react": "16.14",
     "react-dom": "16.14",
+    "react-gtm-module": "2.0.11",
     "react-icons": "4.1.0",
     "react-redux": "7.2.5",
     "redux": "4.1.1",
