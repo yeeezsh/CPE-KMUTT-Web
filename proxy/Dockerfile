@@ -1,4 +1,3 @@
-FROM nginx:alpine as nginx
+FROM nginx:1.15-alpine as nginx
 COPY nginx.conf /etc/nginx/nginx.conf
-ENTRYPOINT ["nginx","-g","daemon off;"]
 EXPOSE 80
