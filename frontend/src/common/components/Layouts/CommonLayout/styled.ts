@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import COLORS from 'common/constants/colors';
 
 import { NAVBAR_HEIGHT } from 'modules/root/components/Navbar/styled';
+interface CommonWrapperHeaderProps {
+  $backgroundImage: string;
+}
 
 export const CommonLayoutStyle = styled.div`
   display: block;
@@ -21,10 +24,10 @@ export const CommonLayoutStyle = styled.div`
   }
 `;
 
-export const CommonWrapperHeader = styled.div`
+export const CommonWrapperHeader = styled.div<CommonWrapperHeaderProps>`
   background-repeat: no-repeat;
   background-position: right;
-  background-image: url(/images/wrapper_bg_header.png);
+  background-image: ${(props) => `url(${props.$backgroundImage});`};
   height: 150px;
   display: block;
 `;

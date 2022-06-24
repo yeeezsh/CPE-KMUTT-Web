@@ -12,6 +12,7 @@ import Container from 'common/components/Container';
 import Footer from 'modules/home/components/Footer';
 import Navbar from 'modules/root/components/Navbar';
 
+import { DEFAULT_HEADER_BACKGROUND_IMAGE_URL } from './constants';
 import {
   AnnouceFAQ,
   CommonLayoutStyle,
@@ -52,12 +53,17 @@ export const FaqWithBanner: React.FC = () => (
   </AnnouceFAQ>
 );
 
-const CommonLayout: React.FC<CommonLayoutProps> = ({ children, ...props }) => {
+const CommonLayout: React.FC<CommonLayoutProps> = ({
+  headerBackgroundImage,
+  children,
+  ...props
+}) => {
   return (
     <>
       <Navbar />
       <CommonLayoutStyle>
-        <CommonWrapperHeader>
+        <CommonWrapperHeader
+          $backgroundImage={headerBackgroundImage ?? DEFAULT_HEADER_BACKGROUND_IMAGE_URL}>
           <CommonWrapperCanvas>
             <CommonWrapperRow className="center">
               <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>

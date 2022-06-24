@@ -8,4 +8,5 @@ export interface CommonLayoutProps {
   header?: string;
   navigate?: CrumbProps[];
   withFaqBanner?: boolean;
+  headerBackgroundImage?: string;
 }
