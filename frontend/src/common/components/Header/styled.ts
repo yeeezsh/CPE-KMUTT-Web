@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// import about_img from 'common/assets/about-us-banner.png';
-
 import fontFamily from 'common/styles/typography/fontFamily';
 
 import { NAVBAR_HEIGHT } from 'modules/root/components/Navbar/styled';

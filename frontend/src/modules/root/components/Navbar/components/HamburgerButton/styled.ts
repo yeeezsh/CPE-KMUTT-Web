@@ -23,7 +23,6 @@ export const StyledMenuButton = styled.button`
 export const Hamburger = styled.svg`
   width: 18px;
   height: 12px;
-  /* margin-bottom: 8px; */
   &:hover {
     fill: ${COLORS.PRIMARY_COLOR};
   }
@@ -32,7 +31,6 @@ export const Hamburger = styled.svg`
 export const Cancel = styled.svg`
   width: 18px;
   height: 12px;
-  /* margin-bottom: 8px; */
   &:hover {
     fill: ${COLORS.PRIMARY_COLOR};
   }
