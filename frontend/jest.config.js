@@ -14,6 +14,8 @@ const aliasModule = Object.keys(tsconfig.compilerOptions.paths || {})
     return { ...acc, ...cur };
   }, {});
 
+process.env.STRAPI_ENDPOINT = 'http://localhost:1337';
+
 module.exports = {
   // roots: ["src"],
   moduleDirectories: ['./src', 'node_modules'],

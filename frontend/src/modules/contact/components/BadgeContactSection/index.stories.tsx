@@ -5,7 +5,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import BadgeContactSection from '.';
 
 const meta: Meta = {
-  title: 'common/components/BadgeContactSection',
+  title: 'modules/contact/components/BadgeContactSection',
   component: BadgeContactSection,
 };
 

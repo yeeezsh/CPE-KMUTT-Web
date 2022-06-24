@@ -5,7 +5,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import 'antd/dist/antd.css';
 import 'keen-slider/keen-slider.min.css';
 
-import { CarouselProps, ChildrenProps } from './types';
+import { CarouselProps, CarouselItem } from './types';
 
 import Carousel from '.';
 
@@ -15,7 +15,7 @@ export default {
 } as Meta;
 
 const Template: Story<CarouselProps> = (args) => <Carousel {...args} />;
-const sampleItem: ChildrenProps[] = [
+const sampleItem: CarouselItem[] = [
   {
     id: 0,
     picture: 'https://www.nicepng.com/png/detail/95-953450_man-man-with-laptop-png.png',

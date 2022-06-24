@@ -33,9 +33,17 @@ cd ./CPE-KMUTT-Web
 
 run projecy via Docker in dev environment
 
-```bash
+```console
 $ docker-compose -f docker-compose.dev.yml up --build
 ```
+
+### Production deployment
+
+```console
+$ docker-compose -f docker-compose.prod.yml up -d --build --scale frontend=3
+```
+
+please check the proxy config in [nginx.conf](./proxy/nginx.conf) to match the `--scale` setting
 
 ### Issues
 
@@ -47,8 +55,8 @@ when db not start cause have no permission to create dir e.g.
 
 fix by this command
 
-```sh
-sudo chown -R 1001 ./db
+```console
+$ sudo chown -R 1001 ./db
 ```
 
 #### Strapi
@@ -59,6 +67,48 @@ default admin account
 | --------------------- | --------- |
 | admin@cpe.kmutt.ac.th | Admin2021 |
 
+###### Codegen
+
+how to build a new API and generate native code for frontend
+
+- add new `collection/single` type via strapi admin http://localhost:1337/admin
+- config permission for `public` user http://localhost:1337/admin/settings/users-permissions/roles
+- play query on strapi graphql http://localhost:1337/graphql
+- copy your query to `frontend/src` and should be placed in `service` domain
+  file name should following this convention `[name-w-action].operation.graphql`
+- run `yarn codegen` on frontend project
+  then call by graphql client in `next/pages` following these example in _src/pages/index.tsx_
+
+```tsx
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await client.query<GetHomeQuery>({
+    query: GetHomeDocument,
+    variables: { locale: "th" },
+  });
+  return {
+    props: { data },
+  };
+};
+```
+
+###### Build Library
+
+since we've a custom library for strapi e.g. WYSIWYG, it needed for external build before starting strapi by following these steps
+
+```console
+
+# point to strapi plugin
+$ cd ./strapi/plugins/wysiwyg
+
+# install dependency for plugin
+$ yarn
+
+# build on /strapi
+cd ../../
+$ yarn build
+
+```
+
 ##### Common issues
 
 Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delete `/strapi/node_modules` before restarting the strapi container to install a correct dependence on its own. Do not use yarn to install dependencies.
@@ -67,8 +117,8 @@ Due to conflicting dependencies, stop the `cpe-kmutt-strapi` container and delet
 
 For testing stage, using mongo-tools for restore a data.
 
-```bash
-cd /qa/strapi
+```console
+$ cd /qa/strapi
 
-mongorestore --host="localhost:27017" --username root --password cpeKMUTT@WebSite --authenticationDatabase admin
+$ mongorestore --host="localhost:27017" --username root --password cpeKMUTT@WebSite --authenticationDatabase admin
 ```
