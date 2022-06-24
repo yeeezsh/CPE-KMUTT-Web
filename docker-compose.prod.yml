@@ -13,17 +13,21 @@ services:
       - strapi
       - mongodb
     volumes:
-      - ./data/nginx:/etc/nginx/conf.d
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
+      - web-root:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
   certbot:
     image: certbot/certbot
-    restart: unless-stopped
+    container_name: certbot
     volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - proxy
+    command: certonly --webroot --webroot-path=/var/www/html --email admin@cep.kmutt.ac.th --agree-tos --no-eff-email --staging -d beta.cpe.kmutt.ac.th  -d www.beta.cpe.kmutt.ac.th
   frontend:
     restart: on-failure
     build:
@@ -90,3 +94,8 @@ services:
       TZ: Asia/Bangkok
     volumes:
       - "./db:/bitnami"
+
+volumes:
+  certbot-etc:
+  certbot-var:
+  web-root:
