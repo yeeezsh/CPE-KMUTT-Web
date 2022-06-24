@@ -23,6 +23,9 @@ services:
       APP_GRAPHQL_ENDPOINT: http://beta.cpe.kmutt.ac.th/strapi/
     depends_on:
       - strapi
+    deploy:
+      mode: replicated
+      replicas: 3
   backend:
     container_name: cpe-kmutt-backend-prod
     restart: on-failure
