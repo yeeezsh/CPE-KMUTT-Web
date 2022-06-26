@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
+
 import Container from 'common/components/Container';
 
 import { NAVBAR_MENU, NAVBAR_SUB_MENU } from './constants';
@@ -16,6 +18,12 @@ import {
 } from './styled';
 
 const NavbarMenu: React.FC = () => {
+  const router = useRouter();
+
+  function onLinkClick(link?: string) {
+    link && router.push(link);
+  }
+
   return (
     <MenuWrap>
       <Container>
@@ -31,7 +39,10 @@ const NavbarMenu: React.FC = () => {
                 <Item>{label}</Item>
                 {subMenu?.map(({ key: itemKey, label: ItemLabel, link }) => {
                   return (
-                    <ItemLink key={key + '-submenu-' + itemKey} href={link}>
+                    <ItemLink
+                      key={key + '-submenu-' + itemKey}
+                      onClick={() => onLinkClick(link)}
+                      href="#">
                       {label}
                     </ItemLink>
                   );
@@ -41,8 +52,12 @@ const NavbarMenu: React.FC = () => {
           })}
         </Menu>
         <SubMenu>
-          {NAVBAR_SUB_MENU.map(({ key, label }) => {
-            return <SubMenuItem key={key}>{label}</SubMenuItem>;
+          {NAVBAR_SUB_MENU.map(({ key, label, link }) => {
+            return (
+              <SubMenuItem key={key} onClick={() => onLinkClick(link)}>
+                {label}
+              </SubMenuItem>
+            );
           })}
         </SubMenu>
       </Container>
