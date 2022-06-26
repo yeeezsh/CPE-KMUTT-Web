@@ -1,3 +1,5 @@
+import { STATIC_CONTACT_US } from 'common/constants/links';
+
 import { MenuItem } from './types';
 
 export const NAVBAR_MENU: MenuItem[] = [
@@ -150,5 +152,5 @@ export const NAVBAR_SUB_MENU: MenuItem[] = [
   { key: '1', label: 'สำหรับนักศึกษาปัจจุบัน', subMenu: STUDENT },
   { key: '2', label: 'สำหรับบุคลากร', subMenu: STAFF },
   { key: '3', label: 'ดาวน์โหลด', link: '#' },
-  { key: '4', label: 'ติดต่อเรา', link: '#' },
+  { key: '4', label: 'ติดต่อเรา', link: STATIC_CONTACT_US },
 ];
