@@ -43,6 +43,7 @@ export const LogoKMUTT = styled.img`
     height: 34px;
     margin: 10px 10px 16px 20px;
   }
+  cursor: pointer;
 `;
 
 export const StyledDivider = styled(Divider)`
@@ -64,6 +65,7 @@ export const LogoCPE = styled.img`
     height: 26px;
     margin: 17px 0 16px 10px;
   }
+  cursor: pointer;
 `;
 
 export const Wrapper = styled.div`
