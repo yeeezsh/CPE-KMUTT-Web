@@ -1,3 +1,4 @@
+// FIXME: Refactor this
 export default {
   //COLOR PALETTE
   PRIMARY_COLOR: '#4A60AC',
