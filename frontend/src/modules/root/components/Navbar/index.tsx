@@ -1,8 +1,10 @@
 import React from 'react';
 
 import { Dropdown } from 'antd';
+import { useRouter } from 'next/router';
 
 import Container from 'common/components/Container';
+import { STATIC_HOME_LINK } from 'common/constants/links';
 
 import HamburgerButton from './components/HamburgerButton';
 import NavbarMenu from './components/NavbarMenu';
@@ -20,15 +22,20 @@ import {
 } from './styled';
 
 const Navbar: React.FC = () => {
+  const rouetr = useRouter();
   const { visible, showDropdown } = useDropdown();
+
+  function onLogoClick() {
+    rouetr.push(STATIC_HOME_LINK);
+  }
 
   return (
     <Nav visible={visible}>
       <Container>
         <NavbarBrand>
-          <LogoKMUTT src="/assets/LOGO-KMUTT.svg" />
+          <LogoKMUTT onClick={onLogoClick} src="/assets/LOGO-KMUTT.svg" />
           <StyledDivider type="vertical" />
-          <LogoCPE src="/assets/LOGO-CPE.svg" />
+          <LogoCPE onClick={onLogoClick} src="/assets/LOGO-CPE.svg" />
           <Wrapper>
             <Faculty>ภาควิชาวิศวกรรมคอมพิวเตอร์</Faculty>
             <Department>
