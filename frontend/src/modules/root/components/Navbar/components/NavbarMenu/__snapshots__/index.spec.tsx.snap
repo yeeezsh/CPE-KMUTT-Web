@@ -16,26 +16,30 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
           ปริญญาตรี
         </styled__Item>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="1-submenu-1"
+          onClick={[Function]}
         >
           ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="1-submenu-2"
+          onClick={[Function]}
         >
           ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="1-submenu-3"
+          onClick={[Function]}
         >
           ปริญญาตรี
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="1-submenu-4"
+          onClick={[Function]}
         >
           ปริญญาตรี
         </styled__ItemLink>
@@ -52,14 +56,16 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
           บัณฑิตศึกษา
         </styled__Item>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="2-submenu-1"
+          onClick={[Function]}
         >
           บัณฑิตศึกษา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="2-submenu-2"
+          onClick={[Function]}
         >
           บัณฑิตศึกษา
         </styled__ItemLink>
@@ -76,26 +82,30 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
           ทุนการศึกษา
         </styled__Item>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="3-submenu-1"
+          onClick={[Function]}
         >
           ทุนการศึกษา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="3-submenu-2"
+          onClick={[Function]}
         >
           ทุนการศึกษา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="3-submenu-3"
+          onClick={[Function]}
         >
           ทุนการศึกษา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="3-submenu-4"
+          onClick={[Function]}
         >
           ทุนการศึกษา
         </styled__ItemLink>
@@ -112,20 +122,23 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
           การรับเข้าศึกษา
         </styled__Item>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="4-submenu-1"
+          onClick={[Function]}
         >
           การรับเข้าศึกษา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="4-submenu-2"
+          onClick={[Function]}
         >
           การรับเข้าศึกษา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="4-submenu-3"
+          onClick={[Function]}
         >
           การรับเข้าศึกษา
         </styled__ItemLink>
@@ -142,26 +155,30 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
           เกี่ยวกับเรา
         </styled__Item>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="5-submenu-1"
+          onClick={[Function]}
         >
           เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="5-submenu-2"
+          onClick={[Function]}
         >
           เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="5-submenu-3"
+          onClick={[Function]}
         >
           เกี่ยวกับเรา
         </styled__ItemLink>
         <styled__ItemLink
-          href="/#"
+          href="#"
           key="5-submenu-4"
+          onClick={[Function]}
         >
           เกี่ยวกับเรา
         </styled__ItemLink>
@@ -170,21 +187,25 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
     <styled__SubMenu>
       <styled__SubMenuItem
         key="1"
+        onClick={[Function]}
       >
         สำหรับนักศึกษาปัจจุบัน
       </styled__SubMenuItem>
       <styled__SubMenuItem
         key="2"
+        onClick={[Function]}
       >
         สำหรับบุคลากร
       </styled__SubMenuItem>
       <styled__SubMenuItem
         key="3"
+        onClick={[Function]}
       >
         ดาวน์โหลด
       </styled__SubMenuItem>
       <styled__SubMenuItem
         key="4"
+        onClick={[Function]}
       >
         ติดต่อเรา
       </styled__SubMenuItem>
