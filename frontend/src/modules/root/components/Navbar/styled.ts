@@ -12,7 +12,7 @@ export const Nav = styled.div`
   width: 100%;
   height: ${NAVBAR_HEIGHT};
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   background: ${(props: NavBarProps) =>
     props.visible ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.8)'};
