@@ -67,6 +67,12 @@ default admin account
 | --------------------- | --------- |
 | admin@cpe.kmutt.ac.th | Admin2021 |
 
+endpoint
+| Environment | Link |
+| --------------------- | --------- |
+| Local | http://localhost:1337/admin |
+| QA | http://beta.cpe.kmutt.ac.th/admin |
+
 ###### Codegen
 
 how to build a new API and generate native code for frontend
