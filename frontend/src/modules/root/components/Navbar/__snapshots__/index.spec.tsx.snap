@@ -7,12 +7,14 @@ exports[`Navbar Tests Navbar component should be defined 1`] = `
   <Container>
     <styled__NavbarBrand>
       <styled__LogoKMUTT
+        onClick={[Function]}
         src="/assets/LOGO-KMUTT.svg"
       />
       <styled__StyledDivider
         type="vertical"
       />
       <styled__LogoCPE
+        onClick={[Function]}
         src="/assets/LOGO-CPE.svg"
       />
       <styled__Wrapper>

@@ -13,7 +13,7 @@ export const Nav = styled.div`
   width: 100%;
   height: ${NAVBAR_HEIGHT};
   position: fixed;
-  z-index: 100;
+  z-index: 2;
   top: 0;
   background: ${(props: NavBarProps) =>
     props.visible ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.8)'};
@@ -45,6 +45,7 @@ export const LogoKMUTT = styled.img`
     height: 34px;
     margin: 10px 10px 16px 5px;
   }
+  cursor: pointer;
 `;
 
 export const StyledDivider = styled(Divider)`
@@ -66,6 +67,7 @@ export const LogoCPE = styled.img`
     height: 26px;
     margin: 17px 0 16px 10px;
   }
+  cursor: pointer;
 `;
 
 export const Wrapper = styled.div`
