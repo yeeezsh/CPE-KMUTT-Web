@@ -113,7 +113,7 @@ export const CopyRightContainer = styled.div`
   margin-top: 25px;
 
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding: 0 25px 25px 25px;
     margin-bottom: 0px;
   }

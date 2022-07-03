@@ -20,6 +20,9 @@ export const NewsContentHeader = styled.h1`
   color: ${COLORS.GRAY_1};
   width: 100%;
   margin-bottom: 8px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    font-size: 20px;
+  }
 `;
 
 export const NewsContentPostDate = styled.div`
@@ -50,7 +53,7 @@ export const NewsContentFileContainer = styled.div`
   width: 100%;
   margin-bottom: 32px;
   @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
-    padding: 0 25px;
+    padding: 0 5px;
   }
 `;
 
@@ -66,6 +69,8 @@ export const NewsContentFileList = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
   margin-bottom: 8px;
 `;
 
