@@ -16,7 +16,7 @@ import {
 
 import {
   NewsContentTumbnail,
-  NewsContentFileConteiner,
+  NewsContentFileContainer,
   NewsContentFileHeader,
   NewsContentFileList,
   NewsContentFileName,
@@ -62,7 +62,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
 
         {/* files & download */}
         {props.file && (
-          <NewsContentFileConteiner>
+          <NewsContentFileContainer>
             <NewsContentFileHeader>ไฟล์แนบ ({props.file?.length})</NewsContentFileHeader>
             {props.file?.map((data, index) => (
               <NewsContentFileList key={index}>
@@ -77,7 +77,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
                 <Link href={data.link ?? '/'}>ดาวน์โหลด</Link>
               </NewsContentFileList>
             ))}
-          </NewsContentFileConteiner>
+          </NewsContentFileContainer>
         )}
 
         {/* connections */}
