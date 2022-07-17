@@ -22,7 +22,7 @@ import {
 } from './styled';
 import { CommonLayoutProps } from './types';
 
-export const CommonLayout: FC<CommonLayoutProps> = ({
+const CommonLayout: FC<CommonLayoutProps> = ({
   headerBackgroundImage,
   children,
   Header,
