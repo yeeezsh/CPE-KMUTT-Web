@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 
 export const BrowseNewsStyle = styled.div`
@@ -18,6 +19,8 @@ export const BrowseNewsRow = styled.div`
   &.align-center {
     align-items: center;
   }
+  overflow: hidden;
+  padding: 20px;
 `;
 
 export const BrowseNewsColumn = styled.div`
@@ -38,6 +41,11 @@ export const BrowsNewsHeader = styled.div`
   align-items: center;
   width: 100%;
   margin: 40px 190px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 10px;
+  }
 `;
 
 export const AnnouceFAQ = styled.div`

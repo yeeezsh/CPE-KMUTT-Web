@@ -74,6 +74,7 @@ export const CardContainer = styled.div`
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     flex-direction: column;
   }
+  padding: 20px;
 `;
 
 export const ShowAllButton = styled.div`
