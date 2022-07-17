@@ -5,15 +5,14 @@ import { BiArrowBack } from 'react-icons/bi';
 
 import Heading from 'common/components/Heading';
 import colors from 'common/constants/colors';
-
-import { STAFF_LIST_PATH } from 'modules/staff/constants';
+import { STATIC_STAFFS } from 'common/constants/links';
 
 import { Container } from './styled';
 
 const BackSection: FC = () => {
   return (
     <Container>
-      <Link href={{ pathname: STAFF_LIST_PATH }}>
+      <Link href={{ pathname: STATIC_STAFFS }}>
         <a>
           <BiArrowBack />
         </a>
