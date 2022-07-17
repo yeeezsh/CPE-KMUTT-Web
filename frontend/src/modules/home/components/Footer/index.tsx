@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
+
 import Container from 'common/components/Container';
 
 import FooterConstant from './constants';
@@ -20,6 +22,12 @@ import {
 } from './styled';
 
 const StaticSection: React.FC = () => {
+  const router = useRouter();
+
+  function onClickLink(link?: string) {
+    link && router.push(link);
+  }
+
   return (
     <FooterStyled>
       <Container>
@@ -40,7 +48,7 @@ const StaticSection: React.FC = () => {
             <SiteMapSupContainer key={key}>
               <SiteMapHeader>{label}</SiteMapHeader>
               {subMenu?.map(({ key, label, link }) => (
-                <SiteMapLink key={key} href={link}>
+                <SiteMapLink key={key} href="#" onClick={() => onClickLink(link)}>
                   {label}
                 </SiteMapLink>
               ))}
