@@ -70,9 +70,9 @@ export const CardContainer = styled.div`
   width: 1024px;
   justify-content: space-between;
   margin-bottom: 105px;
-  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+  overflow: hidden;
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     flex-direction: column;
-    align-items: center;
   }
 `;
 
