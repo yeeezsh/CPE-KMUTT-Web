@@ -12,6 +12,7 @@ import {
   STATIC_NEWS_ID_LINK,
   STATIC_NEWS_ID_LINK_PATTERN,
 } from 'common/constants/links';
+import useIsMobileDisplay from 'common/hooks/useIsMobileDisplay';
 
 import {
   CardContainer,
@@ -26,7 +27,11 @@ import {
 export type WhatNewSectionProps = { data?: CardProps[] };
 
 const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
+  const isMobile = useIsMobileDisplay();
   const router = useRouter();
+
+  const showForMobile = isMobile;
+  const showForDesktop = !isMobile;
 
   function onCardClick(url?: string) {
     url && router.push(STATIC_NEWS_ID_LINK.replace(STATIC_NEWS_ID_LINK_PATTERN, url));
@@ -47,18 +52,20 @@ const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
             </PortletDiscription>
           </PortletTextWrapper>
 
-          <ShowAllButton>
-            <Button
-              $color="borderless"
-              onClick={() => onLinkClick(STATIC_NEWS_CATEGORY_LINK)}>
-              แสดงทั้งหมด
-              <HiOutlineArrowRight
-                className="Icon"
-                style={{ marginLeft: '15px' }}
-                size="20px"
-              />
-            </Button>
-          </ShowAllButton>
+          {showForDesktop && (
+            <ShowAllButton>
+              <Button
+                $color="borderless"
+                onClick={() => onLinkClick(STATIC_NEWS_CATEGORY_LINK)}>
+                แสดงทั้งหมด
+                <HiOutlineArrowRight
+                  className="Icon"
+                  style={{ marginLeft: '15px' }}
+                  size="20px"
+                />
+              </Button>
+            </ShowAllButton>
+          )}
         </PortletTitle>
 
         {data && (
@@ -76,6 +83,21 @@ const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
               />
             ))}
           </CardContainer>
+        )}
+
+        {showForMobile && (
+          <ShowAllButton style={{ marginBottom: '20px' }}>
+            <Button
+              $color="borderless"
+              onClick={() => onLinkClick(STATIC_NEWS_CATEGORY_LINK)}>
+              แสดงทั้งหมด
+              <HiOutlineArrowRight
+                className="Icon"
+                style={{ marginLeft: '15px' }}
+                size="20px"
+              />
+            </Button>
+          </ShowAllButton>
         )}
       </Container>
     </WhatNewStyle>

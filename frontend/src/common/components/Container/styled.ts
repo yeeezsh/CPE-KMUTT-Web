@@ -8,4 +8,8 @@ export const ContainerStyled = styled.div`
   max-width: ${BREAKPOINTS.IPAD_LANDSCAPE};
   margin: 0 auto;
   flex-wrap: wrap;
+
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    justify-content: space-around;
+  }
 `;

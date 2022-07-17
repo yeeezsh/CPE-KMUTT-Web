@@ -69,11 +69,14 @@ export const CardContainer = styled.div`
   display: flex;
   width: 1024px;
   justify-content: space-between;
-  margin-bottom: 105px;
   overflow: hidden;
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     flex-direction: column;
   }
+  @media (min-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    margin-bottom: 105px;
+  }
+
   padding: 20px;
 `;
 
