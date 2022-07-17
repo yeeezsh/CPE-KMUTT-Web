@@ -1,81 +1,44 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
 import { AiFillTwitterCircle } from 'react-icons/ai';
-import { HiOutlineArrowRight } from 'react-icons/hi';
 import { RiFacebookCircleFill } from 'react-icons/ri';
 
-import Btn from 'common/components/Button';
 import Container from 'common/components/Container';
+import FaqBanner from 'common/components/FaqBanner';
 
 import Footer from 'modules/home/components/Footer';
 import Navbar from 'modules/root/components/Navbar';
 
 import { DEFAULT_HEADER_BACKGROUND_IMAGE_URL } from './constants';
 import {
-  AnnouceFAQ,
   CommonLayoutStyle,
   CommonWrapperCanvas,
   CommonWrapperHeader,
   CommonWrapperHeaderContent,
   CommonWrapperRow,
   CommonWrapperSocial,
-  FAQButton,
-  FAQColumn,
-  FAQContent,
-  FAQHeader,
-  FAQRow,
 } from './styled';
 import { CommonLayoutProps } from './types';
 
-export const FaqWithBanner: React.FC = () => (
-  <AnnouceFAQ>
-    <FAQRow className="align-center">
-      <FAQColumn>
-        <FAQHeader>มีคำถามหรือข้อสงสัย</FAQHeader>
-        <FAQContent>เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน</FAQContent>
-        <FAQButton>
-          <Btn $color={'transparent'}>
-            ติดต่อเรา
-            <HiOutlineArrowRight
-              className="Icon"
-              style={{ marginLeft: '16px' }}
-              size="16px"
-            />
-          </Btn>
-        </FAQButton>
-      </FAQColumn>
-      <FAQColumn>
-        <img src="/images/annouce_faq.png" alt="" />
-      </FAQColumn>
-    </FAQRow>
-  </AnnouceFAQ>
-);
-
-const CommonLayout: React.FC<CommonLayoutProps> = ({
+const CommonLayout: FC<CommonLayoutProps> = ({
   headerBackgroundImage,
   children,
+  Header,
+  withFaqBanner,
   ...props
 }) => {
   return (
     <>
       <Navbar />
       <CommonLayoutStyle>
-        <CommonWrapperHeader
-          $backgroundImage={headerBackgroundImage ?? DEFAULT_HEADER_BACKGROUND_IMAGE_URL}>
-          <CommonWrapperCanvas>
-            <CommonWrapperRow className="center">
-              <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>
-            </CommonWrapperRow>
-          </CommonWrapperCanvas>
-        </CommonWrapperHeader>
         <Container>
           <CommonWrapperRow className="space-between">
             <Breadcrumb separator="/">
               {props.navigate?.map((items) => {
                 return (
-                  <Breadcrumb.Item key={items.link + items.title + '-breadcrumb'}>
+                  <Breadcrumb.Item key={items.link + items.title}>
                     <Link href={items.link}>{items.title}</Link>
                   </Breadcrumb.Item>
                 );
@@ -103,9 +66,23 @@ const CommonLayout: React.FC<CommonLayoutProps> = ({
             </CommonWrapperSocial>
           </CommonWrapperRow>
         </Container>
+        {Header}
+        {!Header && (
+          <CommonWrapperHeader
+            $backgroundImage={
+              headerBackgroundImage ?? DEFAULT_HEADER_BACKGROUND_IMAGE_URL
+            }>
+            <CommonWrapperCanvas>
+              <CommonWrapperRow className="center">
+                <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>
+              </CommonWrapperRow>
+            </CommonWrapperCanvas>
+          </CommonWrapperHeader>
+        )}
+
         {children}
 
-        {props.withFaqBanner && <FaqWithBanner />}
+        {withFaqBanner && <FaqBanner />}
         <Footer />
       </CommonLayoutStyle>
     </>
