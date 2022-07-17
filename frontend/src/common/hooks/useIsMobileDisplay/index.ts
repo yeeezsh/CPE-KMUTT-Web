@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import breakpoints from 'common/constants/breakpoints';
 
 function isMobileDisplay(width: number) {
-  console.log(width);
   if (width <= Number(breakpoints.IPAD_PORTRAIT.replace('px', ''))) return true;
   return false;
 }
