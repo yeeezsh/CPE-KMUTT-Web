@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
@@ -22,23 +22,30 @@ import {
 } from './styled';
 import { CommonLayoutProps } from './types';
 
-export const CommonLayout: React.FC<CommonLayoutProps> = ({
+export const CommonLayout: FC<CommonLayoutProps> = ({
   headerBackgroundImage,
   children,
+  Header,
+  withFaqBanner,
   ...props
 }) => {
   return (
     <>
       <Navbar />
       <CommonLayoutStyle>
-        <CommonWrapperHeader
-          $backgroundImage={headerBackgroundImage ?? DEFAULT_HEADER_BACKGROUND_IMAGE_URL}>
-          <CommonWrapperCanvas>
-            <CommonWrapperRow className="center">
-              <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>
-            </CommonWrapperRow>
-          </CommonWrapperCanvas>
-        </CommonWrapperHeader>
+        {Header}
+        {!Header && (
+          <CommonWrapperHeader
+            $backgroundImage={
+              headerBackgroundImage ?? DEFAULT_HEADER_BACKGROUND_IMAGE_URL
+            }>
+            <CommonWrapperCanvas>
+              <CommonWrapperRow className="center">
+                <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>
+              </CommonWrapperRow>
+            </CommonWrapperCanvas>
+          </CommonWrapperHeader>
+        )}
         <Container>
           <CommonWrapperRow className="space-between">
             <Breadcrumb separator="/">
@@ -74,7 +81,7 @@ export const CommonLayout: React.FC<CommonLayoutProps> = ({
         </Container>
         {children}
 
-        {props.withFaqBanner && <FaqBanner />}
+        {withFaqBanner && <FaqBanner />}
         <Footer />
       </CommonLayoutStyle>
     </>

@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import { SearchOutlined } from '@ant-design/icons';
+import { GrSearch } from 'react-icons/gr';
 
 import { StyledInput } from './styled';
 import { SearchBarProps } from './types';
 
 const SearchBar: FC<SearchBarProps> = ({ ...props }) => {
-  return <StyledInput {...props} allowClear prefix={<SearchOutlined />} />;
+  return <StyledInput {...props} allowClear prefix={<GrSearch />} />;
 };
 
 export default SearchBar;

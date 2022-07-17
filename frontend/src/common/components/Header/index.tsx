@@ -3,7 +3,12 @@ import { FC } from 'react';
 import { Container, Content, Gradient, Subtitle, Title } from './styled';
 import { HeaderProps } from './types';
 
-const Header: FC<HeaderProps> = ({ title, subtitle, backgroundImage }) => {
+const Header: FC<HeaderProps> = ({
+  title,
+  subtitle,
+  variant = '1-col',
+  backgroundImage,
+}) => {
   return (
     <Container $backgroundImage={backgroundImage}>
       <Gradient>
