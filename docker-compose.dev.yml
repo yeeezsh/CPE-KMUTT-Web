@@ -44,7 +44,6 @@ services:
       - 49153:49153
     volumes:
       - "./frontend:/frontend"
-      - /frontend/node_modules
     depends_on:
       - strapi
   strapi:
