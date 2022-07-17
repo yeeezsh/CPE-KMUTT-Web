@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 import fontFamily from 'common/styles/typography/fontFamily';
 
@@ -15,9 +14,6 @@ export const StyledMenuButton = styled.button`
   }
   &:focus {
     outline: none;
-  }
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    margin-right: 6px;
   }
 `;
 export const Hamburger = styled.svg`

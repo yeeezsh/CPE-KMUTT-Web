@@ -13,6 +13,7 @@ import {
   PortletTitle,
   PortletTitleHeader,
   ShowAllButton,
+  PortletTextWrapper,
 } from 'modules/home/components/WhatNewSection/styled';
 
 import useProgressbar from './hooks/useProgressbar';
@@ -80,10 +81,13 @@ const Carousel: React.FC<CarouselProps> = (props) => {
         {/* Title */}
         {props.variant === 'Slider' && (
           <PortletTitle>
-            <PortletTitleHeader>กิจกรรมและความสำเร็จ</PortletTitleHeader>
-            <PortletDiscription>
-              สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
-            </PortletDiscription>
+            <PortletTextWrapper>
+              <PortletTitleHeader>กิจกรรมและความสำเร็จ</PortletTitleHeader>
+              <PortletDiscription>
+                สำรวจประกาศเกี่ยวกับการรับเข้าศึกษา กิจกรรม และข่าวสารล่าสุด
+              </PortletDiscription>
+            </PortletTextWrapper>
+
             <ShowAllButton>
               <Button $color="borderless">
                 สำรวจทั้งหมด

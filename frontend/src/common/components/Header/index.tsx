@@ -1,19 +1,23 @@
-import React from 'react';
+import { FC } from 'react';
 
-import { FadeBlue, HeaderContainer, HeaderTeaxt } from 'common/components/Header/styled';
+import { Container, Content, Gradient, Subtitle, Title } from './styled';
+import { HeaderProps } from './types';
 
-const Header: React.FC<{ title: string; backgroundImage: string }> = ({
+const Header: FC<HeaderProps> = ({
   title,
+  subtitle,
+  variant = '1-col',
   backgroundImage,
 }) => {
   return (
-    <HeaderContainer
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}>
-      <FadeBlue />
-      <HeaderTeaxt>{title}</HeaderTeaxt>
-    </HeaderContainer>
+    <Container $backgroundImage={backgroundImage}>
+      <Gradient>
+        <Content>
+          <Title>{title}</Title>
+          {subtitle && <Subtitle>{subtitle}</Subtitle>}
+        </Content>
+      </Gradient>
+    </Container>
   );
 };
 

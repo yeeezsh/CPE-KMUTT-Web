@@ -61,6 +61,8 @@ services:
       DATABASE_PORT: 27017
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
+    ports:
+      - "1337:1337"
     volumes:
       - ./uploads/:/app/public/uploads
     depends_on:

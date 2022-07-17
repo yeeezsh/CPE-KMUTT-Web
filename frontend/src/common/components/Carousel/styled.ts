@@ -85,6 +85,8 @@ export const Slides = styled.div`
     overflow: hidden;
     flex-direction: ${(props: DesignProps) =>
       props.defaultStyle ? 'column' : 'column-reverse'};
+    padding: ${(props: DesignProps) =>
+      props.defaultStyle ? '0' : props.customStyle === 'Slider' ? '0 20px' : '0'};
   }
 `;
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 
 export const NewsContentStyle = styled.div`
@@ -8,6 +9,9 @@ export const NewsContentStyle = styled.div`
   width: 100%;
   background-color: #fafafa;
   margin-top: 36px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    padding: 0 25px;
+  }
 `;
 
 export const NewsContentHeader = styled.h1`
@@ -16,6 +20,9 @@ export const NewsContentHeader = styled.h1`
   color: ${COLORS.GRAY_1};
   width: 100%;
   margin-bottom: 8px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    font-size: 20px;
+  }
 `;
 
 export const NewsContentPostDate = styled.div`
@@ -42,9 +49,12 @@ export const NewsContentContainer = styled.div`
   margin-bottom: 32px;
 `;
 
-export const NewsContentFileConteiner = styled.div`
+export const NewsContentFileContainer = styled.div`
   width: 100%;
   margin-bottom: 32px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    padding: 0 5px;
+  }
 `;
 
 export const NewsContentFileHeader = styled.div`
@@ -59,6 +69,8 @@ export const NewsContentFileList = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
   margin-bottom: 8px;
 `;
 
@@ -83,6 +95,10 @@ export const OtherNewsHeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 36px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    padding: 0 25px;
+    flex-direction: column;
+  }
 `;
 
 export const OtherNewsHeader = styled.div`
@@ -94,4 +110,8 @@ export const OtherNewsHeader = styled.div`
 export const OtherNewsCardContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;

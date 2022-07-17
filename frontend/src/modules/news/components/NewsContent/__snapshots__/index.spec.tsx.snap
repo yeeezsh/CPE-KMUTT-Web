@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsContent Compnent NewsContent shoyld matched snapshots 1`] = `
+<div
+  class="styled__NewsContentStyle-sc-18h3naq-0 gkPTfa"
+>
+  <div
+    class="styled__ContainerStyled-sc-44j5kv-0 gjcMjy"
+  >
+    <h1
+      class="styled__NewsContentHeader-sc-18h3naq-1 iXHTZA"
+    />
+    <div
+      class="styled__NewsContentPostDate-sc-18h3naq-2 bozAvN"
+    />
+    <div
+      class="styled__NewsContentTumbnail-sc-18h3naq-3 daQSRC"
+      style="background-image:url(/images/thumbnail2.png)"
+    />
+  </div>
+</div>
+`;

@@ -1,3 +1,5 @@
+import { STATIC_STAFFS } from 'common/constants/links';
+
 import { Footer } from './types';
 
 const FooterConstant: Footer[] = [
@@ -60,7 +62,7 @@ const FooterConstant: Footer[] = [
       {
         key: '2',
         label: 'บุคลากร',
-        link: '/#',
+        link: STATIC_STAFFS,
       },
       {
         key: '3',

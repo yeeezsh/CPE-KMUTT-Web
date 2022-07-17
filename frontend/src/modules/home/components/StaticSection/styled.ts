@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import BREAKPOINTS from 'common/constants/breakpoints';
+
 export const StaticStyle = styled.div`
   display: flex;
   font-family: 'Kanit', sans-serif;
@@ -13,8 +15,14 @@ export const StaticStyle = styled.div`
 
 export const StaticBody = styled.div`
   align-self: center;
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 50%;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+  }
 `;
 
 export const StaticHeader = styled.div`
@@ -23,6 +31,10 @@ export const StaticHeader = styled.div`
   line-height: 40px;
   color: #ffffff;
   margin-bottom: 10px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    font-size: 24px;
+    text-align: center;
+  }
 `;
 
 export const StaticContent = styled.div`
@@ -32,6 +44,9 @@ export const StaticContent = styled.div`
   color: #ffffff;
   opacity: 0.5;
   margin-bottom: 40px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    text-align: center;
+  }
 `;
 
 export const ButtonStyled = styled.div`

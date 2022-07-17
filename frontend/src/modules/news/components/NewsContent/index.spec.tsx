@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { shallow } from 'enzyme';
+import { render, shallow } from 'enzyme';
 
 import Container from 'common/components/Container';
 
 import {
   NewsContentTumbnail,
   NewsContentContainer,
-  NewsContentFileConteiner,
+  NewsContentFileContainer,
   NewsContentFileHeader,
   NewsContentFileList,
   NewsContentFileName,
@@ -25,12 +25,17 @@ describe('NewsContent Compnent', () => {
     expect(wrap.exists()).toBe(true);
   });
 
+  it('NewsContent shoyld matched snapshots', () => {
+    const wrap = render(<NewsContent tumbnail="/images/thumbnail2.png" />);
+    expect(wrap).toMatchSnapshot();
+  });
+
   it('NewsContent Compnent should import these components', () => {
     const wrap = shallow(<NewsContent tumbnail="/images/thumbnail2.png" />);
     expect(wrap.find(NewsContentTumbnail).exists()).toBe(true);
     expect(wrap.find(Container).exists()).toBe(true);
     // expect(wrap.find(NewsContentContainer).exists()).toBe(true);
-    // expect(wrap.find(NewsContentFileConteiner).exists()).toBe(true);
+    // expect(wrap.find(NewsContentFileContainer).exists()).toBe(true);
     // expect(wrap.find(NewsContentFileHeader).exists()).toBe(true);
     // expect(wrap.find(NewsContentFileList).exists()).toBe(true);
     // expect(wrap.find(NewsContentFileName).exists()).toBe(true);
@@ -52,7 +57,7 @@ describe('NewsContent Compnent', () => {
 
   it('NewsContent should show download section when have data from API', () => {
     const wrap = shallow(<NewsContent file={[{ title: 'test', link: '/' }]} />);
-    expect(wrap.find(NewsContentFileConteiner).exists()).toBe(true);
+    expect(wrap.find(NewsContentFileContainer).exists()).toBe(true);
     expect(wrap.find(NewsContentFileHeader).exists()).toBe(true);
     expect(wrap.find(NewsContentFileList).exists()).toBe(true);
     expect(wrap.find(NewsContentFileName).exists()).toBe(true);
