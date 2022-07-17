@@ -1,6 +1,6 @@
-export const ABOUT_US_ROOT_PATH = '/about-us';
+import { STATIC_ABOUT_US } from 'common/constants/links';
 
 export const ABOUT_US_PAGE_CRUMB = {
   title: 'เกี่ยวกับเรา',
-  link: ABOUT_US_ROOT_PATH,
+  link: STATIC_ABOUT_US,
 };

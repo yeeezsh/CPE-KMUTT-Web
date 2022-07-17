@@ -3,8 +3,7 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 
 import Divider from 'common/components/Divider';
-
-import { STAFF_DETAILS_PATH } from 'modules/staff/constants';
+import { STATIC_STAFF_ID_LINK } from 'common/constants/links';
 
 import { Container, Cover, Name, Body, StyledAnchor } from './styled';
 import { StaffCardProps } from './types';
@@ -13,7 +12,7 @@ const DIVIDER_MARGIN = '6px';
 
 const StaffCard: FC<StaffCardProps> = ({ staff }) => {
   return (
-    <Link href={{ pathname: STAFF_DETAILS_PATH, query: { id: staff.id } }}>
+    <Link href={{ pathname: STATIC_STAFF_ID_LINK, query: { id: staff.id } }}>
       <Container>
         <StyledAnchor>
           <Cover src={staff.imageUrl} />

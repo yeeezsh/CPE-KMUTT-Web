@@ -1,7 +1,6 @@
-export const STAFF_LIST_PATH = '/staffs';
-export const STAFF_DETAILS_PATH = '/staff/[id]';
+import { STATIC_STAFFS } from 'common/constants/links';
 
 export const STAFF_LIST_PAGE_CRUMB = {
   title: 'บุคคลากร',
-  link: STAFF_LIST_PATH,
+  link: STATIC_STAFFS,
 };
