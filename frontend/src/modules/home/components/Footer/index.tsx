@@ -22,6 +22,7 @@ import {
 } from './styled';
 
 const StaticSection: React.FC = () => {
+  const currentYear = new Date().getFullYear();
   const router = useRouter();
 
   function onClickLink(link?: string) {
@@ -58,7 +59,7 @@ const StaticSection: React.FC = () => {
         <HrLine />
         <CopyRightContainer>
           <CopyRight>
-            Copyright © 2022 ภาควิชาวิศวกรรมคอมพิวเตอร์
+            Copyright © {currentYear} ภาควิชาวิศวกรรมคอมพิวเตอร์
             มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี · สงวนสิทธิ์ทุกประการ
           </CopyRight>
           <InfoContainer>
