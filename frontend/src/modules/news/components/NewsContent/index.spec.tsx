@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { shallow } from 'enzyme';
+import { render, shallow } from 'enzyme';
 
 import Container from 'common/components/Container';
 
@@ -23,6 +23,11 @@ describe('NewsContent Compnent', () => {
   it('NewsContent Compnent should be defined', () => {
     const wrap = shallow(<NewsContent tumbnail="/images/thumbnail2.png" />);
     expect(wrap.exists()).toBe(true);
+  });
+
+  it('NewsContent shoyld matched snapshots', () => {
+    const wrap = render(<NewsContent tumbnail="/images/thumbnail2.png" />);
+    expect(wrap).toMatchSnapshot();
   });
 
   it('NewsContent Compnent should import these components', () => {
