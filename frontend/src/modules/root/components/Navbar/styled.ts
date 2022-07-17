@@ -5,6 +5,7 @@ import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 import fontFamily from 'common/styles/typography/fontFamily';
 export const NAVBAR_HEIGHT = '100px';
+export const NAVBAR_HEIGHT_MOBILE = '60px';
 
 import { NavBarProps } from './interface';
 
@@ -23,8 +24,9 @@ export const Nav = styled.div`
   &:hover {
     background: rgba(255, 255, 255, 1);
   }
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    height: 60px;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    height: ${NAVBAR_HEIGHT_MOBILE};
+    padding: 0 20px;
   }
 `;
 
@@ -38,10 +40,10 @@ export const LogoKMUTT = styled.img`
   width: 51px;
   height: 60px;
   margin: 15px 25px 25px 0;
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
     width: 29px;
     height: 34px;
-    margin: 10px 10px 16px 20px;
+    margin: 10px 10px 16px 5px;
   }
   cursor: pointer;
 `;
@@ -50,7 +52,7 @@ export const StyledDivider = styled(Divider)`
   height: 50px;
   border-color: #eaeaea;
   margin-top: 25px;
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
     height: 33px;
     margin-top: 13px;
   }
@@ -60,7 +62,7 @@ export const LogoCPE = styled.img`
   width: 80px;
   height: 40px;
   margin: 30px 20px 30px 20px;
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
     width: 53px;
     height: 26px;
     margin: 17px 0 16px 10px;
@@ -72,7 +74,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
     display: none;
   }
 `;
@@ -95,14 +97,12 @@ export const MenuButton = styled.button`
   border: none;
   cursor: pointer;
   margin-left: 30px;
+  margin-bottom: 5px;
   font-family: ${fontFamily.EN};
   &:hover {
     color: ${COLORS.PRIMARY_COLOR};
   }
   &:focus {
     outline: none;
-  }
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    margin-right: 6px;
   }
 `;

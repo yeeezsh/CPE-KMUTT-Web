@@ -16,6 +16,7 @@ export const CommonLayoutStyle = styled.div`
   margin-top: ${NAVBAR_HEIGHT};
   .ant-breadcrumb {
     display: flex;
+    padding: 10px;
   }
 
   .ant-breadcrumb > span:last-child a {
