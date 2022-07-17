@@ -33,25 +33,12 @@ export const CommonLayout: FC<CommonLayoutProps> = ({
     <>
       <Navbar />
       <CommonLayoutStyle>
-        {Header}
-        {!Header && (
-          <CommonWrapperHeader
-            $backgroundImage={
-              headerBackgroundImage ?? DEFAULT_HEADER_BACKGROUND_IMAGE_URL
-            }>
-            <CommonWrapperCanvas>
-              <CommonWrapperRow className="center">
-                <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>
-              </CommonWrapperRow>
-            </CommonWrapperCanvas>
-          </CommonWrapperHeader>
-        )}
         <Container>
           <CommonWrapperRow className="space-between">
             <Breadcrumb separator="/">
               {props.navigate?.map((items) => {
                 return (
-                  <Breadcrumb.Item key={items.link + items.title + '-breadcrumb'}>
+                  <Breadcrumb.Item key={items.link + items.title}>
                     <Link href={items.link}>{items.title}</Link>
                   </Breadcrumb.Item>
                 );
@@ -79,6 +66,20 @@ export const CommonLayout: FC<CommonLayoutProps> = ({
             </CommonWrapperSocial>
           </CommonWrapperRow>
         </Container>
+        {Header}
+        {!Header && (
+          <CommonWrapperHeader
+            $backgroundImage={
+              headerBackgroundImage ?? DEFAULT_HEADER_BACKGROUND_IMAGE_URL
+            }>
+            <CommonWrapperCanvas>
+              <CommonWrapperRow className="center">
+                <CommonWrapperHeaderContent>{props.header}</CommonWrapperHeaderContent>
+              </CommonWrapperRow>
+            </CommonWrapperCanvas>
+          </CommonWrapperHeader>
+        )}
+
         {children}
 
         {withFaqBanner && <FaqBanner />}
