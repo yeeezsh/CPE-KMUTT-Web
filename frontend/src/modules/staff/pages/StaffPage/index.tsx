@@ -2,13 +2,15 @@ import { FC } from 'react';
 
 import { useRouter } from 'next/router';
 
-import Container from 'common/components/Container';
 import Header from 'common/components/Header';
 import CommonLayout from 'common/components/Layouts/CommonLayout';
 import baseUrl from 'common/utils/baseUrl';
 
+import BackSection from 'modules/staff/components/BackSection';
 import StaffContactSection from 'modules/staff/components/StaffContactSection';
 import MOCK_STAFFS from 'modules/staff/mocks/staffs';
+
+import { StyledContainer } from './styled';
 
 const HEADER_BG_IMAGE = baseUrl('/images/staff_bg_header.jpg');
 
@@ -29,7 +31,10 @@ const StaffPage: FC = () => {
           />
         }
         withFaqBanner>
-        <Container>{staff && <StaffContactSection staff={staff} />}</Container>
+        <StyledContainer>
+          <BackSection />
+          {staff && <StaffContactSection staff={staff} />}
+        </StyledContainer>
       </CommonLayout>
     </>
   );
