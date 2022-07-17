@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import Divider from 'common/components/Divider';
 
-import { STAFF_INFO_PATH } from 'modules/staff/constants';
+import { STAFF_DETAILS_PATH } from 'modules/staff/constants';
 
 import { Container, Cover, Name, Body, StyledAnchor } from './styled';
 import { StaffCardProps } from './types';
@@ -13,7 +13,7 @@ const DIVIDER_MARGIN = '6px';
 
 const StaffCard: FC<StaffCardProps> = ({ staff }) => {
   return (
-    <Link href={{ pathname: STAFF_INFO_PATH, query: { id: staff.id } }}>
+    <Link href={{ pathname: STAFF_DETAILS_PATH, query: { id: staff.id } }}>
       <Container>
         <StyledAnchor>
           <Cover src={staff.imageUrl} />
