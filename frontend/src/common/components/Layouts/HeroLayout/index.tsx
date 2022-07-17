@@ -24,6 +24,7 @@ export const HeroLayout: React.FC<HeroLayoutProps> = ({
           title={title}
           subtitle={subtitle}
           backgroundImage={headerBackgroundImage}
+          variant={'1-col'}
         />
         {children}
         {withFaqBanner && <FaqBanner />}
