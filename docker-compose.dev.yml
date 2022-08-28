@@ -69,7 +69,7 @@ services:
   mongodb:
     container_name: mongodb
     restart: on-failure
-    image: "bitnami/mongodb:latest"
+    image: "bitnami/mongodb:6.0.1"
     environment:
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
       TZ: Asia/Bangkok
