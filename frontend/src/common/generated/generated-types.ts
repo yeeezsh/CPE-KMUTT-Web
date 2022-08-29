@@ -160,6 +160,40 @@ export type ComponentTagsTagsTagsArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
+export type Contact = {
+  __typename?: 'Contact';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  address_content: Scalars['String'];
+  contact_phone?: Maybe<Scalars['String']>;
+  google_map_link?: Maybe<Scalars['String']>;
+  contact_email: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  localizations?: Maybe<Array<Maybe<Contact>>>;
+};
+
+export type ContactLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ContactInput = {
+  address_content: Scalars['String'];
+  contact_phone?: Maybe<Scalars['String']>;
+  google_map_link?: Maybe<Scalars['String']>;
+  contact_email: Scalars['String'];
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type FileInfoInput = {
   name?: Maybe<Scalars['String']>;
   alternativeText?: Maybe<Scalars['String']>;
@@ -242,6 +276,9 @@ export type Morph =
   | UsersPermissionsMeRole
   | UsersPermissionsLoginPayload
   | UserPermissionsPasswordPayload
+  | Contact
+  | UpdateContactPayload
+  | DeleteContactPayload
   | Home
   | UpdateHomePayload
   | DeleteHomePayload
@@ -346,6 +383,8 @@ export type Morph =
 
 export type Mutation = {
   __typename?: 'Mutation';
+  updateContact?: Maybe<UpdateContactPayload>;
+  deleteContact?: Maybe<DeleteContactPayload>;
   updateHome?: Maybe<UpdateHomePayload>;
   deleteHome?: Maybe<DeleteHomePayload>;
   createNewsAndAnnouncement?: Maybe<CreateNewsAndAnnouncementPayload>;
@@ -368,6 +407,7 @@ export type Mutation = {
   updateUser?: Maybe<UpdateUserPayload>;
   /** Delete an existing user */
   deleteUser?: Maybe<DeleteUserPayload>;
+  createContactLocalization: Contact;
   createHomeLocalization: Home;
   createNewsAndAnnouncementLocalization: NewsAndAnnouncement;
   createTagLocalization: Tag;
@@ -379,6 +419,15 @@ export type Mutation = {
   forgotPassword?: Maybe<UserPermissionsPasswordPayload>;
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
+};
+
+export type MutationUpdateContactArgs = {
+  input?: Maybe<UpdateContactInput>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type MutationDeleteContactArgs = {
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type MutationUpdateHomeArgs = {
@@ -440,6 +489,10 @@ export type MutationUpdateUserArgs = {
 
 export type MutationDeleteUserArgs = {
   input?: Maybe<DeleteUserInput>;
+};
+
+export type MutationCreateContactLocalizationArgs = {
+  input: UpdateContactInput;
 };
 
 export type MutationCreateHomeLocalizationArgs = {
@@ -644,6 +697,7 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  contact?: Maybe<Contact>;
   home?: Maybe<Home>;
   newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
   newsAndAnnouncements?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
@@ -661,6 +715,11 @@ export type Query = {
   users?: Maybe<Array<Maybe<UsersPermissionsUser>>>;
   usersConnection?: Maybe<UsersPermissionsUserConnection>;
   me?: Maybe<UsersPermissionsMe>;
+};
+
+export type QueryContactArgs = {
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type QueryHomeArgs = {
@@ -1375,6 +1434,11 @@ export type CreateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type DeleteContactPayload = {
+  __typename?: 'deleteContactPayload';
+  contact?: Maybe<Contact>;
+};
+
 export type DeleteFileInput = {
   where?: Maybe<InputId>;
 };
@@ -1472,6 +1536,18 @@ export type EditComponentTagsTagInput = {
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
+export type EditContactInput = {
+  address_content?: Maybe<Scalars['String']>;
+  contact_phone?: Maybe<Scalars['String']>;
+  google_map_link?: Maybe<Scalars['String']>;
+  contact_email?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditFileInput = {
   name?: Maybe<Scalars['String']>;
   alternativeText?: Maybe<Scalars['String']>;
@@ -1558,6 +1634,15 @@ export type EditUserInput = {
   role?: Maybe<Scalars['ID']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type UpdateContactInput = {
+  data?: Maybe<EditContactInput>;
+};
+
+export type UpdateContactPayload = {
+  __typename?: 'updateContactPayload';
+  contact?: Maybe<Contact>;
 };
 
 export type UpdateHomeInput = {
@@ -1850,6 +1935,19 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type ContactQueryVariables = Exact<{
+  locale?: Maybe<Scalars['String']>;
+}>;
+
+export type ContactQuery = { __typename?: 'Query' } & {
+  contact?: Maybe<
+    { __typename?: 'Contact' } & Pick<
+      Contact,
+      'address_content' | 'contact_phone' | 'contact_email' | 'google_map_link'
+    >
+  >;
+};
+
 export const CommonImagesFieldFragmentDoc = gql`
   fragment commonImagesField on UploadFile {
     id
@@ -2043,3 +2141,14 @@ export type GetNewsByIdQueryResult = Apollo.QueryResult<
   GetNewsByIdQuery,
   GetNewsByIdQueryVariables
 >;
+export const ContactDocument = gql`
+  query contact($locale: String = "th") {
+    contact(locale: $locale, publicationState: LIVE) {
+      address_content
+      contact_phone
+      contact_email
+      google_map_link
+    }
+  }
+`;
+export type ContactQueryResult = Apollo.QueryResult<ContactQuery, ContactQueryVariables>;

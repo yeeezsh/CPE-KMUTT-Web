@@ -1,0 +1,8 @@
+query contact($locale: String = "th") {
+  contact(locale: $locale, publicationState: LIVE) {
+    address_content
+    contact_phone
+    contact_email
+    google_map_link
+  }
+}
