@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 
 export const Card = styled.div`
@@ -10,6 +11,16 @@ export const Card = styled.div`
   position: relative;
   margin-bottom: 20px;
   cursor: pointer;
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    width: 30%;
+    height: 225px;
+  }
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    width: 100%;
+    height: 108px;
+    display: flex;
+    margin-bottom: 10px;
+  }
 `;
 
 export const CardTitle = styled.div`
@@ -17,19 +28,43 @@ export const CardTitle = styled.div`
   font-weight: 700;
   margin-bottom: 6px;
   color: ${COLORS.PRIMARY_COLOR};
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    line-height: 18px;
+    color: ${COLORS.PRIMARY_COLOR};
+    opacity: 1;
+  }
 `;
 
 export const CardDiscription = styled.div`
   font-size: 14px;
   font-weight: 700;
   color: ${COLORS.GRAY_1};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    line-height: 18px;
+    color: ${COLORS.GRAY_1};
+  }
 `;
 
 export const CardDate = styled.div`
   color: ${COLORS.GRAY_2};
   font-size: 14px;
-  bottom: 20px;
+  bottom: 16px;
   position: absolute;
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    font-size: 12px;
+    opacity: 0.7;
+    color: ${COLORS.GRAY_2};
+    bottom: 10px;
+  }
 `;
 
 export const CardNextBtn = styled.div`
@@ -44,6 +79,9 @@ export const CardNextBtn = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    display: none;
+  }
 `;
 
 export const CardBodyStyled = styled.div`
@@ -87,6 +125,33 @@ export const CardBodyStyled = styled.div`
       cursor: pointer;
     }
   }
+
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    &.card-normal {
+      height: 108px;
+      width: 100%;
+      padding: 0 20px;
+      padding-top: 10px;
+      padding-bottom: 16px;
+    }
+    &.card-primary {
+      height: 108px;
+      width: calc(100% - 108px);
+      background-color: #ffffff;
+      & > ${CardTitle} {
+        color: ${COLORS.PRIMARY_COLOR};
+        opacity: 1;
+      }
+      & > ${CardDiscription} {
+        color: ${COLORS.GRAY_1};
+      }
+      & > ${CardDate} {
+        color: ${COLORS.GRAY_2};
+        opacity: 0.7;
+        bottom: 10px;
+      }
+    }
+  }
 `;
 
 export const CardImage = styled.div`
@@ -95,4 +160,8 @@ export const CardImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    width: 108px;
+    height: 108px;
+  }
 `;

@@ -22,3 +22,5 @@ npm-debug
 /backend/README.md
 /backend/node_modules
 /backend/dist
+
+/uploads

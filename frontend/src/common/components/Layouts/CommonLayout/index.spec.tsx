@@ -2,7 +2,9 @@ import * as React from 'react';
 
 import { shallow } from 'enzyme';
 
-import CommonLayout, { FaqWithBanner } from '.';
+import FaqBanner from 'common/components/FaqBanner';
+
+import CommonLayout from '.';
 
 describe('Wrpper Compnent', () => {
   it('CommomLayout Compnent should be defined', () => {
@@ -12,13 +14,13 @@ describe('Wrpper Compnent', () => {
 
   it('CommomLayout should show FAQs banner when withFaqBanner=true', () => {
     const wrap = shallow(<CommonLayout withFaqBanner={true}>test children</CommonLayout>);
-    expect(wrap.find(FaqWithBanner).exists()).toBe(true);
+    expect(wrap.find(FaqBanner).exists()).toBe(true);
   });
 
   it('CommomLayout should disable FAQs banner when withFaqBanner=false', () => {
     const wrap = shallow(
       <CommonLayout withFaqBanner={false}>test children</CommonLayout>,
     );
-    expect(wrap.find(FaqWithBanner).exists()).toBe(false);
+    expect(wrap.find(FaqBanner).exists()).toBe(false);
   });
 });

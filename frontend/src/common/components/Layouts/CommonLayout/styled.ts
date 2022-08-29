@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import COLORS from 'common/constants/colors';
 
 import { NAVBAR_HEIGHT } from 'modules/root/components/Navbar/styled';
+interface CommonWrapperHeaderProps {
+  $backgroundImage: string;
+}
 
 export const CommonLayoutStyle = styled.div`
   display: block;
@@ -13,6 +16,7 @@ export const CommonLayoutStyle = styled.div`
   margin-top: ${NAVBAR_HEIGHT};
   .ant-breadcrumb {
     display: flex;
+    padding: 10px;
   }
 
   .ant-breadcrumb > span:last-child a {
@@ -21,10 +25,10 @@ export const CommonLayoutStyle = styled.div`
   }
 `;
 
-export const CommonWrapperHeader = styled.div`
+export const CommonWrapperHeader = styled.div<CommonWrapperHeaderProps>`
   background-repeat: no-repeat;
   background-position: right;
-  background-image: url(/images/wrapper_bg_header.png);
+  background-image: ${(props) => `url(${props.$backgroundImage});`};
   height: 150px;
   display: block;
 `;
@@ -63,34 +67,4 @@ export const CommonWrapperSocial = styled.div`
   a {
     display: flex;
   }
-`;
-
-export const AnnouceFAQ = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #f5f5f5;
-  padding-top: 32px;
-`;
-
-export const FAQButton = styled.div`
-  margin: 32px 0;
-`;
-
-export const FAQContent = styled.div`
-  color: ${COLORS.GRAY_2};
-  font-size: 14px;
-`;
-
-export const FAQHeader = styled.div`
-  color: ${COLORS.GRAY_1};
-  font-weight: bold;
-  font-size: 22px;
-`;
-export const FAQRow = styled.div`
-  display: flex;
-  align-items: center;
-`;
-export const FAQColumn = styled.div`
-  display: block;
 `;
