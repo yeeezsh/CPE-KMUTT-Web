@@ -1,4 +1,4 @@
-import { STATIC_CONTACT_US } from 'common/constants/links';
+import { STATIC_ABOUT_US_LINK, STATIC_CONTACT_US } from 'common/constants/links';
 
 import { MenuItem } from './types';
 
@@ -104,22 +104,22 @@ export const NAVBAR_MENU: MenuItem[] = [
       {
         key: '1',
         label: 'ภาควิชา',
-        link: '/#',
+        link: STATIC_ABOUT_US_LINK,
       },
       {
         key: '2',
         label: 'บุคลากร',
-        link: '/#',
+        link: STATIC_ABOUT_US_LINK,
       },
       {
         key: '3',
         label: 'นักศึกษา',
-        link: '/#',
+        link: STATIC_ABOUT_US_LINK,
       },
       {
         key: '4',
         label: 'ความเป็นนานาชาติ',
-        link: '/#',
+        link: STATIC_ABOUT_US_LINK,
       },
     ],
     picture: 'https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg',

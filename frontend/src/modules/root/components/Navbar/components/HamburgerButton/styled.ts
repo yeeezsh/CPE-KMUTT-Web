@@ -27,7 +27,6 @@ export const Hamburger = styled.svg`
 export const Cancel = styled.svg`
   width: 18px;
   height: 12px;
-  margin-bottom: ;
   &:hover {
     fill: ${COLORS.PRIMARY_COLOR};
   }

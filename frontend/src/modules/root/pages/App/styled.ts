@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin:0;
     padding:0;
+    font-family: 'Kanit', sans-serif;
   }
 
   @font-face {
@@ -13,9 +14,15 @@ export const GlobalStyle = createGlobalStyle`
     src: local('Kanit'), url(/fonts/Kanit-Regular.ttf) format('truetype');
   }
   @font-face {
-      font-family: 'Montserrat';
-      src: local('Montserrat'), url(/fonts/Montserrat-Regular.ttf) format('truetype');
+    font-family: 'Kanit';
+    src:local('Kanit'), url(/fonts/Kanit-Bold.ttf) format('truetype');
+    font-weight: bold;
   }
+  @font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(/fonts/Montserrat-Regular.ttf) format('truetype');
+  }
+
   a:link , a:visited {
     text-decoration: none;
     color: ${COLORS.GRAY_2};
@@ -42,5 +49,4 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: bold;
     opacity: 1;
   }
-
 `;

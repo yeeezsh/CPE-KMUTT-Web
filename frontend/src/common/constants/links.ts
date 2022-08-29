@@ -1,6 +1,7 @@
 export const STATIC_HOME_LINK = '/';
 export const STATIC_NEWS_LINK = '/news';
 export const STATIC_NEWS_CATEGORY_LINK = '/news/category/all';
+export const STATIC_ABOUT_US_LINK = '/about-us';
 export const STATIC_CONTACT_US = '/contact-us';
 export const STATIC_ABOUT_US = '/about-us';
 export const STATIC_STAFFS = '/staffs';
