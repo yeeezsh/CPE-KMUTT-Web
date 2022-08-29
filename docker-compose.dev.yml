@@ -63,6 +63,11 @@ services:
       DATABASE_PASSWORD: cpeKMUTT@WebSite
     volumes:
       - ./uploads/:/app/public/uploads
+      - ./strapi/components/:/app/components
+      - ./strapi/config/:/app/config
+      - ./strapi/plugins/:/app/plugins
+      - ./strapi/api/:/app/api
+      - ./strapi/extensions/:/app/extensions
     ports:
       - "1337:1337"
     depends_on:
