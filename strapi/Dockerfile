@@ -10,7 +10,8 @@ CMD ["npm", "start"]
 
 FROM base as dev
 ENV NODE_ENV development
-CMD ["npm", "start", "develop"]
+RUN npm i -g strapi
+CMD ["strapi", "develop"]
 
 FROM base as prod
 ENV NODE_ENV production
