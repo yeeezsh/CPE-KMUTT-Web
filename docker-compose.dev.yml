@@ -53,6 +53,7 @@ services:
     build:
       context: ./strapi
       dockerfile: Dockerfile
+      target: dev
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
