@@ -8,6 +8,7 @@ import { STATIC_ABOUT_US_LINK, STATIC_HOME_LINK } from 'common/constants/links';
 import ContentSection from 'modules/about-us/components/ContentSection';
 import SidebarSection from 'modules/about-us/components/SidebarSection';
 import { sidebarItems } from 'modules/about-us/components/SidebarSection/constants';
+import { HEADER_BACKGROUND_IMAGE } from 'modules/about-us/constants';
 import { AboutUsContainer } from 'modules/about-us/page/AboutUs/styled';
 
 const AboutUs: React.FC<{ id: string }> = ({ id }) => {
@@ -40,9 +41,10 @@ const AboutUs: React.FC<{ id: string }> = ({ id }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <CommonLayout header="เกี่ยวกับเรา" navigate={DEFAULT_NAVIGATE}>
-        {/* TODO://make coment layout accept bg props */}
-        {/* <Header title="เกี่ยวกับเรา" backgroundImage="/images/about-us-banner.png" /> */}
+      <CommonLayout
+        header="เกี่ยวกับเรา"
+        navigate={DEFAULT_NAVIGATE}
+        headerBackgroundImage={HEADER_BACKGROUND_IMAGE}>
         <AboutUsContainer>
           <SidebarSection activeKey={id} />
           <ContentSection />
