@@ -7,7 +7,7 @@ import {
   ContentTitle,
 } from 'modules/about-us/components/ContentSection/styled';
 
-function ContentSection() {
+function ContentSection(): JSX.Element {
   return (
     <ContentContainer>
       <ContentTitle>ประวัติภาควิชาฯ</ContentTitle>
