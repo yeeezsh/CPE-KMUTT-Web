@@ -1,4 +1,4 @@
-export const sidebarItems = [
+export const SIDEBAR_ITEMS = [
   {
     title: `เกี่ยวกับภาควิชาฯ`,
     item: [

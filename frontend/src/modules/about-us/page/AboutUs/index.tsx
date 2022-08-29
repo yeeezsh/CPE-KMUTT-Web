@@ -7,7 +7,7 @@ import { STATIC_ABOUT_US_LINK, STATIC_HOME_LINK } from 'common/constants/links';
 
 import ContentSection from 'modules/about-us/components/ContentSection';
 import SidebarSection from 'modules/about-us/components/SidebarSection';
-import { sidebarItems } from 'modules/about-us/components/SidebarSection/constants';
+import { SIDEBAR_ITEMS } from 'modules/about-us/components/SidebarSection/constants';
 import { HEADER_BACKGROUND_IMAGE } from 'modules/about-us/constants';
 import { AboutUsContainer } from 'modules/about-us/page/AboutUs/styled';
 
@@ -26,8 +26,9 @@ const AboutUs: React.FC<{ id: string }> = ({ id }) => {
   ];
 
   useEffect(() => {
-    const title = sidebarItems
-      .map(({ item }) => item.find(({ key }) => key === id)?.title)
+    const title = SIDEBAR_ITEMS.map(
+      ({ item }) => item.find(({ key }) => key === id)?.title,
+    )
       .filter((element) => {
         return element !== undefined;
       })

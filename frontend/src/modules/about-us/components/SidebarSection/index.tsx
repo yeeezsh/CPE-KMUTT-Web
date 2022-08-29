@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { sidebarItems } from 'modules/about-us/components/SidebarSection/constants';
+import { SIDEBAR_ITEMS } from 'modules/about-us/components/SidebarSection/constants';
 import {
   SidebarBody,
   SidebarContent,
@@ -15,7 +15,7 @@ const SidebarSection: React.FC<{
 }> = ({ activeKey }) => {
   return (
     <SidebarBody>
-      {sidebarItems.map(({ title, item }) => (
+      {SIDEBAR_ITEMS.map(({ title, item }) => (
         <SidebarContent key={title}>
           <SidebarTitle>{title}</SidebarTitle>
           {item.map(({ title, url, key }) => (
