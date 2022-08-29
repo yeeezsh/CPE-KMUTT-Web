@@ -12,34 +12,45 @@ const MAX_DESCRIPTION_LENGTH = 240;
 const MAX_DESCRIPTION_LENGTH_PRIMARY = 55;
 const REGEX_PATTERN = /<[^>]*>/g;
 
-export const newsMapper = (data: GetNewsByTagSeoLinkQuery) => {
-  return data.newsAndAnnouncements?.map((e) => {
-    const getDesc = e?.dynamic_content?.find(
-      (d) => d?.__typename === 'ComponentContentSectionsTextContent' && d.body,
-    ) as { __typename: 'ComponentContentSectionsTextContent' } & Pick<
-      ComponentContentSectionsTextContent,
-      'body'
-    >;
-    const isPrimary = e?.canvas_preview?.url;
+type NewsMappedType = {
+  _id: string;
+  description: string;
+  thumbnail?: string;
+  date: string;
+  raw_date: number;
+  variant: CardVariant;
+  title?: string;
+};
 
-    const trimmedDesc =
-      (getDesc && isPrimary
-        ? getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH_PRIMARY)
-        : getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH)) || '';
+export const newsMapper = (data: GetNewsByTagSeoLinkQuery): NewsMappedType[] => {
+  return (
+    data.newsAndAnnouncements?.map((e) => {
+      const getDesc = e?.dynamic_content?.find(
+        (d) => d?.__typename === 'ComponentContentSectionsTextContent' && d.body,
+      ) as { __typename: 'ComponentContentSectionsTextContent' } & Pick<
+        ComponentContentSectionsTextContent,
+        'body'
+      >;
+      const isPrimary = e?.canvas_preview?.url;
 
-    return {
-      ...e,
-      description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
-      thumbnail: e?.canvas_preview?.url
-        ? ImageStrapiUrl(e.canvas_preview.url)
-        : undefined,
-      _id: e?._id || Math.random().toLocaleString(),
-      variant: isPrimary ? CardVariant.primary : CardVariant.normal,
-      date: new Date(e?.createdAt).toLocaleDateString(),
-      raw_date: new Date(e?.createdAt).valueOf(), // use for compare
-      title: e?.header,
-    };
-  });
+      const trimmedDesc =
+        (getDesc && isPrimary
+          ? getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH_PRIMARY)
+          : getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH)) || '';
+
+      return {
+        description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
+        thumbnail: e?.canvas_preview?.url
+          ? ImageStrapiUrl(e.canvas_preview.url)
+          : undefined,
+        _id: e?._id || Math.random().toLocaleString(),
+        variant: isPrimary ? CardVariant.primary : CardVariant.normal,
+        date: new Date(e?.createdAt).toLocaleDateString(),
+        raw_date: new Date(e?.createdAt).valueOf(), // use for compare
+        title: e?.header,
+      };
+    }) || []
+  );
 };
 
 export const newsConnectionMapper = (

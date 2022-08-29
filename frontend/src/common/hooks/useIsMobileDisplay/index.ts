@@ -8,20 +8,27 @@ function isMobileDisplay(width: number) {
 }
 
 const useIsMobileDisplay = (): boolean => {
-  const [windowDimensions, setWindowDimensions] = useState<{
-    width: number;
-    height: number;
-  }>();
-
-  useEffect(() => {
-    function getWindowDimensions() {
+  function getWindowDimensions() {
+    if (typeof window !== 'undefined') {
+      //SSR problem
       const { innerWidth: width, innerHeight: height } = window;
       return {
         width,
         height,
       };
     }
+    return {
+      width: 0,
+      height: 0,
+    };
+  }
 
+  const [windowDimensions, setWindowDimensions] = useState<{
+    width: number;
+    height: number;
+  }>(getWindowDimensions());
+
+  useEffect(() => {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
     }
