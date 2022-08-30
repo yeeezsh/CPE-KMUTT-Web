@@ -1,10 +1,18 @@
-FROM strapi/base
+FROM strapi/base as base
 WORKDIR /app
 COPY ./package*.json ./
 RUN npm ci
 COPY . .
-ENV NODE_ENV production
 RUN npm --prefix ./plugins/wysiwyg install
 RUN npm run build
 EXPOSE 1337
+CMD ["npm", "start"]
+
+FROM base as dev
+ENV NODE_ENV development
+RUN npm i -g strapi
+CMD ["strapi", "develop"]
+
+FROM base as prod
+ENV NODE_ENV production
 CMD ["npm", "start"]

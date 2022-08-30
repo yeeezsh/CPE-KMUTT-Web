@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
+
 import Container from 'common/components/Container';
 
 import FooterConstant from './constants';
@@ -20,6 +22,13 @@ import {
 } from './styled';
 
 const StaticSection: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+  const router = useRouter();
+
+  function onClickLink(link?: string) {
+    link && router.push(link);
+  }
+
   return (
     <FooterStyled>
       <Container>
@@ -40,7 +49,7 @@ const StaticSection: React.FC = () => {
             <SiteMapSupContainer key={key}>
               <SiteMapHeader>{label}</SiteMapHeader>
               {subMenu?.map(({ key, label, link }) => (
-                <SiteMapLink key={key} href={link}>
+                <SiteMapLink key={key} href="#" onClick={() => onClickLink(link)}>
                   {label}
                 </SiteMapLink>
               ))}
@@ -50,7 +59,7 @@ const StaticSection: React.FC = () => {
         <HrLine />
         <CopyRightContainer>
           <CopyRight>
-            Copyright © 2020 ภาควิชาวิศวกรรมคอมพิวเตอร์
+            Copyright © {currentYear} ภาควิชาวิศวกรรมคอมพิวเตอร์
             มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี · สงวนสิทธิ์ทุกประการ
           </CopyRight>
           <InfoContainer>

@@ -44,6 +44,7 @@ services:
       - 49153:49153
     volumes:
       - "./frontend:/frontend"
+      - /frontend/node_modules
     depends_on:
       - strapi
   strapi:
@@ -52,6 +53,7 @@ services:
     build:
       context: ./strapi
       dockerfile: Dockerfile
+      target: dev
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
@@ -61,6 +63,11 @@ services:
       DATABASE_PASSWORD: cpeKMUTT@WebSite
     volumes:
       - ./uploads/:/app/public/uploads
+      - ./strapi/components/:/app/components
+      - ./strapi/config/:/app/config
+      - ./strapi/plugins/:/app/plugins
+      - ./strapi/api/:/app/api
+      - ./strapi/extensions/:/app/extensions
     ports:
       - "1337:1337"
     depends_on:
@@ -68,7 +75,7 @@ services:
   mongodb:
     container_name: mongodb
     restart: on-failure
-    image: "bitnami/mongodb:latest"
+    image: "bitnami/mongodb:5.0.9"
     environment:
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
       TZ: Asia/Bangkok

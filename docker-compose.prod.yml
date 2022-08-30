@@ -54,6 +54,7 @@ services:
     build:
       context: ./strapi
       dockerfile: Dockerfile
+      target: prod
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
@@ -61,13 +62,15 @@ services:
       DATABASE_PORT: 27017
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
+    ports:
+      - "1337:1337"
     volumes:
       - ./uploads/:/app/public/uploads
     depends_on:
       - mongodb
   mongodb:
     container_name: mongodb
-    image: "bitnami/mongodb:latest"
+    image: "bitnami/mongodb:5.0.9"
     restart: on-failure
     environment:
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite

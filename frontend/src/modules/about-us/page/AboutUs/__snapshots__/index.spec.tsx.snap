@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutUs page should matched snapshots 1`] = `
+<Fragment>
+  <Head>
+    <title>
+      ABOUT US | CPE KMUTT
+    </title>
+    <link
+      href="/favicon.ico"
+      rel="icon"
+    />
+  </Head>
+  <CommonLayout
+    header="เกี่ยวกับเรา"
+    headerBackgroundImage="/images/about-us-banner.png"
+    navigate={
+      Array [
+        Object {
+          "link": "/",
+          "title": "หน้าแรก",
+        },
+        Object {
+          "link": "/about-us",
+          "title": "เกี่ยวกับภาควิชาฯ",
+        },
+      ]
+    }
+  >
+    <styled__AboutUsContainer>
+      <SidebarSection
+        activeKey="1"
+      />
+      <ContentSection />
+    </styled__AboutUsContainer>
+  </CommonLayout>
+</Fragment>
+`;

@@ -1,4 +1,4 @@
-export default {
+const BREAKPOINTS = {
   // Mobile
   IPHONE_11PRO: '375px',
   IPHONE_11: '414px',
@@ -11,3 +11,5 @@ export default {
   HiDPI_LAPTOP: '1440px',
   DESKTOP_FULL_HD: '1920px',
 };
+
+export default BREAKPOINTS;

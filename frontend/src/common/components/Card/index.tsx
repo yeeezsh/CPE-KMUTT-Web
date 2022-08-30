@@ -11,7 +11,6 @@ import {
 } from './styled';
 import { CardProps, CardVariant } from './types';
 
-// Example components
 const Cards: React.FC<CardProps> = ({ ...props }) => {
   const cardMode = () => {
     switch (props.variant) {
