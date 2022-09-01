@@ -5,6 +5,7 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { Btn } from 'common/components/Button/styled';
 import Carousel from 'common/components/Carousel';
+import useIsMobileDisplay from 'common/hooks/useIsMobileDisplay';
 
 import Footer from 'modules/home/components/Footer';
 import StaticSection from 'modules/home/components/StaticSection';
@@ -17,9 +18,13 @@ import Navbar from 'modules/root/components/Navbar';
 import { Main } from './styled';
 
 const Home: React.FC<HomesProps> = ({ data }) => {
+  const isMobile = useIsMobileDisplay();
   const { mainCarousal, activityAndAwardsCarousal, whatsNews } = useHomeContentParser(
     data,
   );
+
+  const showForMobile = isMobile;
+  const showForDesktop = !isMobile;
 
   return (
     <div>
