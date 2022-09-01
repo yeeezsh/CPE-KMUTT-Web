@@ -38,6 +38,7 @@ const BaseMenu = () => (
 );
 
 const CustomMobileNavbar: React.FC<MenuProps> = styled(BaseMenu)`
+  /* TODO: override mobile nav */
   width: 10px;
 
   .ant-menu-vertical .ant-menu-item::after,
