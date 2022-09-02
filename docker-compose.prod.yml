@@ -19,8 +19,8 @@ services:
       target: prod
     environment:
       TZ: Asia/Bangkok
-      STRAPI_ENDPOINT: ${STRAPI_ENDPOINT}
-      APP_GRAPHQL_ENDPOINT: ${APP_GRAPHQL_ENDPOINT}
+      STRAPI_ENDPOINT: http://beta.cpe.kmutt.ac.th/strapi/
+      APP_GRAPHQL_ENDPOINT: http://beta.cpe.kmutt.ac.th/strapi/
     depends_on:
       - strapi
   backend:
@@ -33,14 +33,14 @@ services:
     environment:
       WAIT_HOSTS: mongo:27017
       TZ: Asia/Bangkok
-      ORIGIN: "${BACKEND_ORIGIN}"
+      ORIGIN: http(|s):\/\/localhost:5000
       DATABASE_CONNECTION: "mongodb://mongodb:27017/cpe-kmutt-web"
       DATABASE_USERAME: root
-      DATABASE_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+      DATABASE_PASSWORD: cpeKMUTT@WebSite
       DATABASE_AUTH_SOURCE: admin
-      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      JWT_SECRET_KEY: very-secret-key.jwt
       JWT_EXPIRES: 3600s
-      OPS_KEY: "${OPS_KEY}"
+      OPS_KEY: "CPE-KMUTT.opskey"
       NODE_ENV: "development"
       PORT: 3000
     volumes:
@@ -61,7 +61,7 @@ services:
       DATABASE_HOST: mongodb
       DATABASE_PORT: 27017
       DATABASE_USERNAME: root
-      DATABASE_PASSWORD: "${MONGODB_ROOT_PASSWORD}"
+      DATABASE_PASSWORD: cpeKMUTT@WebSite
     ports:
       - "1337:1337"
     volumes:
@@ -73,7 +73,7 @@ services:
     image: "bitnami/mongodb:5.0.9"
     restart: on-failure
     environment:
-      MONGODB_ROOT_PASSWORD: "${MONGODB_ROOT_PASSWORD}"
+      MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
       TZ: Asia/Bangkok
     volumes:
       - "./db:/bitnami"
