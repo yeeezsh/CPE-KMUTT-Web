@@ -119,6 +119,30 @@ const MOCK_API: GetHomeQuery = {
   ],
 };
 
+const MOCK_API_WITH_HTML_TAG: GetHomeQuery = {
+  home: null,
+  newsAndAnnouncements: [
+    {
+      _id: '63138e5ef1316e000e5d96bd',
+      header: 'ทดสอบ',
+      canvas_preview: {
+        url: '/files/pexels-karolina-grabowska-4207708.jpg',
+      },
+      tags: [],
+      dynamic_content: [
+        {
+          __typename: 'ComponentContentSectionsCarousalImage',
+        },
+        {
+          __typename: 'ComponentContentSectionsTextContent',
+          body:
+            '<p>ทดสอบ</p>\n<p>&nbsp;</p>\n<p><img src="../../../../../files/pexels-karolina-grabowska-4041285.jpg" alt="" width="126" height="189"> <img src="../../../../../files/pexels-karolina-grabowska-4207708.jpg" alt="" width="128" height="192"></p>\n<p>&nbsp;</p>\n<p><em>test jaaa</em></p>\n<p>&nbsp;</p>',
+        },
+      ],
+      createdAt: '2022-09-03T17:26:54.494Z',
+    },
+  ],
+};
 describe('useHomeContentParser', () => {
   it('should parese data correctly', () => {
     const { mainCarousal, activityAndAwardsCarousal, whatsNews } = useHomeContentParser(
@@ -129,5 +153,11 @@ describe('useHomeContentParser', () => {
     expect(mainCarousal[1].link).toBeUndefined();
     expect(activityAndAwardsCarousal.every((el) => el.link)).toBeTruthy();
     expect(whatsNews).toHaveLength(3);
+  });
+
+  it('shoudl parse description correctly with no HTML tag', () => {
+    const { whatsNews } = useHomeContentParser(MOCK_API_WITH_HTML_TAG);
+    const foundImageTag = whatsNews[0].description?.includes('<img>');
+    expect(foundImageTag).toBe(false);
   });
 });
