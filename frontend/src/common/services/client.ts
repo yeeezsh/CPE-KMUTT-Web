@@ -20,7 +20,7 @@ const httpLink = createHttpLink({
 
 const logoutLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
   if (graphQLErrors) {
-    console.log(graphQLErrors[0]);
+    console.error(graphQLErrors[0]);
     if (graphQLErrors[0].extensions) {
       switch (graphQLErrors[0].extensions?.code) {
         case 'GRAPHQL_VALIDATION_FAILED':
@@ -35,7 +35,7 @@ const logoutLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
           //window.location.replace('/login');
           break;
         default:
-          console.log(
+          console.error(
             `[GraphQL error]: Message: ${graphQLErrors[0].message}, Location: ${graphQLErrors[0].locations}, Path: ${graphQLErrors[0].path}`,
           );
           break;
