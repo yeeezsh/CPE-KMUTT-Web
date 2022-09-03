@@ -2,7 +2,8 @@
   "collectionName": "components_common_file_downloads",
   "info": {
     "name": "file-download",
-    "icon": "file-download"
+    "icon": "file-download",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,7 +11,9 @@
       "collection": "file",
       "via": "related",
       "allowedTypes": [
-        "files"
+        "files",
+        "images",
+        "videos"
       ],
       "plugin": "upload",
       "required": false,
