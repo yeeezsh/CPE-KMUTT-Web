@@ -5,14 +5,15 @@ import { CarouselItem } from 'common/components/Carousel/types';
 import { NEWS_DATE_FORMAT } from 'common/constants/format';
 import { STATIC_NEWS_ID_LINK, STATIC_NEWS_ID_LINK_PATTERN } from 'common/constants/links';
 import {
+  MAX_DESCRIPTION_LENGTH,
+  MAX_DESCRIPTION_LENGTH_PRIMARY,
+  REGEX_PATTERN,
+} from 'common/constants/parser';
+import {
   ComponentContentSectionsTextContent,
   GetHomeQuery,
 } from 'common/generated/generated-types';
 import { ImageStrapiUrl } from 'common/utils/urls';
-
-const MAX_DESCRIPTION_LENGTH = 240;
-const MAX_DESCRIPTION_LENGTH_PRIMARY = 55;
-const REGEX_PATTERN = /<[^>]*>/g;
 
 type UseHomeContentParser = {
   mainCarousal: CarouselItem[];
@@ -55,12 +56,16 @@ export const useHomeContentParser = (data?: GetHomeQuery): UseHomeContentParser 
 
     const trimmedDesc =
       (getDesc && isPrimary
-        ? getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH_PRIMARY)
-        : getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH)) || '';
+        ? getDesc?.body
+            ?.replaceAll(REGEX_PATTERN, '')
+            .slice(0, MAX_DESCRIPTION_LENGTH_PRIMARY)
+        : getDesc?.body
+            ?.replaceAll(REGEX_PATTERN, '')
+            .slice(0, MAX_DESCRIPTION_LENGTH)) || '';
     return {
       id: e?._id,
       title: e?.header,
-      description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
+      description: trimmedDesc,
       thumbnail: e?.canvas_preview?.url
         ? ImageStrapiUrl(e.canvas_preview.url)
         : undefined,

@@ -1,5 +1,10 @@
 import { CardVariant } from 'common/components/Card/types';
 import {
+  MAX_DESCRIPTION_LENGTH_PRIMARY,
+  MAX_DESCRIPTION_LENGTH,
+  REGEX_PATTERN,
+} from 'common/constants/parser';
+import {
   ComponentContentSectionsTextContent,
   GetNewsByIdQuery,
   GetNewsByTagSeoLinkQuery,
@@ -7,10 +12,6 @@ import {
 import { ImageStrapiUrl } from 'common/utils/urls';
 
 import { CardNewsConnectionProps } from 'modules/news/components/NewsContent/types';
-
-const MAX_DESCRIPTION_LENGTH = 240;
-const MAX_DESCRIPTION_LENGTH_PRIMARY = 55;
-const REGEX_PATTERN = /<[^>]*>/g;
 
 type NewsMappedType = {
   _id: string;
@@ -35,11 +36,15 @@ export const newsMapper = (data: GetNewsByTagSeoLinkQuery): NewsMappedType[] => 
 
       const trimmedDesc =
         (getDesc && isPrimary
-          ? getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH_PRIMARY)
-          : getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH)) || '';
+          ? getDesc?.body
+              ?.replaceAll(REGEX_PATTERN, '')
+              .slice(0, MAX_DESCRIPTION_LENGTH_PRIMARY)
+          : getDesc?.body
+              ?.replaceAll(REGEX_PATTERN, '')
+              .slice(0, MAX_DESCRIPTION_LENGTH)) || '';
 
       return {
-        description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
+        description: trimmedDesc,
         thumbnail: e?.canvas_preview?.url
           ? ImageStrapiUrl(e.canvas_preview.url)
           : undefined,
@@ -68,13 +73,17 @@ export const newsConnectionMapper = (
 
       const trimmedDesc =
         (getDesc && isPrimary
-          ? getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH_PRIMARY)
-          : getDesc?.body?.slice(0, MAX_DESCRIPTION_LENGTH)) || '';
+          ? getDesc?.body
+              ?.replaceAll(REGEX_PATTERN, '')
+              .slice(0, MAX_DESCRIPTION_LENGTH_PRIMARY)
+          : getDesc?.body
+              ?.replaceAll(REGEX_PATTERN, '')
+              .slice(0, MAX_DESCRIPTION_LENGTH)) || '';
 
       return {
         id: e?._id || Math.random().toLocaleString(),
         title: e?.header as string,
-        description: trimmedDesc.replaceAll(REGEX_PATTERN, ''),
+        description: trimmedDesc,
         date: new Date(e?.createdAt).toLocaleDateString(),
         thumbnail: e?.canvas_preview?.url ? ImageStrapiUrl(e.canvas_preview.url) : '/',
         variant: isPrimary ? CardVariant.primary : CardVariant.normal,
