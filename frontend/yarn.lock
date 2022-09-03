@@ -410,6 +410,11 @@
     "@babel/types" "^7.10.5"
     lodash "^4.17.19"
 
+"@babel/helper-environment-visitor@7.18.9":
+  version "7.18.9"
+  resolved "https://registry.yarnpkg.com/@babel/helper-environment-visitor/-/helper-environment-visitor-7.18.9.tgz#0c0cee9b35d2ca190478756865bb3528422f51be"
+  integrity sha512-3r/aACDJ3fhQ/EVgFy0hpj8oHyHpQc+LPtJoY9SzTThAsStm4Ptegq92vqKoE3vD706ZVFWITnMnxucw+S9Ipg==
+
 "@babel/helper-explode-assignable-expression@^7.10.4":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/helper-explode-assignable-expression/-/helper-explode-assignable-expression-7.12.1.tgz#8006a466695c4ad86a2a5f2fb15b5f2c31ad5633"
