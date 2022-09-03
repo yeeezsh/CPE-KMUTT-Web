@@ -1,0 +1,8 @@
+{
+  "provider": "mongodb",
+  "providerOptions": {
+    "collectionName": "fs",
+    "mongoDbFilesUploadDir": "files",
+    "read": "secondaryPreferred"
+  }
+}
