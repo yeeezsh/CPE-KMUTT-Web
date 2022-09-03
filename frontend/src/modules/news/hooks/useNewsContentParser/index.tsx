@@ -39,6 +39,7 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
   function mapContents(
     dynamic_element?: NewsAndAnnouncementDynamicContentDynamicZone,
   ): JSX.Element {
+    const EMPTY_FRAGMENT_KEY = 'empty-fragment-key';
     if (dynamic_element?.__typename === 'ComponentContentSectionsTextContent') {
       return (
         <NewsContentContainer
@@ -49,7 +50,7 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
       );
     }
 
-    return <></>;
+    return <React.Fragment key={EMPTY_FRAGMENT_KEY}></React.Fragment>;
   }
 
   const header = data?.newsAndAnnouncement?.header;
