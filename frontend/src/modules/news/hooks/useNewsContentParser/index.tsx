@@ -45,7 +45,7 @@ export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentPar
         <NewsContentContainer
           key={dynamic_element.id}
           dangerouslySetInnerHTML={{
-            __html: replaceImageTagUrl(dynamic_element.body) as string,
+            __html: replaceImageTagUrl(dynamic_element.body),
           }}></NewsContentContainer>
       );
     }
