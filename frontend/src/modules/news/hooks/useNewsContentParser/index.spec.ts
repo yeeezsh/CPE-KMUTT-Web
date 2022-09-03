@@ -4,7 +4,10 @@ import { CardVariant } from 'common/components/Card/types';
 import { NEWS_DATE_FORMAT } from 'common/constants/format';
 import { GetNewsByIdQuery } from 'common/generated/generated-types';
 
-import { useNewsContentParser } from 'modules/news/hooks/useNewsContentParser';
+import {
+  replaceImageTagUrl,
+  useNewsContentParser,
+} from 'modules/news/hooks/useNewsContentParser';
 
 const MOCK_API: GetNewsByIdQuery = {
   newsAndAnnouncement: {
@@ -83,6 +86,11 @@ const MOCK_API: GetNewsByIdQuery = {
     ],
   },
 };
+
+const MOCK_BODY_WITH_IMAGE_TAG = `<p>ทดสอบ</p><p>&nbsp;</p><p><img src="../../../../../files/pexels-karolina-grabowska-4041285.jpg" alt="" width="126" height="189"></p><p><img src="../../../../../files/pexels-karolina-grabowska-4207708.jpg" alt=""></p>`;
+
+const EXPECT_REPLACED_IMAGE_TAG_RESULT = `<p>ทดสอบ</p><p>&nbsp;</p><p><img src="http://localhost:1337/files/pexels-karolina-grabowska-4041285.jpg" alt="" width="126" height="189"></p><p><img src="http://localhost:1337/files/pexels-karolina-grabowska-4207708.jpg" alt=""></p>`;
+
 describe('useNewsContentParser hooks', () => {
   it('should parse dynamic content correctly', () => {
     const { contents } = useNewsContentParser(MOCK_API);
@@ -108,5 +116,10 @@ describe('useNewsContentParser hooks', () => {
     const { connections } = useNewsContentParser(MOCK_API);
     expect(connections && connections[0].variant).toBe(CardVariant.normal);
     expect(connections && connections[1].variant).toBe(CardVariant.primary);
+  });
+
+  describe('should able to replace image tag correctly', () => {
+    const result = replaceImageTagUrl(MOCK_BODY_WITH_IMAGE_TAG);
+    expect(result).toEqual(EXPECT_REPLACED_IMAGE_TAG_RESULT);
   });
 });
