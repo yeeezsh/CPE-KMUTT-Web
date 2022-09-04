@@ -5,37 +5,30 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { Btn } from 'common/components/Button/styled';
 import Carousel from 'common/components/Carousel';
-import useIsMobileDisplay from 'common/hooks/useIsMobileDisplay';
+import CommonLayout from 'common/components/Layouts/CommonLayout';
 
-import Footer from 'modules/home/components/Footer';
 import StaticSection from 'modules/home/components/StaticSection';
 import { ButtonStyled } from 'modules/home/components/StaticSection/styled';
 import WhatNewSection from 'modules/home/components/WhatNewSection';
 import { useHomeContentParser } from 'modules/home/hooks/useHomeContentParser';
 import { HomesProps } from 'modules/home/page/Home/types';
-import Navbar from 'modules/root/components/Navbar';
 
 import { Main } from './styled';
 
 const Home: React.FC<HomesProps> = ({ data }) => {
-  const isMobile = useIsMobileDisplay();
   const { mainCarousal, activityAndAwardsCarousal, whatsNews } = useHomeContentParser(
     data,
   );
 
-  const showForMobile = isMobile;
-  const showForDesktop = !isMobile;
-
   return (
-    <div>
+    <CommonLayout
+      showTopBar={false}
+      Header={<Carousel variant="Default" item={mainCarousal} />}>
       <Head>
         <title>หน้าแรก</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
       <Main>
-        <Carousel variant="Default" item={mainCarousal} />
-
         <WhatNewSection data={whatsNews} />
 
         <StaticSection
@@ -78,9 +71,8 @@ const Home: React.FC<HomesProps> = ({ data }) => {
             </Btn>
           </ButtonStyled>
         </StaticSection>
-        <Footer key="1"></Footer>
       </Main>
-    </div>
+    </CommonLayout>
   );
 };
 export default Home;

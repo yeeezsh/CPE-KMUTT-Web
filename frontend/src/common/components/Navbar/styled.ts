@@ -1,22 +1,27 @@
 import { Divider } from 'antd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { MOBILE_MENU_MAX_WIDTH } from 'common/components/MobileNavbar/constants';
 import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 import fontFamily from 'common/styles/typography/fontFamily';
+
 export const NAVBAR_HEIGHT = '100px';
 export const NAVBAR_HEIGHT_MOBILE = '60px';
 
-import { NavBarProps } from './interface';
+interface NavProps {
+  $isMobileMenuShow: boolean;
+  $visible: boolean;
+}
 
-export const Nav = styled.div`
+export const Nav = styled.div<NavProps>`
   width: 100%;
   height: ${NAVBAR_HEIGHT};
   position: fixed;
   z-index: 2;
   top: 0;
-  background: ${(props: NavBarProps) =>
-    props.visible ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.8)'};
+  background: ${({ $visible }) =>
+    $visible ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.8)'};
   backdrop-filter: blur(70px);
   font-family: ${fontFamily.TH};
   font-style: normal;
@@ -28,6 +33,14 @@ export const Nav = styled.div`
     height: ${NAVBAR_HEIGHT_MOBILE};
     padding: 0 20px;
   }
+  transition: transform 0.3s;
+
+  ${({ $isMobileMenuShow }) =>
+    $isMobileMenuShow
+      ? css`
+          transform: translateX(-${MOBILE_MENU_MAX_WIDTH});
+        `
+      : ''}
 `;
 
 export const NavbarBrand = styled.li`
