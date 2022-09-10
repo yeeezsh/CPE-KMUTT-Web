@@ -1,4 +1,4 @@
-query contact($locale: String = "th") {
+query GetContact($locale: String = "th") {
   contact(locale: $locale, publicationState: LIVE) {
     address_content
     contact_phone

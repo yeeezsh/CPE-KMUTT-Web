@@ -1935,11 +1935,11 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
   >;
 };
 
-export type ContactQueryVariables = Exact<{
+export type GetContactQueryVariables = Exact<{
   locale?: Maybe<Scalars['String']>;
 }>;
 
-export type ContactQuery = { __typename?: 'Query' } & {
+export type GetContactQuery = { __typename?: 'Query' } & {
   contact?: Maybe<
     { __typename?: 'Contact' } & Pick<
       Contact,
@@ -2141,8 +2141,8 @@ export type GetNewsByIdQueryResult = Apollo.QueryResult<
   GetNewsByIdQuery,
   GetNewsByIdQueryVariables
 >;
-export const ContactDocument = gql`
-  query contact($locale: String = "th") {
+export const GetContactDocument = gql`
+  query GetContact($locale: String = "th") {
     contact(locale: $locale, publicationState: LIVE) {
       address_content
       contact_phone
@@ -2151,4 +2151,7 @@ export const ContactDocument = gql`
     }
   }
 `;
-export type ContactQueryResult = Apollo.QueryResult<ContactQuery, ContactQueryVariables>;
+export type GetContactQueryResult = Apollo.QueryResult<
+  GetContactQuery,
+  GetContactQueryVariables
+>;
