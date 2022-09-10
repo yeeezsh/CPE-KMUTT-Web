@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
+import { NAVBAR_HEIGHT, NAVBAR_HEIGHT_MOBILE } from 'common/components/Navbar/styled';
 import BREAKPOINTS from 'common/constants/breakpoints';
-
-import {
-  NAVBAR_HEIGHT,
-  NAVBAR_HEIGHT_MOBILE,
-} from 'modules/root/components/Navbar/styled';
 
 export const Main = styled.main`
   margin-top: ${NAVBAR_HEIGHT};

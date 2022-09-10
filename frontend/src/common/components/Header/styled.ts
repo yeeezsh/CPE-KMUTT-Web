@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { NAVBAR_HEIGHT } from 'common/components/Navbar/styled';
 import breakpoints from 'common/constants/breakpoints';
 import colors from 'common/constants/colors';
 import fontFamily from 'common/styles/typography/fontFamily';
-
-import { NAVBAR_HEIGHT } from 'modules/root/components/Navbar/styled';
 
 const CONTAINER_HEIGHT = '300px';
 

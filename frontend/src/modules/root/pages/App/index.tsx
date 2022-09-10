@@ -6,6 +6,7 @@ import type { AppProps } from 'next/app';
 import TagManager from 'react-gtm-module';
 import { Provider } from 'react-redux';
 
+import NavbarContextProvider from 'common/components/NavbarContextProvider';
 import { client } from 'common/services/client';
 import { store } from 'common/stores';
 
@@ -25,7 +26,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <GlobalStyle />
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <Component {...pageProps} />
+          <NavbarContextProvider>
+            <Component {...pageProps} />
+          </NavbarContextProvider>
         </Provider>
       </ApolloProvider>
     </>

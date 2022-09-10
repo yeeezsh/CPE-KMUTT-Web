@@ -24,7 +24,7 @@
     "@apollo/client": "^3.3.6",
     "@reduxjs/toolkit": "1.6.1",
     "@types/react-gtm-module": "2.0.1",
-    "antd": "4.8.2",
+    "antd": "4.22.8",
     "dayjs": "1.11.0",
     "graphql": "15.5.1",
     "keen-slider": "5.4.0",
@@ -46,10 +46,11 @@
     "@graphql-codegen/typescript": "1.20.0",
     "@graphql-codegen/typescript-operations": "1.17.13",
     "@graphql-codegen/typescript-react-apollo": "2.2.1",
-    "@storybook/addon-actions": "6.0.28",
-    "@storybook/addon-essentials": "6.0.28",
-    "@storybook/addon-links": "6.0.28",
-    "@storybook/react": "6.0.28",
+    "@jridgewell/gen-mapping": "0.3.2",
+    "@storybook/addon-actions": "6.5.10",
+    "@storybook/addon-essentials": "6.5.10",
+    "@storybook/addon-links": "6.5.10",
+    "@storybook/react": "6.5.10",
     "@testing-library/react": "11.2.6",
     "@testing-library/react-hooks": "5.1.1",
     "@testing-library/user-event": "13.1.5",
@@ -86,6 +87,6 @@
     "redux-mock-store": "1.5.4",
     "ts-jest": "26.4.3",
     "tsconfig-paths-webpack-plugin": "3.3.0",
-    "typescript": "4.0.5"
+    "typescript": "4.8.2"
   }
 }
