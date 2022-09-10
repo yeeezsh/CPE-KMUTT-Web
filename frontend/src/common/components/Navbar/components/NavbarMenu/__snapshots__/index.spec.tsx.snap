@@ -186,25 +186,25 @@ exports[`Navbar Tests Navbar menu should be defined 1`] = `
     </styled__Menu>
     <styled__SubMenu>
       <styled__SubMenuItem
-        key="1"
+        key="secondary-1"
         onClick={[Function]}
       >
         สำหรับนักศึกษาปัจจุบัน
       </styled__SubMenuItem>
       <styled__SubMenuItem
-        key="2"
+        key="secondary-2"
         onClick={[Function]}
       >
         สำหรับบุคลากร
       </styled__SubMenuItem>
       <styled__SubMenuItem
-        key="3"
+        key="secondary-3"
         onClick={[Function]}
       >
         ดาวน์โหลด
       </styled__SubMenuItem>
       <styled__SubMenuItem
-        key="4"
+        key="secondary-4"
         onClick={[Function]}
       >
         ติดต่อเรา
