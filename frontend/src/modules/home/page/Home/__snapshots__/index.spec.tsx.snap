@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index page Index page to match snapshot 1`] = `
+<CommonLayout
+  Header={
+    <Carousel
+      variant="Default"
+    />
+  }
+  showTopBar={false}
+>
+  <Head>
+    <title>
+      หน้าแรก
+    </title>
+    <link
+      href="/favicon.ico"
+      rel="icon"
+    />
+  </Head>
+  <styled__Main>
+    <WhatNewSection />
+    <StaticSection
+      background="/images/static_bg_curriculum.png"
+      content="เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน ใช้งานรูบิค แซมบ้าเมาท์ แอดมิชชั่นคัตเอาต์โครนาโอ้ยเซ็นเซอร์ ผู้นำเมจิควิทย์ บลอนด์แทคติคไอซียูเยลลี่"
+      header="ที่วิศวกรรมคอมพิวเตอร์ มจธ. เรามีหลักสูตรหลากหลาย"
+      id="1"
+    >
+      <styled__ButtonStyled>
+        <styled__Btn
+          $color="primary"
+        >
+          สำรวจหลักสูตรทั้งหมด
+          <HiOutlineArrowRight
+            className="Icon"
+            style={
+              Object {
+                "marginLeft": "16px",
+              }
+            }
+          />
+        </styled__Btn>
+      </styled__ButtonStyled>
+      <styled__ButtonStyled>
+        <styled__Btn
+          $color="white"
+        >
+          สมัครเข้าเรียน
+          <HiOutlineArrowRight
+            className="Icon"
+            size="16px"
+            style={
+              Object {
+                "marginLeft": "16px",
+              }
+            }
+          />
+        </styled__Btn>
+      </styled__ButtonStyled>
+    </StaticSection>
+    <Carousel
+      variant="Slider"
+    />
+    <StaticSection
+      background="/images/static_bg_gallery.png"
+      content="โดยมีอาจารย์ผู้สอนเป็นผู้ให้คำปรึกษา นักศึกษาต้องทำงานเป็นกลุ่ม และมีการนำเสนอผลงาน ของตนเองให้เพื่อนๆ ร่วมกันวิเคราะห์และวิจารณ์อย่างมีเหตุผล"
+      header="แกลเลอรี่รูปภาพ"
+      id="2"
+    >
+      <styled__ButtonStyled>
+        <styled__Btn
+          $color="white"
+        >
+          สำรวจแกลเลอรี่
+          <HiOutlineArrowRight
+            className="Icon"
+            size="16px"
+            style={
+              Object {
+                "marginLeft": "16px",
+              }
+            }
+          />
+        </styled__Btn>
+      </styled__ButtonStyled>
+    </StaticSection>
+  </styled__Main>
+</CommonLayout>
+`;
