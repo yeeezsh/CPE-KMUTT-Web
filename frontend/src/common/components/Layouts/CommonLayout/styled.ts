@@ -1,19 +1,40 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { MOBILE_MENU_MAX_WIDTH } from 'common/components/MobileNavbar/constants';
+import { NAVBAR_HEIGHT, NAVBAR_HEIGHT_MOBILE } from 'common/components/Navbar/styled';
+import BREAKPOINTS from 'common/constants/breakpoints';
 import COLORS from 'common/constants/colors';
 
-import { NAVBAR_HEIGHT } from 'modules/root/components/Navbar/styled';
+interface MainProps {
+  $isMobileMenuShow: boolean;
+}
+
 interface CommonWrapperHeaderProps {
   $backgroundImage: string;
 }
 
-export const CommonLayoutStyle = styled.div`
+export const Wrapper = styled.div``;
+
+export const Main = styled.main<MainProps>`
   display: block;
   font-family: 'Kanit', sans-serif;
   background-color: #fafafa;
   width: 100%;
   margin: auto;
   margin-top: ${NAVBAR_HEIGHT};
+  transition: transform 0.3s;
+
+  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
+    margin-top: ${NAVBAR_HEIGHT_MOBILE};
+  }
+
+  ${({ $isMobileMenuShow }) =>
+    $isMobileMenuShow
+      ? css`
+          transform: translateX(-${MOBILE_MENU_MAX_WIDTH});
+        `
+      : ''}
+
   .ant-breadcrumb {
     display: flex;
     padding: 10px;

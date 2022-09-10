@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import Navbar from 'modules/root/components/Navbar';
+import Navbar from 'common/components/Navbar';
 
 import { NavBarProps } from './interface';
 
 export default {
-  title: 'modules/root/components/Navbar',
+  title: 'common/components/Navbar',
   component: Navbar,
 } as Meta;
 

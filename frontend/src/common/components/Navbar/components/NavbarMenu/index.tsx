@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import Container from 'common/components/Container';
 
-import { NAVBAR_MENU, NAVBAR_SUB_MENU } from './constants';
+import { NAVBAR_MENU, NAVBAR_SECONDARY_MENU } from './constants';
 import {
   Group,
   Image,
@@ -52,7 +52,7 @@ const NavbarMenu: React.FC = () => {
           })}
         </Menu>
         <SubMenu>
-          {NAVBAR_SUB_MENU.map(({ key, label, link }) => {
+          {NAVBAR_SECONDARY_MENU.map(({ key, label, link }) => {
             return (
               <SubMenuItem key={key} onClick={() => onLinkClick(link)}>
                 {label}

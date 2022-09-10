@@ -8,6 +8,7 @@ export interface CrumbProps {
 export interface CommonLayoutProps {
   children: ReactNode;
   Header?: ReactNode;
+  showTopBar?: boolean;
   header?: string;
   navigate?: CrumbProps[];
   withFaqBanner?: boolean;

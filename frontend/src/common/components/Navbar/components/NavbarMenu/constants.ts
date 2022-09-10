@@ -148,9 +148,9 @@ export const STAFF: MenuItem[] = [
   { key: '11', label: 'ผู้ดูแลระบบเว็บไซต์' },
 ];
 
-export const NAVBAR_SUB_MENU: MenuItem[] = [
-  { key: '1', label: 'สำหรับนักศึกษาปัจจุบัน', subMenu: STUDENT },
-  { key: '2', label: 'สำหรับบุคลากร', subMenu: STAFF },
-  { key: '3', label: 'ดาวน์โหลด', link: '#' },
-  { key: '4', label: 'ติดต่อเรา', link: STATIC_CONTACT_US },
+export const NAVBAR_SECONDARY_MENU: MenuItem[] = [
+  { key: 'secondary-1', label: 'สำหรับนักศึกษาปัจจุบัน', subMenu: STUDENT },
+  { key: 'secondary-2', label: 'สำหรับบุคลากร', subMenu: STAFF },
+  { key: 'secondary-3', label: 'ดาวน์โหลด', link: '#' },
+  { key: 'secondary-4', label: 'ติดต่อเรา', link: STATIC_CONTACT_US },
 ];
