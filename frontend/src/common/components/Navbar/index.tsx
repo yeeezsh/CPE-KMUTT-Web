@@ -4,11 +4,12 @@ import { Dropdown } from 'antd';
 import { useRouter } from 'next/router';
 
 import Container from 'common/components/Container';
+import useClickHamburger from 'common/components/Navbar/hooks/useClickHamburger';
 import { STATIC_HOME_LINK } from 'common/constants/links';
+import useIsMobileNavbarShow from 'common/hooks/useIsMobileMenuOpened';
 
 import HamburgerButton from './components/HamburgerButton';
 import NavbarMenu from './components/NavbarMenu';
-import useDropdown from './hooks/useDropdown';
 import {
   Department,
   Faculty,
@@ -22,15 +23,17 @@ import {
 } from './styled';
 
 const Navbar: React.FC = () => {
-  const rouetr = useRouter();
-  const { visible, showDropdown } = useDropdown();
+  const router = useRouter();
+  const { menuOpened, desktopMenuOpened, handleClickHamburger } = useClickHamburger();
 
   function onLogoClick() {
-    rouetr.push(STATIC_HOME_LINK);
+    router.push(STATIC_HOME_LINK);
   }
 
+  const isMobileOpen = useIsMobileNavbarShow();
+
   return (
-    <Nav visible={visible}>
+    <Nav $visible={menuOpened} $isMobileMenuShow={isMobileOpen}>
       <Container>
         <NavbarBrand>
           <LogoKMUTT onClick={onLogoClick} src="/assets/LOGO-KMUTT.svg" />
@@ -44,9 +47,9 @@ const Navbar: React.FC = () => {
           </Wrapper>
         </NavbarBrand>
 
-        <MenuButton>{visible ? '' : 'EN'}</MenuButton>
+        <MenuButton>{menuOpened ? '' : 'EN'}</MenuButton>
         <Dropdown
-          visible={visible}
+          visible={desktopMenuOpened}
           overlay={<NavbarMenu />}
           placement="bottomCenter"
           trigger={['click']}
@@ -55,7 +58,7 @@ const Navbar: React.FC = () => {
             position: 'fixed',
             marginTop: '40px',
           }}>
-          <HamburgerButton onClick={showDropdown} visible={visible} />
+          <HamburgerButton onClick={handleClickHamburger} visible={menuOpened} />
         </Dropdown>
       </Container>
     </Nav>

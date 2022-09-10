@@ -2,7 +2,8 @@
 
 exports[`Navbar Tests Navbar component should be defined 1`] = `
 <styled__Nav
-  visible={false}
+  $isMobileMenuShow={false}
+  $visible={false}
 >
   <Container>
     <styled__NavbarBrand>
@@ -49,7 +50,7 @@ exports[`Navbar Tests Navbar component should be defined 1`] = `
       visible={false}
     >
       <mockConstructor
-        onClick={[MockFunction]}
+        onClick={[Function]}
         visible={false}
       />
     </Dropdown>
