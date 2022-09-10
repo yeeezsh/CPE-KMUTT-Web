@@ -1,20 +1,26 @@
 import React from 'react';
 
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { Btn } from 'common/components/Button/styled';
-import Carousel from 'common/components/Carousel';
 
-import Footer from 'modules/home/components/Footer';
-import StaticSection from 'modules/home/components/StaticSection';
 import { ButtonStyled } from 'modules/home/components/StaticSection/styled';
-import WhatNewSection from 'modules/home/components/WhatNewSection';
 import { useHomeContentParser } from 'modules/home/hooks/useHomeContentParser';
 import { HomesProps } from 'modules/home/page/Home/types';
-import Navbar from 'modules/root/components/Navbar';
 
 import { Main } from './styled';
+
+const DynamicNavbar = dynamic(() => import('modules/root/components/Navbar'));
+const DynamicCarousel = dynamic(() => import('common/components/Carousel'));
+const DynamicWhatNewSection = dynamic(
+  () => import('modules/home/components/WhatNewSection'),
+);
+const DynamicStaticSection = dynamic(
+  () => import('modules/home/components/StaticSection'),
+);
+const DynamicFooter = dynamic(() => import('modules/home/components/Footer'));
 
 const Home: React.FC<HomesProps> = ({ data }) => {
   const { mainCarousal, activityAndAwardsCarousal, whatsNews } = useHomeContentParser(
@@ -27,13 +33,13 @@ const Home: React.FC<HomesProps> = ({ data }) => {
         <title>หน้าแรก</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+      <DynamicNavbar />
       <Main>
-        <Carousel variant="Default" item={mainCarousal} />
+        <DynamicCarousel variant="Default" item={mainCarousal} />
 
-        <WhatNewSection data={whatsNews} />
+        <DynamicWhatNewSection data={whatsNews} />
 
-        <StaticSection
+        <DynamicStaticSection
           id="1"
           background="/images/static_bg_curriculum.png"
           header="ที่วิศวกรรมคอมพิวเตอร์ มจธ. เรามีหลักสูตรหลากหลาย"
@@ -55,9 +61,11 @@ const Home: React.FC<HomesProps> = ({ data }) => {
               />
             </Btn>
           </ButtonStyled>
-        </StaticSection>
-        <Carousel variant="Slider" item={activityAndAwardsCarousal} />
-        <StaticSection
+        </DynamicStaticSection>
+
+        <DynamicCarousel variant="Slider" item={activityAndAwardsCarousal} />
+
+        <DynamicStaticSection
           id="2"
           background="/images/static_bg_gallery.png"
           header="แกลเลอรี่รูปภาพ"
@@ -72,8 +80,8 @@ const Home: React.FC<HomesProps> = ({ data }) => {
               />
             </Btn>
           </ButtonStyled>
-        </StaticSection>
-        <Footer key="1"></Footer>
+        </DynamicStaticSection>
+        <DynamicFooter key="1"></DynamicFooter>
       </Main>
     </div>
   );
