@@ -14,11 +14,17 @@ import {
   DEFAULT_CONTACT_PHONE,
   DEFAULT_GMAPS_URL,
 } from 'modules/contact/constants';
+import { ContactUsProps } from 'modules/contact/pages/ContactUs/interfaces';
 
 import { BREADCRUMB, HEADER_BACKGROUND_IMAGE } from './constants';
 import { Address, ContactDetail, ContactSection, StyledRow } from './styled';
 
-const ContactUs: React.FC = () => {
+const ContactUs: React.FC<ContactUsProps> = ({ data }) => {
+  const address = data?.contact?.address_content || DEFAULT_CONTACT_ADDRESS;
+  const phone = data?.contact?.contact_phone || DEFAULT_CONTACT_PHONE;
+  const email = data?.contact?.contact_email || DEFAULT_CONTACT_EMAIL;
+  const mapUrl = data?.contact?.google_map_link || DEFAULT_GMAPS_URL;
+
   return (
     <>
       <Head>
@@ -36,22 +42,22 @@ const ContactUs: React.FC = () => {
                   <Heading variant="h2" color={colors.PRIMARY_COLOR}>
                     ที่อยู่
                   </Heading>
-                  <Address>{DEFAULT_CONTACT_ADDRESS}</Address>
+                  <Address>{address}</Address>
                 </StyledRow>
                 <StyledRow>
                   <Heading variant="h2" color={colors.PRIMARY_COLOR}>
                     ติดต่อ
                   </Heading>
                   <ContactDetail>
-                    <p>{DEFAULT_CONTACT_PHONE}</p>
-                    <p>{DEFAULT_CONTACT_EMAIL}</p>
+                    <p>{phone}</p>
+                    <p>{email}</p>
                   </ContactDetail>
                 </StyledRow>
               </Col>
               <Col span={12}>
                 <iframe
                   title="KMUTT CPE"
-                  src={DEFAULT_GMAPS_URL}
+                  src={mapUrl}
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
