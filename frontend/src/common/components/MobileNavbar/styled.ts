@@ -22,6 +22,7 @@ export const Container = styled.div<ContainerProps>`
   max-width: ${MOBILE_MENU_MAX_WIDTH};
   background-color: ${MENU_BACKGROUND_COLOR};
   overflow-y: auto;
+  z-index: 1;
   ${({ $isShow }) =>
     !$isShow
       ? css`
