@@ -9,4 +9,9 @@ describe('Index page', () => {
     const wrap = shallow(<Home />);
     expect(wrap.exists()).toBe(true);
   });
+
+  it('Index page to match snapshot', () => {
+    const wrap = shallow(<Home />);
+    expect(wrap).toMatchSnapshot();
+  });
 });
