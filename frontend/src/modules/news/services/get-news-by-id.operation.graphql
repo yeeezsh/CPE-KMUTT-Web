@@ -62,7 +62,7 @@ query GetNewsById($Id: ID!, $LocaleConnection: String!) {
   }
   newsAndAnnouncementsConnection(
     sort: "createdAt:desc"
-    limit: 3
+    limit: 4
     locale: $LocaleConnection
   ) {
     values {
