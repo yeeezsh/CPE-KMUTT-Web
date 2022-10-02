@@ -55,6 +55,8 @@ services:
       context: ./strapi
       dockerfile: Dockerfile
       target: prod
+      args:
+        APP_TINY_MCE_KEY: '${STRAPI_TINY_MCE}'
     environment:
       DATABASE_CLIENT: mongo
       DATABASE_NAME: strapi
@@ -62,7 +64,6 @@ services:
       DATABASE_PORT: 27017
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: '${MONGODB_ROOT_PASSWORD}'
-      APP_TINY_MCE_KEY: '${STRAPI_TINY_MCE}'
     ports:
       - '1337:1337'
     volumes:
