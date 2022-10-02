@@ -62,7 +62,7 @@ services:
       DATABASE_PORT: 27017
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: '${MONGODB_ROOT_PASSWORD}'
-      APP_TINY_MCE_KEY: '${APP_TINY_MCE_KEY}'
+      APP_TINY_MCE_KEY: '${STRAPI_TINY_MCE}'
     ports:
       - '1337:1337'
     volumes:
