@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Editor } from "@tinymce/tinymce-react";
 
-const API_KEY = process.env.APP_TINY_MCE_KEY || "";
+const API_KEY = APP_TINY_MCE_KEY || "";
 
 const TinyEditor = ({ onChange, name, value }) => {
   useEffect(() => {
