@@ -1,10 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Editor } from "@tinymce/tinymce-react";
+
+const API_KEY = process.env.APP_TINY_MCE_KEY || "";
+
 const TinyEditor = ({ onChange, name, value }) => {
   return (
     <Editor
-      apiKey="API KEY"
+      apiKey={API_KEY}
       value={value}
       tagName={name}
       onEditorChange={(editorContent) => {

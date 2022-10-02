@@ -1,4 +1,6 @@
 FROM strapi/base as base
+ARG APP_TINY_MCE_KEY
+ENV APP_TINY_MCE_KEY=${APP_TINY_MCE_KEY}
 WORKDIR /app
 COPY ./package*.json ./
 RUN npm ci
