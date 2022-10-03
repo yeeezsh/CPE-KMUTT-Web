@@ -47,6 +47,7 @@
       "component": "common.static-pages"
     },
     "main_menu": {
+      "via": "menus",
       "model": "main-menus"
     }
   }

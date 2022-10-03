@@ -70,6 +70,10 @@
       },
       "component": "common.menu-config",
       "required": true
+    },
+    "menus": {
+      "collection": "menus",
+      "via": "main_menu"
     }
   }
 }
