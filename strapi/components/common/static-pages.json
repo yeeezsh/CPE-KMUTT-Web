@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_common_static_pages",
+  "info": {
+    "name": "Static-pages",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "static_pages": {
+      "type": "enumeration",
+      "enum": [
+        "news",
+        "about_us",
+        "contact_us",
+        "staffs"
+      ]
+    }
+  }
+}

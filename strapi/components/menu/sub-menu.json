@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_menu_sub_menus",
+  "info": {
+    "name": "Sub-menu",
+    "icon": "sitemap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "regex": "^(http|https):\\/\\/.*"
+    },
+    "news_announcement": {
+      "model": "news-and-announcement"
+    },
+    "title_th": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "static_page": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.static-pages"
+    }
+  }
+}

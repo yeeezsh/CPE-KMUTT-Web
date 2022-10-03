@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_common_menu_configs",
+  "info": {
+    "name": "Menu-Configs",
+    "icon": "wrench",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Mobile": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "Desktop": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "Footer": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
