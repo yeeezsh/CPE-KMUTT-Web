@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menus",
+  "info": {
+    "name": "Menus",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "news_announcement": {
+      "model": "news-and-announcement"
+    },
+    "static_page": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "common.static-pages"
+    },
+    "main_menu": {
+      "model": "main-menus"
+    }
+  }
+}
