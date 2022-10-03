@@ -1,0 +1,39 @@
+fragment defaultStaticPage on ComponentCommonStaticPages {
+  static_pages
+}
+
+fragment defaultNewsAnnoucement on NewsAndAnnouncement {
+  id
+  seo_link
+}
+
+query Menus {
+  mainMenus {
+    title
+    url
+    thumbnail {
+      previewUrl
+    }
+    news_announcement {
+      ...defaultNewsAnnoucement
+    }
+    static_page {
+      ...defaultStaticPage
+    }
+    menu_config {
+      Desktop
+      Mobile
+      Footer
+    }
+    menus {
+      title
+      url
+      news_announcement {
+        ...defaultNewsAnnoucement
+      }
+      static_page {
+        ...defaultStaticPage
+      }
+    }
+  }
+}
