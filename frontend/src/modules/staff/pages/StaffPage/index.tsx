@@ -31,7 +31,7 @@ const StaffPage: FC<{ staff: Staff }> = ({ staff }) => {
   const PageBreadcrumb = [
     ...BREADCRUMB,
     {
-      title: `${staff.firstname.th} ${staff.lastname.th}`,
+      title: `${staff.name}`,
       link: router.asPath,
     },
   ];

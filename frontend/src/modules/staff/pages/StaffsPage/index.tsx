@@ -5,12 +5,9 @@ import Header from 'common/components/Header';
 import CommonLayout from 'common/components/Layouts/CommonLayout';
 import { GetStaffsQuery } from 'common/generated/generated-types';
 import baseUrl from 'common/utils/baseUrl';
-import { ImageStrapiUrl } from 'common/utils/urls';
 
 import SearchBar from 'modules/staff/components/SearchBar';
 import StaffGroup from 'modules/staff/components/StaffGroup';
-import MOCK_STAFFS from 'modules/staff/mocks/staffs';
-import { Staff, StaffGroups } from 'modules/staff/types';
 import { staffMapping } from 'modules/staff/utils/staffMapping';
 
 import { BREADCRUMB } from './constants';
