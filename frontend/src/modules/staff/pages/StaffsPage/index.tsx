@@ -11,36 +11,12 @@ import SearchBar from 'modules/staff/components/SearchBar';
 import StaffGroup from 'modules/staff/components/StaffGroup';
 import MOCK_STAFFS from 'modules/staff/mocks/staffs';
 import { Staff, StaffGroups } from 'modules/staff/types';
+import { staffMapping } from 'modules/staff/utils/staffMapping';
 
 import { BREADCRUMB } from './constants';
 import { SearchBarContainer } from './styled';
 
 const HEADER_BG_IMAGE = baseUrl('/images/staff_bg_header.jpg');
-
-//TODO: refactor to hooks
-function staffMapping(data: GetStaffsQuery): StaffGroups[] {
-  const groups = data.staffsConnection?.groupBy?.academic_position?.map((e) => e?.key) as
-    | string[]
-    | undefined;
-  const staffs = data.staffs?.map(
-    (s) =>
-      ({
-        id: s?.id,
-        title: s?.title,
-        fullTitle: s?.full_title,
-        name: s?.name,
-        imageUrl: ImageStrapiUrl(s?.profile_image?.url || ''),
-        academicPosition: s?.academic_position,
-        phone: s?.phone_number,
-        email: s?.email,
-      } as Staff),
-  );
-  const mappedGroup = groups?.map((g) => ({
-    title: g,
-    staffs: staffs?.filter((s) => s?.academicPosition === g),
-  })) as StaffGroups[];
-  return mappedGroup;
-}
 
 const StaffsPage: FC<{ data: GetStaffsQuery }> = ({ data }) => {
   const [search, setSearch] = useState('');
