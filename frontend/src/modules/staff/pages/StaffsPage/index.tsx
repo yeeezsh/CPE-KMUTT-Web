@@ -23,19 +23,22 @@ const StaffsPage: FC<{ data: GetStaffsQuery }> = ({ data }) => {
 
   // FIXME: Remove hard code and move code to hooks
   // const staffs = useStaff();
-  const staffs: Staff[] = MOCK_STAFFS;
 
-  // FIXME: broke search
-  const filteredStaffs = useMemo(
-    () => staffs.filter((staff) => !search || staff.name.includes(search)),
+  const groupStaffs = staffMapping(data);
+
+  const filtered = useMemo(
+    () =>
+      groupStaffs.filter(
+        (g) =>
+          g.staffs.some((s) => s.name.includes(search)) &&
+          g.staffs.filter((s) => s.name.includes(search)),
+      ),
     [search],
   );
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
-
-  const groupStaffs = staffMapping(data);
 
   return (
     <>
@@ -54,8 +57,8 @@ const StaffsPage: FC<{ data: GetStaffsQuery }> = ({ data }) => {
           <SearchBarContainer>
             <SearchBar onChange={handleSearch} value={search} />
           </SearchBarContainer>
-          {groupStaffs &&
-            groupStaffs.map((g) => (
+          {filtered &&
+            filtered.map((g) => (
               <StaffGroup key={g.title} title={g.title} staffs={g.staffs} />
             ))}
         </Container>
