@@ -94,6 +94,15 @@
         }
       },
       "type": "email"
+    },
+    "full_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     }
   }
 }
