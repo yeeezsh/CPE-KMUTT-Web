@@ -1,0 +1,21 @@
+query GetStaffs($locale: String = "th") {
+  staffs(locale: $locale) {
+    id
+    title
+    full_title
+    name
+    academic_position
+    phone_number
+    email
+    profile_image {
+      url
+    }
+  }
+  staffsConnection(locale: $locale) {
+    groupBy {
+      academic_position {
+        key
+      }
+    }
+  }
+}

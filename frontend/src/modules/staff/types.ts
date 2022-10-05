@@ -1,16 +1,15 @@
-// FIXME: This structure is temporary for mocking data and hardcode please refactor this structure when implement api
 export interface Staff {
   id: string;
-  firstname: {
-    en: string;
-    th: string;
-  };
-  lastname: {
-    en: string;
-    th: string;
-  };
+  title: string;
+  fullTitle: string;
+  name: string;
   imageUrl: string;
-  academicRank: string;
+  academicPosition: string;
   phone: string;
   email: string;
+}
+
+export interface StaffGroups {
+  title: string;
+  staffs: Staff[];
 }

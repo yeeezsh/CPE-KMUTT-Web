@@ -16,10 +16,8 @@ const StaffContactSection: FC<StaffContactSectionProps> = ({ staff }) => {
     <Container>
       <ProfileImage />
       <NameArea>
-        <Name variant="h1">
-          {staff.firstname.th} {staff.lastname.th}
-        </Name>
-        <AcademicRank>{staff.academicRank}</AcademicRank>
+        <Name variant="h1">{staff.name}</Name>
+        <AcademicRank>{staff.academicPosition}</AcademicRank>
       </NameArea>
       <ContactArea>
         <StyledTable>
