@@ -12,9 +12,11 @@ import baseUrl from 'common/utils/baseUrl';
 import { ImageStrapiUrl } from 'common/utils/urls';
 
 import BackSection from 'modules/staff/components/BackSection';
+import StaffCommonSection from 'modules/staff/components/StaffCommonContactSection';
 import StaffContactSection from 'modules/staff/components/StaffContactSection';
+import { StyledTable } from 'modules/staff/components/StaffContactSection/styled';
 import { BREADCRUMB } from 'modules/staff/pages/StaffsPage/constants';
-import { Room, StaffDetail } from 'modules/staff/types';
+import { Room, StaffDetail, Subject } from 'modules/staff/types';
 
 import { StyledContainer } from './styled';
 
@@ -40,6 +42,10 @@ const StaffPage: FC<{ data: GetStaffQuery }> = ({ data }) => {
         [],
       info: <div dangerouslySetInnerHTML={{ __html: staff?.info || '' }} />,
       research: <div dangerouslySetInnerHTML={{ __html: staff?.research || '' }} />,
+      subjects: staff?.subjects?.map((s) => ({
+        subjectId: s?.subject_id,
+        title: s?.title,
+      })) as Subject[],
     };
   }
 
@@ -70,6 +76,28 @@ const StaffPage: FC<{ data: GetStaffQuery }> = ({ data }) => {
         <StyledContainer>
           <BackSection />
           {staff && <StaffContactSection staff={mappedStaff} />}
+          <StaffCommonSection header="ประวัติ">{mappedStaff.info}</StaffCommonSection>
+
+          {
+            //TODO: refactor this to subject section
+          }
+          <StaffCommonSection header="วิชาที่สอน">
+            <StyledTable>
+              <tr>
+                <td>รหัสวิชา</td>
+                <td>ชื่อวิชา</td>
+              </tr>
+              {mappedStaff.subjects.map((s) => (
+                <>
+                  <td>{s.subjectId}</td>
+                  <td>{s.title}</td>
+                </>
+              ))}
+            </StyledTable>
+          </StaffCommonSection>
+          <StaffCommonSection header="งานวิจัย/หัวข้อที่สนใจ">
+            {mappedStaff.info}
+          </StaffCommonSection>
         </StyledContainer>
       </CommonLayout>
     </>

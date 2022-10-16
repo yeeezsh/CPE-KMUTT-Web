@@ -14,11 +14,16 @@ export interface Room {
   roomId: string;
   title: string;
 }
+export interface Subject {
+  subjectId: string;
+  title: string;
+}
 
 export interface StaffDetail extends Staff {
   rooms: Room[];
   info: JSX.Element;
   research: JSX.Element;
+  subjects: Subject[];
 }
 
 export interface StaffGroups {
