@@ -1,5 +1,20 @@
-import StaffPage, * as page from 'modules/staff/pages/StaffPage';
+import { GetServerSideProps } from 'next';
 
-export const getServerSideProps = page.getServerSideProps;
+import { GetStaffQuery, GetStaffDocument } from 'common/generated/generated-types';
+import { client } from 'common/services/client';
+
+import StaffPage from 'modules/staff/pages/StaffPage';
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const { data } = await client.query<GetStaffQuery>({
+    query: GetStaffDocument,
+    // TODO: remove this locale hardcode
+    variables: { Id: params?.id, locale: 'th' },
+  });
+
+  return {
+    props: { data },
+  };
+};
 
 export default StaffPage;

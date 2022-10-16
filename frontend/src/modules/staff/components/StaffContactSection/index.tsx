@@ -22,6 +22,10 @@ const StaffContactSection: FC<StaffContactSectionProps> = ({ staff }) => {
       <ContactArea>
         <StyledTable>
           <tr>
+            <td>ห้องพัก:</td>
+            <td> {staff.rooms.map((r) => `${r.roomId} ${r.title}`)}</td>
+          </tr>
+          <tr>
             <td>โทรศัพท์:</td>
             <td>{staff.phone}</td>
           </tr>

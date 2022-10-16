@@ -1,5 +1,5 @@
-import { Staff } from 'modules/staff/types';
+import { StaffDetail } from 'modules/staff/types';
 
 export interface StaffContactSectionProps {
-  staff: Staff;
+  staff: StaffDetail;
 }

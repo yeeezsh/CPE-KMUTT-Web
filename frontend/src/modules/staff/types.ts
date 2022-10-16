@@ -10,6 +10,17 @@ export interface Staff {
   email: string;
 }
 
+export interface Room {
+  roomId: string;
+  title: string;
+}
+
+export interface StaffDetail extends Staff {
+  rooms: Room[];
+  info: JSX.Element;
+  research: JSX.Element;
+}
+
 export interface StaffGroups {
   title: string;
   staffs: Staff[];
