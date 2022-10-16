@@ -4,15 +4,15 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    paths:
+      - 'backend/**/*'
 
 defaults:
   run:
     working-directory: backend
 
 jobs:
-  rules:
-    - changes:
-        - backend/**/*
   build:
     runs-on: ubuntu-latest
     steps:
