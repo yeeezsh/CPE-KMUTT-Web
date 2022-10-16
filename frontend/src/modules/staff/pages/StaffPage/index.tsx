@@ -17,11 +17,11 @@ import { StyledContainer } from './styled';
 const HEADER_BG_IMAGE = baseUrl('/images/staff_bg_header.jpg');
 
 const StaffPage: FC<{ data: GetStaffQuery }> = ({ data }) => {
-  const { mappedStaff, pageBreadcrumb: PageBreadcrumb } = useStaffDetail(data);
+  const { mappedStaff, pageBreadcrumb } = useStaffDetail(data);
 
   return (
     <CommonLayout
-      navigate={PageBreadcrumb}
+      navigate={pageBreadcrumb}
       Header={
         <Header
           title="บุคลากร"
