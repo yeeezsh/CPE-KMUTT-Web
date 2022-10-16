@@ -2638,6 +2638,7 @@ export type GetStaffsQuery = { __typename?: 'Query' } & {
           | 'full_title'
           | 'name'
           | 'academic_position'
+          | 'academic_position_group'
           | 'phone_number'
           | 'email'
         > & {
@@ -2882,6 +2883,7 @@ export const GetStaffsDocument = gql`
       full_title
       name
       academic_position
+      academic_position_group
       phone_number
       email
       profile_image {

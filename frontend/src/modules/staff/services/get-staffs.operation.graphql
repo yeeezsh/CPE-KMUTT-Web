@@ -6,6 +6,7 @@ query GetStaffs($locale: String = "th") {
     full_title
     name
     academic_position
+    academic_position_group
     phone_number
     email
     profile_image {

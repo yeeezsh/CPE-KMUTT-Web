@@ -5,6 +5,7 @@ export interface Staff {
   name: string;
   imageUrl: string;
   academicPosition: string;
+  academicPositionGroup: string;
   phone: string;
   email: string;
 }
