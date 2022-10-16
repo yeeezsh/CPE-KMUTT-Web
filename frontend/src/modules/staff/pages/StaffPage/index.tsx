@@ -12,6 +12,7 @@ import StaffCommonSection from 'modules/staff/components/StaffCommonContactSecti
 import StaffContactSection from 'modules/staff/components/StaffContactSection';
 import { StyledTable } from 'modules/staff/components/StaffContactSection/styled';
 import { BREADCRUMB } from 'modules/staff/pages/StaffsPage/constants';
+import { StaffDetail } from 'modules/staff/types';
 import { staffDetailMapping } from 'modules/staff/utils/staffDetailMapping';
 
 import { StyledContainer } from './styled';
@@ -44,32 +45,42 @@ const StaffPage: FC<{ data: GetStaffQuery }> = ({ data }) => {
       withFaqBanner>
       <StyledContainer>
         <BackSection />
-        {mappedStaff && <StaffContactSection staff={mappedStaff} />}
-        <StaffCommonSection header="ประวัติ">{mappedStaff.info}</StaffCommonSection>
-
-        {
-          //TODO: refactor this to subject section
-        }
-        <StaffCommonSection header="วิชาที่สอน">
-          <StyledTable>
-            <tr>
-              <td>รหัสวิชา</td>
-              <td>ชื่อวิชา</td>
-            </tr>
-            {mappedStaff.subjects.map((s) => (
-              <>
-                <td>{s.subjectId}</td>
-                <td>{s.title}</td>
-              </>
-            ))}
-          </StyledTable>
-        </StaffCommonSection>
-        <StaffCommonSection header="งานวิจัย/หัวข้อที่สนใจ">
-          {mappedStaff.info}
-        </StaffCommonSection>
+        <StaffContactSection staff={mappedStaff} />
+        <StaffInfo mappedStaff={mappedStaff} />
+        <StaffSubjects mappedStaff={mappedStaff} />
+        <StaffResearch mappedStaff={mappedStaff} />
       </StyledContainer>
     </CommonLayout>
   );
 };
+
+type CommonSectionProps = { mappedStaff: StaffDetail };
+
+const StaffResearch: FC<CommonSectionProps> = ({ mappedStaff }) => (
+  <StaffCommonSection header="งานวิจัย/หัวข้อที่สนใจ">
+    {mappedStaff.info}
+  </StaffCommonSection>
+);
+
+const StaffInfo: FC<CommonSectionProps> = ({ mappedStaff }) => (
+  <StaffCommonSection header="ประวัติ">{mappedStaff.info}</StaffCommonSection>
+);
+
+const StaffSubjects: FC<CommonSectionProps> = ({ mappedStaff }) => (
+  <StaffCommonSection header="วิชาที่สอน">
+    <StyledTable>
+      <tr>
+        <td>รหัสวิชา</td>
+        <td>ชื่อวิชา</td>
+      </tr>
+      {mappedStaff.subjects.map((s) => (
+        <>
+          <td>{s.subjectId}</td>
+          <td>{s.title}</td>
+        </>
+      ))}
+    </StyledTable>
+  </StaffCommonSection>
+);
 
 export default StaffPage;
