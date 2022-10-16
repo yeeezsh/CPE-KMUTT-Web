@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react';
+
 import { act, renderHook } from '@testing-library/react-hooks';
 
 import { GetStaffsQuery } from 'common/generated/generated-types';
@@ -51,21 +53,25 @@ describe('useStaffs Test', () => {
   it('should able to handle search correctly', () => {
     const { result } = renderHook(() => useStaffs(MOCK_API));
 
+    function mockChangeEvent(value: string): ChangeEvent<HTMLInputElement> {
+      return ({ target: { value: value } } as unknown) as ChangeEvent<HTMLInputElement>;
+    }
+
     expect(result.current.filtered).toHaveLength(1);
     expect(result.current.search).toBe('');
 
     act(() => {
-      result.current.handleSearch({ target: { value: 'AA' } });
+      result.current.handleSearch(mockChangeEvent('AA'));
     });
     expect(result.current.filtered[0].staffs).toHaveLength(2);
 
     act(() => {
-      result.current.handleSearch({ target: { value: 'AA BB' } });
+      result.current.handleSearch(mockChangeEvent('AA BB'));
     });
     expect(result.current.filtered[0].staffs).toHaveLength(1);
 
     act(() => {
-      result.current.handleSearch({ target: { value: 'aa' } });
+      result.current.handleSearch(mockChangeEvent('aa'));
     });
     expect(result.current.filtered[0].staffs).toHaveLength(2);
   });
