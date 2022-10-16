@@ -5,7 +5,7 @@ import { GetStaffQuery } from 'common/generated/generated-types';
 
 import useStaffDetail from 'modules/staff/hooks/useStaffDetail';
 
-const MOCK_API: GetStaffQuery = {
+export const MOCK_API: GetStaffQuery = {
   staffs: [
     {
       id: '634c1e85c9888d00376edb02',
