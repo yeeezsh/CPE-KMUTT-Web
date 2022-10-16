@@ -14,7 +14,7 @@ import { StaffContactSectionProps } from './types';
 const StaffContactSection: FC<StaffContactSectionProps> = ({ staff }) => {
   return (
     <Container>
-      <ProfileImage />
+      <ProfileImage src={staff.imageUrl} />
       <NameArea>
         <Name variant="h1">{staff.name}</Name>
         <AcademicRank>{staff.academicPosition}</AcademicRank>
