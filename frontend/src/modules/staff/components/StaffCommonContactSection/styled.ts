@@ -10,6 +10,7 @@ export const Container = styled.div`
   display: flex;
   padding: 14px;
   flex-wrap: wrap;
+  margin-bottom: -10px;
 `;
 
 export const Content = styled.div`
