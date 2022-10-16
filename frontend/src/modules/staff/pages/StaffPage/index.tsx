@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import { useRouter } from 'next/router';
-
 import Header from 'common/components/Header';
 import CommonLayout from 'common/components/Layouts/CommonLayout';
 import { GetStaffQuery } from 'common/generated/generated-types';
@@ -11,25 +9,15 @@ import BackSection from 'modules/staff/components/BackSection';
 import StaffCommonSection from 'modules/staff/components/StaffCommonContactSection';
 import StaffContactSection from 'modules/staff/components/StaffContactSection';
 import { StyledTable } from 'modules/staff/components/StaffContactSection/styled';
-import { BREADCRUMB } from 'modules/staff/pages/StaffsPage/constants';
+import useStaffDetail from 'modules/staff/hooks/useStaffDetail';
 import { StaffDetail } from 'modules/staff/types';
-import { staffDetailMapping } from 'modules/staff/utils/staffDetailMapping';
 
 import { StyledContainer } from './styled';
 
 const HEADER_BG_IMAGE = baseUrl('/images/staff_bg_header.jpg');
 
 const StaffPage: FC<{ data: GetStaffQuery }> = ({ data }) => {
-  const router = useRouter();
-
-  const mappedStaff = staffDetailMapping(data);
-  const PageBreadcrumb = [
-    ...BREADCRUMB,
-    {
-      title: `${mappedStaff?.name || ''}`,
-      link: router.asPath,
-    },
-  ];
+  const { mappedStaff, pageBreadcrumb: PageBreadcrumb } = useStaffDetail(data);
 
   return (
     <CommonLayout
