@@ -26,7 +26,18 @@ export const H2 = styled.h2<HProps>`
   ${(props) => (props.$color ? `color: ${props.$color}` : '')}
 `;
 
+export const H3 = styled.h2<HProps>`
+  display: block;
+  font-family: ${fontFamily.TH};
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 150%;
+  width: 100%;
+  ${(props) => (props.$color ? `color: ${props.$color}` : '')}
+`;
+
 export const HEADING_MAPPER = {
   h1: H1,
   h2: H2,
+  h3: H3,
 };
