@@ -11,6 +11,7 @@ const MOCK_API: GetStaffsQuery = {
       full_title: 'ผู้ช่วยศาสตราจารย์',
       name: 'ดร พร',
       academic_position: 'อาจารย์',
+      academic_position_group: 'ผู้บริหาร',
       phone_number: '0910000000',
       email: 'kt@tk.com',
       profile_image: {
@@ -23,6 +24,7 @@ const MOCK_API: GetStaffsQuery = {
       full_title: 'ผู้ช่วยศาสตราจารย์',
       name: 'ดร พร',
       academic_position: 'ผู้บริหาร',
+      academic_position_group: 'ผู้บริหาร',
       phone_number: '0910000002',
       email: null,
       profile_image: {
@@ -32,7 +34,7 @@ const MOCK_API: GetStaffsQuery = {
   ],
   staffsConnection: {
     groupBy: {
-      academic_position: [
+      academic_position_group: [
         {
           key: 'อาจารย์',
         },
@@ -51,6 +53,7 @@ const EXPECT_STAFF_1: Staff = {
   name: 'ดร พร',
   imageUrl: 'http://localhost:1337/files/sanan 1.png',
   academicPosition: 'อาจารย์',
+  academicPositionGroup: 'ผู้บริหาร',
   phone: '0910000000',
   email: 'kt@tk.com',
 };
@@ -58,9 +61,10 @@ const EXPECT_STAFF_1: Staff = {
 describe('staffMapping test', () => {
   it('Should mapping correctly', () => {
     const testSubject = staffMapping(MOCK_API);
-    expect(testSubject[0].staffs[0]).toEqual(EXPECT_STAFF_1);
+    expect(testSubject[0].staffs).toHaveLength(0);
+    expect(testSubject[1].staffs[0]).toEqual(EXPECT_STAFF_1);
     expect(testSubject.length).toBe(
-      MOCK_API.staffsConnection?.groupBy?.academic_position?.length,
+      MOCK_API.staffsConnection?.groupBy?.academic_position_group?.length,
     );
   });
 });
