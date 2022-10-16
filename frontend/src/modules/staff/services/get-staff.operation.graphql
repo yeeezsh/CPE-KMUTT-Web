@@ -1,0 +1,26 @@
+# Write your query or mutation here
+query GetStaff($id: String = "634c1e85c9888d00376edb02", $locale: String = "th") {
+  staffs(locale: $locale, where: { id: $id }) {
+    id
+    title
+    full_title
+    name
+    academic_position
+    phone_number
+    email
+    rooms {
+      room_id
+      title
+    }
+    profile_image {
+      url
+    }
+    subjects {
+      id
+      subject_id
+      title
+    }
+    info
+    research
+  }
+}

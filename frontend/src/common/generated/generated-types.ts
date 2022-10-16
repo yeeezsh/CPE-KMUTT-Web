@@ -2623,6 +2623,49 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type GetStaffQueryVariables = Exact<{
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+}>;
+
+export type GetStaffQuery = { __typename?: 'Query' } & {
+  staffs?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Staffs' } & Pick<
+          Staffs,
+          | 'id'
+          | 'title'
+          | 'full_title'
+          | 'name'
+          | 'academic_position'
+          | 'phone_number'
+          | 'email'
+          | 'info'
+          | 'research'
+        > & {
+            rooms?: Maybe<
+              Array<Maybe<{ __typename?: 'Rooms' } & Pick<Rooms, 'room_id' | 'title'>>>
+            >;
+            profile_image?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+            subjects?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Subjects' } & Pick<
+                    Subjects,
+                    'id' | 'subject_id' | 'title'
+                  >
+                >
+              >
+            >;
+          }
+      >
+    >
+  >;
+};
+
 export type GetStaffsQueryVariables = Exact<{
   locale?: Maybe<Scalars['String']>;
 }>;
@@ -2874,6 +2917,37 @@ export const GetNewsByIdDocument = gql`
 export type GetNewsByIdQueryResult = Apollo.QueryResult<
   GetNewsByIdQuery,
   GetNewsByIdQueryVariables
+>;
+export const GetStaffDocument = gql`
+  query GetStaff($id: String = "634c1e85c9888d00376edb02", $locale: String = "th") {
+    staffs(locale: $locale, where: { id: $id }) {
+      id
+      title
+      full_title
+      name
+      academic_position
+      phone_number
+      email
+      rooms {
+        room_id
+        title
+      }
+      profile_image {
+        url
+      }
+      subjects {
+        id
+        subject_id
+        title
+      }
+      info
+      research
+    }
+  }
+`;
+export type GetStaffQueryResult = Apollo.QueryResult<
+  GetStaffQuery,
+  GetStaffQueryVariables
 >;
 export const GetStaffsDocument = gql`
   query GetStaffs($locale: String = "th") {
