@@ -103,6 +103,15 @@
       },
       "type": "string",
       "required": true
+    },
+    "academic_position_group": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     }
   }
 }
