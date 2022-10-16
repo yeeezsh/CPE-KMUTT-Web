@@ -1,0 +1,25 @@
+query GetStaff($id: String, $locale: String = "th") {
+  staffs(locale: $locale, where: { id: $id }) {
+    id
+    title
+    full_title
+    name
+    academic_position
+    phone_number
+    email
+    rooms {
+      room_id
+      title
+    }
+    profile_image {
+      url
+    }
+    subjects {
+      id
+      subject_id
+      title
+    }
+    info
+    research
+  }
+}

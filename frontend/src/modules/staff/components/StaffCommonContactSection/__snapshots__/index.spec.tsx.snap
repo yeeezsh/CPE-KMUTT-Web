@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StaffCommonContactSection Tests StaffCommonContactSection  to match snapshot 1`] = `
+<Fragment>
+  <styled__Container>
+    <styled__Header>
+      <styled__Title
+        variant="h3"
+      />
+    </styled__Header>
+    <styled__Content />
+  </styled__Container>
+</Fragment>
+`;

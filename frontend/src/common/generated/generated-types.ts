@@ -299,6 +299,56 @@ export type Morph =
   | CreateNewsAndAnnouncementPayload
   | UpdateNewsAndAnnouncementPayload
   | DeleteNewsAndAnnouncementPayload
+  | Rooms
+  | RoomsConnection
+  | RoomsAggregator
+  | RoomsGroupBy
+  | RoomsConnectionId
+  | RoomsConnection_Id
+  | RoomsConnectionCreatedAt
+  | RoomsConnectionUpdatedAt
+  | RoomsConnectionRoom_Id
+  | RoomsConnectionTitle
+  | RoomsConnectionLocale
+  | CreateRoomPayload
+  | UpdateRoomPayload
+  | DeleteRoomPayload
+  | Staffs
+  | StaffsConnection
+  | StaffsAggregator
+  | StaffsGroupBy
+  | StaffsConnectionId
+  | StaffsConnection_Id
+  | StaffsConnectionCreatedAt
+  | StaffsConnectionUpdatedAt
+  | StaffsConnectionTitle
+  | StaffsConnectionName
+  | StaffsConnectionAcademic_Position
+  | StaffsConnectionPhone_Number
+  | StaffsConnectionInfo
+  | StaffsConnectionResearch
+  | StaffsConnectionProfile_Image
+  | StaffsConnectionEmail
+  | StaffsConnectionFull_Title
+  | StaffsConnectionAcademic_Position_Group
+  | StaffsConnectionLocale
+  | CreateStaffPayload
+  | UpdateStaffPayload
+  | DeleteStaffPayload
+  | Subjects
+  | SubjectsConnection
+  | SubjectsAggregator
+  | SubjectsGroupBy
+  | SubjectsConnectionId
+  | SubjectsConnection_Id
+  | SubjectsConnectionCreatedAt
+  | SubjectsConnectionUpdatedAt
+  | SubjectsConnectionSubject_Id
+  | SubjectsConnectionTitle
+  | SubjectsConnectionLocale
+  | CreateSubjectPayload
+  | UpdateSubjectPayload
+  | DeleteSubjectPayload
   | Tag
   | TagConnection
   | TagAggregator
@@ -390,6 +440,15 @@ export type Mutation = {
   createNewsAndAnnouncement?: Maybe<CreateNewsAndAnnouncementPayload>;
   updateNewsAndAnnouncement?: Maybe<UpdateNewsAndAnnouncementPayload>;
   deleteNewsAndAnnouncement?: Maybe<DeleteNewsAndAnnouncementPayload>;
+  createRoom?: Maybe<CreateRoomPayload>;
+  updateRoom?: Maybe<UpdateRoomPayload>;
+  deleteRoom?: Maybe<DeleteRoomPayload>;
+  createStaff?: Maybe<CreateStaffPayload>;
+  updateStaff?: Maybe<UpdateStaffPayload>;
+  deleteStaff?: Maybe<DeleteStaffPayload>;
+  createSubject?: Maybe<CreateSubjectPayload>;
+  updateSubject?: Maybe<UpdateSubjectPayload>;
+  deleteSubject?: Maybe<DeleteSubjectPayload>;
   createTag?: Maybe<CreateTagPayload>;
   updateTag?: Maybe<UpdateTagPayload>;
   deleteTag?: Maybe<DeleteTagPayload>;
@@ -410,6 +469,9 @@ export type Mutation = {
   createContactLocalization: Contact;
   createHomeLocalization: Home;
   createNewsAndAnnouncementLocalization: NewsAndAnnouncement;
+  createRoomLocalization: Rooms;
+  createStaffLocalization: Staffs;
+  createSubjectLocalization: Subjects;
   createTagLocalization: Tag;
   upload: UploadFile;
   multipleUpload: Array<Maybe<UploadFile>>;
@@ -449,6 +511,42 @@ export type MutationUpdateNewsAndAnnouncementArgs = {
 
 export type MutationDeleteNewsAndAnnouncementArgs = {
   input?: Maybe<DeleteNewsAndAnnouncementInput>;
+};
+
+export type MutationCreateRoomArgs = {
+  input?: Maybe<CreateRoomInput>;
+};
+
+export type MutationUpdateRoomArgs = {
+  input?: Maybe<UpdateRoomInput>;
+};
+
+export type MutationDeleteRoomArgs = {
+  input?: Maybe<DeleteRoomInput>;
+};
+
+export type MutationCreateStaffArgs = {
+  input?: Maybe<CreateStaffInput>;
+};
+
+export type MutationUpdateStaffArgs = {
+  input?: Maybe<UpdateStaffInput>;
+};
+
+export type MutationDeleteStaffArgs = {
+  input?: Maybe<DeleteStaffInput>;
+};
+
+export type MutationCreateSubjectArgs = {
+  input?: Maybe<CreateSubjectInput>;
+};
+
+export type MutationUpdateSubjectArgs = {
+  input?: Maybe<UpdateSubjectInput>;
+};
+
+export type MutationDeleteSubjectArgs = {
+  input?: Maybe<DeleteSubjectInput>;
 };
 
 export type MutationCreateTagArgs = {
@@ -501,6 +599,18 @@ export type MutationCreateHomeLocalizationArgs = {
 
 export type MutationCreateNewsAndAnnouncementLocalizationArgs = {
   input: UpdateNewsAndAnnouncementInput;
+};
+
+export type MutationCreateRoomLocalizationArgs = {
+  input: UpdateRoomInput;
+};
+
+export type MutationCreateStaffLocalizationArgs = {
+  input: UpdateStaffInput;
+};
+
+export type MutationCreateSubjectLocalizationArgs = {
+  input: UpdateSubjectInput;
 };
 
 export type MutationCreateTagLocalizationArgs = {
@@ -702,6 +812,15 @@ export type Query = {
   newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
   newsAndAnnouncements?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
   newsAndAnnouncementsConnection?: Maybe<NewsAndAnnouncementConnection>;
+  room?: Maybe<Rooms>;
+  rooms?: Maybe<Array<Maybe<Rooms>>>;
+  roomsConnection?: Maybe<RoomsConnection>;
+  staff?: Maybe<Staffs>;
+  staffs?: Maybe<Array<Maybe<Staffs>>>;
+  staffsConnection?: Maybe<StaffsConnection>;
+  subject?: Maybe<Subjects>;
+  subjects?: Maybe<Array<Maybe<Subjects>>>;
+  subjectsConnection?: Maybe<SubjectsConnection>;
   tag?: Maybe<Tag>;
   tags?: Maybe<Array<Maybe<Tag>>>;
   tagsConnection?: Maybe<TagConnection>;
@@ -742,6 +861,72 @@ export type QueryNewsAndAnnouncementsArgs = {
 };
 
 export type QueryNewsAndAnnouncementsConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryRoomArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QueryRoomsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryRoomsConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryStaffArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QueryStaffsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryStaffsConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QuerySubjectArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QuerySubjectsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QuerySubjectsConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -834,6 +1019,387 @@ export type RoleInput = {
   users?: Maybe<Array<Maybe<Scalars['ID']>>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type RoomInput = {
+  room_id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type Rooms = {
+  __typename?: 'Rooms';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  room_id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Rooms>>>;
+};
+
+export type RoomsLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type RoomsAggregator = {
+  __typename?: 'RoomsAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type RoomsConnection = {
+  __typename?: 'RoomsConnection';
+  values?: Maybe<Array<Maybe<Rooms>>>;
+  groupBy?: Maybe<RoomsGroupBy>;
+  aggregate?: Maybe<RoomsAggregator>;
+};
+
+export type RoomsConnectionCreatedAt = {
+  __typename?: 'RoomsConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<RoomsConnection>;
+};
+
+export type RoomsConnectionId = {
+  __typename?: 'RoomsConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<RoomsConnection>;
+};
+
+export type RoomsConnectionLocale = {
+  __typename?: 'RoomsConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<RoomsConnection>;
+};
+
+export type RoomsConnectionRoom_Id = {
+  __typename?: 'RoomsConnectionRoom_id';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<RoomsConnection>;
+};
+
+export type RoomsConnectionTitle = {
+  __typename?: 'RoomsConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<RoomsConnection>;
+};
+
+export type RoomsConnectionUpdatedAt = {
+  __typename?: 'RoomsConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<RoomsConnection>;
+};
+
+export type RoomsConnection_Id = {
+  __typename?: 'RoomsConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<RoomsConnection>;
+};
+
+export type RoomsGroupBy = {
+  __typename?: 'RoomsGroupBy';
+  id?: Maybe<Array<Maybe<RoomsConnectionId>>>;
+  _id?: Maybe<Array<Maybe<RoomsConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<RoomsConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<RoomsConnectionUpdatedAt>>>;
+  room_id?: Maybe<Array<Maybe<RoomsConnectionRoom_Id>>>;
+  title?: Maybe<Array<Maybe<RoomsConnectionTitle>>>;
+  locale?: Maybe<Array<Maybe<RoomsConnectionLocale>>>;
+};
+
+export type StaffInput = {
+  title: Scalars['String'];
+  name: Scalars['String'];
+  subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  academic_position: Scalars['String'];
+  rooms?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  phone_number?: Maybe<Scalars['String']>;
+  info?: Maybe<Scalars['String']>;
+  research?: Maybe<Scalars['String']>;
+  profile_image?: Maybe<Scalars['ID']>;
+  email?: Maybe<Scalars['String']>;
+  full_title: Scalars['String'];
+  academic_position_group: Scalars['String'];
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type Staffs = {
+  __typename?: 'Staffs';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  title: Scalars['String'];
+  name: Scalars['String'];
+  academic_position: Scalars['String'];
+  phone_number?: Maybe<Scalars['String']>;
+  info?: Maybe<Scalars['String']>;
+  research?: Maybe<Scalars['String']>;
+  profile_image?: Maybe<UploadFile>;
+  email?: Maybe<Scalars['String']>;
+  full_title: Scalars['String'];
+  academic_position_group: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  subjects?: Maybe<Array<Maybe<Subjects>>>;
+  rooms?: Maybe<Array<Maybe<Rooms>>>;
+  localizations?: Maybe<Array<Maybe<Staffs>>>;
+};
+
+export type StaffsSubjectsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type StaffsRoomsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type StaffsLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type StaffsAggregator = {
+  __typename?: 'StaffsAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type StaffsConnection = {
+  __typename?: 'StaffsConnection';
+  values?: Maybe<Array<Maybe<Staffs>>>;
+  groupBy?: Maybe<StaffsGroupBy>;
+  aggregate?: Maybe<StaffsAggregator>;
+};
+
+export type StaffsConnectionAcademic_Position = {
+  __typename?: 'StaffsConnectionAcademic_position';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionAcademic_Position_Group = {
+  __typename?: 'StaffsConnectionAcademic_position_group';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionCreatedAt = {
+  __typename?: 'StaffsConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionEmail = {
+  __typename?: 'StaffsConnectionEmail';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionFull_Title = {
+  __typename?: 'StaffsConnectionFull_title';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionId = {
+  __typename?: 'StaffsConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionInfo = {
+  __typename?: 'StaffsConnectionInfo';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionLocale = {
+  __typename?: 'StaffsConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionName = {
+  __typename?: 'StaffsConnectionName';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionPhone_Number = {
+  __typename?: 'StaffsConnectionPhone_number';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionProfile_Image = {
+  __typename?: 'StaffsConnectionProfile_image';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionResearch = {
+  __typename?: 'StaffsConnectionResearch';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionTitle = {
+  __typename?: 'StaffsConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionUpdatedAt = {
+  __typename?: 'StaffsConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnection_Id = {
+  __typename?: 'StaffsConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsGroupBy = {
+  __typename?: 'StaffsGroupBy';
+  id?: Maybe<Array<Maybe<StaffsConnectionId>>>;
+  _id?: Maybe<Array<Maybe<StaffsConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<StaffsConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<StaffsConnectionUpdatedAt>>>;
+  title?: Maybe<Array<Maybe<StaffsConnectionTitle>>>;
+  name?: Maybe<Array<Maybe<StaffsConnectionName>>>;
+  academic_position?: Maybe<Array<Maybe<StaffsConnectionAcademic_Position>>>;
+  phone_number?: Maybe<Array<Maybe<StaffsConnectionPhone_Number>>>;
+  info?: Maybe<Array<Maybe<StaffsConnectionInfo>>>;
+  research?: Maybe<Array<Maybe<StaffsConnectionResearch>>>;
+  profile_image?: Maybe<Array<Maybe<StaffsConnectionProfile_Image>>>;
+  email?: Maybe<Array<Maybe<StaffsConnectionEmail>>>;
+  full_title?: Maybe<Array<Maybe<StaffsConnectionFull_Title>>>;
+  academic_position_group?: Maybe<Array<Maybe<StaffsConnectionAcademic_Position_Group>>>;
+  locale?: Maybe<Array<Maybe<StaffsConnectionLocale>>>;
+};
+
+export type SubjectInput = {
+  subject_id: Scalars['String'];
+  title: Scalars['String'];
+  rooms?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type Subjects = {
+  __typename?: 'Subjects';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  subject_id: Scalars['String'];
+  title: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  rooms?: Maybe<Array<Maybe<Rooms>>>;
+  localizations?: Maybe<Array<Maybe<Subjects>>>;
+};
+
+export type SubjectsRoomsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type SubjectsLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type SubjectsAggregator = {
+  __typename?: 'SubjectsAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type SubjectsConnection = {
+  __typename?: 'SubjectsConnection';
+  values?: Maybe<Array<Maybe<Subjects>>>;
+  groupBy?: Maybe<SubjectsGroupBy>;
+  aggregate?: Maybe<SubjectsAggregator>;
+};
+
+export type SubjectsConnectionCreatedAt = {
+  __typename?: 'SubjectsConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<SubjectsConnection>;
+};
+
+export type SubjectsConnectionId = {
+  __typename?: 'SubjectsConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<SubjectsConnection>;
+};
+
+export type SubjectsConnectionLocale = {
+  __typename?: 'SubjectsConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<SubjectsConnection>;
+};
+
+export type SubjectsConnectionSubject_Id = {
+  __typename?: 'SubjectsConnectionSubject_id';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<SubjectsConnection>;
+};
+
+export type SubjectsConnectionTitle = {
+  __typename?: 'SubjectsConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<SubjectsConnection>;
+};
+
+export type SubjectsConnectionUpdatedAt = {
+  __typename?: 'SubjectsConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<SubjectsConnection>;
+};
+
+export type SubjectsConnection_Id = {
+  __typename?: 'SubjectsConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<SubjectsConnection>;
+};
+
+export type SubjectsGroupBy = {
+  __typename?: 'SubjectsGroupBy';
+  id?: Maybe<Array<Maybe<SubjectsConnectionId>>>;
+  _id?: Maybe<Array<Maybe<SubjectsConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<SubjectsConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<SubjectsConnectionUpdatedAt>>>;
+  subject_id?: Maybe<Array<Maybe<SubjectsConnectionSubject_Id>>>;
+  title?: Maybe<Array<Maybe<SubjectsConnectionTitle>>>;
+  locale?: Maybe<Array<Maybe<SubjectsConnectionLocale>>>;
 };
 
 export type Tag = {
@@ -1416,6 +1982,33 @@ export type CreateRolePayload = {
   role?: Maybe<UsersPermissionsRole>;
 };
 
+export type CreateRoomInput = {
+  data?: Maybe<RoomInput>;
+};
+
+export type CreateRoomPayload = {
+  __typename?: 'createRoomPayload';
+  room?: Maybe<Rooms>;
+};
+
+export type CreateStaffInput = {
+  data?: Maybe<StaffInput>;
+};
+
+export type CreateStaffPayload = {
+  __typename?: 'createStaffPayload';
+  staff?: Maybe<Staffs>;
+};
+
+export type CreateSubjectInput = {
+  data?: Maybe<SubjectInput>;
+};
+
+export type CreateSubjectPayload = {
+  __typename?: 'createSubjectPayload';
+  subject?: Maybe<Subjects>;
+};
+
 export type CreateTagInput = {
   data?: Maybe<TagInput>;
 };
@@ -1469,6 +2062,33 @@ export type DeleteRoleInput = {
 export type DeleteRolePayload = {
   __typename?: 'deleteRolePayload';
   role?: Maybe<UsersPermissionsRole>;
+};
+
+export type DeleteRoomInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteRoomPayload = {
+  __typename?: 'deleteRoomPayload';
+  room?: Maybe<Rooms>;
+};
+
+export type DeleteStaffInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteStaffPayload = {
+  __typename?: 'deleteStaffPayload';
+  staff?: Maybe<Staffs>;
+};
+
+export type DeleteSubjectInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteSubjectPayload = {
+  __typename?: 'deleteSubjectPayload';
+  subject?: Maybe<Subjects>;
 };
 
 export type DeleteTagInput = {
@@ -1611,6 +2231,44 @@ export type EditRoleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditRoomInput = {
+  room_id?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditStaffInput = {
+  title?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  academic_position?: Maybe<Scalars['String']>;
+  rooms?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  phone_number?: Maybe<Scalars['String']>;
+  info?: Maybe<Scalars['String']>;
+  research?: Maybe<Scalars['String']>;
+  profile_image?: Maybe<Scalars['ID']>;
+  email?: Maybe<Scalars['String']>;
+  full_title?: Maybe<Scalars['String']>;
+  academic_position_group?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditSubjectInput = {
+  subject_id?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  rooms?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditTagInput = {
   tag_id?: Maybe<Scalars['String']>;
   tag_name?: Maybe<Scalars['String']>;
@@ -1672,6 +2330,36 @@ export type UpdateRoleInput = {
 export type UpdateRolePayload = {
   __typename?: 'updateRolePayload';
   role?: Maybe<UsersPermissionsRole>;
+};
+
+export type UpdateRoomInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditRoomInput>;
+};
+
+export type UpdateRoomPayload = {
+  __typename?: 'updateRoomPayload';
+  room?: Maybe<Rooms>;
+};
+
+export type UpdateStaffInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditStaffInput>;
+};
+
+export type UpdateStaffPayload = {
+  __typename?: 'updateStaffPayload';
+  staff?: Maybe<Staffs>;
+};
+
+export type UpdateSubjectInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditSubjectInput>;
+};
+
+export type UpdateSubjectPayload = {
+  __typename?: 'updateSubjectPayload';
+  subject?: Maybe<Subjects>;
 };
 
 export type UpdateTagInput = {
@@ -1935,6 +2623,95 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type GetStaffQueryVariables = Exact<{
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+}>;
+
+export type GetStaffQuery = { __typename?: 'Query' } & {
+  staffs?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Staffs' } & Pick<
+          Staffs,
+          | 'id'
+          | 'title'
+          | 'full_title'
+          | 'name'
+          | 'academic_position'
+          | 'phone_number'
+          | 'email'
+          | 'info'
+          | 'research'
+        > & {
+            rooms?: Maybe<
+              Array<Maybe<{ __typename?: 'Rooms' } & Pick<Rooms, 'room_id' | 'title'>>>
+            >;
+            profile_image?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+            subjects?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Subjects' } & Pick<
+                    Subjects,
+                    'id' | 'subject_id' | 'title'
+                  >
+                >
+              >
+            >;
+          }
+      >
+    >
+  >;
+};
+
+export type GetStaffsQueryVariables = Exact<{
+  locale?: Maybe<Scalars['String']>;
+}>;
+
+export type GetStaffsQuery = { __typename?: 'Query' } & {
+  staffs?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Staffs' } & Pick<
+          Staffs,
+          | 'id'
+          | 'title'
+          | 'full_title'
+          | 'name'
+          | 'academic_position'
+          | 'academic_position_group'
+          | 'phone_number'
+          | 'email'
+        > & {
+            profile_image?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+          }
+      >
+    >
+  >;
+  staffsConnection?: Maybe<
+    { __typename?: 'StaffsConnection' } & {
+      groupBy?: Maybe<
+        { __typename?: 'StaffsGroupBy' } & {
+          academic_position_group?: Maybe<
+            Array<
+              Maybe<
+                { __typename?: 'StaffsConnectionAcademic_position_group' } & Pick<
+                  StaffsConnectionAcademic_Position_Group,
+                  'key'
+                >
+              >
+            >
+          >;
+        }
+      >;
+    }
+  >;
+};
+
 export type GetContactQueryVariables = Exact<{
   locale?: Maybe<Scalars['String']>;
 }>;
@@ -2115,7 +2892,7 @@ export const GetNewsByIdDocument = gql`
     }
     newsAndAnnouncementsConnection(
       sort: "createdAt:desc"
-      limit: 4
+      limit: 3
       locale: $LocaleConnection
     ) {
       values {
@@ -2140,6 +2917,65 @@ export const GetNewsByIdDocument = gql`
 export type GetNewsByIdQueryResult = Apollo.QueryResult<
   GetNewsByIdQuery,
   GetNewsByIdQueryVariables
+>;
+export const GetStaffDocument = gql`
+  query GetStaff($id: String, $locale: String = "th") {
+    staffs(locale: $locale, where: { id: $id }) {
+      id
+      title
+      full_title
+      name
+      academic_position
+      phone_number
+      email
+      rooms {
+        room_id
+        title
+      }
+      profile_image {
+        url
+      }
+      subjects {
+        id
+        subject_id
+        title
+      }
+      info
+      research
+    }
+  }
+`;
+export type GetStaffQueryResult = Apollo.QueryResult<
+  GetStaffQuery,
+  GetStaffQueryVariables
+>;
+export const GetStaffsDocument = gql`
+  query GetStaffs($locale: String = "th") {
+    staffs(locale: $locale) {
+      id
+      title
+      full_title
+      name
+      academic_position
+      academic_position_group
+      phone_number
+      email
+      profile_image {
+        url
+      }
+    }
+    staffsConnection(locale: $locale) {
+      groupBy {
+        academic_position_group {
+          key
+        }
+      }
+    }
+  }
+`;
+export type GetStaffsQueryResult = Apollo.QueryResult<
+  GetStaffsQuery,
+  GetStaffsQueryVariables
 >;
 export const GetContactDocument = gql`
   query GetContact($locale: String = "th") {
