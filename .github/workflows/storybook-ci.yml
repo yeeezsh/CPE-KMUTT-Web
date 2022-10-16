@@ -1,23 +1,27 @@
-name: Automate Build and Testing Front-end
+name: Storybook Build Front-end
 
 on:
   pull_request:
     branches:
       - main
+  on:
+    push:
+      paths:
+        - 'frontend/**/*.stories.tsx'
 
 defaults:
   run:
     working-directory: frontend
 
 jobs:
-  build:
+  storybook:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 14-latest
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: '14.x'
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
@@ -25,6 +29,4 @@ jobs:
           key: yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: yarn-
       - run: yarn
-      - run: yarn lint
-      - run: yarn test:ci
-      - run: yarn build
+      - run: yarn storybook:build
