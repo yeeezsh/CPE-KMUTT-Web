@@ -17,11 +17,18 @@ const useStaffs = (data: GetStaffsQuery): UseStaffs => {
 
   const filtered = useMemo(
     () =>
-      groupStaffs.filter(
-        (g) =>
-          g.staffs.some((s) => s.name.includes(search)) &&
-          g.staffs.filter((s) => s.name.includes(search)),
-      ),
+      groupStaffs
+        .filter((g) =>
+          g.staffs.some((s) =>
+            s.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
+          ),
+        )
+        .map((g) => ({
+          ...g,
+          staffs: g.staffs.filter((s) =>
+            s.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
+          ),
+        })),
     [search],
   );
 
