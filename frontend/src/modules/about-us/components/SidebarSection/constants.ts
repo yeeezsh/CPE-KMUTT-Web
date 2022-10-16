@@ -1,3 +1,5 @@
+import { STATIC_STAFFS } from 'common/constants/links';
+
 export const SIDEBAR_ITEMS = [
   {
     title: `เกี่ยวกับภาควิชาฯ`,
@@ -24,17 +26,17 @@ export const SIDEBAR_ITEMS = [
     item: [
       {
         title: 'ผู้บริหาร',
-        url: '/about-us/',
+        url: STATIC_STAFFS,
         key: 'manager',
       },
       {
         title: 'อาจารย์',
-        url: '/about-us/',
+        url: STATIC_STAFFS,
         key: 'teacher',
       },
       {
         title: 'เจ้าหน้าที่',
-        url: '/about-us/',
+        url: STATIC_STAFFS,
         key: 'officer',
       },
     ],

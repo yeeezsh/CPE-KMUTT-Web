@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StaffPage /[id] Tests Navbar menu should be defined 1`] = `
+<CommonLayout
+  Header={
+    <Header
+      backgroundImage="/images/staff_bg_header.jpg"
+      subtitle="Our staffs"
+      title="บุคลากร"
+      variant="2-col"
+    />
+  }
+  navigate={
+    Array [
+      Object {
+        "link": "/",
+        "title": "หนัาหลัก",
+      },
+      Object {
+        "link": "/about-us",
+        "title": "เกี่ยวกับเรา",
+      },
+      Object {
+        "link": "/staffs",
+        "title": "บุคคลากร",
+      },
+      Object {
+        "link": "",
+        "title": "ชื่อจริง นามสกุล",
+      },
+    ]
+  }
+  withFaqBanner={true}
+>
+  <styled__StyledContainer>
+    <BackSection />
+    <StaffContactSection
+      staff={
+        Object {
+          "academicPosition": "อาจารย์",
+          "academicPositionGroup": "",
+          "email": "mail@mail.com",
+          "fullTitle": "ผู้ช่วยศาสตราจารย์",
+          "id": "",
+          "imageUrl": "http://localhost:1337/files/test.png",
+          "info": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
+<li>info</li>
+<li>info</li>
+<li>info</li>
+</ul>",
+              }
+            }
+          />,
+          "name": "ชื่อจริง นามสกุล",
+          "phone": "0910000000",
+          "research": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
+<li>research</li>
+<li>research</li>
+<li>research</li>
+<li>&nbsp;</li>
+</ul>",
+              }
+            }
+          />,
+          "rooms": Array [
+            Object {
+              "roomId": "CPE1113",
+              "title": "ห้องพัก",
+            },
+          ],
+          "subjects": Array [
+            Object {
+              "subjectId": "CPE101",
+              "title": "Computer Programming",
+            },
+          ],
+          "title": "ผศ",
+        }
+      }
+    />
+    <StaffInfo
+      mappedStaff={
+        Object {
+          "academicPosition": "อาจารย์",
+          "academicPositionGroup": "",
+          "email": "mail@mail.com",
+          "fullTitle": "ผู้ช่วยศาสตราจารย์",
+          "id": "",
+          "imageUrl": "http://localhost:1337/files/test.png",
+          "info": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
+<li>info</li>
+<li>info</li>
+<li>info</li>
+</ul>",
+              }
+            }
+          />,
+          "name": "ชื่อจริง นามสกุล",
+          "phone": "0910000000",
+          "research": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
+<li>research</li>
+<li>research</li>
+<li>research</li>
+<li>&nbsp;</li>
+</ul>",
+              }
+            }
+          />,
+          "rooms": Array [
+            Object {
+              "roomId": "CPE1113",
+              "title": "ห้องพัก",
+            },
+          ],
+          "subjects": Array [
+            Object {
+              "subjectId": "CPE101",
+              "title": "Computer Programming",
+            },
+          ],
+          "title": "ผศ",
+        }
+      }
+    />
+    <StaffSubjects
+      mappedStaff={
+        Object {
+          "academicPosition": "อาจารย์",
+          "academicPositionGroup": "",
+          "email": "mail@mail.com",
+          "fullTitle": "ผู้ช่วยศาสตราจารย์",
+          "id": "",
+          "imageUrl": "http://localhost:1337/files/test.png",
+          "info": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
+<li>info</li>
+<li>info</li>
+<li>info</li>
+</ul>",
+              }
+            }
+          />,
+          "name": "ชื่อจริง นามสกุล",
+          "phone": "0910000000",
+          "research": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
+<li>research</li>
+<li>research</li>
+<li>research</li>
+<li>&nbsp;</li>
+</ul>",
+              }
+            }
+          />,
+          "rooms": Array [
+            Object {
+              "roomId": "CPE1113",
+              "title": "ห้องพัก",
+            },
+          ],
+          "subjects": Array [
+            Object {
+              "subjectId": "CPE101",
+              "title": "Computer Programming",
+            },
+          ],
+          "title": "ผศ",
+        }
+      }
+    />
+    <StaffResearch
+      mappedStaff={
+        Object {
+          "academicPosition": "อาจารย์",
+          "academicPositionGroup": "",
+          "email": "mail@mail.com",
+          "fullTitle": "ผู้ช่วยศาสตราจารย์",
+          "id": "",
+          "imageUrl": "http://localhost:1337/files/test.png",
+          "info": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
+<li>info</li>
+<li>info</li>
+<li>info</li>
+</ul>",
+              }
+            }
+          />,
+          "name": "ชื่อจริง นามสกุล",
+          "phone": "0910000000",
+          "research": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<ul>
+<li>research</li>
+<li>research</li>
+<li>research</li>
+<li>&nbsp;</li>
+</ul>",
+              }
+            }
+          />,
+          "rooms": Array [
+            Object {
+              "roomId": "CPE1113",
+              "title": "ห้องพัก",
+            },
+          ],
+          "subjects": Array [
+            Object {
+              "subjectId": "CPE101",
+              "title": "Computer Programming",
+            },
+          ],
+          "title": "ผศ",
+        }
+      }
+    />
+  </styled__StyledContainer>
+</CommonLayout>
+`;

@@ -11,6 +11,7 @@ import { StaffCardProps } from './types';
 const DIVIDER_MARGIN = '6px';
 
 const StaffCard: FC<StaffCardProps> = ({ staff }) => {
+  const [firstName, lastName] = staff.name.split(' ');
   return (
     <Link href={{ pathname: STATIC_STAFF_ID_LINK, query: { id: staff.id } }}>
       <Container>
@@ -19,11 +20,13 @@ const StaffCard: FC<StaffCardProps> = ({ staff }) => {
         </StyledAnchor>
         <Body>
           <StyledAnchor>
-            <Name>{staff.firstname.th}</Name>
-            <Name>{staff.lastname.th}</Name>
+            <Name>
+              {staff.title}.{firstName}
+            </Name>
+            <Name>{lastName}</Name>
           </StyledAnchor>
-          <div>{staff.academicRank}</div>
-          <div>อาจารย์</div>
+          <div>{staff.fullTitle}</div>
+          <div>{staff.academicPosition}</div>
           <Divider marginTop={DIVIDER_MARGIN} marginBottom={DIVIDER_MARGIN} />
           <div>{staff.phone}</div>
           <div>{staff.email}</div>

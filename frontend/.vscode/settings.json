@@ -8,7 +8,8 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/node_modules": true
+    "**/node_modules": true,
+    "**/build": true
   },
   "files.eol": "\n",
   "typescript.preferences.importModuleSpecifier": "non-relative"

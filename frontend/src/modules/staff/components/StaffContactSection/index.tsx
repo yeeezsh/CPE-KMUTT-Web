@@ -14,15 +14,17 @@ import { StaffContactSectionProps } from './types';
 const StaffContactSection: FC<StaffContactSectionProps> = ({ staff }) => {
   return (
     <Container>
-      <ProfileImage />
+      <ProfileImage src={staff.imageUrl} />
       <NameArea>
-        <Name variant="h1">
-          {staff.firstname.th} {staff.lastname.th}
-        </Name>
-        <AcademicRank>{staff.academicRank}</AcademicRank>
+        <Name variant="h1">{staff.name}</Name>
+        <AcademicRank>{staff.academicPosition}</AcademicRank>
       </NameArea>
       <ContactArea>
         <StyledTable>
+          <tr>
+            <td>ห้องพัก:</td>
+            <td>{staff.rooms.map((r) => `${r.roomId} ${r.title}`)}</td>
+          </tr>
           <tr>
             <td>โทรศัพท์:</td>
             <td>{staff.phone}</td>

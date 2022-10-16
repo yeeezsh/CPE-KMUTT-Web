@@ -1,42 +1,22 @@
-import { ChangeEvent, FC, useMemo, useState } from 'react';
+import { FC } from 'react';
 
 import Container from 'common/components/Container';
 import Header from 'common/components/Header';
 import CommonLayout from 'common/components/Layouts/CommonLayout';
+import { GetStaffsQuery } from 'common/generated/generated-types';
 import baseUrl from 'common/utils/baseUrl';
 
 import SearchBar from 'modules/staff/components/SearchBar';
 import StaffGroup from 'modules/staff/components/StaffGroup';
-import MOCK_STAFFS from 'modules/staff/mocks/staffs';
-import { Staff } from 'modules/staff/types';
+import useStaffs from 'modules/staff/hooks/useStaffs';
 
 import { BREADCRUMB } from './constants';
 import { SearchBarContainer } from './styled';
 
 const HEADER_BG_IMAGE = baseUrl('/images/staff_bg_header.jpg');
 
-const StaffsPage: FC = () => {
-  const [search, setSearch] = useState('');
-
-  // FIXME: Remove hard code and move code to hooks
-  // const staffs = useStaff();
-  const staffs: Staff[] = MOCK_STAFFS;
-  const filteredStaffs = useMemo(
-    () =>
-      staffs.filter(
-        (staff) =>
-          !search ||
-          staff.firstname.th.includes(search) ||
-          staff.firstname.en.includes(search) ||
-          staff.lastname.th.includes(search) ||
-          staff.lastname.en.includes(search),
-      ),
-    [search],
-  );
-
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
+const StaffsPage: FC<{ data: GetStaffsQuery }> = ({ data }) => {
+  const { filtered, search, handleSearch } = useStaffs(data);
 
   return (
     <>
@@ -55,8 +35,10 @@ const StaffsPage: FC = () => {
           <SearchBarContainer>
             <SearchBar onChange={handleSearch} value={search} />
           </SearchBarContainer>
-          {/* FIXME: Spilt group by role */}
-          <StaffGroup title="อาจารย์" staffs={filteredStaffs} />
+          {filtered &&
+            filtered.map((g) => (
+              <StaffGroup key={g.title} title={g.title} staffs={g.staffs} />
+            ))}
         </Container>
       </CommonLayout>
     </>

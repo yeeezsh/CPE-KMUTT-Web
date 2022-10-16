@@ -1,0 +1,23 @@
+# Write your query or mutation here
+query GetStaffs($locale: String = "th") {
+  staffs(locale: $locale) {
+    id
+    title
+    full_title
+    name
+    academic_position
+    academic_position_group
+    phone_number
+    email
+    profile_image {
+      url
+    }
+  }
+  staffsConnection(locale: $locale) {
+    groupBy {
+      academic_position_group {
+        key
+      }
+    }
+  }
+}
