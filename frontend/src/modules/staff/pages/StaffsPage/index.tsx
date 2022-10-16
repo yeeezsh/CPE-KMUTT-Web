@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useMemo, useState } from 'react';
+import { FC } from 'react';
 
 import Container from 'common/components/Container';
 import Header from 'common/components/Header';
@@ -8,7 +8,7 @@ import baseUrl from 'common/utils/baseUrl';
 
 import SearchBar from 'modules/staff/components/SearchBar';
 import StaffGroup from 'modules/staff/components/StaffGroup';
-import { staffMapping } from 'modules/staff/utils/staffMapping';
+import useStaffs from 'modules/staff/hooks/useStaffs';
 
 import { BREADCRUMB } from './constants';
 import { SearchBarContainer } from './styled';
@@ -16,26 +16,7 @@ import { SearchBarContainer } from './styled';
 const HEADER_BG_IMAGE = baseUrl('/images/staff_bg_header.jpg');
 
 const StaffsPage: FC<{ data: GetStaffsQuery }> = ({ data }) => {
-  const [search, setSearch] = useState('');
-
-  // FIXME: Remove hard code and move code to hooks
-  // const staffs = useStaff();
-
-  const groupStaffs = staffMapping(data);
-
-  const filtered = useMemo(
-    () =>
-      groupStaffs.filter(
-        (g) =>
-          g.staffs.some((s) => s.name.includes(search)) &&
-          g.staffs.filter((s) => s.name.includes(search)),
-      ),
-    [search],
-  );
-
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
+  const { filtered, search, handleSearch } = useStaffs(data);
 
   return (
     <>
