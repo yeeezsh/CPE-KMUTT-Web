@@ -7,7 +7,7 @@ on:
   on:
     push:
       paths:
-        - 'frontend/**/*.stories.tsx'
+        - '**/*.stories.tsx'
 
 defaults:
   run:
