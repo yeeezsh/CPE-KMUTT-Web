@@ -2919,7 +2919,7 @@ export type GetNewsByIdQueryResult = Apollo.QueryResult<
   GetNewsByIdQueryVariables
 >;
 export const GetStaffDocument = gql`
-  query GetStaff($id: String = "634c1e85c9888d00376edb02", $locale: String = "th") {
+  query GetStaff($id: String, $locale: String = "th") {
     staffs(locale: $locale, where: { id: $id }) {
       id
       title
