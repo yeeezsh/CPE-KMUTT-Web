@@ -7,6 +7,7 @@ const MOCK_STAFF: Staff = {
   name: 'สนั่น สระแก้ว',
   imageUrl: 'https://cpe.kmutt.ac.th/uploadFile/Staff/sanan.jpg',
   academicPosition: 'Assistant Professor',
+  academicPositionGroup: 'Assistant Professor Group',
   phone: '+662 470 9254',
   email: 'sanan.sra@mail.kmutt.ac.th',
 };

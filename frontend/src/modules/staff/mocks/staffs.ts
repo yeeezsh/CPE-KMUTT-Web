@@ -9,6 +9,7 @@ const MOCK_STAFFS: Staff[] = [
     name: 'ดร พร',
     imageUrl: 'http://localhost:1337/files/sanan 1.png',
     academicPosition: 'อาจารย์',
+    academicPositionGroup: 'อาจารย์',
     phone: '0910000000',
     email: 'kt@tk.com',
   },
