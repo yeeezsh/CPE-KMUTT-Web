@@ -330,6 +330,7 @@ export type Morph =
   | StaffsConnectionProfile_Image
   | StaffsConnectionEmail
   | StaffsConnectionFull_Title
+  | StaffsConnectionAcademic_Position_Group
   | StaffsConnectionLocale
   | CreateStaffPayload
   | UpdateStaffPayload
@@ -1126,6 +1127,7 @@ export type StaffInput = {
   profile_image?: Maybe<Scalars['ID']>;
   email?: Maybe<Scalars['String']>;
   full_title: Scalars['String'];
+  academic_position_group: Scalars['String'];
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -1147,6 +1149,7 @@ export type Staffs = {
   profile_image?: Maybe<UploadFile>;
   email?: Maybe<Scalars['String']>;
   full_title: Scalars['String'];
+  academic_position_group: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   subjects?: Maybe<Array<Maybe<Subjects>>>;
   rooms?: Maybe<Array<Maybe<Rooms>>>;
@@ -1189,6 +1192,12 @@ export type StaffsConnection = {
 
 export type StaffsConnectionAcademic_Position = {
   __typename?: 'StaffsConnectionAcademic_position';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
+export type StaffsConnectionAcademic_Position_Group = {
+  __typename?: 'StaffsConnectionAcademic_position_group';
   key?: Maybe<Scalars['String']>;
   connection?: Maybe<StaffsConnection>;
 };
@@ -1286,6 +1295,7 @@ export type StaffsGroupBy = {
   profile_image?: Maybe<Array<Maybe<StaffsConnectionProfile_Image>>>;
   email?: Maybe<Array<Maybe<StaffsConnectionEmail>>>;
   full_title?: Maybe<Array<Maybe<StaffsConnectionFull_Title>>>;
+  academic_position_group?: Maybe<Array<Maybe<StaffsConnectionAcademic_Position_Group>>>;
   locale?: Maybe<Array<Maybe<StaffsConnectionLocale>>>;
 };
 
@@ -2242,6 +2252,7 @@ export type EditStaffInput = {
   profile_image?: Maybe<Scalars['ID']>;
   email?: Maybe<Scalars['String']>;
   full_title?: Maybe<Scalars['String']>;
+  academic_position_group?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -2641,11 +2652,11 @@ export type GetStaffsQuery = { __typename?: 'Query' } & {
     { __typename?: 'StaffsConnection' } & {
       groupBy?: Maybe<
         { __typename?: 'StaffsGroupBy' } & {
-          academic_position?: Maybe<
+          academic_position_group?: Maybe<
             Array<
               Maybe<
-                { __typename?: 'StaffsConnectionAcademic_position' } & Pick<
-                  StaffsConnectionAcademic_Position,
+                { __typename?: 'StaffsConnectionAcademic_position_group' } & Pick<
+                  StaffsConnectionAcademic_Position_Group,
                   'key'
                 >
               >
@@ -2879,7 +2890,7 @@ export const GetStaffsDocument = gql`
     }
     staffsConnection(locale: $locale) {
       groupBy {
-        academic_position {
+        academic_position_group {
           key
         }
       }

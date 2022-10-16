@@ -1,3 +1,4 @@
+# Write your query or mutation here
 query GetStaffs($locale: String = "th") {
   staffs(locale: $locale) {
     id
@@ -13,7 +14,7 @@ query GetStaffs($locale: String = "th") {
   }
   staffsConnection(locale: $locale) {
     groupBy {
-      academic_position {
+      academic_position_group {
         key
       }
     }
