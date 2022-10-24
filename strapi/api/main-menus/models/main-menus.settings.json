@@ -53,28 +53,6 @@
     "menus": {
       "via": "main_menu",
       "collection": "menus"
-    },
-    "url": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "string"
-    },
-    "internal_page": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "common.internal-pages"
-    },
-    "news_announcement": {
-      "via": "main_menus",
-      "model": "news-and-announcement"
     }
   }
 }
