@@ -1,9 +1,37 @@
 import { MenuItem, MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
+import { STATIC_NEWS_LINK } from 'common/constants/links';
 import {
   ComponentCommonMenuConfig,
+  Enum_Componentcommoninternalpages_Internal_Pages,
   GetMenusQuery,
 } from 'common/generated/generated-types';
-import { mappingMenuType, menuMapping, menuType } from 'common/utils/menuMapping';
+import {
+  mappingMenuType,
+  mappingSubMenuLink,
+  menuMapping,
+  menuType,
+} from 'common/utils/menuMapping';
+import { SubMenuGenerated } from 'common/utils/menuMapping/types';
+
+describe('mappingSubMenuLink tests', () => {
+  const MOCK: SubMenuGenerated = {
+    title: 'สำหรับนักศึกษาปัจจุบัน',
+    id: '6356ae0852303c009ebe5002',
+    url: 'https://admission.kmutt.ac.th/',
+    news_announcement: {
+      id: '6356ab1771cb58002e41b570',
+      seo_link: 'news-111',
+    },
+    internal_page: {
+      internal_pages: Enum_Componentcommoninternalpages_Internal_Pages.News,
+    },
+  };
+
+  it('should ordering map the url correctly', () => {
+    const testSubject = mappingSubMenuLink(MOCK);
+    expect(testSubject).toBe(STATIC_NEWS_LINK);
+  });
+});
 
 describe('mappingMenuType tests', () => {
   const MOCK = 'Desktop';
@@ -78,7 +106,15 @@ describe('menuMapping tests', () => {
           DesktopQuickMenu: true,
           MobileQuickMenu: true,
         },
-        menus: [],
+        menus: [
+          {
+            title: 'สำหรับนักศึกษาปัจจุบัน',
+            id: '6356ae0852303c009ebe5002',
+            url: 'https://admission.kmutt.ac.th/',
+            news_announcement: null,
+            internal_page: null,
+          },
+        ],
       },
     ],
   };
@@ -88,8 +124,12 @@ describe('menuMapping tests', () => {
     label: 'ปริญญาตรี',
     picture: 'http://localhost:1337/files/Rectangle 33.png',
     subMenu: [
-      { key: '6356a658082b2a006275e4ed', label: 'หลักสูตรปกติ', link: '' },
-      { key: '6356ab0b71cb58002e41b56d', label: 'หลักสูตรนานาชาติ', link: '' },
+      { key: '6356a658082b2a006275e4ed', label: 'หลักสูตรปกติ', link: '/news' },
+      {
+        key: '6356ab0b71cb58002e41b56d',
+        label: 'หลักสูตรนานาชาติ',
+        link: '/news/6356ab1771cb58002e41b570',
+      },
     ],
     types: [MenuType.Desktop, MenuType.Mobile, MenuType.Footer],
   };
