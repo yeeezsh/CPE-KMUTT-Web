@@ -55,6 +55,17 @@ export type ComponentCommonFileDownloadInput = {
   files?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
+export type ComponentCommonInternalPageInput = {
+  internal_pages?: Maybe<Enum_Componentcommoninternalpages_Internal_Pages>;
+};
+
+export type ComponentCommonInternalPages = {
+  __typename?: 'ComponentCommonInternalPages';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  internal_pages?: Maybe<Enum_Componentcommoninternalpages_Internal_Pages>;
+};
+
 export type ComponentCommonMenuConfig = {
   __typename?: 'ComponentCommonMenuConfig';
   id: Scalars['ID'];
@@ -62,23 +73,16 @@ export type ComponentCommonMenuConfig = {
   Mobile: Scalars['Boolean'];
   Desktop: Scalars['Boolean'];
   Footer: Scalars['Boolean'];
+  DesktopQuickMenu?: Maybe<Scalars['Boolean']>;
+  MobileQuickMenu?: Maybe<Scalars['Boolean']>;
 };
 
 export type ComponentCommonMenuConfigInput = {
   Mobile?: Maybe<Scalars['Boolean']>;
   Desktop?: Maybe<Scalars['Boolean']>;
   Footer?: Maybe<Scalars['Boolean']>;
-};
-
-export type ComponentCommonStaticPageInput = {
-  static_pages?: Maybe<Enum_Componentcommonstaticpages_Static_Pages>;
-};
-
-export type ComponentCommonStaticPages = {
-  __typename?: 'ComponentCommonStaticPages';
-  id: Scalars['ID'];
-  _id: Scalars['ID'];
-  static_pages?: Maybe<Enum_Componentcommonstaticpages_Static_Pages>;
+  DesktopQuickMenu?: Maybe<Scalars['Boolean']>;
+  MobileQuickMenu?: Maybe<Scalars['Boolean']>;
 };
 
 export type ComponentContentSectionsCarousalImage = {
@@ -176,7 +180,7 @@ export type ComponentMenuSubMenu = {
   news_announcement?: Maybe<NewsAndAnnouncement>;
   title_th?: Maybe<Scalars['String']>;
   title_en?: Maybe<Scalars['String']>;
-  static_page?: Maybe<ComponentCommonStaticPages>;
+  static_page?: Maybe<ComponentCommonInternalPages>;
 };
 
 export type ComponentMenuSubMenuInput = {
@@ -184,7 +188,7 @@ export type ComponentMenuSubMenuInput = {
   news_announcement?: Maybe<Scalars['ID']>;
   title_th?: Maybe<Scalars['String']>;
   title_en?: Maybe<Scalars['String']>;
-  static_page?: Maybe<ComponentCommonStaticPageInput>;
+  static_page?: Maybe<ComponentCommonInternalPageInput>;
 };
 
 export type ComponentTagsTagInput = {
@@ -239,7 +243,7 @@ export type ContactInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export enum Enum_Componentcommonstaticpages_Static_Pages {
+export enum Enum_Componentcommoninternalpages_Internal_Pages {
   News = 'news',
   AboutUs = 'about_us',
   ContactUs = 'contact_us',
@@ -325,10 +329,7 @@ export type LocaleInput = {
 
 export type MainMenuInput = {
   title: Scalars['String'];
-  url?: Maybe<Scalars['String']>;
   thumbnail?: Maybe<Scalars['ID']>;
-  news_announcement?: Maybe<Scalars['ID']>;
-  static_page?: Maybe<ComponentCommonStaticPageInput>;
   menu_config: ComponentCommonMenuConfigInput;
   menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
@@ -344,10 +345,7 @@ export type MainMenus = {
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
   title: Scalars['String'];
-  url?: Maybe<Scalars['String']>;
   thumbnail?: Maybe<UploadFile>;
-  news_announcement?: Maybe<NewsAndAnnouncement>;
-  static_page?: Maybe<ComponentCommonStaticPages>;
   menu_config?: Maybe<ComponentCommonMenuConfig>;
   locale?: Maybe<Scalars['String']>;
   menus?: Maybe<Array<Maybe<Menus>>>;
@@ -405,18 +403,6 @@ export type MainMenusConnectionMenu_Config = {
   connection?: Maybe<MainMenusConnection>;
 };
 
-export type MainMenusConnectionNews_Announcement = {
-  __typename?: 'MainMenusConnectionNews_announcement';
-  key?: Maybe<Scalars['ID']>;
-  connection?: Maybe<MainMenusConnection>;
-};
-
-export type MainMenusConnectionStatic_Page = {
-  __typename?: 'MainMenusConnectionStatic_page';
-  key?: Maybe<Scalars['ID']>;
-  connection?: Maybe<MainMenusConnection>;
-};
-
 export type MainMenusConnectionThumbnail = {
   __typename?: 'MainMenusConnectionThumbnail';
   key?: Maybe<Scalars['ID']>;
@@ -435,12 +421,6 @@ export type MainMenusConnectionUpdatedAt = {
   connection?: Maybe<MainMenusConnection>;
 };
 
-export type MainMenusConnectionUrl = {
-  __typename?: 'MainMenusConnectionUrl';
-  key?: Maybe<Scalars['String']>;
-  connection?: Maybe<MainMenusConnection>;
-};
-
 export type MainMenusConnection_Id = {
   __typename?: 'MainMenusConnection_id';
   key?: Maybe<Scalars['ID']>;
@@ -454,10 +434,7 @@ export type MainMenusGroupBy = {
   createdAt?: Maybe<Array<Maybe<MainMenusConnectionCreatedAt>>>;
   updatedAt?: Maybe<Array<Maybe<MainMenusConnectionUpdatedAt>>>;
   title?: Maybe<Array<Maybe<MainMenusConnectionTitle>>>;
-  url?: Maybe<Array<Maybe<MainMenusConnectionUrl>>>;
   thumbnail?: Maybe<Array<Maybe<MainMenusConnectionThumbnail>>>;
-  news_announcement?: Maybe<Array<Maybe<MainMenusConnectionNews_Announcement>>>;
-  static_page?: Maybe<Array<Maybe<MainMenusConnectionStatic_Page>>>;
   menu_config?: Maybe<Array<Maybe<MainMenusConnectionMenu_Config>>>;
   locale?: Maybe<Array<Maybe<MainMenusConnectionLocale>>>;
 };
@@ -465,9 +442,9 @@ export type MainMenusGroupBy = {
 export type MenuInput = {
   title: Scalars['String'];
   url?: Maybe<Scalars['String']>;
-  news_announcement?: Maybe<Scalars['ID']>;
-  static_page?: Maybe<ComponentCommonStaticPageInput>;
   main_menu?: Maybe<Scalars['ID']>;
+  internal_page?: Maybe<ComponentCommonInternalPageInput>;
+  news_announcement?: Maybe<Scalars['ID']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -482,9 +459,9 @@ export type Menus = {
   updatedAt: Scalars['DateTime'];
   title: Scalars['String'];
   url?: Maybe<Scalars['String']>;
-  news_announcement?: Maybe<NewsAndAnnouncement>;
-  static_page?: Maybe<ComponentCommonStaticPages>;
   main_menu?: Maybe<MainMenus>;
+  internal_page?: Maybe<ComponentCommonInternalPages>;
+  news_announcement?: Maybe<NewsAndAnnouncement>;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Menus>>>;
 };
@@ -521,6 +498,12 @@ export type MenusConnectionId = {
   connection?: Maybe<MenusConnection>;
 };
 
+export type MenusConnectionInternal_Page = {
+  __typename?: 'MenusConnectionInternal_page';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MenusConnection>;
+};
+
 export type MenusConnectionLocale = {
   __typename?: 'MenusConnectionLocale';
   key?: Maybe<Scalars['String']>;
@@ -535,12 +518,6 @@ export type MenusConnectionMain_Menu = {
 
 export type MenusConnectionNews_Announcement = {
   __typename?: 'MenusConnectionNews_announcement';
-  key?: Maybe<Scalars['ID']>;
-  connection?: Maybe<MenusConnection>;
-};
-
-export type MenusConnectionStatic_Page = {
-  __typename?: 'MenusConnectionStatic_page';
   key?: Maybe<Scalars['ID']>;
   connection?: Maybe<MenusConnection>;
 };
@@ -577,9 +554,9 @@ export type MenusGroupBy = {
   updatedAt?: Maybe<Array<Maybe<MenusConnectionUpdatedAt>>>;
   title?: Maybe<Array<Maybe<MenusConnectionTitle>>>;
   url?: Maybe<Array<Maybe<MenusConnectionUrl>>>;
-  news_announcement?: Maybe<Array<Maybe<MenusConnectionNews_Announcement>>>;
-  static_page?: Maybe<Array<Maybe<MenusConnectionStatic_Page>>>;
   main_menu?: Maybe<Array<Maybe<MenusConnectionMain_Menu>>>;
+  internal_page?: Maybe<Array<Maybe<MenusConnectionInternal_Page>>>;
+  news_announcement?: Maybe<Array<Maybe<MenusConnectionNews_Announcement>>>;
   locale?: Maybe<Array<Maybe<MenusConnectionLocale>>>;
 };
 
@@ -603,10 +580,7 @@ export type Morph =
   | MainMenusConnectionCreatedAt
   | MainMenusConnectionUpdatedAt
   | MainMenusConnectionTitle
-  | MainMenusConnectionUrl
   | MainMenusConnectionThumbnail
-  | MainMenusConnectionNews_Announcement
-  | MainMenusConnectionStatic_Page
   | MainMenusConnectionMenu_Config
   | MainMenusConnectionLocale
   | CreateMainMenuPayload
@@ -622,9 +596,9 @@ export type Morph =
   | MenusConnectionUpdatedAt
   | MenusConnectionTitle
   | MenusConnectionUrl
-  | MenusConnectionNews_Announcement
-  | MenusConnectionStatic_Page
   | MenusConnectionMain_Menu
+  | MenusConnectionInternal_Page
+  | MenusConnectionNews_Announcement
   | MenusConnectionLocale
   | CreateMenuPayload
   | UpdateMenuPayload
@@ -770,8 +744,8 @@ export type Morph =
   | UpdateUserPayload
   | DeleteUserPayload
   | ComponentCommonFileDownload
+  | ComponentCommonInternalPages
   | ComponentCommonMenuConfig
-  | ComponentCommonStaticPages
   | ComponentContentSectionsCarousalImage
   | ComponentContentSectionsGridImage
   | ComponentContentSectionsImageWithCaption
@@ -1065,10 +1039,18 @@ export type NewsAndAnnouncement = {
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
   tags?: Maybe<Array<Maybe<Tag>>>;
+  menus?: Maybe<Array<Maybe<Menus>>>;
   localizations?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
 };
 
 export type NewsAndAnnouncementTagsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type NewsAndAnnouncementMenusArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -1183,6 +1165,7 @@ export type NewsAndAnnouncementInput = {
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link: Scalars['String'];
   download?: Maybe<ComponentCommonFileDownloadInput>;
+  menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -2590,16 +2573,18 @@ export type EditComponentCommonFileDownloadInput = {
   files?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
+export type EditComponentCommonInternalPageInput = {
+  id?: Maybe<Scalars['ID']>;
+  internal_pages?: Maybe<Enum_Componentcommoninternalpages_Internal_Pages>;
+};
+
 export type EditComponentCommonMenuConfigInput = {
   id?: Maybe<Scalars['ID']>;
   Mobile?: Maybe<Scalars['Boolean']>;
   Desktop?: Maybe<Scalars['Boolean']>;
   Footer?: Maybe<Scalars['Boolean']>;
-};
-
-export type EditComponentCommonStaticPageInput = {
-  id?: Maybe<Scalars['ID']>;
-  static_pages?: Maybe<Enum_Componentcommonstaticpages_Static_Pages>;
+  DesktopQuickMenu?: Maybe<Scalars['Boolean']>;
+  MobileQuickMenu?: Maybe<Scalars['Boolean']>;
 };
 
 export type EditComponentContentSectionsCarousalImageInput = {
@@ -2645,7 +2630,7 @@ export type EditComponentMenuSubMenuInput = {
   news_announcement?: Maybe<Scalars['ID']>;
   title_th?: Maybe<Scalars['String']>;
   title_en?: Maybe<Scalars['String']>;
-  static_page?: Maybe<EditComponentCommonStaticPageInput>;
+  static_page?: Maybe<EditComponentCommonInternalPageInput>;
 };
 
 export type EditComponentTagsTagInput = {
@@ -2704,10 +2689,7 @@ export type EditLocaleInput = {
 
 export type EditMainMenuInput = {
   title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
   thumbnail?: Maybe<Scalars['ID']>;
-  news_announcement?: Maybe<Scalars['ID']>;
-  static_page?: Maybe<EditComponentCommonStaticPageInput>;
   menu_config?: Maybe<EditComponentCommonMenuConfigInput>;
   menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
@@ -2719,9 +2701,9 @@ export type EditMainMenuInput = {
 export type EditMenuInput = {
   title?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
-  news_announcement?: Maybe<Scalars['ID']>;
-  static_page?: Maybe<EditComponentCommonStaticPageInput>;
   main_menu?: Maybe<Scalars['ID']>;
+  internal_page?: Maybe<EditComponentCommonInternalPageInput>;
+  news_announcement?: Maybe<Scalars['ID']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -2737,6 +2719,7 @@ export type EditNewsAndAnnouncementInput = {
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link?: Maybe<Scalars['String']>;
   download?: Maybe<EditComponentCommonFileDownloadInput>;
+  menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -2925,34 +2908,18 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
-export type DefaultStaticPageFragment = {
-  __typename?: 'ComponentCommonStaticPages';
-} & Pick<ComponentCommonStaticPages, 'static_pages'>;
-
-export type DefaultNewsAnnoucementFragment = {
-  __typename?: 'NewsAndAnnouncement';
-} & Pick<NewsAndAnnouncement, 'id' | 'seo_link'>;
-
 export type MenusQueryVariables = Exact<{ [key: string]: never }>;
 
 export type MenusQuery = { __typename?: 'Query' } & {
   mainMenus?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'MainMenus' } & Pick<MainMenus, 'title' | 'url'> & {
-            thumbnail?: Maybe<
-              { __typename?: 'UploadFile' } & Pick<UploadFile, 'previewUrl'>
-            >;
-            news_announcement?: Maybe<
-              { __typename?: 'NewsAndAnnouncement' } & DefaultNewsAnnoucementFragment
-            >;
-            static_page?: Maybe<
-              { __typename?: 'ComponentCommonStaticPages' } & DefaultStaticPageFragment
-            >;
+        { __typename?: 'MainMenus' } & Pick<MainMenus, 'title'> & {
+            thumbnail?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
             menu_config?: Maybe<
               { __typename?: 'ComponentCommonMenuConfig' } & Pick<
                 ComponentCommonMenuConfig,
-                'Desktop' | 'Mobile' | 'Footer'
+                'Desktop' | 'Mobile' | 'Footer' | 'DesktopQuickMenu' | 'MobileQuickMenu'
               >
             >;
             menus?: Maybe<
@@ -2960,14 +2927,16 @@ export type MenusQuery = { __typename?: 'Query' } & {
                 Maybe<
                   { __typename?: 'Menus' } & Pick<Menus, 'title' | 'url'> & {
                       news_announcement?: Maybe<
-                        {
-                          __typename?: 'NewsAndAnnouncement';
-                        } & DefaultNewsAnnoucementFragment
+                        { __typename?: 'NewsAndAnnouncement' } & Pick<
+                          NewsAndAnnouncement,
+                          'id' | 'seo_link'
+                        >
                       >;
-                      static_page?: Maybe<
-                        {
-                          __typename?: 'ComponentCommonStaticPages';
-                        } & DefaultStaticPageFragment
+                      internal_page?: Maybe<
+                        { __typename?: 'ComponentCommonInternalPages' } & Pick<
+                          ComponentCommonInternalPages,
+                          'internal_pages'
+                        >
                       >;
                     }
                 >
@@ -3322,17 +3291,6 @@ export type GetContactQuery = { __typename?: 'Query' } & {
   >;
 };
 
-export const DefaultStaticPageFragmentDoc = gql`
-  fragment defaultStaticPage on ComponentCommonStaticPages {
-    static_pages
-  }
-`;
-export const DefaultNewsAnnoucementFragmentDoc = gql`
-  fragment defaultNewsAnnoucement on NewsAndAnnouncement {
-    id
-    seo_link
-  }
-`;
 export const CommonImagesFieldFragmentDoc = gql`
   fragment commonImagesField on UploadFile {
     id
@@ -3351,35 +3309,29 @@ export const MenusDocument = gql`
   query Menus {
     mainMenus {
       title
-      url
       thumbnail {
-        previewUrl
-      }
-      news_announcement {
-        ...defaultNewsAnnoucement
-      }
-      static_page {
-        ...defaultStaticPage
+        url
       }
       menu_config {
         Desktop
         Mobile
         Footer
+        DesktopQuickMenu
+        MobileQuickMenu
       }
       menus {
         title
         url
         news_announcement {
-          ...defaultNewsAnnoucement
+          id
+          seo_link
         }
-        static_page {
-          ...defaultStaticPage
+        internal_page {
+          internal_pages
         }
       }
     }
   }
-  ${DefaultNewsAnnoucementFragmentDoc}
-  ${DefaultStaticPageFragmentDoc}
 `;
 export type MenusQueryResult = Apollo.QueryResult<MenusQuery, MenusQueryVariables>;
 export const GetHomeDocument = gql`

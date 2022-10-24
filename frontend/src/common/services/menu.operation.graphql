@@ -1,38 +1,25 @@
-fragment defaultStaticPage on ComponentCommonStaticPages {
-  static_pages
-}
-
-fragment defaultNewsAnnoucement on NewsAndAnnouncement {
-  id
-  seo_link
-}
-
 query Menus {
   mainMenus {
     title
-    url
     thumbnail {
-      previewUrl
-    }
-    news_announcement {
-      ...defaultNewsAnnoucement
-    }
-    static_page {
-      ...defaultStaticPage
+      url
     }
     menu_config {
       Desktop
       Mobile
       Footer
+      DesktopQuickMenu
+      MobileQuickMenu
     }
     menus {
       title
       url
       news_announcement {
-        ...defaultNewsAnnoucement
+        id
+        seo_link
       }
-      static_page {
-        ...defaultStaticPage
+      internal_page {
+        internal_pages
       }
     }
   }
