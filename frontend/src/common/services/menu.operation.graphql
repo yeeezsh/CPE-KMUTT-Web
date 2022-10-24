@@ -1,5 +1,5 @@
-query Menus {
-  mainMenus {
+query GetMenus($locale: String = "th") {
+  mainMenus(locale: $locale) {
     title
     thumbnail {
       url
