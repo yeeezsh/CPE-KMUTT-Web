@@ -33,7 +33,11 @@
       },
       "type": "string"
     },
-    "static_page": {
+    "main_menu": {
+      "via": "menus",
+      "model": "main-menus"
+    },
+    "internal_page": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -41,11 +45,11 @@
           "localized": false
         }
       },
-      "component": "common.static-pages"
+      "component": "common.internal-pages"
     },
-    "main_menu": {
+    "news_announcement": {
       "via": "menus",
-      "model": "main-menus"
+      "model": "news-and-announcement"
     }
   }
 }

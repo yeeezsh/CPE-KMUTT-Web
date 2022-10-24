@@ -1,12 +1,13 @@
 {
   "collectionName": "components_common_static_pages",
   "info": {
-    "name": "Static-pages",
-    "icon": "link"
+    "name": "Internal-pages",
+    "icon": "link",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "static_pages": {
+    "internal_pages": {
       "type": "enumeration",
       "enum": [
         "news",

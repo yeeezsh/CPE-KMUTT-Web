@@ -78,6 +78,14 @@
         }
       },
       "component": "common.file-download"
+    },
+    "menus": {
+      "via": "news_announcement",
+      "collection": "menus"
+    },
+    "main_menus": {
+      "via": "news_announcement",
+      "collection": "main-menus"
     }
   }
 }

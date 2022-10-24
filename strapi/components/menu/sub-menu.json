@@ -23,7 +23,7 @@
     "static_page": {
       "type": "component",
       "repeatable": false,
-      "component": "common.static-pages"
+      "component": "common.internal-pages"
     }
   }
 }
