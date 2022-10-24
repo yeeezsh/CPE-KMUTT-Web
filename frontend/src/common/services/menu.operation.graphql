@@ -1,5 +1,6 @@
 query GetMenus($locale: String = "th") {
   mainMenus(locale: $locale) {
+    id
     title
     thumbnail {
       url
@@ -13,6 +14,7 @@ query GetMenus($locale: String = "th") {
     }
     menus {
       title
+      id
       url
       news_announcement {
         id

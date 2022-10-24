@@ -2916,7 +2916,7 @@ export type GetMenusQuery = { __typename?: 'Query' } & {
   mainMenus?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'MainMenus' } & Pick<MainMenus, 'title'> & {
+        { __typename?: 'MainMenus' } & Pick<MainMenus, 'id' | 'title'> & {
             thumbnail?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
             menu_config?: Maybe<
               { __typename?: 'ComponentCommonMenuConfig' } & Pick<
@@ -2927,7 +2927,7 @@ export type GetMenusQuery = { __typename?: 'Query' } & {
             menus?: Maybe<
               Array<
                 Maybe<
-                  { __typename?: 'Menus' } & Pick<Menus, 'title' | 'url'> & {
+                  { __typename?: 'Menus' } & Pick<Menus, 'title' | 'id' | 'url'> & {
                       news_announcement?: Maybe<
                         { __typename?: 'NewsAndAnnouncement' } & Pick<
                           NewsAndAnnouncement,
@@ -3310,6 +3310,7 @@ export const CommonContentSectionFragmentDoc = gql`
 export const GetMenusDocument = gql`
   query GetMenus($locale: String = "th") {
     mainMenus(locale: $locale) {
+      id
       title
       thumbnail {
         url
@@ -3323,6 +3324,7 @@ export const GetMenusDocument = gql`
       }
       menus {
         title
+        id
         url
         news_announcement {
           id
