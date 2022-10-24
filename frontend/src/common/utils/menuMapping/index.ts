@@ -1,9 +1,29 @@
 import { MenuItem, MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
+import { STATIC_NEWS_ID_LINK, STATIC_NEWS_ID_LINK_PATTERN } from 'common/constants/links';
 import {
   ComponentCommonMenuConfig,
   GetMenusQuery,
 } from 'common/generated/generated-types';
+import { INTERNAL_PAGE_MAPPING } from 'common/utils/menuMapping/constants';
+import { SubMenuGenerated } from 'common/utils/menuMapping/types';
 import { ImageStrapiUrl } from 'common/utils/urls';
+
+export function mappingSubMenuLink(menu: SubMenuGenerated): string {
+  if (menu?.internal_page?.internal_pages)
+    return (
+      INTERNAL_PAGE_MAPPING.find((el) => el.api === menu.internal_page?.internal_pages)
+        ?.url || ''
+    );
+  if (menu?.news_announcement)
+    return STATIC_NEWS_ID_LINK.replace(
+      STATIC_NEWS_ID_LINK_PATTERN,
+      menu.news_announcement.id,
+    );
+  if (menu?.url) return menu.url;
+
+  console.warn('cannot convert link form API');
+  return '';
+}
 
 export function mappingMenuType(type: string): MenuType {
   switch (type) {
@@ -46,7 +66,7 @@ export const menuMapping = (data: GetMenusQuery): MenuItem[] => {
       subMenu: m?.menus?.map((s) => ({
         key: s?.id || '',
         label: s?.title || '',
-        link: s?.url || '',
+        link: mappingSubMenuLink(s) || '',
       })),
     })) || [];
 
