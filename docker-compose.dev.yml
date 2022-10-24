@@ -1,4 +1,4 @@
-version: "3.4"
+version: '3.4'
 services:
   backend:
     container_name: cpe-kmutt-backend
@@ -11,19 +11,19 @@ services:
       WAIT_HOSTS: mongo:27017
       TZ: Asia/Bangkok
       ORIGIN: http(|s):\/\/localhost:5000
-      DATABASE_CONNECTION: "mongodb://mongodb:27017/cpe-kmutt-web"
+      DATABASE_CONNECTION: 'mongodb://mongodb:27017/cpe-kmutt-web'
       DATABASE_USERAME: root
       DATABASE_PASSWORD: cpeKMUTT@WebSite
       DATABASE_AUTH_SOURCE: admin
       JWT_SECRET_KEY: very-secret-key.jwt
       JWT_EXPIRES: 3600s
-      OPS_KEY: "CPE-KMUTT.opskey"
-      NODE_ENV: "development"
+      OPS_KEY: 'CPE-KMUTT.opskey'
+      NODE_ENV: 'development'
       PORT: 3000
     ports:
       - 3000:3000
     volumes:
-      - "./backend:/backend"
+      - './backend:/backend'
     links:
       - mongodb
     command: yarn start:dev
@@ -43,7 +43,7 @@ services:
       - 5000:3000
       - 49153:49153
     volumes:
-      - "./frontend:/frontend"
+      - './frontend:/frontend'
       - /frontend/node_modules
     depends_on:
       - strapi
@@ -69,17 +69,17 @@ services:
       - ./strapi/api/:/app/api
       - ./strapi/extensions/:/app/extensions
     ports:
-      - "1337:1337"
+      - '1337:1337'
     depends_on:
       - mongodb
   mongodb:
     container_name: mongodb
     restart: on-failure
-    image: "bitnami/mongodb:5.0.9"
+    image: 'bitnami/mongodb:5.0.9'
     environment:
       MONGODB_ROOT_PASSWORD: cpeKMUTT@WebSite
       TZ: Asia/Bangkok
     ports:
-      - "27017:27017"
+      - '27017:27017'
     volumes:
-      - "./db:/bitnami"
+      - './db:/bitnami'
