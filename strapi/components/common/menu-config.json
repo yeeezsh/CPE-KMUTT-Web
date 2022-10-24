@@ -21,6 +21,14 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "DesktopQuickMenu": {
+      "type": "boolean",
+      "default": false
+    },
+    "MobileQuickMenu": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
