@@ -2,7 +2,7 @@ version: '3.4'
 services:
   proxy:
     container_name: proxy
-    restart: on-failure
+    restart: unless-stopped
     build:
       context: ./proxy
       dockerfile: Dockerfile
@@ -12,7 +12,7 @@ services:
       - strapi
       - mongodb
   frontend:
-    restart: on-failure
+    restart: unless-stopped
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -25,7 +25,7 @@ services:
       - strapi
   backend:
     container_name: cpe-kmutt-backend-prod
-    restart: on-failure
+    restart: unless-stopped
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -50,7 +50,7 @@ services:
     command: yarn start:dev
   strapi:
     container_name: cpe-kmutt-strapi-prod
-    restart: on-failure
+    restart: unless-stopped
     build:
       context: ./strapi
       dockerfile: Dockerfile
@@ -73,7 +73,7 @@ services:
   mongodb:
     container_name: mongodb
     image: 'bitnami/mongodb:5.0.9'
-    restart: on-failure
+    restart: unless-stopped
     environment:
       MONGODB_ROOT_PASSWORD: '${MONGODB_ROOT_PASSWORD}'
       TZ: Asia/Bangkok
