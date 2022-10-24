@@ -33,9 +33,6 @@
       },
       "type": "string"
     },
-    "news_announcement": {
-      "model": "news-and-announcement"
-    },
     "static_page": {
       "type": "component",
       "repeatable": false,

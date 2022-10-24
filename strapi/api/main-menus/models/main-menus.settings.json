@@ -25,14 +25,6 @@
       "type": "string",
       "required": true
     },
-    "url": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "string"
-    },
     "thumbnail": {
       "model": "file",
       "via": "related",
@@ -47,19 +39,6 @@
         }
       }
     },
-    "news_announcement": {
-      "model": "news-and-announcement"
-    },
-    "static_page": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "component": "common.static-pages"
-    },
     "menu_config": {
       "type": "component",
       "repeatable": false,
@@ -72,8 +51,8 @@
       "required": true
     },
     "menus": {
-      "collection": "menus",
-      "via": "main_menu"
+      "via": "main_menu",
+      "collection": "menus"
     }
   }
 }
