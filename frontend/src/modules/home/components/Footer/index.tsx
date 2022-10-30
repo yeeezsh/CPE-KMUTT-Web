@@ -3,6 +3,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import Container from 'common/components/Container';
+import { MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
+import useMenu from 'common/hooks/useMenu';
 
 import FooterConstant from './constants';
 import {
@@ -29,6 +31,8 @@ const StaticSection: React.FC = () => {
     link && router.push(link);
   }
 
+  const menu = useMenu(MenuType.Footer);
+
   return (
     <FooterStyled>
       <Container>
@@ -45,7 +49,7 @@ const StaticSection: React.FC = () => {
         </ContactContainer>
         <HrLine />
         <SiteMapContainer>
-          {FooterConstant.map(({ key, label, subMenu }) => (
+          {menu.map(({ key, label, subMenu }) => (
             <SiteMapSupContainer key={key}>
               <SiteMapHeader>{label}</SiteMapHeader>
               {subMenu?.map(({ key, label, link }) => (
