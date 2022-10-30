@@ -37,10 +37,13 @@ export function mappingMenuType(type: string): MenuType {
       return MenuType.DesktopQuickMenu;
     case 'MobileQuickMenu':
       return MenuType.MobileQuickMenu;
+    case '__typename':
+      return MenuType.None;
   }
 
+  console.warn(type);
   console.warn('cannot find matching menu type');
-  return MenuType.Desktop;
+  return MenuType.None;
 }
 
 export function menuType(config: ComponentCommonMenuConfig): MenuType[] {
