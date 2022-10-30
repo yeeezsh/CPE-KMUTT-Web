@@ -2,7 +2,7 @@ import { MenuItem, MenuType } from 'common/components/Navbar/components/NavbarMe
 import { STATIC_NEWS_ID_LINK, STATIC_NEWS_ID_LINK_PATTERN } from 'common/constants/links';
 import {
   ComponentCommonMenuConfig,
-  GetMenusQuery,
+  GetMenuQuery,
 } from 'common/generated/generated-types';
 import { INTERNAL_PAGE_MAPPING } from 'common/utils/menuMapping/constants';
 import { SubMenuGenerated } from 'common/utils/menuMapping/types';
@@ -54,17 +54,17 @@ export function menuType(config: ComponentCommonMenuConfig): MenuType[] {
   return filtered;
 }
 
-export const sortMenu = (data: GetMenusQuery): GetMenusQuery => {
+export const sortMenu = (data: GetMenuQuery): GetMenuQuery => {
   const sorted = data.mainMenus
     ?.sort((a, b) => (a?.order || 0) - (b?.order || 0))
     .map((m) => ({
       ...m,
       menus: m?.menus?.sort((a, b) => (a?.order || 0) - (b?.order || 0)),
     }));
-  return { ...data, mainMenus: sorted } as GetMenusQuery;
+  return { ...data, mainMenus: sorted } as GetMenuQuery;
 };
 
-export const menuMapping = (data: GetMenusQuery): MenuItem[] => {
+export const menuMapping = (data: GetMenuQuery): MenuItem[] => {
   const menus = sortMenu(data).mainMenus;
 
   const mappedMenuType: MenuItem[] =

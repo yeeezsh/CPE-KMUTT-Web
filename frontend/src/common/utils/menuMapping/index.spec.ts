@@ -3,7 +3,7 @@ import { STATIC_NEWS_LINK } from 'common/constants/links';
 import {
   ComponentCommonMenuConfig,
   Enum_Componentcommoninternalpages_Internal_Pages,
-  GetMenusQuery,
+  GetMenuQuery,
 } from 'common/generated/generated-types';
 import {
   mappingMenuType,
@@ -57,7 +57,7 @@ describe('menuType tests', () => {
 });
 
 describe('sort menu', () => {
-  const MOCK_API: GetMenusQuery = {
+  const MOCK_API: GetMenuQuery = {
     mainMenus: [
       {
         id: '6356a4667e1a3e001eb7beab',
@@ -164,7 +164,7 @@ describe('sort menu', () => {
 });
 
 describe('menuMapping tests', () => {
-  const MOCK_API: GetMenusQuery = {
+  const MOCK_API: GetMenuQuery = {
     mainMenus: [
       {
         id: '6356a4667e1a3e001eb7beab',

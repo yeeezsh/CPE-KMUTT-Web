@@ -1,4 +1,4 @@
-query GetMenus($locale: String = "th") {
+query GetMenu($locale: String = "th") {
   mainMenus(locale: $locale) {
     id
     title

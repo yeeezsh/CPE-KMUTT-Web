@@ -2986,11 +2986,11 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
-export type GetMenusQueryVariables = Exact<{
+export type GetMenuQueryVariables = Exact<{
   locale?: Maybe<Scalars['String']>;
 }>;
 
-export type GetMenusQuery = { __typename?: 'Query' } & {
+export type GetMenuQuery = { __typename?: 'Query' } & {
   mainMenus?: Maybe<
     Array<
       Maybe<
@@ -3388,8 +3388,8 @@ export const CommonContentSectionFragmentDoc = gql`
     body
   }
 `;
-export const GetMenusDocument = gql`
-  query GetMenus($locale: String = "th") {
+export const GetMenuDocument = gql`
+  query GetMenu($locale: String = "th") {
     mainMenus(locale: $locale) {
       id
       title
@@ -3420,10 +3420,7 @@ export const GetMenusDocument = gql`
     }
   }
 `;
-export type GetMenusQueryResult = Apollo.QueryResult<
-  GetMenusQuery,
-  GetMenusQueryVariables
->;
+export type GetMenuQueryResult = Apollo.QueryResult<GetMenuQuery, GetMenuQueryVariables>;
 export const GetHomeDocument = gql`
   query GetHome($locale: String = "th") {
     home(locale: $locale, publicationState: LIVE) {
