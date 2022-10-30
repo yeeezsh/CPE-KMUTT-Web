@@ -2,6 +2,7 @@ query GetMenus($locale: String = "th") {
   mainMenus(locale: $locale) {
     id
     title
+    order
     thumbnail {
       url
     }
@@ -13,8 +14,9 @@ query GetMenus($locale: String = "th") {
       MobileQuickMenu
     }
     menus {
-      title
       id
+      title
+      order
       url
       news_announcement {
         id

@@ -332,6 +332,7 @@ export type MainMenuInput = {
   thumbnail?: Maybe<Scalars['ID']>;
   menu_config: ComponentCommonMenuConfigInput;
   menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -347,6 +348,7 @@ export type MainMenus = {
   title: Scalars['String'];
   thumbnail?: Maybe<UploadFile>;
   menu_config?: Maybe<ComponentCommonMenuConfig>;
+  order?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
   menus?: Maybe<Array<Maybe<Menus>>>;
   localizations?: Maybe<Array<Maybe<MainMenus>>>;
@@ -370,6 +372,30 @@ export type MainMenusAggregator = {
   __typename?: 'MainMenusAggregator';
   count?: Maybe<Scalars['Int']>;
   totalCount?: Maybe<Scalars['Int']>;
+  sum?: Maybe<MainMenusAggregatorSum>;
+  avg?: Maybe<MainMenusAggregatorAvg>;
+  min?: Maybe<MainMenusAggregatorMin>;
+  max?: Maybe<MainMenusAggregatorMax>;
+};
+
+export type MainMenusAggregatorAvg = {
+  __typename?: 'MainMenusAggregatorAvg';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MainMenusAggregatorMax = {
+  __typename?: 'MainMenusAggregatorMax';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MainMenusAggregatorMin = {
+  __typename?: 'MainMenusAggregatorMin';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MainMenusAggregatorSum = {
+  __typename?: 'MainMenusAggregatorSum';
+  order?: Maybe<Scalars['Float']>;
 };
 
 export type MainMenusConnection = {
@@ -400,6 +426,12 @@ export type MainMenusConnectionLocale = {
 export type MainMenusConnectionMenu_Config = {
   __typename?: 'MainMenusConnectionMenu_config';
   key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnectionOrder = {
+  __typename?: 'MainMenusConnectionOrder';
+  key?: Maybe<Scalars['Int']>;
   connection?: Maybe<MainMenusConnection>;
 };
 
@@ -436,6 +468,7 @@ export type MainMenusGroupBy = {
   title?: Maybe<Array<Maybe<MainMenusConnectionTitle>>>;
   thumbnail?: Maybe<Array<Maybe<MainMenusConnectionThumbnail>>>;
   menu_config?: Maybe<Array<Maybe<MainMenusConnectionMenu_Config>>>;
+  order?: Maybe<Array<Maybe<MainMenusConnectionOrder>>>;
   locale?: Maybe<Array<Maybe<MainMenusConnectionLocale>>>;
 };
 
@@ -445,6 +478,7 @@ export type MenuInput = {
   main_menu?: Maybe<Scalars['ID']>;
   internal_page?: Maybe<ComponentCommonInternalPageInput>;
   news_announcement?: Maybe<Scalars['ID']>;
+  order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -462,6 +496,7 @@ export type Menus = {
   main_menu?: Maybe<MainMenus>;
   internal_page?: Maybe<ComponentCommonInternalPages>;
   news_announcement?: Maybe<NewsAndAnnouncement>;
+  order?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Menus>>>;
 };
@@ -477,6 +512,30 @@ export type MenusAggregator = {
   __typename?: 'MenusAggregator';
   count?: Maybe<Scalars['Int']>;
   totalCount?: Maybe<Scalars['Int']>;
+  sum?: Maybe<MenusAggregatorSum>;
+  avg?: Maybe<MenusAggregatorAvg>;
+  min?: Maybe<MenusAggregatorMin>;
+  max?: Maybe<MenusAggregatorMax>;
+};
+
+export type MenusAggregatorAvg = {
+  __typename?: 'MenusAggregatorAvg';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MenusAggregatorMax = {
+  __typename?: 'MenusAggregatorMax';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MenusAggregatorMin = {
+  __typename?: 'MenusAggregatorMin';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MenusAggregatorSum = {
+  __typename?: 'MenusAggregatorSum';
+  order?: Maybe<Scalars['Float']>;
 };
 
 export type MenusConnection = {
@@ -522,6 +581,12 @@ export type MenusConnectionNews_Announcement = {
   connection?: Maybe<MenusConnection>;
 };
 
+export type MenusConnectionOrder = {
+  __typename?: 'MenusConnectionOrder';
+  key?: Maybe<Scalars['Int']>;
+  connection?: Maybe<MenusConnection>;
+};
+
 export type MenusConnectionTitle = {
   __typename?: 'MenusConnectionTitle';
   key?: Maybe<Scalars['String']>;
@@ -557,6 +622,7 @@ export type MenusGroupBy = {
   main_menu?: Maybe<Array<Maybe<MenusConnectionMain_Menu>>>;
   internal_page?: Maybe<Array<Maybe<MenusConnectionInternal_Page>>>;
   news_announcement?: Maybe<Array<Maybe<MenusConnectionNews_Announcement>>>;
+  order?: Maybe<Array<Maybe<MenusConnectionOrder>>>;
   locale?: Maybe<Array<Maybe<MenusConnectionLocale>>>;
 };
 
@@ -574,6 +640,10 @@ export type Morph =
   | MainMenus
   | MainMenusConnection
   | MainMenusAggregator
+  | MainMenusAggregatorSum
+  | MainMenusAggregatorAvg
+  | MainMenusAggregatorMin
+  | MainMenusAggregatorMax
   | MainMenusGroupBy
   | MainMenusConnectionId
   | MainMenusConnection_Id
@@ -582,6 +652,7 @@ export type Morph =
   | MainMenusConnectionTitle
   | MainMenusConnectionThumbnail
   | MainMenusConnectionMenu_Config
+  | MainMenusConnectionOrder
   | MainMenusConnectionLocale
   | CreateMainMenuPayload
   | UpdateMainMenuPayload
@@ -589,6 +660,10 @@ export type Morph =
   | Menus
   | MenusConnection
   | MenusAggregator
+  | MenusAggregatorSum
+  | MenusAggregatorAvg
+  | MenusAggregatorMin
+  | MenusAggregatorMax
   | MenusGroupBy
   | MenusConnectionId
   | MenusConnection_Id
@@ -599,6 +674,7 @@ export type Morph =
   | MenusConnectionMain_Menu
   | MenusConnectionInternal_Page
   | MenusConnectionNews_Announcement
+  | MenusConnectionOrder
   | MenusConnectionLocale
   | CreateMenuPayload
   | UpdateMenuPayload
@@ -2692,6 +2768,7 @@ export type EditMainMenuInput = {
   thumbnail?: Maybe<Scalars['ID']>;
   menu_config?: Maybe<EditComponentCommonMenuConfigInput>;
   menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -2704,6 +2781,7 @@ export type EditMenuInput = {
   main_menu?: Maybe<Scalars['ID']>;
   internal_page?: Maybe<EditComponentCommonInternalPageInput>;
   news_announcement?: Maybe<Scalars['ID']>;
+  order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -2916,7 +2994,7 @@ export type GetMenusQuery = { __typename?: 'Query' } & {
   mainMenus?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'MainMenus' } & Pick<MainMenus, 'id' | 'title'> & {
+        { __typename?: 'MainMenus' } & Pick<MainMenus, 'id' | 'title' | 'order'> & {
             thumbnail?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
             menu_config?: Maybe<
               { __typename?: 'ComponentCommonMenuConfig' } & Pick<
@@ -2927,7 +3005,10 @@ export type GetMenusQuery = { __typename?: 'Query' } & {
             menus?: Maybe<
               Array<
                 Maybe<
-                  { __typename?: 'Menus' } & Pick<Menus, 'title' | 'id' | 'url'> & {
+                  { __typename?: 'Menus' } & Pick<
+                    Menus,
+                    'id' | 'title' | 'order' | 'url'
+                  > & {
                       news_announcement?: Maybe<
                         { __typename?: 'NewsAndAnnouncement' } & Pick<
                           NewsAndAnnouncement,
@@ -3312,6 +3393,7 @@ export const GetMenusDocument = gql`
     mainMenus(locale: $locale) {
       id
       title
+      order
       thumbnail {
         url
       }
@@ -3323,8 +3405,9 @@ export const GetMenusDocument = gql`
         MobileQuickMenu
       }
       menus {
-        title
         id
+        title
+        order
         url
         news_announcement {
           id

@@ -53,6 +53,15 @@
     "menus": {
       "via": "main_menu",
       "collection": "menus"
+    },
+    "order": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "default": 0
     }
   }
 }

@@ -50,6 +50,15 @@
     "news_announcement": {
       "via": "menus",
       "model": "news-and-announcement"
+    },
+    "order": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "default": 0
     }
   }
 }
