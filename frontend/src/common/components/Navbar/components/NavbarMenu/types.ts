@@ -1,4 +1,5 @@
 export enum MenuType {
+  None,
   Desktop,
   Mobile,
   Footer,
