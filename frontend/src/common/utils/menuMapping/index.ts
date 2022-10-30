@@ -54,8 +54,18 @@ export function menuType(config: ComponentCommonMenuConfig): MenuType[] {
   return filtered;
 }
 
+export const sortMenu = (data: GetMenusQuery): GetMenusQuery => {
+  const sorted = data.mainMenus
+    ?.sort((a, b) => (a?.order || 0) - (b?.order || 0))
+    .map((m) => ({
+      ...m,
+      menus: m?.menus?.sort((a, b) => (a?.order || 0) - (b?.order || 0)),
+    }));
+  return { ...data, mainMenus: sorted } as GetMenusQuery;
+};
+
 export const menuMapping = (data: GetMenusQuery): MenuItem[] => {
-  const menus = data.mainMenus;
+  const menus = sortMenu(data).mainMenus;
 
   const mappedMenuType: MenuItem[] =
     menus?.map((m) => ({
