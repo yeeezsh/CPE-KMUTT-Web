@@ -21,7 +21,8 @@ const StaffCard: FC<StaffCardProps> = ({ staff }) => {
         <Body>
           <StyledAnchor>
             <Name>
-              {staff.title}.{firstName}
+              {staff.title}
+              {firstName}
             </Name>
             <Name>{lastName}</Name>
           </StyledAnchor>
