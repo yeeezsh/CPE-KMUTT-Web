@@ -23,6 +23,8 @@ export type Scalars = {
   Long: any;
   /** Input type for dynamic zone dynamic_content of NewsAndAnnouncement */
   NewsAndAnnouncementDynamicContentDynamicZoneInput: any;
+  /** Input type for dynamic zone dynamic_content of Programs */
+  ProgramsDynamicContentDynamicZoneInput: any;
   /** A time string with format: HH:mm:ss.SSS */
   Time: any;
   /** The `Upload` scalar type represents a file upload. */
@@ -299,6 +301,38 @@ export type Morph =
   | CreateNewsAndAnnouncementPayload
   | UpdateNewsAndAnnouncementPayload
   | DeleteNewsAndAnnouncementPayload
+  | ProgramTags
+  | ProgramTagsConnection
+  | ProgramTagsAggregator
+  | ProgramTagsGroupBy
+  | ProgramTagsConnectionId
+  | ProgramTagsConnection_Id
+  | ProgramTagsConnectionCreatedAt
+  | ProgramTagsConnectionUpdatedAt
+  | ProgramTagsConnectionProgram_Tag_Id
+  | ProgramTagsConnectionProgram_Tag_Name
+  | ProgramTagsConnectionSeo_Link
+  | ProgramTagsConnectionLocale
+  | CreateProgramTagPayload
+  | UpdateProgramTagPayload
+  | DeleteProgramTagPayload
+  | Programs
+  | ProgramsConnection
+  | ProgramsAggregator
+  | ProgramsGroupBy
+  | ProgramsConnectionId
+  | ProgramsConnection_Id
+  | ProgramsConnectionCreatedAt
+  | ProgramsConnectionUpdatedAt
+  | ProgramsConnectionHeader
+  | ProgramsConnectionCanvas_Preview
+  | ProgramsConnectionSeo_Link
+  | ProgramsConnectionDownload
+  | ProgramsConnectionLocale
+  | ProgramsConnectionPublished_At
+  | CreateProgramPayload
+  | UpdateProgramPayload
+  | DeleteProgramPayload
   | Rooms
   | RoomsConnection
   | RoomsAggregator
@@ -440,6 +474,12 @@ export type Mutation = {
   createNewsAndAnnouncement?: Maybe<CreateNewsAndAnnouncementPayload>;
   updateNewsAndAnnouncement?: Maybe<UpdateNewsAndAnnouncementPayload>;
   deleteNewsAndAnnouncement?: Maybe<DeleteNewsAndAnnouncementPayload>;
+  createProgramTag?: Maybe<CreateProgramTagPayload>;
+  updateProgramTag?: Maybe<UpdateProgramTagPayload>;
+  deleteProgramTag?: Maybe<DeleteProgramTagPayload>;
+  createProgram?: Maybe<CreateProgramPayload>;
+  updateProgram?: Maybe<UpdateProgramPayload>;
+  deleteProgram?: Maybe<DeleteProgramPayload>;
   createRoom?: Maybe<CreateRoomPayload>;
   updateRoom?: Maybe<UpdateRoomPayload>;
   deleteRoom?: Maybe<DeleteRoomPayload>;
@@ -469,6 +509,8 @@ export type Mutation = {
   createContactLocalization: Contact;
   createHomeLocalization: Home;
   createNewsAndAnnouncementLocalization: NewsAndAnnouncement;
+  createProgramTagLocalization: ProgramTags;
+  createProgramLocalization: Programs;
   createRoomLocalization: Rooms;
   createStaffLocalization: Staffs;
   createSubjectLocalization: Subjects;
@@ -511,6 +553,30 @@ export type MutationUpdateNewsAndAnnouncementArgs = {
 
 export type MutationDeleteNewsAndAnnouncementArgs = {
   input?: Maybe<DeleteNewsAndAnnouncementInput>;
+};
+
+export type MutationCreateProgramTagArgs = {
+  input?: Maybe<CreateProgramTagInput>;
+};
+
+export type MutationUpdateProgramTagArgs = {
+  input?: Maybe<UpdateProgramTagInput>;
+};
+
+export type MutationDeleteProgramTagArgs = {
+  input?: Maybe<DeleteProgramTagInput>;
+};
+
+export type MutationCreateProgramArgs = {
+  input?: Maybe<CreateProgramInput>;
+};
+
+export type MutationUpdateProgramArgs = {
+  input?: Maybe<UpdateProgramInput>;
+};
+
+export type MutationDeleteProgramArgs = {
+  input?: Maybe<DeleteProgramInput>;
 };
 
 export type MutationCreateRoomArgs = {
@@ -599,6 +665,14 @@ export type MutationCreateHomeLocalizationArgs = {
 
 export type MutationCreateNewsAndAnnouncementLocalizationArgs = {
   input: UpdateNewsAndAnnouncementInput;
+};
+
+export type MutationCreateProgramTagLocalizationArgs = {
+  input: UpdateProgramTagInput;
+};
+
+export type MutationCreateProgramLocalizationArgs = {
+  input: UpdateProgramInput;
 };
 
 export type MutationCreateRoomLocalizationArgs = {
@@ -800,6 +874,252 @@ export type NewsAndAnnouncementInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type ProgramInput = {
+  header: Scalars['String'];
+  canvas_preview?: Maybe<Scalars['ID']>;
+  dynamic_content?: Maybe<Array<Scalars['ProgramsDynamicContentDynamicZoneInput']>>;
+  seo_link: Scalars['String'];
+  download?: Maybe<ComponentCommonFileDownloadInput>;
+  program_tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type ProgramTagInput = {
+  program_tag_id?: Maybe<Scalars['String']>;
+  program_tag_name: Scalars['String'];
+  programs?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  seo_link: Scalars['String'];
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type ProgramTags = {
+  __typename?: 'ProgramTags';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  program_tag_id?: Maybe<Scalars['String']>;
+  program_tag_name: Scalars['String'];
+  seo_link: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  programs?: Maybe<Array<Maybe<Programs>>>;
+  localizations?: Maybe<Array<Maybe<ProgramTags>>>;
+};
+
+export type ProgramTagsProgramsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ProgramTagsLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ProgramTagsAggregator = {
+  __typename?: 'ProgramTagsAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type ProgramTagsConnection = {
+  __typename?: 'ProgramTagsConnection';
+  values?: Maybe<Array<Maybe<ProgramTags>>>;
+  groupBy?: Maybe<ProgramTagsGroupBy>;
+  aggregate?: Maybe<ProgramTagsAggregator>;
+};
+
+export type ProgramTagsConnectionCreatedAt = {
+  __typename?: 'ProgramTagsConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ProgramTagsConnection>;
+};
+
+export type ProgramTagsConnectionId = {
+  __typename?: 'ProgramTagsConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ProgramTagsConnection>;
+};
+
+export type ProgramTagsConnectionLocale = {
+  __typename?: 'ProgramTagsConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ProgramTagsConnection>;
+};
+
+export type ProgramTagsConnectionProgram_Tag_Id = {
+  __typename?: 'ProgramTagsConnectionProgram_tag_id';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ProgramTagsConnection>;
+};
+
+export type ProgramTagsConnectionProgram_Tag_Name = {
+  __typename?: 'ProgramTagsConnectionProgram_tag_name';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ProgramTagsConnection>;
+};
+
+export type ProgramTagsConnectionSeo_Link = {
+  __typename?: 'ProgramTagsConnectionSeo_link';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ProgramTagsConnection>;
+};
+
+export type ProgramTagsConnectionUpdatedAt = {
+  __typename?: 'ProgramTagsConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ProgramTagsConnection>;
+};
+
+export type ProgramTagsConnection_Id = {
+  __typename?: 'ProgramTagsConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ProgramTagsConnection>;
+};
+
+export type ProgramTagsGroupBy = {
+  __typename?: 'ProgramTagsGroupBy';
+  id?: Maybe<Array<Maybe<ProgramTagsConnectionId>>>;
+  _id?: Maybe<Array<Maybe<ProgramTagsConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<ProgramTagsConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<ProgramTagsConnectionUpdatedAt>>>;
+  program_tag_id?: Maybe<Array<Maybe<ProgramTagsConnectionProgram_Tag_Id>>>;
+  program_tag_name?: Maybe<Array<Maybe<ProgramTagsConnectionProgram_Tag_Name>>>;
+  seo_link?: Maybe<Array<Maybe<ProgramTagsConnectionSeo_Link>>>;
+  locale?: Maybe<Array<Maybe<ProgramTagsConnectionLocale>>>;
+};
+
+export type Programs = {
+  __typename?: 'Programs';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  header: Scalars['String'];
+  canvas_preview?: Maybe<UploadFile>;
+  dynamic_content?: Maybe<Array<Maybe<ProgramsDynamicContentDynamicZone>>>;
+  seo_link: Scalars['String'];
+  download?: Maybe<ComponentCommonFileDownload>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  program_tags?: Maybe<Array<Maybe<ProgramTags>>>;
+  localizations?: Maybe<Array<Maybe<Programs>>>;
+};
+
+export type ProgramsProgram_TagsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ProgramsLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ProgramsAggregator = {
+  __typename?: 'ProgramsAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type ProgramsConnection = {
+  __typename?: 'ProgramsConnection';
+  values?: Maybe<Array<Maybe<Programs>>>;
+  groupBy?: Maybe<ProgramsGroupBy>;
+  aggregate?: Maybe<ProgramsAggregator>;
+};
+
+export type ProgramsConnectionCanvas_Preview = {
+  __typename?: 'ProgramsConnectionCanvas_preview';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnectionCreatedAt = {
+  __typename?: 'ProgramsConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnectionDownload = {
+  __typename?: 'ProgramsConnectionDownload';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnectionHeader = {
+  __typename?: 'ProgramsConnectionHeader';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnectionId = {
+  __typename?: 'ProgramsConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnectionLocale = {
+  __typename?: 'ProgramsConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnectionPublished_At = {
+  __typename?: 'ProgramsConnectionPublished_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnectionSeo_Link = {
+  __typename?: 'ProgramsConnectionSeo_link';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnectionUpdatedAt = {
+  __typename?: 'ProgramsConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsConnection_Id = {
+  __typename?: 'ProgramsConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
+export type ProgramsDynamicContentDynamicZone = ComponentContentSectionsTextContent;
+
+export type ProgramsGroupBy = {
+  __typename?: 'ProgramsGroupBy';
+  id?: Maybe<Array<Maybe<ProgramsConnectionId>>>;
+  _id?: Maybe<Array<Maybe<ProgramsConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<ProgramsConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<ProgramsConnectionUpdatedAt>>>;
+  header?: Maybe<Array<Maybe<ProgramsConnectionHeader>>>;
+  canvas_preview?: Maybe<Array<Maybe<ProgramsConnectionCanvas_Preview>>>;
+  seo_link?: Maybe<Array<Maybe<ProgramsConnectionSeo_Link>>>;
+  download?: Maybe<Array<Maybe<ProgramsConnectionDownload>>>;
+  locale?: Maybe<Array<Maybe<ProgramsConnectionLocale>>>;
+  published_at?: Maybe<Array<Maybe<ProgramsConnectionPublished_At>>>;
+};
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW',
@@ -812,6 +1132,12 @@ export type Query = {
   newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
   newsAndAnnouncements?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
   newsAndAnnouncementsConnection?: Maybe<NewsAndAnnouncementConnection>;
+  programTag?: Maybe<ProgramTags>;
+  programTags?: Maybe<Array<Maybe<ProgramTags>>>;
+  programTagsConnection?: Maybe<ProgramTagsConnection>;
+  program?: Maybe<Programs>;
+  programs?: Maybe<Array<Maybe<Programs>>>;
+  programsConnection?: Maybe<ProgramsConnection>;
   room?: Maybe<Rooms>;
   rooms?: Maybe<Array<Maybe<Rooms>>>;
   roomsConnection?: Maybe<RoomsConnection>;
@@ -861,6 +1187,50 @@ export type QueryNewsAndAnnouncementsArgs = {
 };
 
 export type QueryNewsAndAnnouncementsConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryProgramTagArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QueryProgramTagsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryProgramTagsConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryProgramArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QueryProgramsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryProgramsConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -1973,6 +2343,24 @@ export type CreateNewsAndAnnouncementPayload = {
   newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
 };
 
+export type CreateProgramInput = {
+  data?: Maybe<ProgramInput>;
+};
+
+export type CreateProgramPayload = {
+  __typename?: 'createProgramPayload';
+  program?: Maybe<Programs>;
+};
+
+export type CreateProgramTagInput = {
+  data?: Maybe<ProgramTagInput>;
+};
+
+export type CreateProgramTagPayload = {
+  __typename?: 'createProgramTagPayload';
+  programTag?: Maybe<ProgramTags>;
+};
+
 export type CreateRoleInput = {
   data?: Maybe<RoleInput>;
 };
@@ -2053,6 +2441,24 @@ export type DeleteNewsAndAnnouncementInput = {
 export type DeleteNewsAndAnnouncementPayload = {
   __typename?: 'deleteNewsAndAnnouncementPayload';
   newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
+};
+
+export type DeleteProgramInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteProgramPayload = {
+  __typename?: 'deleteProgramPayload';
+  program?: Maybe<Programs>;
+};
+
+export type DeleteProgramTagInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteProgramTagPayload = {
+  __typename?: 'deleteProgramTagPayload';
+  programTag?: Maybe<ProgramTags>;
 };
 
 export type DeleteRoleInput = {
@@ -2221,6 +2627,31 @@ export type EditNewsAndAnnouncementInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditProgramInput = {
+  header?: Maybe<Scalars['String']>;
+  canvas_preview?: Maybe<Scalars['ID']>;
+  dynamic_content?: Maybe<Array<Scalars['ProgramsDynamicContentDynamicZoneInput']>>;
+  seo_link?: Maybe<Scalars['String']>;
+  download?: Maybe<EditComponentCommonFileDownloadInput>;
+  program_tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditProgramTagInput = {
+  program_tag_id?: Maybe<Scalars['String']>;
+  program_tag_name?: Maybe<Scalars['String']>;
+  programs?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  seo_link?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditRoleInput = {
   name?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
@@ -2320,6 +2751,26 @@ export type UpdateNewsAndAnnouncementInput = {
 export type UpdateNewsAndAnnouncementPayload = {
   __typename?: 'updateNewsAndAnnouncementPayload';
   newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
+};
+
+export type UpdateProgramInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditProgramInput>;
+};
+
+export type UpdateProgramPayload = {
+  __typename?: 'updateProgramPayload';
+  program?: Maybe<Programs>;
+};
+
+export type UpdateProgramTagInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditProgramTagInput>;
+};
+
+export type UpdateProgramTagPayload = {
+  __typename?: 'updateProgramTagPayload';
+  programTag?: Maybe<ProgramTags>;
 };
 
 export type UpdateRoleInput = {
@@ -2457,52 +2908,6 @@ export type GetHomeQuery = { __typename?: 'Query' } & {
   >;
 };
 
-export type GetNewsByTagSeoLinkQueryVariables = Exact<{
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  locale: Scalars['String'];
-  where?: Maybe<Scalars['JSON']>;
-}>;
-
-export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
-  tags?: Maybe<
-    Array<Maybe<{ __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'seo_link' | 'tag_name'>>>
-  >;
-  newsAndAnnouncements?: Maybe<
-    Array<
-      Maybe<
-        { __typename?: 'NewsAndAnnouncement' } & Pick<
-          NewsAndAnnouncement,
-          '_id' | 'header' | 'createdAt'
-        > & {
-            canvas_preview?: Maybe<
-              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
-            >;
-            dynamic_content?: Maybe<
-              Array<
-                Maybe<
-                  | { __typename: 'ComponentContentSectionsGridImage' }
-                  | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
-                      ComponentContentSectionsTextContent,
-                      'body'
-                    >)
-                  | { __typename: 'ComponentContentSectionsCarousalImage' }
-                >
-              >
-            >;
-            tags?: Maybe<
-              Array<
-                Maybe<
-                  { __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'tag_name' | 'seo_link'>
-                >
-              >
-            >;
-          }
-      >
-    >
-  >;
-};
-
 export type CommonImagesFieldFragment = { __typename?: 'UploadFile' } & Pick<
   UploadFile,
   'id' | 'url' | 'caption' | 'alternativeText'
@@ -2620,6 +3025,52 @@ export type GetNewsByIdQuery = { __typename?: 'Query' } & {
         >
       >;
     }
+  >;
+};
+
+export type GetNewsByTagSeoLinkQueryVariables = Exact<{
+  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  locale: Scalars['String'];
+  where?: Maybe<Scalars['JSON']>;
+}>;
+
+export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
+  tags?: Maybe<
+    Array<Maybe<{ __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'seo_link' | 'tag_name'>>>
+  >;
+  newsAndAnnouncements?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'NewsAndAnnouncement' } & Pick<
+          NewsAndAnnouncement,
+          '_id' | 'header' | 'createdAt'
+        > & {
+            canvas_preview?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+            dynamic_content?: Maybe<
+              Array<
+                Maybe<
+                  | { __typename: 'ComponentContentSectionsGridImage' }
+                  | ({ __typename: 'ComponentContentSectionsTextContent' } & Pick<
+                      ComponentContentSectionsTextContent,
+                      'body'
+                    >)
+                  | { __typename: 'ComponentContentSectionsCarousalImage' }
+                >
+              >
+            >;
+            tags?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Tag' } & Pick<Tag, 'tag_id' | 'tag_name' | 'seo_link'>
+                >
+              >
+            >;
+          }
+      >
+    >
   >;
 };
 
@@ -2795,50 +3246,6 @@ export const GetHomeDocument = gql`
   }
 `;
 export type GetHomeQueryResult = Apollo.QueryResult<GetHomeQuery, GetHomeQueryVariables>;
-export const GetNewsByTagSeoLinkDocument = gql`
-  query GetNewsByTagSeoLink(
-    $offset: Int = 0
-    $limit: Int = 25
-    $locale: String!
-    $where: JSON
-  ) {
-    tags(locale: $locale) {
-      tag_id
-      seo_link
-      tag_name
-    }
-    newsAndAnnouncements(
-      start: $offset
-      limit: $limit
-      publicationState: LIVE
-      sort: "createdAt:desc"
-      locale: $locale
-      where: $where
-    ) {
-      _id
-      header
-      canvas_preview {
-        url
-      }
-      dynamic_content {
-        __typename
-        ... on ComponentContentSectionsTextContent {
-          body
-        }
-      }
-      tags {
-        tag_id
-        tag_name
-        seo_link
-      }
-      createdAt
-    }
-  }
-`;
-export type GetNewsByTagSeoLinkQueryResult = Apollo.QueryResult<
-  GetNewsByTagSeoLinkQuery,
-  GetNewsByTagSeoLinkQueryVariables
->;
 export const GetNewsByIdDocument = gql`
   query GetNewsById($Id: ID!, $LocaleConnection: String!) {
     newsAndAnnouncement(id: $Id) {
@@ -2917,6 +3324,50 @@ export const GetNewsByIdDocument = gql`
 export type GetNewsByIdQueryResult = Apollo.QueryResult<
   GetNewsByIdQuery,
   GetNewsByIdQueryVariables
+>;
+export const GetNewsByTagSeoLinkDocument = gql`
+  query GetNewsByTagSeoLink(
+    $offset: Int = 0
+    $limit: Int = 25
+    $locale: String!
+    $where: JSON
+  ) {
+    tags(locale: $locale) {
+      tag_id
+      seo_link
+      tag_name
+    }
+    newsAndAnnouncements(
+      start: $offset
+      limit: $limit
+      publicationState: LIVE
+      sort: "createdAt:desc"
+      locale: $locale
+      where: $where
+    ) {
+      _id
+      header
+      canvas_preview {
+        url
+      }
+      dynamic_content {
+        __typename
+        ... on ComponentContentSectionsTextContent {
+          body
+        }
+      }
+      tags {
+        tag_id
+        tag_name
+        seo_link
+      }
+      createdAt
+    }
+  }
+`;
+export type GetNewsByTagSeoLinkQueryResult = Apollo.QueryResult<
+  GetNewsByTagSeoLinkQuery,
+  GetNewsByTagSeoLinkQueryVariables
 >;
 export const GetStaffDocument = gql`
   query GetStaff($id: String, $locale: String = "th") {
