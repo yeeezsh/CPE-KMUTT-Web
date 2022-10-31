@@ -10,6 +10,7 @@ const MOCK_STAFF: Staff = {
   academicPositionGroup: 'Assistant Professor Group',
   phone: '+662 470 9254',
   email: 'sanan.sra@mail.kmutt.ac.th',
+  order: -1,
 };
 
 export default MOCK_STAFF;
