@@ -4,7 +4,6 @@ import Container from 'common/components/Container';
 import Header from 'common/components/Header';
 import CommonLayout from 'common/components/Layouts/CommonLayout';
 import { GetStaffsQuery } from 'common/generated/generated-types';
-import baseUrl from 'common/utils/baseUrl';
 
 import SearchBar from 'modules/staff/components/SearchBar';
 import StaffGroup from 'modules/staff/components/StaffGroup';
