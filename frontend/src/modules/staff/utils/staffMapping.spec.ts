@@ -14,6 +14,7 @@ const MOCK_API: GetStaffsQuery = {
       academic_position_group: 'ผู้บริหาร',
       phone_number: '0910000000',
       email: 'kt@tk.com',
+      order: -1,
       profile_image: {
         url: '/files/sanan 1.png',
       },
@@ -27,6 +28,7 @@ const MOCK_API: GetStaffsQuery = {
       academic_position_group: 'ผู้บริหาร',
       phone_number: '0910000002',
       email: null,
+      order: -2,
       profile_image: {
         url: '/files/sanan 1.png',
       },
@@ -56,15 +58,22 @@ const EXPECT_STAFF_1: Staff = {
   academicPositionGroup: 'ผู้บริหาร',
   phone: '0910000000',
   email: 'kt@tk.com',
+  order: -1,
 };
 
 describe('staffMapping test', () => {
   it('Should mapping correctly', () => {
     const testSubject = staffMapping(MOCK_API);
-    expect(testSubject[0].staffs).toHaveLength(0);
-    expect(testSubject[1].staffs[0]).toEqual(EXPECT_STAFF_1);
+    expect(testSubject[1].staffs).toHaveLength(0);
+    expect(testSubject[0].staffs[1]).toEqual(EXPECT_STAFF_1);
     expect(testSubject.length).toBe(
       MOCK_API.staffsConnection?.groupBy?.academic_position_group?.length,
     );
+  });
+
+  it('Should order group and staff correctly', () => {
+    const testSubject = staffMapping(MOCK_API);
+    expect(testSubject[0].title).toEqual('ผู้บริหาร');
+    expect(testSubject[1].staffs).toHaveLength(0);
   });
 });
