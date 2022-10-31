@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "program_tags",
+  "info": {
+    "name": "Program Tags",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "program_tag_id": {
+      "type": "uid"
+    },
+    "program_tag_name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "programs": {
+      "collection": "programs",
+      "via": "program_tags",
+      "dominant": true
+    },
+    "seo_link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "private": false,
+      "required": true
+    }
+  }
+}

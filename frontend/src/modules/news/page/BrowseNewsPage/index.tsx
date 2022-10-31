@@ -3,12 +3,13 @@ import React from 'react';
 import Head from 'next/head';
 
 import CommonLayout from 'common/components/Layouts/CommonLayout';
+import { CrumbProps } from 'common/components/Layouts/CommonLayout/types';
 import { STATIC_HOME_LINK, STATIC_NEWS_CATEGORY_LINK } from 'common/constants/links';
 import { GetNewsByTagSeoLinkQuery } from 'common/generated/generated-types';
 
 import BrowseNews from 'modules/news/components/BrowseNews';
 
-const DEFAULT_NAVIGATE = [
+const DEFAULT_NAVIGATE: CrumbProps[] = [
   {
     title: 'หน้าแรก',
     link: STATIC_HOME_LINK,
