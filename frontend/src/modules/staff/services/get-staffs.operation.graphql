@@ -12,6 +12,7 @@ query GetStaffs($locale: String = "th") {
     profile_image {
       url
     }
+    order
   }
   staffsConnection(locale: $locale) {
     groupBy {

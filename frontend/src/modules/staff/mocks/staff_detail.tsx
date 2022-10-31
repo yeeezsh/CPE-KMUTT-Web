@@ -1,7 +1,7 @@
 import { StaffDetail } from 'modules/staff/types';
 
 const MOCK_STAFF_DETAIL: StaffDetail = {
-  id: '',
+  id: '1234',
   title: 'ผศ',
   fullTitle: 'ผู้ช่วยศาสตราจารย์',
   name: 'ชื่อจริง นามสกุล',
