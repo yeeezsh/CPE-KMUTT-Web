@@ -4,6 +4,12 @@ import { ImageStrapiUrl } from 'common/utils/urls';
 import { StaffGroups, Staff } from 'modules/staff/types';
 
 export function staffMapping(data: GetStaffsQuery): StaffGroups[] {
+  if (!data || !data.staffs) {
+    console.warn('no staffs');
+    console.log(data);
+    return [];
+  }
+
   const groups = data.staffsConnection?.groupBy?.academic_position_group?.map(
     (e) => e?.key,
   ) as string[] | undefined;
