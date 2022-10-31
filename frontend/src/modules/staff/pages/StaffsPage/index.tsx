@@ -10,10 +10,8 @@ import SearchBar from 'modules/staff/components/SearchBar';
 import StaffGroup from 'modules/staff/components/StaffGroup';
 import useStaffs from 'modules/staff/hooks/useStaffs';
 
-import { BREADCRUMB } from './constants';
+import { BREADCRUMB, HEADER_BG_IMAGE } from './constants';
 import { SearchBarContainer } from './styled';
-
-const HEADER_BG_IMAGE = baseUrl('/images/staff_bg_header.jpg');
 
 const StaffsPage: FC<{ data: GetStaffsQuery }> = ({ data }) => {
   const { filtered, search, handleSearch } = useStaffs(data);
