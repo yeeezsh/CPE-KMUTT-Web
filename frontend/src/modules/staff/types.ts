@@ -8,6 +8,7 @@ export interface Staff {
   academicPositionGroup: string;
   phone: string;
   email: string;
+  order: number;
 }
 
 export interface Room {
@@ -19,7 +20,7 @@ export interface Subject {
   title: string;
 }
 
-export interface StaffDetail extends Staff {
+export interface StaffDetail extends Omit<Staff, 'order'> {
   rooms: Room[];
   info: JSX.Element;
   research: JSX.Element;
@@ -29,4 +30,5 @@ export interface StaffDetail extends Staff {
 export interface StaffGroups {
   title: string;
   staffs: Staff[];
+  order: number;
 }

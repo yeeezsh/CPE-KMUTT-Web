@@ -20,6 +20,7 @@ const MOCK_API: GetStaffsQuery = {
       profile_image: {
         url: '/files/sanan 1.png',
       },
+      order: -1,
     },
     {
       id: '633d1e57b48cef00f2fb441e',
@@ -33,6 +34,7 @@ const MOCK_API: GetStaffsQuery = {
       profile_image: {
         url: '/files/sanan 1.png',
       },
+      order: 0,
     },
   ],
   staffsConnection: {

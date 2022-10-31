@@ -713,6 +713,10 @@ export type Morph =
   | Staffs
   | StaffsConnection
   | StaffsAggregator
+  | StaffsAggregatorSum
+  | StaffsAggregatorAvg
+  | StaffsAggregatorMin
+  | StaffsAggregatorMax
   | StaffsGroupBy
   | StaffsConnectionId
   | StaffsConnection_Id
@@ -728,6 +732,7 @@ export type Morph =
   | StaffsConnectionEmail
   | StaffsConnectionFull_Title
   | StaffsConnectionAcademic_Position_Group
+  | StaffsConnectionOrder
   | StaffsConnectionLocale
   | CreateStaffPayload
   | UpdateStaffPayload
@@ -1615,7 +1620,7 @@ export type RoomsGroupBy = {
 };
 
 export type StaffInput = {
-  title: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
   academic_position: Scalars['String'];
@@ -1627,6 +1632,7 @@ export type StaffInput = {
   email?: Maybe<Scalars['String']>;
   full_title: Scalars['String'];
   academic_position_group: Scalars['String'];
+  order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -1639,7 +1645,7 @@ export type Staffs = {
   _id: Scalars['ID'];
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
-  title: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   academic_position: Scalars['String'];
   phone_number?: Maybe<Scalars['String']>;
@@ -1649,6 +1655,7 @@ export type Staffs = {
   email?: Maybe<Scalars['String']>;
   full_title: Scalars['String'];
   academic_position_group: Scalars['String'];
+  order: Scalars['Int'];
   locale?: Maybe<Scalars['String']>;
   subjects?: Maybe<Array<Maybe<Subjects>>>;
   rooms?: Maybe<Array<Maybe<Rooms>>>;
@@ -1680,6 +1687,30 @@ export type StaffsAggregator = {
   __typename?: 'StaffsAggregator';
   count?: Maybe<Scalars['Int']>;
   totalCount?: Maybe<Scalars['Int']>;
+  sum?: Maybe<StaffsAggregatorSum>;
+  avg?: Maybe<StaffsAggregatorAvg>;
+  min?: Maybe<StaffsAggregatorMin>;
+  max?: Maybe<StaffsAggregatorMax>;
+};
+
+export type StaffsAggregatorAvg = {
+  __typename?: 'StaffsAggregatorAvg';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type StaffsAggregatorMax = {
+  __typename?: 'StaffsAggregatorMax';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type StaffsAggregatorMin = {
+  __typename?: 'StaffsAggregatorMin';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type StaffsAggregatorSum = {
+  __typename?: 'StaffsAggregatorSum';
+  order?: Maybe<Scalars['Float']>;
 };
 
 export type StaffsConnection = {
@@ -1743,6 +1774,12 @@ export type StaffsConnectionName = {
   connection?: Maybe<StaffsConnection>;
 };
 
+export type StaffsConnectionOrder = {
+  __typename?: 'StaffsConnectionOrder';
+  key?: Maybe<Scalars['Int']>;
+  connection?: Maybe<StaffsConnection>;
+};
+
 export type StaffsConnectionPhone_Number = {
   __typename?: 'StaffsConnectionPhone_number';
   key?: Maybe<Scalars['String']>;
@@ -1795,6 +1832,7 @@ export type StaffsGroupBy = {
   email?: Maybe<Array<Maybe<StaffsConnectionEmail>>>;
   full_title?: Maybe<Array<Maybe<StaffsConnectionFull_Title>>>;
   academic_position_group?: Maybe<Array<Maybe<StaffsConnectionAcademic_Position_Group>>>;
+  order?: Maybe<Array<Maybe<StaffsConnectionOrder>>>;
   locale?: Maybe<Array<Maybe<StaffsConnectionLocale>>>;
 };
 
@@ -2837,6 +2875,7 @@ export type EditStaffInput = {
   email?: Maybe<Scalars['String']>;
   full_title?: Maybe<Scalars['String']>;
   academic_position_group?: Maybe<Scalars['String']>;
+  order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -3333,6 +3372,7 @@ export type GetStaffsQuery = { __typename?: 'Query' } & {
           | 'academic_position_group'
           | 'phone_number'
           | 'email'
+          | 'order'
         > & {
             profile_image?: Maybe<
               { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
@@ -3645,6 +3685,7 @@ export const GetStaffsDocument = gql`
       profile_image {
         url
       }
+      order
     }
     staffsConnection(locale: $locale) {
       groupBy {
