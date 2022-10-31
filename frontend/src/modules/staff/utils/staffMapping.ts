@@ -6,7 +6,7 @@ import { StaffGroups, Staff } from 'modules/staff/types';
 export function staffMapping(data: GetStaffsQuery): StaffGroups[] {
   if (!data || !data.staffs) {
     console.warn('no staffs');
-    console.log(data);
+    console.warn(data);
     return [];
   }
 

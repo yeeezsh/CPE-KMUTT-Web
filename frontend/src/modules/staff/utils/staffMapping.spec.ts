@@ -73,7 +73,6 @@ describe('staffMapping test', () => {
 
   it('Should order group and staff correctly', () => {
     const testSubject = staffMapping(MOCK_API);
-    console.log(testSubject);
     expect(testSubject[0].title).toEqual('ผู้บริหาร');
     expect(testSubject[1].staffs).toHaveLength(0);
   });
