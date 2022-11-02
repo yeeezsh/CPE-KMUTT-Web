@@ -4,4 +4,5 @@ export interface DividerProps extends AntdDividerProps {
   borderColor?: string;
   marginTop?: string;
   marginBottom?: string;
+  header?: JSX.Element;
 }

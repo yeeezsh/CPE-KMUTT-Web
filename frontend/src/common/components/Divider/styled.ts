@@ -25,3 +25,7 @@ export const StyledDivider = styled(Divider)<StyledDividerProps>`
         `
       : ''}
 `;
+
+export const HeaderWithDivider = styled.div`
+  margin-bottom: -24px;
+`;

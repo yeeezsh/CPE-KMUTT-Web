@@ -16,9 +16,6 @@
     }
   },
   "attributes": {
-    "program_tag_id": {
-      "type": "uid"
-    },
     "program_tag_name": {
       "type": "string",
       "required": true,
@@ -27,11 +24,6 @@
           "localized": true
         }
       }
-    },
-    "programs": {
-      "collection": "programs",
-      "via": "program_tags",
-      "dominant": true
     },
     "seo_link": {
       "pluginOptions": {
@@ -42,6 +34,10 @@
       "type": "string",
       "private": false,
       "required": true
+    },
+    "programs": {
+      "via": "program_tag",
+      "collection": "programs"
     }
   }
 }

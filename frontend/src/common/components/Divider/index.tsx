@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { StyledDivider } from 'common/components/Divider/styled';
+import { HeaderWithDivider, StyledDivider } from 'common/components/Divider/styled';
 import stylizeProps from 'common/utils/stylizeProps';
 
 import { DividerProps } from './types';
@@ -12,14 +12,17 @@ const Divider: FC<DividerProps> = ({
   ...props
 }) => {
   return (
-    <StyledDivider
-      {...stylizeProps({
-        borderColor,
-        marginTop,
-        marginBottom,
-      })}
-      {...props}
-    />
+    <>
+      {props.header && <HeaderWithDivider>{props.header}</HeaderWithDivider>}
+      <StyledDivider
+        {...stylizeProps({
+          borderColor,
+          marginTop,
+          marginBottom,
+        })}
+        {...props}
+      />
+    </>
   );
 };
 
