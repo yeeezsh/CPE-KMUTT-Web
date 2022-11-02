@@ -3113,6 +3113,37 @@ export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type GetProgramsQueryVariables = Exact<{
+  locale?: Scalars['String'];
+}>;
+
+export type GetProgramsQuery = { __typename?: 'Query' } & {
+  programs?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Programs' } & Pick<Programs, 'id' | 'header'> & {
+            program_tags?: Maybe<
+              Array<Maybe<{ __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id'>>>
+            >;
+            canvas_preview?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+          }
+      >
+    >
+  >;
+  programTagsLocale?: Maybe<
+    Array<
+      Maybe<{ __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id' | 'program_tag_name'>>
+    >
+  >;
+  programTagsEnLocale?: Maybe<
+    Array<
+      Maybe<{ __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id' | 'program_tag_name'>>
+    >
+  >;
+};
+
 export type GetStaffQueryVariables = Exact<{
   id?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -3408,6 +3439,32 @@ export const GetNewsByTagSeoLinkDocument = gql`
 export type GetNewsByTagSeoLinkQueryResult = Apollo.QueryResult<
   GetNewsByTagSeoLinkQuery,
   GetNewsByTagSeoLinkQueryVariables
+>;
+export const GetProgramsDocument = gql`
+  query GetPrograms($locale: String! = "th") {
+    programs(locale: $locale, publicationState: LIVE) {
+      id
+      header
+      program_tags {
+        id
+      }
+      canvas_preview {
+        url
+      }
+    }
+    programTagsLocale: programTags(locale: $locale) {
+      id
+      program_tag_name
+    }
+    programTagsEnLocale: programTags(locale: "en") {
+      id
+      program_tag_name
+    }
+  }
+`;
+export type GetProgramsQueryResult = Apollo.QueryResult<
+  GetProgramsQuery,
+  GetProgramsQueryVariables
 >;
 export const GetStaffDocument = gql`
   query GetStaff($id: String, $locale: String = "th") {
