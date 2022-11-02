@@ -309,7 +309,6 @@ export type Morph =
   | ProgramTagsConnection_Id
   | ProgramTagsConnectionCreatedAt
   | ProgramTagsConnectionUpdatedAt
-  | ProgramTagsConnectionProgram_Tag_Id
   | ProgramTagsConnectionProgram_Tag_Name
   | ProgramTagsConnectionSeo_Link
   | ProgramTagsConnectionLocale
@@ -332,6 +331,7 @@ export type Morph =
   | ProgramsConnectionCanvas_Preview
   | ProgramsConnectionSeo_Link
   | ProgramsConnectionDownload
+  | ProgramsConnectionProgram_Tag
   | ProgramsConnectionOrder
   | ProgramsConnectionLocale
   | ProgramsConnectionPublished_At
@@ -890,7 +890,7 @@ export type ProgramInput = {
   dynamic_content?: Maybe<Array<Scalars['ProgramsDynamicContentDynamicZoneInput']>>;
   seo_link: Scalars['String'];
   download?: Maybe<ComponentCommonFileDownloadInput>;
-  program_tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  program_tag?: Maybe<Scalars['ID']>;
   order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
@@ -900,10 +900,9 @@ export type ProgramInput = {
 };
 
 export type ProgramTagInput = {
-  program_tag_id?: Maybe<Scalars['String']>;
   program_tag_name: Scalars['String'];
-  programs?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link: Scalars['String'];
+  programs?: Maybe<Array<Maybe<Scalars['ID']>>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -916,7 +915,6 @@ export type ProgramTags = {
   _id: Scalars['ID'];
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
-  program_tag_id?: Maybe<Scalars['String']>;
   program_tag_name: Scalars['String'];
   seo_link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
@@ -969,12 +967,6 @@ export type ProgramTagsConnectionLocale = {
   connection?: Maybe<ProgramTagsConnection>;
 };
 
-export type ProgramTagsConnectionProgram_Tag_Id = {
-  __typename?: 'ProgramTagsConnectionProgram_tag_id';
-  key?: Maybe<Scalars['String']>;
-  connection?: Maybe<ProgramTagsConnection>;
-};
-
 export type ProgramTagsConnectionProgram_Tag_Name = {
   __typename?: 'ProgramTagsConnectionProgram_tag_name';
   key?: Maybe<Scalars['String']>;
@@ -1005,7 +997,6 @@ export type ProgramTagsGroupBy = {
   _id?: Maybe<Array<Maybe<ProgramTagsConnection_Id>>>;
   createdAt?: Maybe<Array<Maybe<ProgramTagsConnectionCreatedAt>>>;
   updatedAt?: Maybe<Array<Maybe<ProgramTagsConnectionUpdatedAt>>>;
-  program_tag_id?: Maybe<Array<Maybe<ProgramTagsConnectionProgram_Tag_Id>>>;
   program_tag_name?: Maybe<Array<Maybe<ProgramTagsConnectionProgram_Tag_Name>>>;
   seo_link?: Maybe<Array<Maybe<ProgramTagsConnectionSeo_Link>>>;
   locale?: Maybe<Array<Maybe<ProgramTagsConnectionLocale>>>;
@@ -1022,18 +1013,11 @@ export type Programs = {
   dynamic_content?: Maybe<Array<Maybe<ProgramsDynamicContentDynamicZone>>>;
   seo_link: Scalars['String'];
   download?: Maybe<ComponentCommonFileDownload>;
+  program_tag?: Maybe<ProgramTags>;
   order: Scalars['Int'];
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
-  program_tags?: Maybe<Array<Maybe<ProgramTags>>>;
   localizations?: Maybe<Array<Maybe<Programs>>>;
-};
-
-export type ProgramsProgram_TagsArgs = {
-  sort?: Maybe<Scalars['String']>;
-  limit?: Maybe<Scalars['Int']>;
-  start?: Maybe<Scalars['Int']>;
-  where?: Maybe<Scalars['JSON']>;
 };
 
 export type ProgramsLocalizationsArgs = {
@@ -1122,6 +1106,12 @@ export type ProgramsConnectionOrder = {
   connection?: Maybe<ProgramsConnection>;
 };
 
+export type ProgramsConnectionProgram_Tag = {
+  __typename?: 'ProgramsConnectionProgram_tag';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
 export type ProgramsConnectionPublished_At = {
   __typename?: 'ProgramsConnectionPublished_at';
   key?: Maybe<Scalars['DateTime']>;
@@ -1158,6 +1148,7 @@ export type ProgramsGroupBy = {
   canvas_preview?: Maybe<Array<Maybe<ProgramsConnectionCanvas_Preview>>>;
   seo_link?: Maybe<Array<Maybe<ProgramsConnectionSeo_Link>>>;
   download?: Maybe<Array<Maybe<ProgramsConnectionDownload>>>;
+  program_tag?: Maybe<Array<Maybe<ProgramsConnectionProgram_Tag>>>;
   order?: Maybe<Array<Maybe<ProgramsConnectionOrder>>>;
   locale?: Maybe<Array<Maybe<ProgramsConnectionLocale>>>;
   published_at?: Maybe<Array<Maybe<ProgramsConnectionPublished_At>>>;
@@ -2709,7 +2700,7 @@ export type EditProgramInput = {
   dynamic_content?: Maybe<Array<Scalars['ProgramsDynamicContentDynamicZoneInput']>>;
   seo_link?: Maybe<Scalars['String']>;
   download?: Maybe<EditComponentCommonFileDownloadInput>;
-  program_tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  program_tag?: Maybe<Scalars['ID']>;
   order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
@@ -2719,10 +2710,9 @@ export type EditProgramInput = {
 };
 
 export type EditProgramTagInput = {
-  program_tag_id?: Maybe<Scalars['String']>;
   program_tag_name?: Maybe<Scalars['String']>;
-  programs?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link?: Maybe<Scalars['String']>;
+  programs?: Maybe<Array<Maybe<Scalars['ID']>>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
@@ -3152,6 +3142,11 @@ export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type CommonTagsFragment = { __typename?: 'ProgramTags' } & Pick<
+  ProgramTags,
+  'id' | 'program_tag_name' | 'seo_link'
+>;
+
 export type GetProgramsQueryVariables = Exact<{
   locale?: Scalars['String'];
 }>;
@@ -3160,9 +3155,9 @@ export type GetProgramsQuery = { __typename?: 'Query' } & {
   programs?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'Programs' } & Pick<Programs, 'id' | 'header' | 'order'> & {
-            program_tags?: Maybe<
-              Array<Maybe<{ __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id'>>>
+        { __typename?: 'Programs' } & Pick<Programs, 'id' | 'header'> & {
+            program_tag?: Maybe<
+              { __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id' | 'seo_link'>
             >;
             canvas_preview?: Maybe<
               { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
@@ -3172,14 +3167,10 @@ export type GetProgramsQuery = { __typename?: 'Query' } & {
     >
   >;
   programTagsLocale?: Maybe<
-    Array<
-      Maybe<{ __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id' | 'program_tag_name'>>
-    >
+    Array<Maybe<{ __typename?: 'ProgramTags' } & CommonTagsFragment>>
   >;
   programTagsEnLocale?: Maybe<
-    Array<
-      Maybe<{ __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id' | 'program_tag_name'>>
-    >
+    Array<Maybe<{ __typename?: 'ProgramTags' } & CommonTagsFragment>>
   >;
 };
 
@@ -3298,6 +3289,13 @@ export const CommonContentSectionFragmentDoc = gql`
   fragment commonContentSection on ComponentContentSectionsTextContent {
     id
     body
+  }
+`;
+export const CommonTagsFragmentDoc = gql`
+  fragment commonTags on ProgramTags {
+    id
+    program_tag_name
+    seo_link
   }
 `;
 export const GetHomeDocument = gql`
@@ -3484,23 +3482,22 @@ export const GetProgramsDocument = gql`
     programs(locale: $locale, publicationState: LIVE) {
       id
       header
-      order
-      program_tags {
+      program_tag {
         id
+        seo_link
       }
       canvas_preview {
         url
       }
     }
     programTagsLocale: programTags(locale: $locale) {
-      id
-      program_tag_name
+      ...commonTags
     }
     programTagsEnLocale: programTags(locale: "en") {
-      id
-      program_tag_name
+      ...commonTags
     }
   }
+  ${CommonTagsFragmentDoc}
 `;
 export type GetProgramsQueryResult = Apollo.QueryResult<
   GetProgramsQuery,

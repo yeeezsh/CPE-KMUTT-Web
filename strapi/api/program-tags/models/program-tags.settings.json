@@ -16,9 +16,6 @@
     }
   },
   "attributes": {
-    "program_tag_id": {
-      "type": "uid"
-    },
     "program_tag_name": {
       "type": "string",
       "required": true,

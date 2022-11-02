@@ -1,21 +1,26 @@
+fragment commonTags on ProgramTags {
+  id
+  program_tag_name
+  seo_link
+}
+
 query GetPrograms($locale: String! = "th") {
   programs(locale: $locale, publicationState: LIVE) {
     id
     header
-    order
-    program_tags {
+    program_tag {
       id
+      seo_link
     }
     canvas_preview {
       url
     }
   }
+
   programTagsLocale: programTags(locale: $locale) {
-    id
-    program_tag_name
+    ...commonTags
   }
   programTagsEnLocale: programTags(locale: "en") {
-    id
-    program_tag_name
+    ...commonTags
   }
 }
