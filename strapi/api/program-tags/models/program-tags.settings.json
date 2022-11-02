@@ -29,8 +29,8 @@
       }
     },
     "programs": {
-      "collection": "programs",
       "via": "program_tags",
+      "collection": "programs",
       "dominant": true
     },
     "seo_link": {

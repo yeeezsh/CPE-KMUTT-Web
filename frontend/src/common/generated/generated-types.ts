@@ -319,6 +319,10 @@ export type Morph =
   | Programs
   | ProgramsConnection
   | ProgramsAggregator
+  | ProgramsAggregatorSum
+  | ProgramsAggregatorAvg
+  | ProgramsAggregatorMin
+  | ProgramsAggregatorMax
   | ProgramsGroupBy
   | ProgramsConnectionId
   | ProgramsConnection_Id
@@ -328,6 +332,7 @@ export type Morph =
   | ProgramsConnectionCanvas_Preview
   | ProgramsConnectionSeo_Link
   | ProgramsConnectionDownload
+  | ProgramsConnectionOrder
   | ProgramsConnectionLocale
   | ProgramsConnectionPublished_At
   | CreateProgramPayload
@@ -886,6 +891,7 @@ export type ProgramInput = {
   seo_link: Scalars['String'];
   download?: Maybe<ComponentCommonFileDownloadInput>;
   program_tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -1016,6 +1022,7 @@ export type Programs = {
   dynamic_content?: Maybe<Array<Maybe<ProgramsDynamicContentDynamicZone>>>;
   seo_link: Scalars['String'];
   download?: Maybe<ComponentCommonFileDownload>;
+  order: Scalars['Int'];
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
   program_tags?: Maybe<Array<Maybe<ProgramTags>>>;
@@ -1040,6 +1047,30 @@ export type ProgramsAggregator = {
   __typename?: 'ProgramsAggregator';
   count?: Maybe<Scalars['Int']>;
   totalCount?: Maybe<Scalars['Int']>;
+  sum?: Maybe<ProgramsAggregatorSum>;
+  avg?: Maybe<ProgramsAggregatorAvg>;
+  min?: Maybe<ProgramsAggregatorMin>;
+  max?: Maybe<ProgramsAggregatorMax>;
+};
+
+export type ProgramsAggregatorAvg = {
+  __typename?: 'ProgramsAggregatorAvg';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type ProgramsAggregatorMax = {
+  __typename?: 'ProgramsAggregatorMax';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type ProgramsAggregatorMin = {
+  __typename?: 'ProgramsAggregatorMin';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type ProgramsAggregatorSum = {
+  __typename?: 'ProgramsAggregatorSum';
+  order?: Maybe<Scalars['Float']>;
 };
 
 export type ProgramsConnection = {
@@ -1085,6 +1116,12 @@ export type ProgramsConnectionLocale = {
   connection?: Maybe<ProgramsConnection>;
 };
 
+export type ProgramsConnectionOrder = {
+  __typename?: 'ProgramsConnectionOrder';
+  key?: Maybe<Scalars['Int']>;
+  connection?: Maybe<ProgramsConnection>;
+};
+
 export type ProgramsConnectionPublished_At = {
   __typename?: 'ProgramsConnectionPublished_at';
   key?: Maybe<Scalars['DateTime']>;
@@ -1121,6 +1158,7 @@ export type ProgramsGroupBy = {
   canvas_preview?: Maybe<Array<Maybe<ProgramsConnectionCanvas_Preview>>>;
   seo_link?: Maybe<Array<Maybe<ProgramsConnectionSeo_Link>>>;
   download?: Maybe<Array<Maybe<ProgramsConnectionDownload>>>;
+  order?: Maybe<Array<Maybe<ProgramsConnectionOrder>>>;
   locale?: Maybe<Array<Maybe<ProgramsConnectionLocale>>>;
   published_at?: Maybe<Array<Maybe<ProgramsConnectionPublished_At>>>;
 };
@@ -2672,6 +2710,7 @@ export type EditProgramInput = {
   seo_link?: Maybe<Scalars['String']>;
   download?: Maybe<EditComponentCommonFileDownloadInput>;
   program_tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  order?: Maybe<Scalars['Int']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -3121,7 +3160,7 @@ export type GetProgramsQuery = { __typename?: 'Query' } & {
   programs?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'Programs' } & Pick<Programs, 'id' | 'header'> & {
+        { __typename?: 'Programs' } & Pick<Programs, 'id' | 'header' | 'order'> & {
             program_tags?: Maybe<
               Array<Maybe<{ __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id'>>>
             >;
@@ -3445,6 +3484,7 @@ export const GetProgramsDocument = gql`
     programs(locale: $locale, publicationState: LIVE) {
       id
       header
+      order
       program_tags {
         id
       }

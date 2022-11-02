@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "programs",
   "info": {
-    "name": "Programs"
+    "name": "Programs",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -75,6 +76,16 @@
     "program_tags": {
       "via": "programs",
       "collection": "program-tags"
+    },
+    "order": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true,
+      "default": 0
     }
   }
 }
