@@ -155,7 +155,7 @@ export const CardBodyStyled = styled.div`
 `;
 
 export const CardImage = styled.div`
-  width: 330px;
+  width: 100%;
   height: 125px;
   background-size: cover;
   background-repeat: no-repeat;
