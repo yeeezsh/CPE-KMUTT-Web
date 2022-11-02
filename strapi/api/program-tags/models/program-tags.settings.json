@@ -28,11 +28,6 @@
         }
       }
     },
-    "programs": {
-      "via": "program_tags",
-      "collection": "programs",
-      "dominant": true
-    },
     "seo_link": {
       "pluginOptions": {
         "i18n": {
@@ -42,6 +37,10 @@
       "type": "string",
       "private": false,
       "required": true
+    },
+    "programs": {
+      "via": "program_tag",
+      "collection": "programs"
     }
   }
 }

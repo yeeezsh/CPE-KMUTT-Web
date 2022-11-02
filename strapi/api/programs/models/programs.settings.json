@@ -73,9 +73,9 @@
       },
       "component": "common.file-download"
     },
-    "program_tags": {
-      "via": "programs",
-      "collection": "program-tags"
+    "program_tag": {
+      "model": "program-tags",
+      "via": "programs"
     },
     "order": {
       "pluginOptions": {
