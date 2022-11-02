@@ -18,4 +18,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 //TODO: bind api
+
 export default BrowseProgramPage;

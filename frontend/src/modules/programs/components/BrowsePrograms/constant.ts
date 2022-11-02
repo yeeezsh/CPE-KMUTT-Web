@@ -13,7 +13,6 @@ export const MOCK_PROGRAMS: BrowseProgramTypes = [
         header: 'ภาคปก',
         preview_url: '/images/thumbnail.png',
         link: '23fhjs2',
-        group: '11',
       },
     ],
   },

@@ -9,6 +9,7 @@ import { STATIC_PROGRAMS_ID_LINK_PATTERN } from 'common/constants/links';
 
 import {
   BrowseProgramRow,
+  BrowseProgramStyle,
   Header,
 } from 'modules/programs/components/BrowsePrograms/styled';
 import {
@@ -62,6 +63,10 @@ const ProgramGroup: React.FC<{ data: BrowseProgramType }> = (props) => {
 };
 
 const BrowsePrograms: React.FC<BrowseProgramProps> = ({ data }) => {
-  return <>{data && data.map((g) => <ProgramGroup key={g.group.id} data={g} />)}</>;
+  return (
+    <BrowseProgramStyle>
+      {data && data.map((g) => <ProgramGroup key={g.group.id} data={g} />)}
+    </BrowseProgramStyle>
+  );
 };
 export default BrowsePrograms;
