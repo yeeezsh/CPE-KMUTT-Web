@@ -4,11 +4,11 @@ import {
   ComponentCommonMenuConfig,
   GetMenuQuery,
 } from 'common/generated/generated-types';
-import { INTERNAL_PAGE_MAPPING } from 'common/utils/menuMapping/constants';
-import { SubMenuGenerated } from 'common/utils/menuMapping/types';
+import { INTERNAL_PAGE_MAPPING } from 'common/utils/menuMapper/constants';
+import { SubMenuGenerated } from 'common/utils/menuMapper/types';
 import { ImageStrapiUrl } from 'common/utils/urls';
 
-export function mappingSubMenuLink(menu: SubMenuGenerated): string {
+export function menuLinkMapper(menu: SubMenuGenerated): string {
   if (menu?.internal_page?.internal_pages)
     return (
       INTERNAL_PAGE_MAPPING.find((el) => el.api === menu.internal_page?.internal_pages)
@@ -26,7 +26,7 @@ export function mappingSubMenuLink(menu: SubMenuGenerated): string {
   return '';
 }
 
-export function mappingMenuType(type: string): MenuType {
+export function mapMenuApiTypeToMenuType(type: string): MenuType {
   switch (type) {
     case 'Desktop':
       return MenuType.Desktop;
@@ -47,10 +47,10 @@ export function mappingMenuType(type: string): MenuType {
   return MenuType.None;
 }
 
-export function menuType(config: ComponentCommonMenuConfig): MenuType[] {
+export function menuTypeMapper(config: ComponentCommonMenuConfig): MenuType[] {
   const configs = Object.entries(config);
   const parsed = configs.map((c) => ({
-    type: mappingMenuType(c[0]),
+    type: mapMenuApiTypeToMenuType(c[0]),
     value: Boolean(c[1]),
   }));
   const filtered = parsed.filter((el) => el.value).map((el) => el.type);
@@ -58,7 +58,7 @@ export function menuType(config: ComponentCommonMenuConfig): MenuType[] {
   return filtered;
 }
 
-export const sortMenu = (data: GetMenuQuery): GetMenuQuery => {
+export const sortMenuAsc = (data: GetMenuQuery): GetMenuQuery => {
   const sorted = data.mainMenus
     ?.sort((a, b) => (a?.order || 0) - (b?.order || 0))
     .map((m) => ({
@@ -68,19 +68,19 @@ export const sortMenu = (data: GetMenuQuery): GetMenuQuery => {
   return { ...data, mainMenus: sorted } as GetMenuQuery;
 };
 
-export const menuMapping = (data: GetMenuQuery): MenuItem[] => {
-  const menus = sortMenu(data).mainMenus;
+export const menuMapper = (data: GetMenuQuery): MenuItem[] => {
+  const menus = sortMenuAsc(data).mainMenus;
 
   const mappedMenuType: MenuItem[] =
     menus?.map((m) => ({
       key: m?.id || '',
       label: m?.title || '',
       picture: ImageStrapiUrl(m?.thumbnail?.url || ''),
-      types: menuType(m?.menu_config as ComponentCommonMenuConfig) || [],
+      types: menuTypeMapper(m?.menu_config as ComponentCommonMenuConfig) || [],
       subMenu: m?.menus?.map((s) => ({
         key: s?.id || '',
         label: s?.title || '',
-        link: mappingSubMenuLink(s) || '',
+        link: menuLinkMapper(s) || '',
       })),
     })) || [];
 

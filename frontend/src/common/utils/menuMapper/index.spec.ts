@@ -6,11 +6,11 @@ import {
   GetMenuQuery,
 } from 'common/generated/generated-types';
 import {
-  mappingMenuType,
-  mappingSubMenuLink,
+  mapMenuApiTypeToMenuType,
+  menuLinkMapper,
   menuMapping,
-  menuType,
-  sortMenu,
+  menuTypeMapper,
+  sortMenuAsc,
 } from 'common/utils/menuMapping';
 import { SubMenuGenerated } from 'common/utils/menuMapping/types';
 
@@ -29,7 +29,7 @@ describe('mappingSubMenuLink tests', () => {
   };
 
   it('should ordering map the url correctly', () => {
-    const testSubject = mappingSubMenuLink(MOCK);
+    const testSubject = menuLinkMapper(MOCK);
     expect(testSubject).toBe(STATIC_NEWS_LINK);
   });
 });
@@ -38,7 +38,7 @@ describe('mappingMenuType tests', () => {
   const MOCK = 'Desktop';
 
   it('should map correctly', () => {
-    const testSubject = mappingMenuType(MOCK);
+    const testSubject = mapMenuApiTypeToMenuType(MOCK);
     expect(testSubject).toBe(MenuType.Desktop);
   });
 });
@@ -51,7 +51,7 @@ describe('menuType tests', () => {
   };
 
   it('should mapping correctly', () => {
-    const testSubject = menuType(MOCK as ComponentCommonMenuConfig);
+    const testSubject = menuTypeMapper(MOCK as ComponentCommonMenuConfig);
     expect(testSubject).toEqual([MenuType.Desktop, MenuType.Mobile]);
   });
 });
@@ -125,7 +125,7 @@ describe('sort menu', () => {
   };
 
   it('should map main menu correctly', () => {
-    const testSubject = sortMenu(MOCK_API);
+    const testSubject = sortMenuAsc(MOCK_API);
     expect(testSubject).not.toBeUndefined();
     expect(testSubject.mainMenus).not.toBeUndefined();
     expect(
@@ -143,7 +143,7 @@ describe('sort menu', () => {
   });
 
   it('should map sub-menu correctly', () => {
-    const testSubject = sortMenu(MOCK_API);
+    const testSubject = sortMenuAsc(MOCK_API);
     expect(testSubject).not.toBeUndefined();
     expect(testSubject.mainMenus).not.toBeUndefined();
     expect(

@@ -6,7 +6,7 @@ import {
 } from 'common/components/Navbar/components/NavbarMenu/constants';
 import { MenuItem, MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
 import { MenuRedcuer } from 'common/redcucers/menu/types';
-import { menuMapping } from 'common/utils/menuMapping';
+import { menuMapper } from 'common/utils/menuMapper';
 
 const initState: MenuRedcuer = {
   desktop: NAVBAR_MENU,
@@ -21,7 +21,7 @@ export const menuSlice = createSlice({
   initialState: initState,
   reducers: {
     fetch: (state, action) => {
-      const mapped = menuMapping(action.payload);
+      const mapped = menuMapper(action.payload);
       return {
         ...state,
         desktop: mapped.filter((m) => m.types.includes(MenuType.Desktop)),
