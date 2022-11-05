@@ -42,13 +42,13 @@ const NavbarMenu: React.FC = () => {
                     </Image>
                   ) : null}
                   <Item>{label}</Item>
-                  {subMenu?.map(({ key: itemKey, link }) => {
+                  {subMenu?.map(({ key: itemKey, link, label: subMenuLabel }) => {
                     return (
                       <ItemLink
                         key={key + '-submenu-' + itemKey}
                         onClick={() => onLinkClick(link)}
                         href="#">
-                        {label}
+                        {subMenuLabel}
                       </ItemLink>
                     );
                   })}
