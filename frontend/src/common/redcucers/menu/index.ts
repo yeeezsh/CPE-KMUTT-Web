@@ -6,7 +6,7 @@ import {
 } from 'common/components/Navbar/components/NavbarMenu/constants';
 import { MenuItem, MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
 import { MenuRedcuer } from 'common/redcucers/menu/types';
-import { menuMapper } from 'common/utils/menuMapper';
+import menuMapper from 'common/utils/menuMapper';
 
 const initState: MenuRedcuer = {
   desktop: NAVBAR_MENU,

@@ -1,13 +1,13 @@
-import { MenuItem, MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
 import { GetMenuQuery } from 'common/generated/generated-types';
-import menuMapper from 'common/utils/menuMapper';
+import menuSortAsc from 'common/utils/menuMapper/menuSortAsc';
 
-describe('menuMapping tests', () => {
+describe('menuSortAsc Tests', () => {
   const MOCK_API: GetMenuQuery = {
     mainMenus: [
       {
         id: '6356a4667e1a3e001eb7beab',
         title: 'ปริญญาตรี',
+        order: -1,
         thumbnail: {
           url: '/files/Rectangle 33.png',
         },
@@ -21,6 +21,7 @@ describe('menuMapping tests', () => {
         menus: [
           {
             title: 'หลักสูตรปกติ',
+            order: 1,
             id: '6356a658082b2a006275e4ed',
             url: null,
             news_announcement: null,
@@ -30,6 +31,7 @@ describe('menuMapping tests', () => {
           },
           {
             title: 'หลักสูตรนานาชาติ',
+            order: -10,
             id: '6356ab0b71cb58002e41b56d',
             url: null,
             news_announcement: {
@@ -45,6 +47,7 @@ describe('menuMapping tests', () => {
       {
         id: '6356adf752303c009ebe4fff',
         title: 'Quick Menu',
+        order: 10,
         thumbnail: null,
         menu_config: {
           Desktop: false,
@@ -66,23 +69,41 @@ describe('menuMapping tests', () => {
     ],
   };
 
-  const EXPECTED: MenuItem = {
-    key: '6356a4667e1a3e001eb7beab',
-    label: 'ปริญญาตรี',
-    picture: 'http://localhost:1337/files/Rectangle 33.png',
-    subMenu: [
-      { key: '6356a658082b2a006275e4ed', label: 'หลักสูตรปกติ', link: '/news' },
-      {
-        key: '6356ab0b71cb58002e41b56d',
-        label: 'หลักสูตรนานาชาติ',
-        link: '/news/6356ab1771cb58002e41b570',
-      },
-    ],
-    types: [MenuType.Desktop, MenuType.Mobile, MenuType.Footer],
-  };
-
   it('should map main menu correctly', () => {
-    const testSubject = menuMapper(MOCK_API);
-    expect(testSubject[0]).toEqual(EXPECTED);
+    const testSubject = menuSortAsc(MOCK_API);
+    expect(testSubject).not.toBeUndefined();
+    expect(testSubject.mainMenus).not.toBeUndefined();
+    expect(
+      testSubject &&
+        testSubject.mainMenus &&
+        testSubject.mainMenus[0] &&
+        testSubject.mainMenus[0].title,
+    ).toEqual('ปริญญาตรี');
+    expect(
+      testSubject &&
+        testSubject.mainMenus &&
+        testSubject.mainMenus[1] &&
+        testSubject.mainMenus[1].title,
+    ).toEqual('Quick Menu');
+  });
+
+  it('should map sub-menu correctly', () => {
+    const testSubject = menuSortAsc(MOCK_API);
+    expect(testSubject).not.toBeUndefined();
+    expect(testSubject.mainMenus).not.toBeUndefined();
+    expect(
+      testSubject &&
+        testSubject.mainMenus &&
+        testSubject.mainMenus[0] &&
+        testSubject.mainMenus[0].menus &&
+        testSubject.mainMenus[0].menus[0]?.title,
+    ).toEqual('หลักสูตรนานาชาติ');
+    expect(
+      testSubject &&
+        testSubject.mainMenus &&
+        testSubject.mainMenus[0] &&
+        testSubject.mainMenus[0].menus &&
+        testSubject.mainMenus[0].menus[1]?.title,
+    ).toEqual('หลักสูตรปกติ');
   });
 });
