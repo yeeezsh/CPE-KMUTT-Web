@@ -3,8 +3,9 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import Container from 'common/components/Container';
+import { MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
+import useMenu from 'common/hooks/useMenu';
 
-import { NAVBAR_MENU, NAVBAR_SECONDARY_MENU } from './constants';
 import {
   Group,
   Image,
@@ -20,6 +21,9 @@ import {
 const NavbarMenu: React.FC = () => {
   const router = useRouter();
 
+  const menu = useMenu(MenuType.Desktop);
+  const quickMenu = useMenu(MenuType.DesktopQuickMenu);
+
   function onLinkClick(link?: string) {
     link && router.push(link);
   }
@@ -28,31 +32,32 @@ const NavbarMenu: React.FC = () => {
     <MenuWrap>
       <Container>
         <Menu>
-          {NAVBAR_MENU.map(({ key, label, subMenu, picture }) => {
-            return (
-              <Group key={key}>
-                {picture ? (
-                  <Image img={picture}>
-                    <Mask />
-                  </Image>
-                ) : null}
-                <Item>{label}</Item>
-                {subMenu?.map(({ key: itemKey, link }) => {
-                  return (
-                    <ItemLink
-                      key={key + '-submenu-' + itemKey}
-                      onClick={() => onLinkClick(link)}
-                      href="#">
-                      {label}
-                    </ItemLink>
-                  );
-                })}
-              </Group>
-            );
-          })}
+          {menu &&
+            menu.map(({ key, label, subMenu, picture }) => {
+              return (
+                <Group key={'group-' + key}>
+                  {picture ? (
+                    <Image img={picture}>
+                      <Mask />
+                    </Image>
+                  ) : null}
+                  <Item>{label}</Item>
+                  {subMenu?.map(({ key: itemKey, link }) => {
+                    return (
+                      <ItemLink
+                        key={key + '-submenu-' + itemKey}
+                        onClick={() => onLinkClick(link)}
+                        href="#">
+                        {label}
+                      </ItemLink>
+                    );
+                  })}
+                </Group>
+              );
+            })}
         </Menu>
         <SubMenu>
-          {NAVBAR_SECONDARY_MENU.map(({ key, label, link }) => {
+          {quickMenu.map(({ key, label, link }) => {
             return (
               <SubMenuItem key={key} onClick={() => onLinkClick(link)}>
                 {label}

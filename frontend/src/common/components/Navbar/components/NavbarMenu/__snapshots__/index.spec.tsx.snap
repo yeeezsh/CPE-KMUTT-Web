@@ -1,215 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navbar Tests Navbar menu should be defined 1`] = `
-<styled__MenuWrap>
-  <Container>
-    <styled__Menu>
-      <styled__Group
-        key="1"
-      >
-        <styled__Image
-          img="https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg"
-        >
-          <styled__Mask />
-        </styled__Image>
-        <styled__Item>
-          ปริญญาตรี
-        </styled__Item>
-        <styled__ItemLink
-          href="#"
-          key="1-submenu-1"
-          onClick={[Function]}
-        >
-          ปริญญาตรี
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="1-submenu-2"
-          onClick={[Function]}
-        >
-          ปริญญาตรี
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="1-submenu-3"
-          onClick={[Function]}
-        >
-          ปริญญาตรี
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="1-submenu-4"
-          onClick={[Function]}
-        >
-          ปริญญาตรี
-        </styled__ItemLink>
-      </styled__Group>
-      <styled__Group
-        key="2"
-      >
-        <styled__Image
-          img="https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg"
-        >
-          <styled__Mask />
-        </styled__Image>
-        <styled__Item>
-          บัณฑิตศึกษา
-        </styled__Item>
-        <styled__ItemLink
-          href="#"
-          key="2-submenu-1"
-          onClick={[Function]}
-        >
-          บัณฑิตศึกษา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="2-submenu-2"
-          onClick={[Function]}
-        >
-          บัณฑิตศึกษา
-        </styled__ItemLink>
-      </styled__Group>
-      <styled__Group
-        key="3"
-      >
-        <styled__Image
-          img="https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg"
-        >
-          <styled__Mask />
-        </styled__Image>
-        <styled__Item>
-          ทุนการศึกษา
-        </styled__Item>
-        <styled__ItemLink
-          href="#"
-          key="3-submenu-1"
-          onClick={[Function]}
-        >
-          ทุนการศึกษา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="3-submenu-2"
-          onClick={[Function]}
-        >
-          ทุนการศึกษา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="3-submenu-3"
-          onClick={[Function]}
-        >
-          ทุนการศึกษา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="3-submenu-4"
-          onClick={[Function]}
-        >
-          ทุนการศึกษา
-        </styled__ItemLink>
-      </styled__Group>
-      <styled__Group
-        key="4"
-      >
-        <styled__Image
-          img="https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg"
-        >
-          <styled__Mask />
-        </styled__Image>
-        <styled__Item>
-          การรับเข้าศึกษา
-        </styled__Item>
-        <styled__ItemLink
-          href="#"
-          key="4-submenu-1"
-          onClick={[Function]}
-        >
-          การรับเข้าศึกษา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="4-submenu-2"
-          onClick={[Function]}
-        >
-          การรับเข้าศึกษา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="4-submenu-3"
-          onClick={[Function]}
-        >
-          การรับเข้าศึกษา
-        </styled__ItemLink>
-      </styled__Group>
-      <styled__Group
-        key="5"
-      >
-        <styled__Image
-          img="https://cpe.kmutt.ac.th/uploadFile/facebook-share-cover.jpg"
-        >
-          <styled__Mask />
-        </styled__Image>
-        <styled__Item>
-          เกี่ยวกับเรา
-        </styled__Item>
-        <styled__ItemLink
-          href="#"
-          key="5-submenu-1"
-          onClick={[Function]}
-        >
-          เกี่ยวกับเรา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="5-submenu-2"
-          onClick={[Function]}
-        >
-          เกี่ยวกับเรา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="5-submenu-3"
-          onClick={[Function]}
-        >
-          เกี่ยวกับเรา
-        </styled__ItemLink>
-        <styled__ItemLink
-          href="#"
-          key="5-submenu-4"
-          onClick={[Function]}
-        >
-          เกี่ยวกับเรา
-        </styled__ItemLink>
-      </styled__Group>
-    </styled__Menu>
-    <styled__SubMenu>
-      <styled__SubMenuItem
-        key="secondary-1"
-        onClick={[Function]}
-      >
-        สำหรับนักศึกษาปัจจุบัน
-      </styled__SubMenuItem>
-      <styled__SubMenuItem
-        key="secondary-2"
-        onClick={[Function]}
-      >
-        สำหรับบุคลากร
-      </styled__SubMenuItem>
-      <styled__SubMenuItem
-        key="secondary-3"
-        onClick={[Function]}
-      >
-        ดาวน์โหลด
-      </styled__SubMenuItem>
-      <styled__SubMenuItem
-        key="secondary-4"
-        onClick={[Function]}
-      >
-        ติดต่อเรา
-      </styled__SubMenuItem>
-    </styled__SubMenu>
-  </Container>
-</styled__MenuWrap>
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "@@observable": [Function],
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "subscription": Object {
+        "addNestedSub": [Function],
+        "getListeners": [Function],
+        "handleChangeWrapper": [Function],
+        "isSubscribed": [Function],
+        "notifyNestedSubs": [Function],
+        "onStateChange": [Function],
+        "trySubscribe": [Function],
+        "tryUnsubscribe": [Function],
+      },
+    }
+  }
+>
+  <NavbarMenu />
+</ContextProvider>
 `;

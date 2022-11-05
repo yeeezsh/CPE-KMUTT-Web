@@ -57,6 +57,36 @@ export type ComponentCommonFileDownloadInput = {
   files?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
+export type ComponentCommonInternalPageInput = {
+  internal_pages?: Maybe<Enum_Componentcommoninternalpages_Internal_Pages>;
+};
+
+export type ComponentCommonInternalPages = {
+  __typename?: 'ComponentCommonInternalPages';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  internal_pages?: Maybe<Enum_Componentcommoninternalpages_Internal_Pages>;
+};
+
+export type ComponentCommonMenuConfig = {
+  __typename?: 'ComponentCommonMenuConfig';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  Mobile: Scalars['Boolean'];
+  Desktop: Scalars['Boolean'];
+  Footer: Scalars['Boolean'];
+  DesktopQuickMenu?: Maybe<Scalars['Boolean']>;
+  MobileQuickMenu?: Maybe<Scalars['Boolean']>;
+};
+
+export type ComponentCommonMenuConfigInput = {
+  Mobile?: Maybe<Scalars['Boolean']>;
+  Desktop?: Maybe<Scalars['Boolean']>;
+  Footer?: Maybe<Scalars['Boolean']>;
+  DesktopQuickMenu?: Maybe<Scalars['Boolean']>;
+  MobileQuickMenu?: Maybe<Scalars['Boolean']>;
+};
+
 export type ComponentContentSectionsCarousalImage = {
   __typename?: 'ComponentContentSectionsCarousalImage';
   id: Scalars['ID'];
@@ -144,6 +174,25 @@ export type ComponentHomeMainCanvas = {
   news_announcement?: Maybe<NewsAndAnnouncement>;
 };
 
+export type ComponentMenuSubMenu = {
+  __typename?: 'ComponentMenuSubMenu';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  url?: Maybe<Scalars['String']>;
+  news_announcement?: Maybe<NewsAndAnnouncement>;
+  title_th?: Maybe<Scalars['String']>;
+  title_en?: Maybe<Scalars['String']>;
+  static_page?: Maybe<ComponentCommonInternalPages>;
+};
+
+export type ComponentMenuSubMenuInput = {
+  url?: Maybe<Scalars['String']>;
+  news_announcement?: Maybe<Scalars['ID']>;
+  title_th?: Maybe<Scalars['String']>;
+  title_en?: Maybe<Scalars['String']>;
+  static_page?: Maybe<ComponentCommonInternalPageInput>;
+};
+
 export type ComponentTagsTagInput = {
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
@@ -195,6 +244,14 @@ export type ContactInput = {
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
+
+export enum Enum_Componentcommoninternalpages_Internal_Pages {
+  News = 'news',
+  AboutUs = 'about_us',
+  ContactUs = 'contact_us',
+  Staffs = 'staffs',
+  Programs = 'programs',
+}
 
 export type FileInfoInput = {
   name?: Maybe<Scalars['String']>;
@@ -273,6 +330,305 @@ export type LocaleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type MainMenuInput = {
+  title: Scalars['String'];
+  thumbnail?: Maybe<Scalars['ID']>;
+  menu_config: ComponentCommonMenuConfigInput;
+  menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  order?: Maybe<Scalars['Int']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type MainMenus = {
+  __typename?: 'MainMenus';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  title: Scalars['String'];
+  thumbnail?: Maybe<UploadFile>;
+  menu_config?: Maybe<ComponentCommonMenuConfig>;
+  order?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  menus?: Maybe<Array<Maybe<Menus>>>;
+  localizations?: Maybe<Array<Maybe<MainMenus>>>;
+};
+
+export type MainMenusMenusArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type MainMenusLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type MainMenusAggregator = {
+  __typename?: 'MainMenusAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+  sum?: Maybe<MainMenusAggregatorSum>;
+  avg?: Maybe<MainMenusAggregatorAvg>;
+  min?: Maybe<MainMenusAggregatorMin>;
+  max?: Maybe<MainMenusAggregatorMax>;
+};
+
+export type MainMenusAggregatorAvg = {
+  __typename?: 'MainMenusAggregatorAvg';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MainMenusAggregatorMax = {
+  __typename?: 'MainMenusAggregatorMax';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MainMenusAggregatorMin = {
+  __typename?: 'MainMenusAggregatorMin';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MainMenusAggregatorSum = {
+  __typename?: 'MainMenusAggregatorSum';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MainMenusConnection = {
+  __typename?: 'MainMenusConnection';
+  values?: Maybe<Array<Maybe<MainMenus>>>;
+  groupBy?: Maybe<MainMenusGroupBy>;
+  aggregate?: Maybe<MainMenusAggregator>;
+};
+
+export type MainMenusConnectionCreatedAt = {
+  __typename?: 'MainMenusConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnectionId = {
+  __typename?: 'MainMenusConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnectionLocale = {
+  __typename?: 'MainMenusConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnectionMenu_Config = {
+  __typename?: 'MainMenusConnectionMenu_config';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnectionOrder = {
+  __typename?: 'MainMenusConnectionOrder';
+  key?: Maybe<Scalars['Int']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnectionThumbnail = {
+  __typename?: 'MainMenusConnectionThumbnail';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnectionTitle = {
+  __typename?: 'MainMenusConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnectionUpdatedAt = {
+  __typename?: 'MainMenusConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusConnection_Id = {
+  __typename?: 'MainMenusConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MainMenusConnection>;
+};
+
+export type MainMenusGroupBy = {
+  __typename?: 'MainMenusGroupBy';
+  id?: Maybe<Array<Maybe<MainMenusConnectionId>>>;
+  _id?: Maybe<Array<Maybe<MainMenusConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<MainMenusConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<MainMenusConnectionUpdatedAt>>>;
+  title?: Maybe<Array<Maybe<MainMenusConnectionTitle>>>;
+  thumbnail?: Maybe<Array<Maybe<MainMenusConnectionThumbnail>>>;
+  menu_config?: Maybe<Array<Maybe<MainMenusConnectionMenu_Config>>>;
+  order?: Maybe<Array<Maybe<MainMenusConnectionOrder>>>;
+  locale?: Maybe<Array<Maybe<MainMenusConnectionLocale>>>;
+};
+
+export type MenuInput = {
+  title: Scalars['String'];
+  url?: Maybe<Scalars['String']>;
+  main_menu?: Maybe<Scalars['ID']>;
+  internal_page?: Maybe<ComponentCommonInternalPageInput>;
+  news_announcement?: Maybe<Scalars['ID']>;
+  order?: Maybe<Scalars['Int']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type Menus = {
+  __typename?: 'Menus';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  title: Scalars['String'];
+  url?: Maybe<Scalars['String']>;
+  main_menu?: Maybe<MainMenus>;
+  internal_page?: Maybe<ComponentCommonInternalPages>;
+  news_announcement?: Maybe<NewsAndAnnouncement>;
+  order?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Menus>>>;
+};
+
+export type MenusLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type MenusAggregator = {
+  __typename?: 'MenusAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+  sum?: Maybe<MenusAggregatorSum>;
+  avg?: Maybe<MenusAggregatorAvg>;
+  min?: Maybe<MenusAggregatorMin>;
+  max?: Maybe<MenusAggregatorMax>;
+};
+
+export type MenusAggregatorAvg = {
+  __typename?: 'MenusAggregatorAvg';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MenusAggregatorMax = {
+  __typename?: 'MenusAggregatorMax';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MenusAggregatorMin = {
+  __typename?: 'MenusAggregatorMin';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MenusAggregatorSum = {
+  __typename?: 'MenusAggregatorSum';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type MenusConnection = {
+  __typename?: 'MenusConnection';
+  values?: Maybe<Array<Maybe<Menus>>>;
+  groupBy?: Maybe<MenusGroupBy>;
+  aggregate?: Maybe<MenusAggregator>;
+};
+
+export type MenusConnectionCreatedAt = {
+  __typename?: 'MenusConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionId = {
+  __typename?: 'MenusConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionInternal_Page = {
+  __typename?: 'MenusConnectionInternal_page';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionLocale = {
+  __typename?: 'MenusConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionMain_Menu = {
+  __typename?: 'MenusConnectionMain_menu';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionNews_Announcement = {
+  __typename?: 'MenusConnectionNews_announcement';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionOrder = {
+  __typename?: 'MenusConnectionOrder';
+  key?: Maybe<Scalars['Int']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionTitle = {
+  __typename?: 'MenusConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionUpdatedAt = {
+  __typename?: 'MenusConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnectionUrl = {
+  __typename?: 'MenusConnectionUrl';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusConnection_Id = {
+  __typename?: 'MenusConnection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<MenusConnection>;
+};
+
+export type MenusGroupBy = {
+  __typename?: 'MenusGroupBy';
+  id?: Maybe<Array<Maybe<MenusConnectionId>>>;
+  _id?: Maybe<Array<Maybe<MenusConnection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<MenusConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<MenusConnectionUpdatedAt>>>;
+  title?: Maybe<Array<Maybe<MenusConnectionTitle>>>;
+  url?: Maybe<Array<Maybe<MenusConnectionUrl>>>;
+  main_menu?: Maybe<Array<Maybe<MenusConnectionMain_Menu>>>;
+  internal_page?: Maybe<Array<Maybe<MenusConnectionInternal_Page>>>;
+  news_announcement?: Maybe<Array<Maybe<MenusConnectionNews_Announcement>>>;
+  order?: Maybe<Array<Maybe<MenusConnectionOrder>>>;
+  locale?: Maybe<Array<Maybe<MenusConnectionLocale>>>;
+};
+
 export type Morph =
   | UsersPermissionsMe
   | UsersPermissionsMeRole
@@ -284,6 +640,48 @@ export type Morph =
   | Home
   | UpdateHomePayload
   | DeleteHomePayload
+  | MainMenus
+  | MainMenusConnection
+  | MainMenusAggregator
+  | MainMenusAggregatorSum
+  | MainMenusAggregatorAvg
+  | MainMenusAggregatorMin
+  | MainMenusAggregatorMax
+  | MainMenusGroupBy
+  | MainMenusConnectionId
+  | MainMenusConnection_Id
+  | MainMenusConnectionCreatedAt
+  | MainMenusConnectionUpdatedAt
+  | MainMenusConnectionTitle
+  | MainMenusConnectionThumbnail
+  | MainMenusConnectionMenu_Config
+  | MainMenusConnectionOrder
+  | MainMenusConnectionLocale
+  | CreateMainMenuPayload
+  | UpdateMainMenuPayload
+  | DeleteMainMenuPayload
+  | Menus
+  | MenusConnection
+  | MenusAggregator
+  | MenusAggregatorSum
+  | MenusAggregatorAvg
+  | MenusAggregatorMin
+  | MenusAggregatorMax
+  | MenusGroupBy
+  | MenusConnectionId
+  | MenusConnection_Id
+  | MenusConnectionCreatedAt
+  | MenusConnectionUpdatedAt
+  | MenusConnectionTitle
+  | MenusConnectionUrl
+  | MenusConnectionMain_Menu
+  | MenusConnectionInternal_Page
+  | MenusConnectionNews_Announcement
+  | MenusConnectionOrder
+  | MenusConnectionLocale
+  | CreateMenuPayload
+  | UpdateMenuPayload
+  | DeleteMenuPayload
   | NewsAndAnnouncement
   | NewsAndAnnouncementConnection
   | NewsAndAnnouncementAggregator
@@ -467,12 +865,15 @@ export type Morph =
   | UpdateUserPayload
   | DeleteUserPayload
   | ComponentCommonFileDownload
+  | ComponentCommonInternalPages
+  | ComponentCommonMenuConfig
   | ComponentContentSectionsCarousalImage
   | ComponentContentSectionsGridImage
   | ComponentContentSectionsImageWithCaption
   | ComponentContentSectionsTextContent
   | ComponentHomeActivityNAwards
   | ComponentHomeMainCanvas
+  | ComponentMenuSubMenu
   | ComponentTagsTags;
 
 export type Mutation = {
@@ -481,6 +882,12 @@ export type Mutation = {
   deleteContact?: Maybe<DeleteContactPayload>;
   updateHome?: Maybe<UpdateHomePayload>;
   deleteHome?: Maybe<DeleteHomePayload>;
+  createMainMenu?: Maybe<CreateMainMenuPayload>;
+  updateMainMenu?: Maybe<UpdateMainMenuPayload>;
+  deleteMainMenu?: Maybe<DeleteMainMenuPayload>;
+  createMenu?: Maybe<CreateMenuPayload>;
+  updateMenu?: Maybe<UpdateMenuPayload>;
+  deleteMenu?: Maybe<DeleteMenuPayload>;
   createNewsAndAnnouncement?: Maybe<CreateNewsAndAnnouncementPayload>;
   updateNewsAndAnnouncement?: Maybe<UpdateNewsAndAnnouncementPayload>;
   deleteNewsAndAnnouncement?: Maybe<DeleteNewsAndAnnouncementPayload>;
@@ -518,6 +925,8 @@ export type Mutation = {
   deleteUser?: Maybe<DeleteUserPayload>;
   createContactLocalization: Contact;
   createHomeLocalization: Home;
+  createMainMenuLocalization: MainMenus;
+  createMenuLocalization: Menus;
   createNewsAndAnnouncementLocalization: NewsAndAnnouncement;
   createProgramTagLocalization: ProgramTags;
   createProgramLocalization: Programs;
@@ -551,6 +960,30 @@ export type MutationUpdateHomeArgs = {
 
 export type MutationDeleteHomeArgs = {
   locale?: Maybe<Scalars['String']>;
+};
+
+export type MutationCreateMainMenuArgs = {
+  input?: Maybe<CreateMainMenuInput>;
+};
+
+export type MutationUpdateMainMenuArgs = {
+  input?: Maybe<UpdateMainMenuInput>;
+};
+
+export type MutationDeleteMainMenuArgs = {
+  input?: Maybe<DeleteMainMenuInput>;
+};
+
+export type MutationCreateMenuArgs = {
+  input?: Maybe<CreateMenuInput>;
+};
+
+export type MutationUpdateMenuArgs = {
+  input?: Maybe<UpdateMenuInput>;
+};
+
+export type MutationDeleteMenuArgs = {
+  input?: Maybe<DeleteMenuInput>;
 };
 
 export type MutationCreateNewsAndAnnouncementArgs = {
@@ -673,6 +1106,14 @@ export type MutationCreateHomeLocalizationArgs = {
   input: UpdateHomeInput;
 };
 
+export type MutationCreateMainMenuLocalizationArgs = {
+  input: UpdateMainMenuInput;
+};
+
+export type MutationCreateMenuLocalizationArgs = {
+  input: UpdateMenuInput;
+};
+
 export type MutationCreateNewsAndAnnouncementLocalizationArgs = {
   input: UpdateNewsAndAnnouncementInput;
 };
@@ -759,10 +1200,18 @@ export type NewsAndAnnouncement = {
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
   tags?: Maybe<Array<Maybe<Tag>>>;
+  menus?: Maybe<Array<Maybe<Menus>>>;
   localizations?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
 };
 
 export type NewsAndAnnouncementTagsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type NewsAndAnnouncementMenusArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -877,6 +1326,7 @@ export type NewsAndAnnouncementInput = {
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link: Scalars['String'];
   download?: Maybe<ComponentCommonFileDownloadInput>;
+  menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -1163,6 +1613,12 @@ export type Query = {
   __typename?: 'Query';
   contact?: Maybe<Contact>;
   home?: Maybe<Home>;
+  mainMenu?: Maybe<MainMenus>;
+  mainMenus?: Maybe<Array<Maybe<MainMenus>>>;
+  mainMenusConnection?: Maybe<MainMenusConnection>;
+  menu?: Maybe<Menus>;
+  menus?: Maybe<Array<Maybe<Menus>>>;
+  menusConnection?: Maybe<MenusConnection>;
   newsAndAnnouncement?: Maybe<NewsAndAnnouncement>;
   newsAndAnnouncements?: Maybe<Array<Maybe<NewsAndAnnouncement>>>;
   newsAndAnnouncementsConnection?: Maybe<NewsAndAnnouncementConnection>;
@@ -1203,6 +1659,50 @@ export type QueryContactArgs = {
 
 export type QueryHomeArgs = {
   publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryMainMenuArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QueryMainMenusArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryMainMenusConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryMenuArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QueryMenusArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryMenusConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
   locale?: Maybe<Scalars['String']>;
 };
 
@@ -2401,6 +2901,24 @@ export type UsersPermissionsUserGroupBy = {
   role?: Maybe<Array<Maybe<UsersPermissionsUserConnectionRole>>>;
 };
 
+export type CreateMainMenuInput = {
+  data?: Maybe<MainMenuInput>;
+};
+
+export type CreateMainMenuPayload = {
+  __typename?: 'createMainMenuPayload';
+  mainMenu?: Maybe<MainMenus>;
+};
+
+export type CreateMenuInput = {
+  data?: Maybe<MenuInput>;
+};
+
+export type CreateMenuPayload = {
+  __typename?: 'createMenuPayload';
+  menu?: Maybe<Menus>;
+};
+
 export type CreateNewsAndAnnouncementInput = {
   data?: Maybe<NewsAndAnnouncementInput>;
 };
@@ -2501,6 +3019,24 @@ export type DeleteHomePayload = {
   home?: Maybe<Home>;
 };
 
+export type DeleteMainMenuInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteMainMenuPayload = {
+  __typename?: 'deleteMainMenuPayload';
+  mainMenu?: Maybe<MainMenus>;
+};
+
+export type DeleteMenuInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteMenuPayload = {
+  __typename?: 'deleteMenuPayload';
+  menu?: Maybe<Menus>;
+};
+
 export type DeleteNewsAndAnnouncementInput = {
   where?: Maybe<InputId>;
 };
@@ -2587,6 +3123,20 @@ export type EditComponentCommonFileDownloadInput = {
   files?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
+export type EditComponentCommonInternalPageInput = {
+  id?: Maybe<Scalars['ID']>;
+  internal_pages?: Maybe<Enum_Componentcommoninternalpages_Internal_Pages>;
+};
+
+export type EditComponentCommonMenuConfigInput = {
+  id?: Maybe<Scalars['ID']>;
+  Mobile?: Maybe<Scalars['Boolean']>;
+  Desktop?: Maybe<Scalars['Boolean']>;
+  Footer?: Maybe<Scalars['Boolean']>;
+  DesktopQuickMenu?: Maybe<Scalars['Boolean']>;
+  MobileQuickMenu?: Maybe<Scalars['Boolean']>;
+};
+
 export type EditComponentContentSectionsCarousalImageInput = {
   id?: Maybe<Scalars['ID']>;
   images?: Maybe<EditComponentContentSectionsImageWithCaptionInput>;
@@ -2622,6 +3172,15 @@ export type EditComponentHomeMainCanvaInput = {
   description?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['ID']>;
   news_announcement?: Maybe<Scalars['ID']>;
+};
+
+export type EditComponentMenuSubMenuInput = {
+  id?: Maybe<Scalars['ID']>;
+  url?: Maybe<Scalars['String']>;
+  news_announcement?: Maybe<Scalars['ID']>;
+  title_th?: Maybe<Scalars['String']>;
+  title_en?: Maybe<Scalars['String']>;
+  static_page?: Maybe<EditComponentCommonInternalPageInput>;
 };
 
 export type EditComponentTagsTagInput = {
@@ -2678,6 +3237,31 @@ export type EditLocaleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditMainMenuInput = {
+  title?: Maybe<Scalars['String']>;
+  thumbnail?: Maybe<Scalars['ID']>;
+  menu_config?: Maybe<EditComponentCommonMenuConfigInput>;
+  menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  order?: Maybe<Scalars['Int']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditMenuInput = {
+  title?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  main_menu?: Maybe<Scalars['ID']>;
+  internal_page?: Maybe<EditComponentCommonInternalPageInput>;
+  news_announcement?: Maybe<Scalars['ID']>;
+  order?: Maybe<Scalars['Int']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditNewsAndAnnouncementInput = {
   header?: Maybe<Scalars['String']>;
   canvas_preview?: Maybe<Scalars['ID']>;
@@ -2687,6 +3271,7 @@ export type EditNewsAndAnnouncementInput = {
   tags?: Maybe<Array<Maybe<Scalars['ID']>>>;
   seo_link?: Maybe<Scalars['String']>;
   download?: Maybe<EditComponentCommonFileDownloadInput>;
+  menus?: Maybe<Array<Maybe<Scalars['ID']>>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -2811,6 +3396,26 @@ export type UpdateHomePayload = {
   home?: Maybe<Home>;
 };
 
+export type UpdateMainMenuInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditMainMenuInput>;
+};
+
+export type UpdateMainMenuPayload = {
+  __typename?: 'updateMainMenuPayload';
+  mainMenu?: Maybe<MainMenus>;
+};
+
+export type UpdateMenuInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditMenuInput>;
+};
+
+export type UpdateMenuPayload = {
+  __typename?: 'updateMenuPayload';
+  menu?: Maybe<Menus>;
+};
+
 export type UpdateNewsAndAnnouncementInput = {
   where?: Maybe<InputId>;
   data?: Maybe<EditNewsAndAnnouncementInput>;
@@ -2899,6 +3504,51 @@ export type UpdateUserInput = {
 export type UpdateUserPayload = {
   __typename?: 'updateUserPayload';
   user?: Maybe<UsersPermissionsUser>;
+};
+
+export type GetMenuQueryVariables = Exact<{
+  locale?: Maybe<Scalars['String']>;
+}>;
+
+export type GetMenuQuery = { __typename?: 'Query' } & {
+  mainMenus?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'MainMenus' } & Pick<MainMenus, 'id' | 'title' | 'order'> & {
+            thumbnail?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>>;
+            menu_config?: Maybe<
+              { __typename?: 'ComponentCommonMenuConfig' } & Pick<
+                ComponentCommonMenuConfig,
+                'Desktop' | 'Mobile' | 'Footer' | 'DesktopQuickMenu' | 'MobileQuickMenu'
+              >
+            >;
+            menus?: Maybe<
+              Array<
+                Maybe<
+                  { __typename?: 'Menus' } & Pick<
+                    Menus,
+                    'id' | 'title' | 'order' | 'url'
+                  > & {
+                      news_announcement?: Maybe<
+                        { __typename?: 'NewsAndAnnouncement' } & Pick<
+                          NewsAndAnnouncement,
+                          'id' | 'seo_link'
+                        >
+                      >;
+                      internal_page?: Maybe<
+                        { __typename?: 'ComponentCommonInternalPages' } & Pick<
+                          ComponentCommonInternalPages,
+                          'internal_pages'
+                        >
+                      >;
+                    }
+                >
+              >
+            >;
+          }
+      >
+    >
+  >;
 };
 
 export type GetHomeQueryVariables = Exact<{
@@ -3301,6 +3951,39 @@ export const CommonTagsFragmentDoc = gql`
     seo_link
   }
 `;
+export const GetMenuDocument = gql`
+  query GetMenu($locale: String = "th") {
+    mainMenus(locale: $locale) {
+      id
+      title
+      order
+      thumbnail {
+        url
+      }
+      menu_config {
+        Desktop
+        Mobile
+        Footer
+        DesktopQuickMenu
+        MobileQuickMenu
+      }
+      menus {
+        id
+        title
+        order
+        url
+        news_announcement {
+          id
+          seo_link
+        }
+        internal_page {
+          internal_pages
+        }
+      }
+    }
+  }
+`;
+export type GetMenuQueryResult = Apollo.QueryResult<GetMenuQuery, GetMenuQueryVariables>;
 export const GetHomeDocument = gql`
   query GetHome($locale: String = "th") {
     home(locale: $locale, publicationState: LIVE) {
