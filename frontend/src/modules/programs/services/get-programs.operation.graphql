@@ -8,6 +8,7 @@ query GetPrograms($locale: String! = "th") {
   programs(locale: $locale, publicationState: LIVE) {
     id
     header
+    seo_link
     program_tag {
       id
       seo_link

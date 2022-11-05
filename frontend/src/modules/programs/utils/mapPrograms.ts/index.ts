@@ -33,7 +33,7 @@ export default function mapProgramsPage(data?: GetProgramsQuery): BrowseProgramT
       id: p?.id || '',
       header: p?.header || '',
       preview_url: ImageStrapiUrl(p?.canvas_preview?.url || ''),
-      link: p?.id || '',
+      link: p?.seo_link || '',
     })),
   })) as BrowseProgramTypes;
 
