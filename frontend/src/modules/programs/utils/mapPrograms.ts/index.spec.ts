@@ -7,6 +7,8 @@ const MOCK_API: GetProgramsQuery = {
     {
       id: '635fdf7b1bb560008edc18ec',
       header: 'หลักสูตรวิศวกรรมศาสตรบัณฑิต สาขาวิชาวิศวกรรมคอมพิวเตอร์ (ปกติ) ',
+      seo_link: 'seo_link',
+      order: 0,
       program_tag: {
         id: '635fdf1e1bb560008edc18d7',
         seo_link: 'bachelor_th',
@@ -18,6 +20,8 @@ const MOCK_API: GetProgramsQuery = {
     {
       id: '635fdf7b1bb560008edc18ed',
       header: 'หลักสูตรโท้',
+      seo_link: 'seo_link',
+      order: 0,
       program_tag: {
         id: '635fdf1e1bb560008edc18d5',
         seo_link: 'bachelor_th',
