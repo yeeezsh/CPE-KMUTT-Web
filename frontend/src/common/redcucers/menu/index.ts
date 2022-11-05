@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
+import {
+  NAVBAR_MENU,
+  STAFF,
+} from 'common/components/Navbar/components/NavbarMenu/constants';
+import { MenuItem, MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
 import { MenuRedcuer } from 'common/redcucers/menu/types';
 import { menuMapping } from 'common/utils/menuMapping';
 
 const initState: MenuRedcuer = {
-  desktop: [],
-  mobile: [],
-  footer: [],
-  desktopQuickMenu: [],
-  mobileQuickMenu: [],
+  desktop: NAVBAR_MENU,
+  mobile: NAVBAR_MENU,
+  footer: NAVBAR_MENU,
+  desktopQuickMenu: STAFF.slice(0, 3) as MenuItem[],
+  mobileQuickMenu: STAFF.slice(0, 3) as MenuItem[],
 };
 
 export const menuSlice = createSlice({
