@@ -4,10 +4,10 @@ import CommonLayout from 'common/components/Layouts/CommonLayout';
 
 import BrowsePrograms from 'modules/programs/components/BrowsePrograms';
 import { DEFAULT_NAVIGATE, HEADER_BACKGROUND_IMAGE } from 'modules/programs/constants';
-import { BrowseProgramPageProps } from 'modules/programs/pages/BrowseProgram/types';
+import { BrowseProgramPageProps } from 'modules/programs/pages/BrowseProgramPage/types';
 import mapProgramsPage from 'modules/programs/utils/mapPrograms.ts';
 
-const BrowseProgram: React.FC<BrowseProgramPageProps> = ({ data }) => {
+const BrowseProgramPage: React.FC<BrowseProgramPageProps> = ({ data }) => {
   const programs = mapProgramsPage(data);
   return (
     <>
@@ -25,4 +25,4 @@ const BrowseProgram: React.FC<BrowseProgramPageProps> = ({ data }) => {
   );
 };
 
-export default BrowseProgram;
+export default BrowseProgramPage;

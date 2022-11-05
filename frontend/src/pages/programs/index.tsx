@@ -5,7 +5,7 @@ import { GetServerSideProps } from 'next';
 import { GetProgramsDocument, GetProgramsQuery } from 'common/generated/generated-types';
 import { client } from 'common/services/client';
 
-import BrowseProgram from 'modules/programs/pages/BrowseProgram';
+import BrowseProgramPage from 'modules/programs/pages/BrowseProgramPage';
 
 // const mock: React.FC = () => <></>;
 
@@ -20,8 +20,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-const BrowseProgramPage: React.FC<{ data: GetProgramsQuery }> = ({ data }) => (
-  <BrowseProgram data={data} />
+const ProgramPage: React.FC<{ data: GetProgramsQuery }> = ({ data }) => (
+  <BrowseProgramPage data={data} />
 );
 
-export default BrowseProgramPage;
+export default ProgramPage;
