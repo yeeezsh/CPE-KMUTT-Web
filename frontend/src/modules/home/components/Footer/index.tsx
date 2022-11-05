@@ -6,7 +6,6 @@ import Container from 'common/components/Container';
 import { MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
 import useMenu from 'common/hooks/useMenu';
 
-import FooterConstant from './constants';
 import {
   ContactContainer,
   ContactContent,
