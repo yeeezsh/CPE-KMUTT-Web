@@ -23,6 +23,31 @@ services:
       APP_GRAPHQL_ENDPOINT: ${APP_GRAPHQL_ENDPOINT}
     depends_on:
       - strapi
+  backend:
+    container_name: cpe-kmutt-backend-prod
+    restart: unless-stopped
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: dev
+    environment:
+      WAIT_HOSTS: mongo:27017
+      TZ: Asia/Bangkok
+      ORIGIN: '${BACKEND_ORIGIN}'
+      DATABASE_CONNECTION: 'mongodb://mongodb:27017/cpe-kmutt-web'
+      DATABASE_USERAME: root
+      DATABASE_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+      DATABASE_AUTH_SOURCE: admin
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      JWT_EXPIRES: 3600s
+      OPS_KEY: '${OPS_KEY}'
+      NODE_ENV: 'development'
+      PORT: 3000
+    volumes:
+      - './backend:/backend'
+    links:
+      - mongodb
+    command: yarn start:dev
   strapi:
     container_name: cpe-kmutt-strapi-prod
     restart: unless-stopped
