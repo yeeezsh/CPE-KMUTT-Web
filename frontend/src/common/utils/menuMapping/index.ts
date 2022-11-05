@@ -22,6 +22,7 @@ export function mappingSubMenuLink(menu: SubMenuGenerated): string {
   if (menu?.url) return menu.url;
 
   console.warn('cannot convert link form API');
+  console.warn(menu);
   return '';
 }
 
