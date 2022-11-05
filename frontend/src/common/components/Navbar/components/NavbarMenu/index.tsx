@@ -6,7 +6,6 @@ import Container from 'common/components/Container';
 import { MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
 import useMenu from 'common/hooks/useMenu';
 
-import { NAVBAR_MENU, NAVBAR_SECONDARY_MENU } from './constants';
 import {
   Group,
   Image,
@@ -35,7 +34,6 @@ const NavbarMenu: React.FC = () => {
         <Menu>
           {menu &&
             menu.map(({ key, label, subMenu, picture }) => {
-              console.log(String(picture));
               return (
                 <Group key={'group-' + key}>
                   {picture ? (
