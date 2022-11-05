@@ -4,11 +4,9 @@ import { Menu, MenuProps } from 'antd';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import Link from 'next/link';
 
-import {
-  NAVBAR_MENU,
-  NAVBAR_SECONDARY_MENU,
-} from 'common/components/Navbar/components/NavbarMenu/constants';
+import { MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
 import useIsMobileMenuOpened from 'common/hooks/useIsMobileMenuOpened';
+import useMenu from 'common/hooks/useMenu';
 import useMobileMenu from 'common/hooks/useMobileMenu';
 
 import { Container, StyledMenu } from './styled';
@@ -23,6 +21,8 @@ const MobileNavbar = (): JSX.Element => {
   };
 
   const isMobileMenuOpened = useIsMobileMenuOpened();
+  const menu = useMenu(MenuType.Mobile);
+  const quickMenu = useMenu(MenuType.MobileQuickMenu);
 
   return (
     <Container $isShow={isMobileMenuOpened}>
@@ -31,7 +31,7 @@ const MobileNavbar = (): JSX.Element => {
         selectedKeys={[currentSelect]}
         onClick={onClick}
         mode="inline">
-        {NAVBAR_MENU.map(({ key, label, subMenu }) => {
+        {menu.map(({ key, label, subMenu }) => {
           return (
             <SubMenu key={key} title={label}>
               {subMenu?.map(({ key: itemKey, label: itemLabel, link }) => {
@@ -44,7 +44,7 @@ const MobileNavbar = (): JSX.Element => {
             </SubMenu>
           );
         })}
-        {NAVBAR_SECONDARY_MENU.map(({ key, label, link }) => {
+        {quickMenu.map(({ key, label, link }) => {
           return (
             <Menu.Item key={key} title={label}>
               <Link href={link || '#'}>{label}</Link>

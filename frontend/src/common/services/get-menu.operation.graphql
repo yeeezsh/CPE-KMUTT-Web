@@ -1,0 +1,30 @@
+query GetMenu($locale: String = "th") {
+  mainMenus(locale: $locale) {
+    id
+    title
+    order
+    thumbnail {
+      url
+    }
+    menu_config {
+      Desktop
+      Mobile
+      Footer
+      DesktopQuickMenu
+      MobileQuickMenu
+    }
+    menus {
+      id
+      title
+      order
+      url
+      news_announcement {
+        id
+        seo_link
+      }
+      internal_page {
+        internal_pages
+      }
+    }
+  }
+}
