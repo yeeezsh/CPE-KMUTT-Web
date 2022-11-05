@@ -19,11 +19,17 @@ jobs:
         with:
           node-version: '16.x'
       - name: Cache node_modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: yarn-
+      - uses: actions/cache@v2
+          id: yarn-cache
+          with:
+            path: |
+              **/node_modules
+              **/.eslintcache
+              ${{ steps.yarn-cache-dir-path.outputs.dir }}
+
+            key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+              ${{ runner.os }}-yarn-
       - run: yarn
       - run: yarn lint
       - run: yarn test:ci
@@ -37,10 +43,16 @@ jobs:
         with:
           node-version: '14.x'
       - name: Cache node_modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: yarn-
+      - uses: actions/cache@v2
+          id: yarn-cache
+          with:
+            path: |
+              **/node_modules
+              **/.eslintcache
+              ${{ steps.yarn-cache-dir-path.outputs.dir }}
+
+            key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+              ${{ runner.os }}-yarn-
       - run: yarn
       - run: yarn storybook:build
