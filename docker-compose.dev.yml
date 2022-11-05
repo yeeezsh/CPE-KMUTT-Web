@@ -39,6 +39,7 @@ services:
     environment:
       TZ: Asia/Bangkok
       STRAPI_ENDPOINT: http://localhost:1337
+      APP_GRAPHQL_ENDPOINT: http://strapi:1337/graphql
     ports:
       - 5000:3000
       - 49153:49153

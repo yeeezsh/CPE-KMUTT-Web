@@ -1,11 +1,12 @@
 import { STATIC_ABOUT_US_LINK, STATIC_CONTACT_US } from 'common/constants/links';
 
-import { MenuItem } from './types';
+import { MenuItem, MenuType, SubMenu } from './types';
 
 export const NAVBAR_MENU: MenuItem[] = [
   {
     key: '1',
     label: 'ปริญญาตรี',
+    types: [MenuType.Desktop, MenuType.Mobile],
     subMenu: [
       {
         key: '1',
@@ -33,6 +34,8 @@ export const NAVBAR_MENU: MenuItem[] = [
   {
     key: '2',
     label: 'บัณฑิตศึกษา',
+    types: [MenuType.Desktop, MenuType.Mobile],
+
     subMenu: [
       {
         key: '1',
@@ -50,6 +53,7 @@ export const NAVBAR_MENU: MenuItem[] = [
   {
     key: '3',
     label: 'ทุนการศึกษา',
+    types: [MenuType.Desktop, MenuType.Mobile],
     subMenu: [
       {
         key: '1',
@@ -78,6 +82,7 @@ export const NAVBAR_MENU: MenuItem[] = [
   {
     key: '4',
     label: 'การรับเข้าศึกษา',
+    types: [MenuType.Desktop, MenuType.Mobile],
     subMenu: [
       {
         key: '1',
@@ -100,6 +105,7 @@ export const NAVBAR_MENU: MenuItem[] = [
   {
     key: '5',
     label: 'เกี่ยวกับเรา',
+    types: [MenuType.Desktop, MenuType.Mobile],
     subMenu: [
       {
         key: '1',
@@ -126,7 +132,7 @@ export const NAVBAR_MENU: MenuItem[] = [
   },
 ];
 
-export const STUDENT: MenuItem[] = [
+export const STUDENT: SubMenu[] = [
   { key: '1', label: 'ปฏิทินการศึกษา' },
   { key: '2', label: 'ตารางเรียน / ตารางสอบ' },
   { key: '3', label: 'เอกสารสำหรับนักศึกษา' },
@@ -135,7 +141,7 @@ export const STUDENT: MenuItem[] = [
   { key: '6', label: 'สมุดติดต่อภายในฯ' },
 ];
 
-export const STAFF: MenuItem[] = [
+export const STAFF: SubMenu[] = [
   { key: '1', label: 'WEBMAIL' },
   { key: '2', label: 'INTRANET' },
   { key: '3', label: 'สมุดโทรศัพท์ มจธ.' },
@@ -148,7 +154,7 @@ export const STAFF: MenuItem[] = [
   { key: '11', label: 'ผู้ดูแลระบบเว็บไซต์' },
 ];
 
-export const NAVBAR_SECONDARY_MENU: MenuItem[] = [
+export const NAVBAR_SECONDARY_MENU: SubMenu[] = [
   { key: 'secondary-1', label: 'สำหรับนักศึกษาปัจจุบัน', subMenu: STUDENT },
   { key: 'secondary-2', label: 'สำหรับบุคลากร', subMenu: STAFF },
   { key: 'secondary-3', label: 'ดาวน์โหลด', link: '#' },

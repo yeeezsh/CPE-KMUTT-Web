@@ -35,7 +35,7 @@ export const Group = styled.div`
 export const Image = styled.div`
   height: 80px;
   margin: 20px 0 20px 0;
-  background-image: url(${(props: DesignProps) => props.img});
+  background-image: url(${(props: DesignProps) => `"${props.img}"`});
   background-size: 100%;
   background-position: center;
 `;
