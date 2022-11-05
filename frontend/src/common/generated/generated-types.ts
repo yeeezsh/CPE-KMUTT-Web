@@ -3792,6 +3792,48 @@ export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type CommonProgramFragment = { __typename?: 'Programs' } & Pick<
+  Programs,
+  'id' | 'header' | 'seo_link'
+> & { canvas_preview?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>> };
+
+export type GetProgramBySeoLinkQueryVariables = Exact<{
+  locale?: Scalars['String'];
+  where?: Maybe<Scalars['JSON']>;
+}>;
+
+export type GetProgramBySeoLinkQuery = { __typename?: 'Query' } & {
+  programs?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Programs' } & {
+          program_tag?: Maybe<
+            { __typename?: 'ProgramTags' } & Pick<
+              ProgramTags,
+              'id' | 'seo_link' | 'program_tag_name'
+            >
+          >;
+          dynamic_content?: Maybe<
+            Array<
+              Maybe<
+                { __typename: 'ComponentContentSectionsTextContent' } & Pick<
+                  ComponentContentSectionsTextContent,
+                  'id' | 'body'
+                >
+              >
+            >
+          >;
+        } & CommonProgramFragment
+      >
+    >
+  >;
+  programsConnection?: Maybe<
+    { __typename?: 'ProgramsConnection' } & {
+      values?: Maybe<Array<Maybe<{ __typename?: 'Programs' } & CommonProgramFragment>>>;
+    }
+  >;
+};
+
 export type CommonTagsFragment = { __typename?: 'ProgramTags' } & Pick<
   ProgramTags,
   'id' | 'program_tag_name' | 'seo_link'
@@ -3942,6 +3984,16 @@ export const CommonContentSectionFragmentDoc = gql`
   fragment commonContentSection on ComponentContentSectionsTextContent {
     id
     body
+  }
+`;
+export const CommonProgramFragmentDoc = gql`
+  fragment commonProgram on Programs {
+    id
+    header
+    seo_link
+    canvas_preview {
+      url
+    }
   }
 `;
 export const CommonTagsFragmentDoc = gql`
@@ -4162,6 +4214,38 @@ export const GetNewsByTagSeoLinkDocument = gql`
 export type GetNewsByTagSeoLinkQueryResult = Apollo.QueryResult<
   GetNewsByTagSeoLinkQuery,
   GetNewsByTagSeoLinkQueryVariables
+>;
+export const GetProgramBySeoLinkDocument = gql`
+  query GetProgramBySeoLink(
+    $locale: String! = "th"
+    $where: JSON = { seo_link: "widsawa-gamma-bundid" }
+  ) {
+    programs(locale: $locale, publicationState: LIVE, where: $where) {
+      ...commonProgram
+      program_tag {
+        id
+        seo_link
+        program_tag_name
+      }
+      dynamic_content {
+        __typename
+        ... on ComponentContentSectionsTextContent {
+          id
+          body
+        }
+      }
+    }
+    programsConnection(sort: "createdAt:desc", limit: 3, locale: $locale) {
+      values {
+        ...commonProgram
+      }
+    }
+  }
+  ${CommonProgramFragmentDoc}
+`;
+export type GetProgramBySeoLinkQueryResult = Apollo.QueryResult<
+  GetProgramBySeoLinkQuery,
+  GetProgramBySeoLinkQueryVariables
 >;
 export const GetProgramsDocument = gql`
   query GetPrograms($locale: String! = "th") {
