@@ -4,10 +4,6 @@ import { Menu, MenuProps } from 'antd';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import Link from 'next/link';
 
-import {
-  NAVBAR_MENU,
-  NAVBAR_SECONDARY_MENU,
-} from 'common/components/Navbar/components/NavbarMenu/constants';
 import { MenuType } from 'common/components/Navbar/components/NavbarMenu/types';
 import useIsMobileMenuOpened from 'common/hooks/useIsMobileMenuOpened';
 import useMenu from 'common/hooks/useMenu';
