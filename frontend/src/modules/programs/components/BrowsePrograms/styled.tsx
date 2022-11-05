@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 
+import BREAKPOINTS from 'common/constants/breakpoints';
+
+//TODO:// refactor with news/home
 export const BrowseProgramRow = styled.div`
   display: flex;
-  &.space-between {
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  &.align-center {
-    align-items: center;
-  }
-  width: 95%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 16px;
   margin: 16px;
   overflow: hidden;
-  padding: 0px;
+
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    row-gap: 0px;
+  }
 `;
 
 export const Header = styled.div`
