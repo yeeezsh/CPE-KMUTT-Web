@@ -6,7 +6,9 @@ import {
   ProgramTags,
 } from 'modules/programs/components/BrowsePrograms/types';
 
-export default function mapProgramsPage(data: GetProgramsQuery): BrowseProgramTypes {
+export default function mapProgramsPage(data?: GetProgramsQuery): BrowseProgramTypes {
+  if (!data) return [];
+
   const groups = data.programTagsLocale?.map((e) => ({
     id: e?.id,
     name: e?.program_tag_name,
