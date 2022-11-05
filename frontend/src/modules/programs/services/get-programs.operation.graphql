@@ -7,6 +7,7 @@ fragment commonTags on ProgramTags {
 query GetPrograms($locale: String! = "th") {
   programs(locale: $locale, publicationState: LIVE) {
     id
+    order
     header
     seo_link
     program_tag {

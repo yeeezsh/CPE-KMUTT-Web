@@ -3155,7 +3155,10 @@ export type GetProgramsQuery = { __typename?: 'Query' } & {
   programs?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'Programs' } & Pick<Programs, 'id' | 'header' | 'seo_link'> & {
+        { __typename?: 'Programs' } & Pick<
+          Programs,
+          'id' | 'order' | 'header' | 'seo_link'
+        > & {
             program_tag?: Maybe<
               { __typename?: 'ProgramTags' } & Pick<ProgramTags, 'id' | 'seo_link'>
             >;
@@ -3481,6 +3484,7 @@ export const GetProgramsDocument = gql`
   query GetPrograms($locale: String! = "th") {
     programs(locale: $locale, publicationState: LIVE) {
       id
+      order
       header
       seo_link
       program_tag {

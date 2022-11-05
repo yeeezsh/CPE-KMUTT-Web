@@ -3,6 +3,7 @@ export type ProgramType = {
   header: string;
   preview_url: string;
   link: string;
+  order?: number;
 };
 
 export type ProgramTags = {

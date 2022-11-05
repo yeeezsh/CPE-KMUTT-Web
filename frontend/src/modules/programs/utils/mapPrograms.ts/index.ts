@@ -6,6 +6,22 @@ import {
   ProgramTags,
 } from 'modules/programs/components/BrowsePrograms/types';
 
+//TODO: test
+export function mapProgramSortAsc(data: BrowseProgramTypes): BrowseProgramTypes {
+  const groupSortedAsc = data.sort(
+    (a, b) =>
+      Math.min(...a.programs.map((p) => p.order || 0)) -
+      Math.min(...b.programs.map((p) => p.order || 0)),
+  );
+
+  const programSortedAsc = groupSortedAsc.map((el) => ({
+    ...el,
+    programs: el.programs.sort((a, b) => (a?.order || 0) - (b?.order || 0)),
+  }));
+
+  return programSortedAsc;
+}
+
 export default function mapProgramsPage(data?: GetProgramsQuery): BrowseProgramTypes {
   if (!data) return [];
 
@@ -34,8 +50,11 @@ export default function mapProgramsPage(data?: GetProgramsQuery): BrowseProgramT
       header: p?.header || '',
       preview_url: ImageStrapiUrl(p?.canvas_preview?.url || ''),
       link: p?.seo_link || '',
+      order: p?.order || 0,
     })),
   })) as BrowseProgramTypes;
 
-  return transform;
+  const sorted = mapProgramSortAsc(transform);
+
+  return sorted;
 }
