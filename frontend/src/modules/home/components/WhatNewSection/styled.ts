@@ -49,10 +49,6 @@ export const PortletTitle = styled.div`
   width: 1024px;
   margin-top: 65px;
   margin-bottom: 40px;
-  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
-    padding: 0 25px;
-    flex-direction: column;
-  }
 `;
 
 export const PortletTitleHeader = styled.div`
@@ -63,21 +59,6 @@ export const PortletTitleHeader = styled.div`
 export const PortletDiscription = styled.div`
   color: ${COLORS.GRAY_2};
   font-size: 14px;
-`;
-
-export const CardContainer = styled.div`
-  display: flex;
-  width: 1024px;
-  justify-content: space-between;
-  overflow: hidden;
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    flex-direction: column;
-  }
-  @media (min-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    margin-bottom: 105px;
-  }
-
-  padding: 20px;
 `;
 
 export const ShowAllButton = styled.div`

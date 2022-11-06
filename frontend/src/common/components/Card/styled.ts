@@ -5,16 +5,12 @@ import COLORS from 'common/constants/colors';
 
 export const Card = styled.div`
   font-family: 'Kanit', sans-serif;
-  width: 330px;
+  width: 100%;
   height: 250px;
   display: block;
   position: relative;
-  margin-bottom: 20px;
   cursor: pointer;
-  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
-    width: 30%;
-    height: 225px;
-  }
+
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     width: 100%;
     height: 108px;
@@ -155,7 +151,6 @@ export const CardBodyStyled = styled.div`
 `;
 
 export const CardImage = styled.div`
-  width: 100%;
   height: 125px;
   background-size: cover;
   background-repeat: no-repeat;

@@ -60,12 +60,12 @@
     "seo_link": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "type": "string",
       "required": true,
-      "unique": false,
+      "unique": true,
       "regex": "^[a-z]\\S*$",
       "minLength": 5
     },

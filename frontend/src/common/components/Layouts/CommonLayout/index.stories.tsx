@@ -1,4 +1,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Provider } from 'react-redux';
+
+import { store } from 'common/stores';
 
 import { GlobalStyle } from 'modules/root/pages/App/styled';
 
@@ -28,10 +31,12 @@ export default {
 
 const CommonLayoutStory: Story<CommonLayoutProps> = (args) => (
   <>
-    <GlobalStyle />
-    <CommonLayout {...args}>
-      <div></div>
-    </CommonLayout>
+    <Provider store={store}>
+      <GlobalStyle />
+      <CommonLayout {...args}>
+        <div></div>
+      </CommonLayout>
+    </Provider>
   </>
 );
 

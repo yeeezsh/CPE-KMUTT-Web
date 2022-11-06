@@ -61,7 +61,7 @@ const BrowseNews: React.FC<BrowseNewsProps> = ({ data }) => {
             ))}
         </BrowsNewsHeader>
 
-        <BrowseNewsRow className="space-between">
+        <BrowseNewsRow>
           {mapped &&
             mapped.map((e) => {
               return (

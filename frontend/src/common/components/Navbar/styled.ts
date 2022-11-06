@@ -7,7 +7,7 @@ import COLORS from 'common/constants/colors';
 import fontFamily from 'common/styles/typography/fontFamily';
 
 export const NAVBAR_HEIGHT = '100px';
-export const NAVBAR_HEIGHT_MOBILE = '60px';
+export const NAVBAR_HEIGHT_MOBILE = '72px';
 
 interface NavProps {
   $isMobileMenuShow: boolean;
@@ -47,6 +47,7 @@ export const NavbarBrand = styled.li`
   display: flex;
   flex: 1;
   justify-content: flex-start;
+  align-content: center;
 `;
 
 export const LogoKMUTT = styled.img`
