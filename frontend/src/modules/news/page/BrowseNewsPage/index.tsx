@@ -24,14 +24,16 @@ export type BrowseNewsPageProps = {
 };
 
 const BrowseNewsPage: React.FC<BrowseNewsPageProps> = ({ data }) => {
-  //TODO: faq banner
   return (
     <>
       <Head>
         <title>ข่าวสารและประกาศ</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CommonLayout header="ข่าวสารและประกาศ" navigate={DEFAULT_NAVIGATE}>
+      <CommonLayout
+        withFaqBanner={true}
+        header="ข่าวสารและประกาศ"
+        navigate={DEFAULT_NAVIGATE}>
         <BrowseNews data={data} />
       </CommonLayout>
     </>
