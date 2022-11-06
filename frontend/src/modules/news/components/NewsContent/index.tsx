@@ -14,6 +14,8 @@ import {
   STATIC_NEWS_LINK,
 } from 'common/constants/links';
 
+import { CardContainer } from 'modules/home/components/WhatNewSection/styled';
+
 import {
   NewsContentTumbnail,
   NewsContentFileContainer,
@@ -27,7 +29,6 @@ import {
   OtherNewsContainer,
   OtherNewsHeaderContainer,
   OtherNewsHeader,
-  OtherNewsCardContainer,
 } from './styled';
 import { NewsContentProps } from './types';
 
@@ -94,7 +95,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
                 />
               </Button>
             </OtherNewsHeaderContainer>
-            <OtherNewsCardContainer>
+            <CardContainer>
               {props.connections.map((data) => (
                 <Card
                   onClick={() => onCardClick(data.id)}
@@ -107,7 +108,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
                   variant={data.variant}
                 />
               ))}
-            </OtherNewsCardContainer>
+            </CardContainer>
           </OtherNewsContainer>
         )}
       </Container>
