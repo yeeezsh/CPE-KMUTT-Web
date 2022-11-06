@@ -24,6 +24,7 @@ export type BrowseNewsPageProps = {
 };
 
 const BrowseNewsPage: React.FC<BrowseNewsPageProps> = ({ data }) => {
+  //TODO: faq banner
   return (
     <>
       <Head>
