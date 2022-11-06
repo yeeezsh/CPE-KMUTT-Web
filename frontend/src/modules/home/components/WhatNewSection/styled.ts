@@ -49,9 +49,6 @@ export const PortletTitle = styled.div`
   width: 1024px;
   margin-top: 65px;
   margin-bottom: 40px;
-  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
-    flex-direction: column;
-  }
 `;
 
 export const PortletTitleHeader = styled.div`
