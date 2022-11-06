@@ -19,6 +19,7 @@ export const BrowseNewsRow = styled.div`
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     display: flex;
     flex-wrap: wrap;
+    gap: 0em;
   }
 `;
 

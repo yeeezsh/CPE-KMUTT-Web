@@ -9,11 +9,11 @@ const CardsLayout = styled.div`
   justify-content: space-between;
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0em;
   }
   @media (min-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     margin-bottom: 105px;
-    gap: 0.5em;
+    gap: 0em;
   }
 `;
 
