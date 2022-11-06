@@ -11,16 +11,15 @@ export const BrowseNewsStyle = styled.div`
 `;
 
 export const BrowseNewsRow = styled.div`
-  display: flex;
-  &.space-between {
-    justify-content: space-between;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1em;
+
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    display: flex;
     flex-wrap: wrap;
   }
-  &.align-center {
-    align-items: center;
-  }
-  overflow: hidden;
-  padding: 20px;
 `;
 
 export const BrowseNewsColumn = styled.div`
