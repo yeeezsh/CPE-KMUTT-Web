@@ -7,6 +7,7 @@ import { Btn } from 'common/components/Button/styled';
 import Carousel from 'common/components/Carousel';
 import CommonLayout from 'common/components/Layouts/CommonLayout';
 
+import BadgeContactSection from 'modules/contact/components/BadgeContactSection';
 import StaticSection from 'modules/home/components/StaticSection';
 import { ButtonStyled } from 'modules/home/components/StaticSection/styled';
 import WhatNewSection from 'modules/home/components/WhatNewSection';
@@ -21,7 +22,6 @@ const Home: React.FC<HomesProps> = ({ data }) => {
     data,
   );
 
-  //TODO: faq banner
   return (
     <CommonLayout
       showTopBar={false}
@@ -74,6 +74,8 @@ const Home: React.FC<HomesProps> = ({ data }) => {
             </ButtonStyled>
           )}
         </StaticSection>
+
+        <BadgeContactSection />
       </Main>
     </CommonLayout>
   );
