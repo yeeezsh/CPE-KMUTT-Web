@@ -50,7 +50,6 @@ export const PortletTitle = styled.div`
   margin-top: 65px;
   margin-bottom: 40px;
   @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
-    padding: 0 25px;
     flex-direction: column;
   }
 `;
