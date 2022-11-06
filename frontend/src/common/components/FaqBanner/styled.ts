@@ -32,4 +32,8 @@ export const Row = styled.div`
 
 export const Column = styled.div`
   display: block;
+
+  img {
+    width: 42vh;
+  }
 `;

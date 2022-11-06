@@ -7,6 +7,7 @@ import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import { CardProps } from 'common/components/Card/types';
 import Container from 'common/components/Container';
+import CardsLayout from 'common/components/Layouts/CardsLayout';
 import {
   STATIC_NEWS_CATEGORY_LINK,
   STATIC_NEWS_ID_LINK,
@@ -15,7 +16,6 @@ import {
 import useIsMobileDisplay from 'common/hooks/useIsMobileDisplay';
 
 import {
-  CardContainer,
   PortletDiscription,
   PortletTitle,
   PortletTitleHeader,
@@ -69,7 +69,7 @@ const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
         </PortletTitle>
 
         {data && (
-          <CardContainer>
+          <CardsLayout>
             {data.map((el, index) => (
               <Card
                 key={index}
@@ -82,7 +82,7 @@ const WhatNewSection: React.FC<WhatNewSectionProps> = ({ data }) => {
                 onClick={() => onCardClick(el.id)}
               />
             ))}
-          </CardContainer>
+          </CardsLayout>
         )}
 
         {showForMobile && (

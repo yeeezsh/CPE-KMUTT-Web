@@ -106,12 +106,3 @@ export const OtherNewsHeader = styled.div`
   font-weight: 700;
   color: ${COLORS.GRAY_2};
 `;
-
-export const OtherNewsCardContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;

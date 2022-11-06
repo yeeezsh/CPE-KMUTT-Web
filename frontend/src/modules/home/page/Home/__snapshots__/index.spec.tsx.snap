@@ -21,9 +21,10 @@ exports[`Index page Index page to match snapshot 1`] = `
   <styled__Main>
     <WhatNewSection />
     <StaticSection
-      background="/images/static_bg_curriculum.png"
-      content="เซ็นเตอร์เวิร์คฟลุทแอดมิสชันออร์แกน ใช้งานรูบิค แซมบ้าเมาท์ แอดมิชชั่นคัตเอาต์โครนาโอ้ยเซ็นเซอร์ ผู้นำเมจิควิทย์ บลอนด์แทคติคไอซียูเยลลี่"
-      header="ที่วิศวกรรมคอมพิวเตอร์ มจธ. เรามีหลักสูตรหลากหลาย"
+      background="/images/static_bg_curriculum.jpg"
+      content="ที่วิศวกรรมคอมพิวเตอร์ มจธ. เรามีหลักสูตรหลากหลาย
+    ตอบโจทย์ความต้องการของตลาด ทั้งในไทย และระดับโลก "
+      header="หลักสูตร"
       id="1"
     >
       <styled__ButtonStyled>
@@ -63,27 +64,11 @@ exports[`Index page Index page to match snapshot 1`] = `
     />
     <StaticSection
       background="/images/static_bg_gallery.png"
-      content="โดยมีอาจารย์ผู้สอนเป็นผู้ให้คำปรึกษา นักศึกษาต้องทำงานเป็นกลุ่ม และมีการนำเสนอผลงาน ของตนเองให้เพื่อนๆ ร่วมกันวิเคราะห์และวิจารณ์อย่างมีเหตุผล"
-      header="แกลเลอรี่รูปภาพ"
+      content="ประมวลภาพบรรยากาศ กิจกรรมภายในภาควิชาฯ และกิจกรรมภายนอกที่เกี่ยวข้องกับนักศึกษาของภาควิชาฯ"
+      header="แกลเลอรี่รูปภาพs"
       id="2"
-    >
-      <styled__ButtonStyled>
-        <styled__Btn
-          $color="white"
-        >
-          สำรวจแกลเลอรี่
-          <HiOutlineArrowRight
-            className="Icon"
-            size="16px"
-            style={
-              Object {
-                "marginLeft": "16px",
-              }
-            }
-          />
-        </styled__Btn>
-      </styled__ButtonStyled>
-    </StaticSection>
+    />
+    <BadgeContactSection />
   </styled__Main>
 </CommonLayout>
 `;
