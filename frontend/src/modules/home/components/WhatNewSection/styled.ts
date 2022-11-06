@@ -67,14 +67,16 @@ export const PortletDiscription = styled.div`
 
 export const CardContainer = styled.div`
   display: flex;
-  width: 1024px;
+  width: 100%;
+  gap: 1em;
   justify-content: space-between;
-  overflow: hidden;
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     flex-direction: column;
+    gap: 0.5em;
   }
   @media (min-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
     margin-bottom: 105px;
+    gap: 0.5em;
   }
 
   padding: 20px;
