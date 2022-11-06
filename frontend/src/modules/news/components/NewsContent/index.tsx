@@ -8,13 +8,12 @@ import { VscFilePdf } from 'react-icons/vsc';
 import Button from 'common/components/Button';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
+import CardsLayout from 'common/components/Layouts/CardsLayout';
 import {
   STATIC_NEWS_ID_LINK,
   STATIC_NEWS_ID_LINK_PATTERN,
   STATIC_NEWS_LINK,
 } from 'common/constants/links';
-
-import { CardContainer } from 'modules/home/components/WhatNewSection/styled';
 
 import {
   NewsContentTumbnail,
@@ -95,7 +94,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
                 />
               </Button>
             </OtherNewsHeaderContainer>
-            <CardContainer>
+            <CardsLayout>
               {props.connections.map((data) => (
                 <Card
                   onClick={() => onCardClick(data.id)}
@@ -108,7 +107,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
                   variant={data.variant}
                 />
               ))}
-            </CardContainer>
+            </CardsLayout>
           </OtherNewsContainer>
         )}
       </Container>

@@ -65,23 +65,6 @@ export const PortletDiscription = styled.div`
   font-size: 14px;
 `;
 
-export const CardContainer = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 1em;
-  justify-content: space-between;
-  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    flex-direction: column;
-    gap: 0.5em;
-  }
-  @media (min-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    margin-bottom: 105px;
-    gap: 0.5em;
-  }
-
-  padding: 20px;
-`;
-
 export const ShowAllButton = styled.div`
   display: flex;
 `;
