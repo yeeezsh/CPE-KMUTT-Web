@@ -9,7 +9,6 @@ export const Card = styled.div`
   height: 250px;
   display: block;
   position: relative;
-  margin-bottom: 20px;
   cursor: pointer;
   @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
     height: 225px;
