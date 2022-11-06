@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 import { ApolloProvider } from '@apollo/client';
 import type { AppProps } from 'next/app';
-import { AppType } from 'next/dist/next-server/lib/utils';
+import { AppType } from 'next/dist/shared/lib/utils';
 import { CustomAppProps } from 'pages/_app';
 import TagManager from 'react-gtm-module';
 import { Provider, useDispatch } from 'react-redux';
