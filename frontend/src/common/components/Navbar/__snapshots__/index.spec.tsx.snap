@@ -27,9 +27,6 @@ exports[`Navbar Tests Navbar component should be defined 1`] = `
         </styled__Department>
       </styled__Wrapper>
     </styled__NavbarBrand>
-    <styled__MenuButton>
-      EN
-    </styled__MenuButton>
     <Dropdown
       mouseEnterDelay={0.15}
       mouseLeaveDelay={0.1}
