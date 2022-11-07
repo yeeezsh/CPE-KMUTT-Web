@@ -12,17 +12,23 @@ export const BadgeList = styled.div`
   justify-content: space-between;
   font-family: 'Kanit';
   background: #f5f5f5;
-  margin: 65px 0;
+  margin: 50px 0;
+
+  @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
 `;
 
 export const Badge = styled.div`
-  width: 30%;
+  min-width: 245px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 export const BadgeIcon = styled.img`
+  display: flex;
   margin: 35px 0;
   width: 90px;
   height: 90px;
