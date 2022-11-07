@@ -19,7 +19,7 @@ export const HOME_CONTENTS = {
   },
   gallery: {
     background: '/images/static_bg_gallery.png',
-    header: 'แกลเลอรี่รูปภาพs',
+    header: 'แกลเลอรี่รูปภาพ',
     content:
       'ประมวลภาพบรรยากาศ กิจกรรมภายในภาควิชาฯ และกิจกรรมภายนอกที่เกี่ยวข้องกับนักศึกษาของภาควิชาฯ',
     enabledButton: false,
