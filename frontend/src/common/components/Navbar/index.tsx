@@ -8,6 +8,8 @@ import useClickHamburger from 'common/components/Navbar/hooks/useClickHamburger'
 import { STATIC_HOME_LINK } from 'common/constants/links';
 import useIsMobileNavbarShow from 'common/hooks/useIsMobileMenuOpened';
 
+import { HOME_CONTENTS } from 'modules/home/constants';
+
 import HamburgerButton from './components/HamburgerButton';
 import NavbarMenu from './components/NavbarMenu';
 import {
@@ -47,7 +49,11 @@ const Navbar: React.FC = () => {
           </Wrapper>
         </NavbarBrand>
 
-        <MenuButton>{menuOpened ? '' : 'EN'}</MenuButton>
+        {
+          //TODO: enable in next patch
+        }
+        {HOME_CONTENTS.i18n.enable && <MenuButton>{menuOpened ? '' : 'EN'}</MenuButton>}
+
         <Dropdown
           visible={desktopMenuOpened}
           overlay={<NavbarMenu />}

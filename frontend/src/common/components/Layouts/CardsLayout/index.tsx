@@ -3,16 +3,14 @@ import styled from 'styled-components';
 import BREAKPOINTS from 'common/constants/breakpoints';
 
 const CardsLayout = styled.div`
-  display: flex;
+  display: grid;
   width: 100%;
-  gap: 1em;
-  justify-content: space-between;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75em;
+
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    flex-direction: column;
-    gap: 0em;
-  }
-  @media (min-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    margin-bottom: 105px;
+    display: flex;
+    flex-wrap: wrap;
     gap: 0em;
   }
 `;
