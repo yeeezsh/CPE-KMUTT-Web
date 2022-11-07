@@ -65,7 +65,7 @@ exports[`Index page Index page to match snapshot 1`] = `
     <StaticSection
       background="/images/static_bg_gallery.png"
       content="ประมวลภาพบรรยากาศ กิจกรรมภายในภาควิชาฯ และกิจกรรมภายนอกที่เกี่ยวข้องกับนักศึกษาของภาควิชาฯ"
-      header="แกลเลอรี่รูปภาพs"
+      header="แกลเลอรี่รูปภาพ"
       id="2"
     />
     <BadgeContactSection />
