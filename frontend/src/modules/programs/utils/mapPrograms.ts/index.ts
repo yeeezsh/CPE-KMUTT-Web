@@ -54,7 +54,7 @@ export default function mapProgramsPage(data?: GetProgramsQuery): BrowseProgramT
     })),
   })) as BrowseProgramTypes;
 
-  const sorted = mapProgramSortAsc(transform);
+  const sorted = transform && mapProgramSortAsc(transform);
 
   return sorted;
 }

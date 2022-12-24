@@ -57,4 +57,9 @@ describe('mapPrograms Tests', () => {
     expect(testSubject[1].programs).toHaveLength(1);
     expect(testSubject[1].programs[0].id).toBe('635fdf7b1bb560008edc18ed');
   });
+
+  it('should return empty array when no data', () => {
+    const testSubject = mapProgramsPage((null as any) as GetProgramsQuery);
+    expect(testSubject).toHaveLength(0);
+  });
 });
