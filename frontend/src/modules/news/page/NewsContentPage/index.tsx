@@ -55,7 +55,6 @@ const NewsContentPage: React.FC<{ data?: GetNewsByIdQuery }> = ({ data }) => {
     <>
       <Head>
         <title>{header} | ข่าวสารและประกาศ</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* //TODO: remove this mock tag*/}
       <CommonLayout header="ข่าวสารและประกาศ" navigate={tags}>

@@ -6,10 +6,6 @@ exports[`AboutUs page should matched snapshots 1`] = `
     <title>
       ABOUT US | CPE KMUTT
     </title>
-    <link
-      href="/favicon.ico"
-      rel="icon"
-    />
   </Head>
   <CommonLayout
     header="เกี่ยวกับเรา"

@@ -28,7 +28,6 @@ const BrowseNewsPage: React.FC<BrowseNewsPageProps> = ({ data }) => {
     <>
       <Head>
         <title>ข่าวสารและประกาศ</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <CommonLayout
         withFaqBanner={true}

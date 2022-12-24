@@ -13,10 +13,6 @@ exports[`Index page Index page to match snapshot 1`] = `
     <title>
       หน้าแรก
     </title>
-    <link
-      href="/favicon.ico"
-      rel="icon"
-    />
   </Head>
   <styled__Main>
     <WhatNewSection />
