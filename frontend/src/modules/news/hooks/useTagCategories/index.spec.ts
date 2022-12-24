@@ -89,7 +89,7 @@ describe('useTagsCategories hooks', () => {
 
     expect(tags[0].link).toEqual(STATIC_NEWS_CATEGORY_LINK);
     expect(tags[0].active).toBe(true);
-    expect(tags[1].link).toEqual('/news/category/freshmen');
+    expect(tags[1].link).toEqual('\\news\\category\\freshmen');
     expect(tags[1].active).toBe(false);
     expect(tags.filter((e) => e.active).length).toBe(1);
   });
