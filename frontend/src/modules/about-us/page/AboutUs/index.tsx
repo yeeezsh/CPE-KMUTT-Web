@@ -39,7 +39,6 @@ const AboutUs: React.FC<{ id: string }> = ({ id }) => {
     <>
       <Head>
         <title>ABOUT US | CPE KMUTT</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <CommonLayout

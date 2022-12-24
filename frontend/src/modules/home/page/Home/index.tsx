@@ -28,7 +28,6 @@ const Home: React.FC<HomesProps> = ({ data }) => {
       Header={<Carousel variant="Default" item={mainCarousal} />}>
       <Head>
         <title>หน้าแรก</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
         <WhatNewSection data={whatsNews} />
