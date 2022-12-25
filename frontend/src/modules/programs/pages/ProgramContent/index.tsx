@@ -7,7 +7,7 @@ import { CrumbProps } from 'common/components/Layouts/CommonLayout/types';
 import { useTags } from 'common/hooks/useTags';
 
 import NewsContent from 'modules/news/components/NewsContent';
-import { DEFAULT_NAVIGATE } from 'modules/programs/constants';
+import { DEFAULT_NAVIGATE, PROGRAM_CONTENT } from 'modules/programs/constants';
 import { useProgramContentParser } from 'modules/programs/hooks/useProgramContentParser';
 import { ProgramContentProps } from 'modules/programs/pages/ProgramContent/types';
 
@@ -38,6 +38,7 @@ const ProgramContent: React.FC<ProgramContentProps> = ({ data }) => {
           file={download}
           // TODO: connection
           connections={[]}
+          seeAllButton={PROGRAM_CONTENT.seeAllButton}
         />
       </CommonLayout>
     </>

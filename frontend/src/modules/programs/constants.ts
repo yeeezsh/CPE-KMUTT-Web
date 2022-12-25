@@ -13,3 +13,10 @@ export const DEFAULT_NAVIGATE: CrumbProps[] = [
     link: STATIC_PROGRAMS,
   },
 ];
+
+export const PROGRAM_CONTENT = {
+  seeAllButton: {
+    title: 'แสดงทั้งหมด',
+    url: STATIC_PROGRAMS,
+  },
+};
