@@ -26,6 +26,7 @@ exports[`Index page Index page to match snapshot 1`] = `
       <styled__ButtonStyled>
         <styled__Btn
           $color="primary"
+          onClick={[Function]}
         >
           สำรวจหลักสูตรทั้งหมด
           <HiOutlineArrowRight
@@ -41,6 +42,7 @@ exports[`Index page Index page to match snapshot 1`] = `
       <styled__ButtonStyled>
         <styled__Btn
           $color="white"
+          onClick={[Function]}
         >
           สมัครเข้าเรียน
           <HiOutlineArrowRight
