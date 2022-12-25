@@ -77,9 +77,11 @@ export const Content = styled.div`
   width: 100%;
   max-width: ${breakpoints.IPAD_LANDSCAPE};
   color: white;
+  margin-left: 26px;
 
   @media (max-width: ${breakpoints.IPAD_PORTRAIT}) {
     align-items: center;
+    margin-left: 0px;
   }
 `;
 

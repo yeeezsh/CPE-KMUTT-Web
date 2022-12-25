@@ -92,7 +92,8 @@ const CommonLayout: FC<CommonLayoutProps> = ({
 
         {children}
 
-        {withFaqBanner && <FaqBanner />}
+        <Container>{withFaqBanner && <FaqBanner />}</Container>
+
         <Footer />
       </Main>
     </>
