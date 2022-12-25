@@ -3823,6 +3823,20 @@ export type GetProgramBySeoLinkQuery = { __typename?: 'Query' } & {
               >
             >
           >;
+          download?: Maybe<
+            { __typename?: 'ComponentCommonFileDownload' } & {
+              files?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: 'UploadFile' } & Pick<
+                      UploadFile,
+                      'url' | 'name' | '_id' | 'mime'
+                    >
+                  >
+                >
+              >;
+            }
+          >;
         } & CommonProgramFragment
       >
     >
@@ -4233,6 +4247,14 @@ export const GetProgramBySeoLinkDocument = gql`
         ... on ComponentContentSectionsTextContent {
           id
           body
+        }
+      }
+      download {
+        files {
+          url
+          name
+          _id
+          mime
         }
       }
     }

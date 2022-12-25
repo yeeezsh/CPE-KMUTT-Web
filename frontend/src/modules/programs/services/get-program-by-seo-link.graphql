@@ -26,6 +26,14 @@ query GetProgramBySeoLink(
         body
       }
     }
+    download {
+      files {
+        url
+        name
+        _id
+        mime
+      }
+    }
   }
 
   programsConnection(sort: "createdAt:desc", limit: 3, locale: $locale) {
