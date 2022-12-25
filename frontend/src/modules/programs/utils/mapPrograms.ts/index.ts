@@ -41,9 +41,8 @@ export default function mapProgramsPage(data?: GetProgramsQuery): BrowseProgramT
       id: e.id || '',
       title: e.name || '',
       sub_title:
-        ((data.programTagsEnLocale?.find(
-          (en) => en?.seo_link === e.seo_link,
-        ) as unknown) as ProgramTags['sub_title']) || [],
+        ((data.programTagsEnLocale?.find((en) => en?.seo_link === e.seo_link)
+          ?.program_tag_name as unknown) as ProgramTags['sub_title']) || '',
     },
     programs: e.programs?.map((p) => ({
       id: p?.id || '',

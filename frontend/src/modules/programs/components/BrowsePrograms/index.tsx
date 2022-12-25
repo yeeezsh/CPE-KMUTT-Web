@@ -46,18 +46,20 @@ const Row: React.FC<{ data: ProgramType[] }> = (props) => {
   );
 };
 
-const Group: React.FC<{ data: BrowseProgramType['group'] }> = (props) => (
-  <Header>
-    <H2 style={{ margin: 0, color: COLORS.PRIMARY_COLOR }}>{props.data.title}</H2>
-    <H3 style={{ color: COLORS.GRAY_2 }}>{props.data.sub_title}</H3>
-  </Header>
-);
+const Group: React.FC<{ data?: BrowseProgramType['group'] }> = ({ data }) => {
+  return (
+    <Header>
+      <H2 style={{ margin: 0, color: COLORS.PRIMARY_COLOR }}>{data?.title}</H2>
+      <H3 style={{ color: COLORS.GRAY_2 }}>{data?.sub_title}</H3>
+    </Header>
+  );
+};
 
-const ProgramGroup: React.FC<{ data: BrowseProgramType }> = (props) => {
+const ProgramGroup: React.FC<{ data: BrowseProgramType }> = ({ data }) => {
   return (
     <>
-      <Divider header={<Group data={props.data.group} />} />
-      <Row key={props.data.group.id} data={props.data.programs} />
+      <Divider header={<Group data={data.group} />} />
+      <Row key={data.group.id} data={data.programs} />
     </>
   );
 };
