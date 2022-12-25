@@ -5,6 +5,7 @@ fragment commonProgram on Programs {
   canvas_preview {
     url
   }
+  createdAt
 }
 
 query GetProgramBySeoLink(

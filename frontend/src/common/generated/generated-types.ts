@@ -3794,7 +3794,7 @@ export type GetNewsByTagSeoLinkQuery = { __typename?: 'Query' } & {
 
 export type CommonProgramFragment = { __typename?: 'Programs' } & Pick<
   Programs,
-  'id' | 'header' | 'seo_link'
+  'id' | 'header' | 'seo_link' | 'createdAt'
 > & { canvas_preview?: Maybe<{ __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>> };
 
 export type GetProgramBySeoLinkQueryVariables = Exact<{
@@ -3994,6 +3994,7 @@ export const CommonProgramFragmentDoc = gql`
     canvas_preview {
       url
     }
+    createdAt
   }
 `;
 export const CommonTagsFragmentDoc = gql`
