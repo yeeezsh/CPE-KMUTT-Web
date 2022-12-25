@@ -28,6 +28,7 @@ import {
   OtherNewsContainer,
   OtherNewsHeaderContainer,
   OtherNewsHeader,
+  DynamicCotentZoneContainer,
 } from './styled';
 import { NewsContentProps } from './types';
 
@@ -58,7 +59,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
         )}
 
         {/* dyanmic contents */}
-        {props.contents}
+        <DynamicCotentZoneContainer>{props.contents}</DynamicCotentZoneContainer>
 
         {/* files & download */}
         {props.file && (
