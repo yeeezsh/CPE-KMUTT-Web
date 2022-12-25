@@ -25,6 +25,7 @@ export type NewsConnection = {
   title: string | undefined;
 };
 
+//TODO: comment content parer
 export type UseNewsContentParser = {
   header: string | undefined;
   title: string | undefined;
@@ -36,6 +37,7 @@ export type UseNewsContentParser = {
 };
 
 export const useNewsContentParser = (data?: GetNewsByIdQuery): UseNewsContentParser => {
+  //TODO: refactor to common
   function mapContents(
     dynamic_element?: NewsAndAnnouncementDynamicContentDynamicZone,
   ): JSX.Element {
