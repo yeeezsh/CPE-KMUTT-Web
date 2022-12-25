@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { Btn } from 'common/components/Button/styled';
@@ -18,9 +19,18 @@ import { HomesProps } from 'modules/home/page/Home/types';
 import { Main } from './styled';
 
 const Home: React.FC<HomesProps> = ({ data }) => {
+  const router = useRouter();
   const { mainCarousal, activityAndAwardsCarousal, whatsNews } = useHomeContentParser(
     data,
   );
+
+  function onBrowseProgramClick() {
+    router.push(HOME_CONTENTS.programs.link);
+  }
+
+  function onApplyProgramClick() {
+    router.push(HOME_CONTENTS.programs.external_link);
+  }
 
   return (
     <CommonLayout
@@ -38,13 +48,13 @@ const Home: React.FC<HomesProps> = ({ data }) => {
           header={HOME_CONTENTS.programs.header}
           content={HOME_CONTENTS.programs.content}>
           <ButtonStyled>
-            <Btn $color="primary">
+            <Btn $color="primary" onClick={onBrowseProgramClick}>
               สำรวจหลักสูตรทั้งหมด
               <HiOutlineArrowRight className="Icon" style={{ marginLeft: '16px' }} />
             </Btn>
           </ButtonStyled>
           <ButtonStyled>
-            <Btn $color="white">
+            <Btn $color="white" onClick={onApplyProgramClick}>
               สมัครเข้าเรียน
               <HiOutlineArrowRight
                 className="Icon"

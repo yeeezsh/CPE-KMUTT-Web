@@ -1,4 +1,4 @@
-import { STATIC_HOME_LINK } from 'common/constants/links';
+import { STATIC_HOME_LINK, STATIC_PROGRAMS } from 'common/constants/links';
 
 export const HOME_PAGE_CRUMB = {
   title: 'หนัาหลัก',
@@ -11,6 +11,8 @@ export const HOME_CONTENTS = {
     header: 'หลักสูตร',
     content: `ที่วิศวกรรมคอมพิวเตอร์ มจธ. เรามีหลักสูตรหลากหลาย
     ตอบโจทย์ความต้องการของตลาด ทั้งในไทย และระดับโลก `,
+    link: STATIC_PROGRAMS,
+    external_link: 'https://admission.kmutt.ac.th/',
   },
   awards: {
     header: 'กิจกรรมและความสำเร็จ',
