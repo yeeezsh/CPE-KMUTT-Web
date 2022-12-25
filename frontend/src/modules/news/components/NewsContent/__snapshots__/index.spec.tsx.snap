@@ -17,6 +17,9 @@ exports[`NewsContent Compnent NewsContent shoyld matched snapshots 1`] = `
       class="styled__NewsContentTumbnail-sc-18h3naq-3 daQSRC"
       style="background-image:url(/images/thumbnail2.png)"
     />
+    <div
+      class="styled__DynamicCotentZoneContainer-sc-18h3naq-13 kBypuB"
+    />
   </div>
 </div>
 `;
