@@ -2,14 +2,6 @@ import styled from 'styled-components';
 
 import colors from 'common/constants/colors';
 
-export const Container = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #f5f5f5;
-  padding-top: 32px;
-`;
-
 export const Button = styled.div`
   margin: 32px 0;
 `;
@@ -27,13 +19,15 @@ export const Header = styled.div`
 
 export const Row = styled.div`
   display: flex;
+  width: 100%;
   align-items: center;
+  justify-content: center;
 `;
 
 export const Column = styled.div`
   display: block;
 
   img {
-    width: 42vh;
+    width: 48vw;
   }
 `;
