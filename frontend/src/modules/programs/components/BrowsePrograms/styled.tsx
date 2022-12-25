@@ -4,16 +4,15 @@ import BREAKPOINTS from 'common/constants/breakpoints';
 
 //TODO:// refactor with news/home
 export const BrowseProgramRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  row-gap: 16px;
-  margin: 16px;
-  overflow: hidden;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1em;
 
   @media (max-width: ${BREAKPOINTS.IPAD_PORTRAIT}) {
-    row-gap: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0em;
   }
 `;
 
