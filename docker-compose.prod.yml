@@ -12,6 +12,7 @@ services:
     depends_on:
       - strapi
       - mongodb
+      - frontend
   frontend:
     restart: unless-stopped
     build:
