@@ -8,9 +8,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - '80:80'
+      - '443:443'
     depends_on:
       - strapi
       - mongodb
+      - frontend
+    environment:
+      STRAPI_ADMIN_EMAIL: ${STRAPI_ADMIN_EMAIL}
+      PROXY_DOMAIN: ${PROXY_DOMAIN}
+    volumes:
+      - './cert:/etc/letsencrypt'
   frontend:
     restart: unless-stopped
     build:
