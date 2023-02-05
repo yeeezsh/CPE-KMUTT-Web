@@ -23,6 +23,7 @@ export const Main = styled.main<MainProps>`
   margin: auto;
   margin-top: ${NAVBAR_HEIGHT};
   transition: transform 0.3s;
+  background-color: white;
 
   @media (max-width: ${BREAKPOINTS.IPAD_LANDSCAPE}) {
     margin-top: ${NAVBAR_HEIGHT_MOBILE};
