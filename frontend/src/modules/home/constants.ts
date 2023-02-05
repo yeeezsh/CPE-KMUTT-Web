@@ -29,6 +29,11 @@ export const HOME_CONTENTS = {
     content: `มีคำถามหรือข้อสงสัย
 สอบถามได้ทันที`,
   },
+  badgeContactSection: {
+    kmutt: 'https://www.kmutt.ac.th',
+    messenger: 'https://m.me/cpe.kmutt',
+    facebook: 'https://www.facebook.com/cpe.kmutt',
+  },
   i18n: {
     enable: false,
   },
