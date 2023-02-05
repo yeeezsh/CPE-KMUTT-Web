@@ -13,6 +13,9 @@ services:
       - strapi
       - mongodb
       - frontend
+    environment:
+      STRAPI_ADMIN_EMAIL: ${STRAPI_ADMIN_EMAIL}
+      PROXY_DOMAIN: ${PROXY_DOMAIN}
   frontend:
     restart: unless-stopped
     build:
