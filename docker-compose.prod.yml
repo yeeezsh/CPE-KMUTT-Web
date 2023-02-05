@@ -16,6 +16,8 @@ services:
     environment:
       STRAPI_ADMIN_EMAIL: ${STRAPI_ADMIN_EMAIL}
       PROXY_DOMAIN: ${PROXY_DOMAIN}
+    volumes:
+      - './cert:/etc/letsencrypt'
   frontend:
     restart: unless-stopped
     build:
