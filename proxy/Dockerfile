@@ -2,9 +2,7 @@ FROM nginx:1.23.3 as base
 RUN apt-get update && apt-get install -y certbot python3-certbot-nginx cron
 
 FROM base as nginx
-ARG STRAPI_ADMIN_EMAIL
 ENV STRAPI_ADMIN_EMAIL=${STRAPI_ADMIN_EMAIL}
-ARG PROXY_DOMAIN
 ENV PROXY_DOMAIN=${PROXY_DOMAIN}
 COPY default.conf /etc/nginx/conf.d/
 EXPOSE 80 443
