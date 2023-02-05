@@ -1,4 +1,4 @@
-FROM strapi/base as base
+FROM strapi/base:14-alpine as base
 ARG APP_TINY_MCE_KEY
 ENV APP_TINY_MCE_KEY=${APP_TINY_MCE_KEY}
 WORKDIR /app
