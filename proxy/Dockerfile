@@ -9,4 +9,4 @@ ENV PROXY_DOMAIN=${PROXY_DOMAIN}
 COPY default.conf /etc/nginx/conf.d/
 EXPOSE 80 443
 RUN echo "0 0 1 * * certbot renew && docker kill -s HUP nginx-certbot" >>/etc/crontab
-CMD ["sh", "-c", "certbot certonly --standalone -d $PROXY_DOMAIN --email $STRAPI_ADMIN_EMAIL --noninteractive --agree-tos && cron && nginx -g \"daemon off;\""]
+CMD ["sh", "-c", "certbot certonly --nginx -d $PROXY_DOMAIN --email $STRAPI_ADMIN_EMAIL --noninteractive --agree-tos && cron && nginx -g \"daemon off;\""]
