@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import Container from 'common/components/Container';
 import useClickHamburger from 'common/components/Navbar/hooks/useClickHamburger';
 import { STATIC_HOME_LINK } from 'common/constants/links';
+import usei18n, { AppLanguage } from 'common/hooks/usei18n';
 import useIsMobileNavbarShow from 'common/hooks/useIsMobileMenuOpened';
 
 import { HOME_CONTENTS } from 'modules/home/constants';
@@ -33,6 +34,8 @@ const Navbar: React.FC = () => {
   }
 
   const isMobileOpen = useIsMobileNavbarShow();
+  const { language, swap } = usei18n();
+  const languageButton = language.lang === AppLanguage.TH ? 'EN' : 'ไทย';
 
   return (
     <Nav $visible={menuOpened} $isMobileMenuShow={isMobileOpen}>
@@ -52,7 +55,11 @@ const Navbar: React.FC = () => {
         {
           //TODO: enable in next patch
         }
-        {HOME_CONTENTS.i18n.enable && <MenuButton>{menuOpened ? '' : 'EN'}</MenuButton>}
+        {HOME_CONTENTS.i18n.enable && (
+          <MenuButton onClick={() => swap()}>
+            {menuOpened ? '' : languageButton}
+          </MenuButton>
+        )}
 
         <Dropdown
           visible={desktopMenuOpened}
