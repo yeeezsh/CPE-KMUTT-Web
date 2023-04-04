@@ -9,11 +9,10 @@ import BrowseProgramPage from 'modules/programs/pages/BrowseProgramPage';
 
 // const mock: React.FC = () => <></>;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   const { data } = await client.query<GetProgramsQuery>({
     query: GetProgramsDocument,
-    // TODO: remove this locale hardcode
-    variables: { locale: 'th' },
+    variables: { locale },
   });
   return {
     props: { data },
