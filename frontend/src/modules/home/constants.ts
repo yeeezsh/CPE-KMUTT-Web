@@ -37,6 +37,6 @@ export const HOME_CONTENTS = {
     facebook: 'https://www.facebook.com/cpe.kmutt',
   },
   i18n: {
-    enable: false,
+    enable: true,
   },
 };
