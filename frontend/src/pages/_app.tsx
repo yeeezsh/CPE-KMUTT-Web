@@ -13,8 +13,7 @@ App.getInitialProps = async ({ Component, ctx }) => {
 
   const { data } = await client.query<GetMenuQuery>({
     query: GetMenuDocument,
-    // TODO: remove this locale hardcode
-    variables: { locale: 'th' },
+    variables: { locale: ctx.locale },
   });
   pageProps = {
     ...pageProps,

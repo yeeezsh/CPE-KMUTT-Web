@@ -5,11 +5,10 @@ import { client } from 'common/services/client';
 
 import StaffsPage from 'modules/staff/pages/StaffsPage';
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, locale }) => {
   const { data } = await client.query<GetStaffsQuery>({
     query: GetStaffsDocument,
-    // TODO: remove this locale hardcode
-    variables: { Id: params?.id, locale: 'th' },
+    variables: { Id: params?.id, locale },
   });
   return {
     props: { data },

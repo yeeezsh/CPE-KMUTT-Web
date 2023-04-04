@@ -7,11 +7,10 @@ import { client } from 'common/services/client';
 
 import Home from 'modules/home/page/Home';
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   const { data } = await client.query<GetHomeQuery>({
     query: GetHomeDocument,
-    // TODO: remove this locale hardcode
-    variables: { locale: 'th' },
+    variables: { locale },
   });
   return {
     props: { data },
