@@ -8,4 +8,4 @@ COPY default.conf /etc/nginx/conf.d/
 RUN nginx -t
 EXPOSE 80 443
 RUN echo "0 0 1 * * certbot renew && docker kill -s HUP nginx-certbot" >>/etc/crontab
-CMD ["sh", "-c", "if [ ! -f /etc/letsencrypt/live/$PROXY_DOMAIN/fullchain.pem ]; then certbot certonly --standalone -d $PROXY_DOMAIN --email $STRAPI_ADMIN_EMAIL --noninteractive --agree-tos; fi && cron && nginx -g \"daemon off;\""]
+CMD ["sh", "-c", "if [ ! -f /etc/letsencrypt/live/$PROXY_DOMAIN/fullchain.pem ]; then certbot certonly --standalone -d $PROXY_DOMAIN -d www.$PROXY_DOMAIN --email $STRAPI_ADMIN_EMAIL --noninteractive --agree-tos; fi && cron && nginx -g \"daemon off;\""]
