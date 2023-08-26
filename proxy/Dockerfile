@@ -4,10 +4,11 @@ RUN apt-get update && apt-get install -y certbot python3-certbot-nginx cron
 FROM base as nginx
 ENV STRAPI_ADMIN_EMAIL=${STRAPI_ADMIN_EMAIL}
 ENV PROXY_DOMAIN=${PROXY_DOMAIN}
-COPY default.conf /etc/nginx/conf.d/
+COPY default.conf /etc/nginx/conf.d/default.conf.template
 RUN nginx -t
 EXPOSE 80 443
 RUN echo "0 0 */2 * * certbot renew --nginx --quiet" >>/etc/crontab
+RUN envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 
 CMD ["sh", "-c", "\
     if [ ! -f /etc/letsencrypt/live/$PROXY_DOMAIN/fullchain.pem ]; then \
