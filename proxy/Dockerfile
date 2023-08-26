@@ -7,7 +7,7 @@ ENV PROXY_DOMAIN=${PROXY_DOMAIN}
 COPY default.conf /etc/nginx/conf.d/
 RUN nginx -t
 EXPOSE 80 443
-RUN echo "0 0 1 * * certbot renew --quiet" >>/etc/crontab
+RUN echo "0 0 1 * * certbot renew --nginx --quiet" >>/etc/crontab
 
 CMD ["sh", "-c", "\
     if [ ! -f /etc/letsencrypt/live/$PROXY_DOMAIN/fullchain.pem ]; then \
