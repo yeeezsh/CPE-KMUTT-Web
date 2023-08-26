@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/program-tags",
+      "handler": "program-tags.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/program-tags/count",
+      "handler": "program-tags.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/program-tags/:id",
+      "handler": "program-tags.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/program-tags",
+      "handler": "program-tags.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/program-tags/:id",
+      "handler": "program-tags.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/program-tags/:id",
+      "handler": "program-tags.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

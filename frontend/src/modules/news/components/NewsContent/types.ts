@@ -12,6 +12,10 @@ export interface NewsContentProps {
   }[];
   contents?: JSX.Element[];
   connections?: CardNewsConnectionProps[];
+  seeAllButton?: {
+    title: string;
+    url: string;
+  };
 }
 
 export interface CardNewsConnectionProps {

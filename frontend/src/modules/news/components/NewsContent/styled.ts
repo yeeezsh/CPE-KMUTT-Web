@@ -106,3 +106,7 @@ export const OtherNewsHeader = styled.div`
   font-weight: 700;
   color: ${COLORS.GRAY_2};
 `;
+
+export const DynamicCotentZoneContainer = styled.div`
+  width: 100%;
+`;

@@ -1,0 +1,44 @@
+fragment commonProgram on Programs {
+  id
+  header
+  seo_link
+  canvas_preview {
+    url
+  }
+  createdAt
+}
+
+query GetProgramBySeoLink(
+  $locale: String! = "th"
+  $where: JSON = { seo_link: "widsawa-gamma-bundid" }
+) {
+  programs(locale: $locale, publicationState: LIVE, where: $where) {
+    ...commonProgram
+    program_tag {
+      id
+      seo_link
+      program_tag_name
+    }
+    dynamic_content {
+      __typename
+      ... on ComponentContentSectionsTextContent {
+        id
+        body
+      }
+    }
+    download {
+      files {
+        url
+        name
+        _id
+        mime
+      }
+    }
+  }
+
+  programsConnection(sort: "createdAt:desc", limit: 3, locale: $locale) {
+    values {
+      ...commonProgram
+    }
+  }
+}

@@ -23,10 +23,6 @@ export const BrowseNewsRow = styled.div`
   }
 `;
 
-export const BrowseNewsColumn = styled.div`
-  display: block;
-`;
-
 export const BrowseNewsSeeMore = styled.div`
   display: flex;
   justify-content: center;

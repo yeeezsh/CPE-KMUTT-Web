@@ -28,14 +28,16 @@ import {
   OtherNewsContainer,
   OtherNewsHeaderContainer,
   OtherNewsHeader,
+  DynamicCotentZoneContainer,
 } from './styled';
 import { NewsContentProps } from './types';
 
+//TODO: refactor to CommonContent
 const NewsContent: React.FC<NewsContentProps> = (props) => {
   const router = useRouter();
 
   function gotoAllNews() {
-    router.push(STATIC_NEWS_LINK);
+    router.push(props.seeAllButton?.url || STATIC_NEWS_LINK);
   }
 
   function onCardClick(newsId: string) {
@@ -58,7 +60,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
         )}
 
         {/* dyanmic contents */}
-        {props.contents}
+        <DynamicCotentZoneContainer>{props.contents}</DynamicCotentZoneContainer>
 
         {/* files & download */}
         {props.file && (
@@ -86,7 +88,7 @@ const NewsContent: React.FC<NewsContentProps> = (props) => {
             <OtherNewsHeaderContainer>
               <OtherNewsHeader>ประกาศอื่นๆ</OtherNewsHeader>
               <Button $color="borderless" onClick={gotoAllNews}>
-                แสดงทั้งหมด
+                {props.seeAllButton?.title || 'แสดงทั้งหมด'}
                 <HiOutlineArrowRight
                   className="Icon"
                   style={{ marginLeft: '15px' }}
